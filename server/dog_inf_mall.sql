@@ -3,6 +3,15 @@
 
 use dog_inf_mall;
 
+-- 기존 테이블 삭제
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS dog;
+DROP TABLE IF EXISTS shopping_cart;
+DROP TABLE IF EXISTS board;
+
+
 -- user Table Create SQL
 -- 테이블 생성 SQL - user
 CREATE TABLE user
@@ -18,10 +27,11 @@ CREATE TABLE user
 
 -- product Table Create SQL
 -- 테이블 생성 SQL - product
+
 CREATE TABLE product
 (
     `id`        INT UNSIGNED    NOT NULL    AUTO_INCREMENT, 
-    `title`     VARCHAR(30)     NOT NULL, 
+    `title`     VARCHAR(100)     NOT NULL, 
     `category`  VARCHAR(20)     NOT NULL, 
     `choice`    VARCHAR(100)    NULL, 
     `image`     VARCHAR(100)    NULL        DEFAULT 'default이미지id', 
@@ -123,9 +133,9 @@ insert into dog (name, pet_owner, breed) values ('루키', 'banana', '진돗개'
 insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 'peach', 'F', 3, '닥스훈트', 7);
 
 
-insert into product (title, category, price, amount) values ('소고기 간식', '식품', 20000, 30);
-insert into product (title, category, choice, price, amount) values ('체크무늬 외출복', '옷', '{\"색상\":[\"빨강\", \"노랑\", \"연두\"], \"사이즈\":[\"S\", \"M\", \"L\"]}', 30000, 20);
-insert into product (title, category, choice, price, amount) values ('터그 장난감', '장난감', '{\"색상\":[\"파랑\", "\초록\"]}', 20000, 25);
+-- insert into product (title, category, price, amount) values ('소고기 간식', '식품', 20000, 30);
+-- insert into product (title, category, choice, price, amount) values ('체크무늬 외출복', '옷', '{\"색상\":[\"빨강\", \"노랑\", \"연두\"], \"사이즈\":[\"S\", \"M\", \"L\"]}', 30000, 20);
+-- insert into product (title, category, choice, price, amount) values ('터그 장난감', '장난감', '{\"색상\":[\"파랑\", "\초록\"]}', 20000, 25);
 
 insert into shopping_cart (user_id, product_id, choice, amount) values ('banana', 2, '{\"색상\":\"노랑\"}', 1);
 insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 2, '{\"색상\":\"빨강\", }', 1);

@@ -1,25 +1,42 @@
-const Todo = function (Sequelize, DataTypes) {
+const Board = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    'todo', 
+    'board', 
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
       },
+      user_id: {
+        type: DataTypes.STRING(15),
+        allowNull: true,
+      },
       title: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(40),
         allowNull: false,
       },
-      done: {
-        type: DataTypes.BOOLEAN,
+      body: {
+        type: DataTypes.TEXT,
         allowNull: false,
-        defaultValue: false,
+      },
+      view_count: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      recommend_count: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: true,
+        defaultValue: 0,
+      },
+      date: {
+        type: DataTypes.DATE,
+        allowNull: false
       },
     }, 
     {
-      tableName: 'todo', 
+      tableName: 'board', 
       freezeTableName: true,
       timestamps: false,
     }, 
@@ -28,4 +45,4 @@ const Todo = function (Sequelize, DataTypes) {
   return model;
 };
 
-module.exports = Todo;
+module.exports = Board;
