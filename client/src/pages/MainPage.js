@@ -1,4 +1,4 @@
-import SlickSlider from "../containers/SlickSlider";
+import SlickSlider from "./SlickSlider";
 
 const MainPage = () => {
   return (

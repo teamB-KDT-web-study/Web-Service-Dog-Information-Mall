@@ -14,7 +14,7 @@ const Quizhome = () => {
             교육입니다.
           </h2>
 
-          <button className="button" onClick={() => navigate("/quiz")}>
+          <button className="button" onClick={() => navigate("/quizhome/quiz")}>
             <span>Test1 </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
