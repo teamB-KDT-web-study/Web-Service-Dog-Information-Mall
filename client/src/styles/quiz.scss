@@ -1,0 +1,93 @@
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$yellow-color: #ecd06f;
+$brown-color: #987654;
+
+.quiz-container {
+  width: 100%;
+  max-width: 800px;
+  min-height: 200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ecd16f9f;
+  border-radius: 10px;
+
+  .score-section {
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+      color: $brown-color;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: $yellow-color;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $brown-color;
+      }
+    }
+  }
+
+  .question-section {
+    margin-bottom: 20px;
+
+    .question-count {
+      font-size: 1.2rem;
+      color: $brown-color;
+      margin-bottom: 10px;
+    }
+
+    .question-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  }
+
+  .answer-section {
+    display: flex;
+    flex-wrap: wrap;
+
+    ul {
+      flex-basis: 100%;
+      margin-bottom: 10px;
+
+      @media (min-width: 600px) {
+        flex-basis: 50%;
+        padding-right: 10px;
+      }
+
+      .answer-button {
+        background-color: $yellow-color;
+        color: white;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: $brown-color;
+        }
+
+        &.correct {
+          background-color: green;
+        }
+
+        &.incorrect {
+          background-color: red;
+        }
+      }
+    }
+  }
+}
