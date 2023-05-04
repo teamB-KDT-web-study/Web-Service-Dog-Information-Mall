@@ -6,7 +6,7 @@ dotenv.config();
 var app = express();
 var client_id = process.env.NAVER_API_ID;
 var client_secret = process.env.NAVER_API_KEY;
-const search = "강아지사료";
+const search = "강아지목줄";
 
 app.get("/search/blog", function (req, res) {
   var api_url =

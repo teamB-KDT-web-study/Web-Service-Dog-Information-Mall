@@ -3,7 +3,6 @@ const { Op } = require("sequelize");
 
 exports.getContents = async (req, res) => {
   try {
-    
   } catch (err) {
     res.send(err);
   }
