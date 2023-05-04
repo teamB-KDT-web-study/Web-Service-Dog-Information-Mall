@@ -6,9 +6,11 @@ import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import SlickSlider from "./containers/SlickSlider";
 import Quiz from "./pages/Quiz";
 import Quizhome from "./pages/Quizhome";
+import ContentPage from "./pages/ContentPage";
+import ContentDetail from "./pages/ContentDetail";
+import ContentCreate from "./pages/ContentCreate";
 
 function App() {
   return (
@@ -19,8 +21,11 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/quiz" element={<Quiz />} />
+          <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
+          <Route path="/board" element={<ContentPage />} />
+          <Route path="/board/:contentId" element={<ContentDetail />} />
+          <Route path="/board/create" element={<ContentCreate />} />
         </Routes>
       </BrowserRouter>
     </div>
