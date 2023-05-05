@@ -1,7 +1,15 @@
 -- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
--- CREATE DATABASE dog_inf_mall DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+
+-- 최초 실행시에만 데이터베이스 생성문 실행.
+CREATE DATABASE dog_inf_mall DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 use dog_inf_mall;
+
+
+
+
+
 
 -- 기존 테이블 삭제
 SET FOREIGN_KEY_CHECKS = 0;
@@ -31,7 +39,7 @@ CREATE TABLE user
 CREATE TABLE product
 (
     `id`        INT UNSIGNED    NOT NULL    AUTO_INCREMENT, 
-    `title`     VARCHAR(100)     NOT NULL, 
+    `title`     VARCHAR(200)     NOT NULL, 
     `category`  VARCHAR(20)     NOT NULL, 
     `choice`    VARCHAR(100)    NULL, 
     `image`     VARCHAR(100)    NULL        DEFAULT 'default이미지id', 
@@ -137,8 +145,10 @@ insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 
 -- insert into product (title, category, choice, price, amount) values ('체크무늬 외출복', '옷', '{\"색상\":[\"빨강\", \"노랑\", \"연두\"], \"사이즈\":[\"S\", \"M\", \"L\"]}', 30000, 20);
 -- insert into product (title, category, choice, price, amount) values ('터그 장난감', '장난감', '{\"색상\":[\"파랑\", "\초록\"]}', 20000, 25);
 
-insert into shopping_cart (user_id, product_id, choice, amount) values ('banana', 2, '{\"색상\":\"노랑\"}', 1);
-insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 2, '{\"색상\":\"빨강\", }', 1);
+-- insert into shopping_cart (user_id, product_id, choice, amount) values ('banana', 2, '{\"weight\":\"1kg\"}', 1);
+-- insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 42, '{\"size\":\"medium\", }', 1);
+-- insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 42, '{\"size\":\"small\", }', 1);
+
 
 insert into board (user_id, title, body, date) values ('banana', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
 insert into board (user_id, title, body, date) values ('banana', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
@@ -171,6 +181,10 @@ FLUSH PRIVILEGES;
 
 
 
--- drop database dog_inf_mall;
--- drop user admin;
 
+
+
+-- 데이터 베이스 삭제
+-- drop database dog_inf_mall;
+-- 계정 삭제
+-- drop user admin;
