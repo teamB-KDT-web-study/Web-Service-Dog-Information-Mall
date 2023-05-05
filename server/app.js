@@ -29,6 +29,9 @@ app.use('/main/store', storeRouter);
 const infoRouter = require('./routes/board');
 app.use('/main/board', infoRouter);
 
+const mainRouter = require('./routes/main');
+app.use('/main', mainRouter);
+
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });

@@ -1,4 +1,14 @@
-const { Board } = require('../models').Board; /// 수정해야함!!!!
-const { Op } = require('sequelize');
+const models = require("../models");
 
-exports.main = (req, res) => {};
+exports.showMostLikeContents = async (req, res) => {
+  // board 테이블 게시글 중 좋아요 top4를 가져옴
+  try {
+    const result = await models.Board.findAll({
+      limit: 4,
+      order: [["recommend_count", "DESC"]],
+    });
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+};
