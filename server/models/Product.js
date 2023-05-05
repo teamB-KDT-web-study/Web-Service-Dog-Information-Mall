@@ -1,6 +1,6 @@
 const Product = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    "product",
+    'product',
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -9,7 +9,7 @@ const Product = function (Sequelize, DataTypes) {
         autoIncrement: true,
       },
       title: {
-        type: DataTypes.STRING(30),
+        type: DataTypes.STRING(200),
         allowNull: false,
       },
       category: {
@@ -23,7 +23,7 @@ const Product = function (Sequelize, DataTypes) {
       image: {
         type: DataTypes.STRING(100),
         allowNull: true,
-        defaultValue: "default이미지id",
+        defaultValue: 'default이미지id',
       },
       price: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -35,7 +35,7 @@ const Product = function (Sequelize, DataTypes) {
       },
     },
     {
-      tableName: "product",
+      tableName: 'product',
       freezeTableName: true,
       timestamps: false,
     }

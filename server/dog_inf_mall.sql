@@ -28,7 +28,7 @@ CREATE TABLE user
     `password`       VARCHAR(25)     NOT NULL, 
     `nickname`       VARCHAR(15)     NOT NULL, 
     `grade`          VARCHAR(10)     NULL        DEFAULT '초심자', 
-    `profile_photo`  VARCHAR(100)    NULL        DEFAULT 'default사진아이디', 
+    `profile_photo`  VARCHAR(100)    NULL        DEFAULT 'default.jpg', 
      PRIMARY KEY (id)
 );
 
