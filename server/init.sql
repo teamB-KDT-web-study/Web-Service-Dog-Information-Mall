@@ -29,6 +29,7 @@ INSERT INTO todo VALUES (null, 'my todo4', 1);
 INSERT INTO todo VALUES (null, 'my todo5', 1);
 INSERT INTO todo VALUES (null, 'my todo6', 0);
 
+
 -- 테이블 데이터 수정 (Update)
 UPDATE todo SET title = '내 할일2' WHERE id = 2;
 
