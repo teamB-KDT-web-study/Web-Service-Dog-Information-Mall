@@ -1,0 +1,62 @@
+.Traininginfo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
+}
+.box1 {
+  display: flex;
+  width: 100vw;
+  height: 100px;
+  background-color: #ecd06f;
+  color: #695239;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+.box2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  text-align: center;
+  flex-direction: column;
+  padding: 80px;
+
+  &.box {
+    background-color: #ecd16f9f;
+    width: 800px;
+    height: 200px;
+    border-radius: 10px;
+    color: #3e3122;
+    &.h1 {
+      font-size: 10px;
+    }
+  }
+}
+.box3 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  background-color: #faf2d6;
+  height: 600px;
+  &.header {
+    background-color: aqua;
+    width: 100%;
+    height: 10%;
+  }
+  &.body {
+    background-color: rgb(87, 102, 102);
+    width: 100%;
+    height: 70%;
+  }
+
+  &.button {
+    background-color: #3e3122;
+    width: 100%;
+    height: 20%;
+  }
+}

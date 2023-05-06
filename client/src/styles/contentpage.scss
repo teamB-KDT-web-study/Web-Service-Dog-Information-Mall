@@ -1,0 +1,18 @@
+.ContentPage {
+  width: 100%;
+  display: flex;
+  max-width: 800px;
+  min-height: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ecd16f9f;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.createBtn {
+  width: 600px;
+  background-color: rgb(235, 113, 31);
+  text-align: center;
+  border-radius: 10px;
+}

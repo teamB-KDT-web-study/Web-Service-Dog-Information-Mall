@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const controller = require("../controller/Cmain");
+const controller = require('../controller/Cmain');
 
-router.get("/", controller.showMostLikeContents);
+router.get('/', controller.showMostLikeContents);
 
 module.exports = router;
