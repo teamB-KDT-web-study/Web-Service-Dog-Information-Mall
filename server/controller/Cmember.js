@@ -18,12 +18,13 @@ exports.login = async (req, res) => {
     if (!userInfo) {
       res.status(400).send({ loginId: null, isLogin: false });
     } else {
+      console.log(req.sessionID);
       req.session.loginData = userInfo.id;
 
       res.send({
         loginId: req.session.loginData,
         profile_img: userInfo.profile_img,
-        isLogin: true,
+        success: true,
       });
     }
   } catch (err) {
@@ -38,7 +39,16 @@ exports.check = async (req, res) => {
 
 exports.checkLogin = async (req, res) => {
   try {
-    if (Object.keys(req.session).includes(longinData)) {
+    console.log(Object.keys(req.session).indexOf('cookie'));
+    console.log(req.session);
+    console.log(req.sessionID);
+    if (Object.keys(req.session).includes('loginData')) {
+      console.log('로그인');
+    } else {
+      console.log('로그인x');
+    }
+
+    if (Object.keys(req.session).includes('loginData')) {
       const userInfo = await model.User.findOne({
         where: {
           id: { [Op.eq]: req.body.id },

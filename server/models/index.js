@@ -69,7 +69,7 @@ db.Shopping_cart.belongsTo(db.Product, {
   targetKey: 'id',
 });
 
-db.User.hasmany(db.Board_like, {
+db.User.hasMany(db.Board_like, {
   foreignKey: 'nickname',
   sourceKey: 'nickname',
   onUpdate: 'cascade',
@@ -81,7 +81,7 @@ db.Board_like.belongsTo(db.User, {
   targetKey: 'nickname',
 });
 
-db.board.hasmany(db.Board_like, {
+db.Board.hasMany(db.Board_like, {
   foreignKey: 'board_id',
   sourceKey: 'id',
   onUpdate: 'cascade',
