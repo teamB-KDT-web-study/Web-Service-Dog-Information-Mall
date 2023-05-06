@@ -1,5 +1,6 @@
 import SlickSlider from "../components/SlickSlider";
 
+
 const MainPage = () => {
   return (
     <>
