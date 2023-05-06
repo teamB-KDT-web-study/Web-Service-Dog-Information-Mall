@@ -11,6 +11,10 @@ import Quizhome from "./pages/Quizhome";
 import ContentPage from "./pages/ContentPage";
 import ContentDetail from "./pages/ContentDetail";
 import ContentCreate from "./pages/ContentCreate";
+import Traininginfo from "./pages/Traininginfo";
+import Training from "./pages/Training";
+import Mydog from "./pages/Mydog";
+import Mydoginfo from "./pages/Mydoginfo";
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
           <Route path="/board" element={<ContentPage />} />
           <Route path="/board/:contentId" element={<ContentDetail />} />
           <Route path="/board/create" element={<ContentCreate />} />
+          <Route path="/training/traininginfo" element={<Traininginfo />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/mydog" element={<Mydog />} />
+          <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
         </Routes>
       </BrowserRouter>
     </div>

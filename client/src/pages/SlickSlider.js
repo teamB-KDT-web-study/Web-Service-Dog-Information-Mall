@@ -6,6 +6,8 @@ import Slider from "react-slick";
 // import "../styles/slick/slick-theme.scss";
 import SlickNextArrow from "../components/SlickNextArrow";
 import SlickPrevArrow from "../components/SlickPrevArrow";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default class SlickSlider extends Component {
   render() {
