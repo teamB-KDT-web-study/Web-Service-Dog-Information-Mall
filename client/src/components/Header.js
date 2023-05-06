@@ -9,6 +9,7 @@ const Header = () => {
         <a className="nav-link active" aria-current="page" href="/">
           로고
         </a>
+
         <a className="nav-link" href="#">
           지도API
         </a>
@@ -16,6 +17,9 @@ const Header = () => {
           스토어
         </a>
         <a className="nav-link disabled">Disabled</a>
+        <Link to="/Map" className="menu-item">
+          Map
+        </Link>
         <Link to="/quizhome" className="menu-item">
           Quiz
         </Link>

@@ -11,6 +11,7 @@ import Quizhome from "./pages/Quizhome";
 import ContentPage from "./pages/ContentPage";
 import ContentDetail from "./pages/ContentDetail";
 import ContentCreate from "./pages/ContentCreate";
+import Map from "./pages/Map";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board" element={<ContentPage />} />
+          <Route path="/Map" element={<Map />} />
           <Route path="/board/:contentId" element={<ContentDetail />} />
           <Route path="/board/create" element={<ContentCreate />} />
         </Routes>
