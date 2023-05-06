@@ -9,13 +9,19 @@ const Header = () => {
         <a className="nav-link active" aria-current="page" href="/">
           로고
         </a>
-        <Link to="/quizhome" className="nav-link">
-          지도 API
+
+
+        <a className="nav-link" href="#">
+          지도API
+        </a>
+        <a className="nav-link" href="#">
+          스토어
+        </a>
+        <a className="nav-link disabled">Disabled</a>
+        <Link to="/Map" className="menu-item">
+          Map
         </Link>
-        <Link to="/mydog" className="nav-link">
-          강아지 추천
-        </Link>
-        <Link to="/quizhome" className="nav-link">
+        <Link to="/quizhome" className="menu-item">
           Quiz
         </Link>
         <Link to="/#" className="nav-link">
