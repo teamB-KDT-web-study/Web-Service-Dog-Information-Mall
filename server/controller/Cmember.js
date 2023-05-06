@@ -70,6 +70,19 @@ exports.checkLogin = async (req, res) => {
   }
 };
 
+exports.logout = async (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      if (err) {
+        throw err;
+      }
+      res.send({ success: true });
+    });
+  } catch (err) {
+    res.send(err);
+  }
+};
+
 exports.signup = async (req, res) => {
   try {
   } catch (err) {
