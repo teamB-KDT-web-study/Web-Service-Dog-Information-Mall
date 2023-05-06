@@ -1,6 +1,6 @@
 const User = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    "user",
+    'user',
     {
       id: {
         type: DataTypes.STRING(15),
@@ -14,20 +14,21 @@ const User = function (Sequelize, DataTypes) {
       nickname: {
         type: DataTypes.STRING(15),
         allowNull: false,
+        unique: true,
       },
       grade: {
         type: DataTypes.STRING(10),
         allowNull: true,
         defaultValue: '초심자',
       },
-      profile_photo: {
+      profile_img: {
         type: DataTypes.STRING(100),
         allowNull: true,
-        defaultValue: 'default사진아이디',
+        defaultValue: 'default.jpg',
       },
     },
     {
-      tableName: "user",
+      tableName: 'user',
       freezeTableName: true,
       timestamps: false,
     }

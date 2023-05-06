@@ -2,7 +2,7 @@
 
 
 -- 최초 실행시에만 데이터베이스 생성문 실행.
-CREATE DATABASE dog_inf_mall DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+-- CREATE DATABASE dog_inf_mall DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 use dog_inf_mall;
 
@@ -18,6 +18,7 @@ DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS dog;
 DROP TABLE IF EXISTS shopping_cart;
 DROP TABLE IF EXISTS board;
+DROP TABLE IF EXISTS board_like;
 
 
 -- user Table Create SQL
@@ -26,9 +27,9 @@ CREATE TABLE user
 (
     `id`             VARCHAR(15)   NOT NULL, 
     `password`       VARCHAR(25)     NOT NULL, 
-    `nickname`       VARCHAR(15)     NOT NULL, 
+    `nickname`       VARCHAR(15)     NOT NULL UNIQUE, 
     `grade`          VARCHAR(10)     NULL        DEFAULT '초심자', 
-    `profile_photo`  VARCHAR(100)    NULL        DEFAULT 'default.jpg', 
+    `profile_img`  VARCHAR(100)    NULL        DEFAULT 'default.jpg', 
      PRIMARY KEY (id)
 );
 
@@ -107,11 +108,11 @@ ALTER TABLE shopping_cart
 CREATE TABLE board
 (
     `id`               INT UNSIGNED    NOT NULL    AUTO_INCREMENT, 
-    `user_id`          VARCHAR(15)    NULL, 
+    `nickname`         VARCHAR(15)     NULL, 
     `title`            VARCHAR(40)     NOT NULL, 
     `body`             text            NOT NULL, 
     `view_count`       INT UNSIGNED    NULL        DEFAULT 0, 
-    `recommend_count`  INT UNSIGNED    NULL        DEFAULT 0, 
+    `like_count`  INT UNSIGNED    NULL        DEFAULT 0, 
     `date`             DATETIME        NOT NULL, 
      PRIMARY KEY (id)
 );
@@ -119,12 +120,26 @@ CREATE TABLE board
 
 -- Foreign Key 설정 SQL - post(user_id) -> user(id)
 ALTER TABLE board
-    ADD CONSTRAINT FK_board_user_id_user_id FOREIGN KEY (user_id)
-        REFERENCES user (id) ON DELETE SET NULL ON UPDATE CASCADE;
+    ADD CONSTRAINT FK_board_nickname_nickname FOREIGN KEY (nickname)
+        REFERENCES user (nickname) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- Foreign Key 삭제 SQL - board(user_id)
 -- ALTER TABLE board
 -- DROP FOREIGN KEY FK_board_user_id_user_id;
+
+CREATE TABLE board_like (
+    `board_id` INT UNSIGNED    NOT NULL,
+    `nickname` VARCHAR(15)     NOT NULL,
+    PRIMARY KEY (board_id, nickname),
+    FOREIGN KEY (board_id) REFERENCES board (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (nickname) REFERENCES user (nickname) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+insert into board_like (board_id, nickname) values (1, '바나나');
+insert into board_like (board_id, nickname) values (2, '바나나');
+insert into board_like (board_id, nickname) values (2, '사과');
 
 
 
@@ -150,9 +165,9 @@ insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 
 -- insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 42, '{\"size\":\"small\", }', 1);
 
 
-insert into board (user_id, title, body, date) values ('banana', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
-insert into board (user_id, title, body, date) values ('banana', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
-insert into board (user_id, title, body, date) values ('peach', '강아지 정보3', '강아지 정보 3 블라블라', '2023-05-03 08:48:00');
+insert into board (nickname, title, body, date) values ('banana', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
+insert into board (nickname, title, body, date) values ('banana', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
+insert into board (nickname, title, body, date) values ('peach', '강아지 정보3', '강아지 정보 3 블라블라', '2023-05-03 08:48:00');
 show tables;
 
 desc dog;
@@ -160,13 +175,14 @@ desc user;
 desc shopping_cart;
 desc board;
 desc product;
-
+desc board_like;
 
 select * from shopping_cart;
 select * from board;
 select * from product;
 select * from dog;
 select * from user;
+select * from board_like;
 
 
 -- MySQL 사용자 추가하기

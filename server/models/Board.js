@@ -1,6 +1,6 @@
 const Board = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    'board', 
+    'board',
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -8,7 +8,7 @@ const Board = function (Sequelize, DataTypes) {
         primaryKey: true,
         autoIncrement: true,
       },
-      user_id: {
+      nickname: {
         type: DataTypes.STRING(15),
         allowNull: true,
       },
@@ -25,21 +25,21 @@ const Board = function (Sequelize, DataTypes) {
         allowNull: true,
         defaultValue: 0,
       },
-      recommend_count: {
+      like_count: {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: true,
         defaultValue: 0,
       },
       date: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: false,
       },
-    }, 
+    },
     {
-      tableName: 'board', 
+      tableName: 'board',
       freezeTableName: true,
       timestamps: false,
-    }, 
+    }
   );
 
   return model;
