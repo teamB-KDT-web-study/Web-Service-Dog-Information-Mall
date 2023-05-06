@@ -70,6 +70,25 @@ exports.logout = async (req, res) => {
   }
 };
 
+exports.isExist = async (req, res) => {
+  try {
+    const searchAttribute = req.body.type;
+    const isExist = await model.User.findOne({
+      where: {
+        [searchAttribute]: { [Op.eq]: req.body.inputData },
+      },
+    });
+
+    if (!isExist) {
+      res.send({ isOk: true });
+    } else {
+      res.send({ isOk: false });
+    }
+  } catch (err) {
+    res.send(err);
+  }
+};
+
 exports.signup = async (req, res) => {
   try {
   } catch (err) {
