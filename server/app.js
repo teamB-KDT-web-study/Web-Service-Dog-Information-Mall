@@ -20,17 +20,17 @@ app.use(
   })
 );
 
-const memberRouter = require('./routes/member');
-app.use('/main', memberRouter);
+// const memberRouter = require('./routes/member');
+// app.use('/', memberRouter);
 
-const storeRouter = require('./routes/store');
-app.use('/main/store', storeRouter);
+// const storeRouter = require('./routes/store');
+// app.use('/store', storeRouter);
 
 const infoRouter = require('./routes/board');
-app.use('/main/board', infoRouter);
+app.use('/board', infoRouter);
 
 const mainRouter = require('./routes/main');
-app.use('/main', mainRouter);
+app.use('/', mainRouter);
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);

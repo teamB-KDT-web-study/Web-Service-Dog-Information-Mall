@@ -8,9 +8,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Quiz from "./pages/Quiz";
 import Quizhome from "./pages/Quizhome";
-import ContentPage from "./pages/ContentPage";
-import ContentDetail from "./pages/ContentDetail";
-import ContentCreate from "./pages/ContentCreate";
+import {
+  BoardPageContainer,
+  BoardDetailContainer,
+  BoardCreateContainer,
+} from "./containers/boardContainer";
 
 function App() {
   return (
@@ -23,9 +25,10 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
-          <Route path="/board" element={<ContentPage />} />
-          <Route path="/board/:contentId" element={<ContentDetail />} />
-          <Route path="/board/create" element={<ContentCreate />} />
+          <Route path="/board" element={<BoardPageContainer />} />
+          <Route path="/board/:contentId" element={<BoardDetailContainer />} />
+          <Route path="/board/create" element={<BoardCreateContainer />} />
+
         </Routes>
       </BrowserRouter>
     </div>
