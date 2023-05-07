@@ -14,6 +14,14 @@ import {
   BoardCreateContainer,
 } from "./containers/boardContainer";
 
+import Map from "./pages/Map";
+
+import Traininginfo from "./pages/Traininginfo";
+import Training from "./pages/Training";
+import Mydog from "./pages/Mydog";
+import Mydoginfo from "./pages/Mydoginfo";
+
+
 function App() {
   return (
     <div className="App">
@@ -28,7 +36,11 @@ function App() {
           <Route path="/board" element={<BoardPageContainer />} />
           <Route path="/board/:contentId" element={<BoardDetailContainer />} />
           <Route path="/board/create" element={<BoardCreateContainer />} />
-
+          <Route path="/Map" element={<Map />} />
+          <Route path="/training/traininginfo" element={<Traininginfo />} />
+          <Route path="/training" element={<Training />} />
+          <Route path="/mydog" element={<Mydog />} />
+          <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
         </Routes>
       </BrowserRouter>
     </div>

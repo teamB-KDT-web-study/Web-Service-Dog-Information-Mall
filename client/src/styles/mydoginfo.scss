@@ -1,0 +1,29 @@
+.dog {
+  color: #987654;
+  display: flex;
+  background-color: #ecd06f;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.mdi_btn {
+  background-color: rgb(138, 81, 6);
+  border-radius: 30px;
+  border: none;
+  margin: 20px;
+  font-size: 40px;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
+}
+
+.mdi_db {
+  display: flex;
+  padding: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
