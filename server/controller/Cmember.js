@@ -133,7 +133,7 @@ exports.signup = async (req, res) => {
 
       count += 1;
     }
-    res.send('ok');
+    res.send({ isOk: true });
   } catch (err) {
     res.send(err);
   }
@@ -148,6 +148,8 @@ exports.editProfile = async (req, res) => {
 
 exports.signout = async (req, res) => {
   try {
+    const result = await model.User.destroy({ where: { id: req.body.id } });
+    res.send({ isOk: result });
   } catch (err) {
     res.send(err);
   }

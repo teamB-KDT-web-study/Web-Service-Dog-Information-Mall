@@ -14,6 +14,6 @@ router.post('/signup', controller.signup); // 회원가입 요청
 
 // router.patch('/profileEdit', controller.editProfile); // 프로필 수정 요청
 
-// router.delete('/signout', controller.signout); // 회원 탈퇴 요청
+router.delete('/signout', controller.signout); // 회원 탈퇴 요청
 
 module.exports = router;
