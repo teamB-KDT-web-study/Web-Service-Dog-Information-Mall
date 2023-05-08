@@ -140,10 +140,46 @@ exports.signup = async (req, res) => {
 };
 
 exports.editProfile = async (req, res) => {
-  try {
-  } catch (err) {
-    res.send(err);
+  // try {
+  let update_data = {
+    password: req.body.password,
+    nickname: req.body.nickname,
+  };
+
+  if (Object.keys(req).includes('file')) {
+    update_data.profile_img = req.file.filename;
   }
+  let result = {};
+  result.user = model.User.update(update_data, { where: { id: req.body.id } });
+  keys = Object.keys(req.body);
+  dog_inf = {};
+
+  for (let i of keys) {
+    console.log(i);
+    let last = i.slice(-1);
+    console.log(last);
+    if (!isNaN(last)) {
+      if (!(last in dog_inf)) dog_inf[last] = [i];
+      else dog_inf[last].push(i);
+    }
+  }
+  console.log(dog_inf);
+  for (let i of Object.keys(dog_inf)) {
+    let update_dog = {};
+    let name_dog;
+    for (let j of dog_inf[i]) {
+      let attr = j.slice(0, -1);
+      if (attr == 'name') name_dog = j;
+      else update_dog[j.slice(0, -1)] = req.body[j];
+    }
+    result[i] = await model.Dog.update(update_dog, {
+      where: { pet_owner: req.body.id, name: req.body[name_dog] },
+    });
+  }
+  res.send({ isOk: true });
+  // } catch (err) {
+  //   res.send(err);
+  // }
 };
 
 exports.signout = async (req, res) => {
