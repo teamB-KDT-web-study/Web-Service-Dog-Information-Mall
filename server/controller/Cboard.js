@@ -4,7 +4,11 @@ const { Op } = require("sequelize");
 exports.getContents = async (req, res) => {
   // 전체 게시판 목록 불러옴
   try {
-    const result = await models.Board.findAll({ raw: true });
+    const result = await models.Board.findAll({
+      include: [{ model: models.User, attributes: ["nickname", "grade"] }],
+      order: [["id", "DESC"]],
+      raw: true,
+    });
     res.send(result);
   } catch (err) {
     res.send(err);
@@ -15,9 +19,20 @@ exports.getContentDetail = async (req, res) => {
   // 글의 상세 내용을 보여줌 : 클릭한 contentId와 board 테이블의 id 가 같으면
   try {
     const result = await models.Board.findOne({
+      include: [{ model: models.User, attributes: ["nickname", "grade"] }],
       where: { id: { [Op.eq]: req.params.contentId } },
       raw: true,
     });
+    const view = await models.Board.update(
+      {
+        view_count: result.view_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
+      },
+      {
+        where: {
+          id: { [Op.eq]: req.params.contentId },
+        },
+      }
+    );
     res.send(result);
   } catch (err) {
     res.send(err);
@@ -51,29 +66,12 @@ exports.addLike = async (req, res) => {
         },
       }
     );
-    res.send(true);
+    res.end();
   } catch (err) {
     res.send(err);
   }
 };
 
-exports.addView = async (req, res) => {
-  try {
-    const result = await models.Board.update(
-      {
-        view_count: req.body.view_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
-      },
-      {
-        where: {
-          id: { [Op.eq]: req.params.contentId },
-        },
-      }
-    );
-    res.send(true);
-  } catch (err) {
-    res.send(err);
-  }
-};
 
 exports.deleteContent = async (req, res) => {
   // 요청한 Id에 해당하는 글 삭제
@@ -96,7 +94,6 @@ exports.editContent = async (req, res) => {
       {
         title: req.body.title,
         body: req.body.body,
-        date: req.body.date,
       },
       {
         where: {
@@ -105,6 +102,32 @@ exports.editContent = async (req, res) => {
       }
     );
     res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+exports.searchContent = async (req, res) => {
+  try {
+    const searchWord = req.body.searchWord;
+    const target = req.body.selectOption; // title or body
+    if (target == "title") {
+      const result = await models.Board.findAll({
+        where: {
+          title: { [Op.like]: "%" + searchWord + "%" },
+        },
+        raw: true,
+      });
+      res.send(result);
+    } else if (target == "body") {
+      const result = await models.Board.findAll({
+        where: {
+          body: { [Op.like]: "%" + searchWord + "%" },
+        },
+        raw: true,
+      });
+      res.send(result);
+    }
   } catch (err) {
     res.send(err);
   }

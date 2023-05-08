@@ -1,8 +1,8 @@
 // 임시 파일입니다!!! 나중에 삭제예정!!!!
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ContentPage from "./pages/ContentPage";
-import ContentDetail from "./pages/ContentDetail";
-import ContentCreate from "./pages/ContentCreate";
+import ContentPage from "./pages/BoardPage";
+import ContentDetail from "./pages/BoardDetail";
+import ContentCreate from "./pages/BoardCreate";
 
 function App() {
   return (
