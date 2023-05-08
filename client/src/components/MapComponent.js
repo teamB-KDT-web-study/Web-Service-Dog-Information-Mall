@@ -106,7 +106,12 @@ const Map = () => {
           listStr = "";
 
         // 검색 결과 목록에 추가된 항목들을 제거합니다
-        removeAllChildNods(listEl);
+        if (listEl !== null) {
+          removeAllChildNods(listEl);
+        } else {
+          console.log("map 종료");
+          return;
+        }
 
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
@@ -226,8 +231,13 @@ const Map = () => {
           i;
 
         // 기존에 추가된 페이지번호를 삭제합니다
-        while (paginationEl.hasChildNodes()) {
-          paginationEl.removeChild(paginationEl.lastChild);
+        if (paginationEl !== null) {
+          while (paginationEl.hasChildNodes()) {
+            paginationEl.removeChild(paginationEl.lastChild);
+          }
+        } else {
+          console.log('map 종료 2')
+          return;
         }
 
         for (i = 1; i <= pagination.last; i++) {
@@ -293,3 +303,4 @@ const Map = () => {
   );
 };
 export default Map;
+
