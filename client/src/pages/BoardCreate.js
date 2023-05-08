@@ -1,3 +1,5 @@
+import '../styles/boardcreate.scss'
+
 export function BoardCreate({
   onContentSave,
   onTitleEditEvent,

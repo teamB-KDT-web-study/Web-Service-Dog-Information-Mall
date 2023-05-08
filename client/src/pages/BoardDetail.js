@@ -1,3 +1,5 @@
+import '../styles/boarddetail.scss'
+
 export function BoardDetail({
   content,
   onStartEditContent,
