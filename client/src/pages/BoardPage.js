@@ -1,4 +1,6 @@
 import BoardItem from "../components/BoardItem";
+import { Link } from "react-router-dom";
+import "../styles/boardpage.scss";
 
 export function BoardPage({
   contents,
@@ -14,7 +16,7 @@ export function BoardPage({
 }) {
   return (
     <main className="BoardPage">
-      <h1>게시판 페이지</h1>
+      <h1>훈련 정보 게시판</h1>
       <div className="searchBox">
         <select
           name="search"
@@ -25,21 +27,22 @@ export function BoardPage({
           <option value="title">제목</option>
           <option value="body">내용</option>
         </select>
-        <input
-          type="text"
-          className="searchInput"
-          value={searchWord}
-          onChange={onSearchWord}
-          onKeyPress={onEnter}
-        />
+        <div className="searchInputBox">
+          <input
+            type="text"
+            className="searchInput"
+            value={searchWord}
+            onChange={onSearchWord}
+            onKeyPress={onEnter}
+            placeholder="검색할 키워드를 입력해주세요."
+          />
+        </div>
         <button className="searchBtn" onClick={onCompleteSearch}>
           검색
         </button>
       </div>
-      <div className="createBtn">
-        <button onClick={() => navigate("/board/create")}>글쓰기</button>
-      </div>
-      <div>
+
+      <div className="boraditems">
         {!searchMode &&
           contents.map((content) => {
             return <BoardItem key={content.id} content={content} />;
@@ -51,6 +54,16 @@ export function BoardPage({
             return <BoardItem key={content.id} content={content} />;
           })
         )}
+      </div>
+      <div className="boardFooter">
+        <div className="pageNum">
+          {[1, 2, 3].map((el) => {
+            return <Link>[{el}]</Link>;
+          })}
+        </div>
+        <button className="createBtn" onClick={() => navigate("/board/create")}>
+          글쓰기
+        </button>
       </div>
     </main>
   );

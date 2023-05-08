@@ -1,0 +1,22 @@
+.BoardItem {
+  width: 600px;
+  height: 80px;
+  margin: 0 auto;
+  padding: 20px;
+  border-bottom: 2px solid rgb(199, 199, 199);
+  &:hover {
+    background-color: rgb(226, 225, 225);
+  }
+  .title {
+    font-size: 20px;
+  }
+  .viewLike {
+    font-size: 12px;
+    display: flex;
+    color: rgb(74, 74, 74);
+
+  }
+  .like {
+    margin-left: 10px;
+  }
+}
