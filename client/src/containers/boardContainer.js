@@ -108,14 +108,13 @@ export const BoardDetailContainer = () => {
     if (readOnly === false) {
       const newData = {
         id: contentDetail.id,
-        user_id: contentDetail.user_id,
+        nickname: contentDetail.nickname,
         title: e.target.value,
         body: contentDetail.body,
         view_count: contentDetail.view_count,
-        recommend_count: contentDetail.recommend_count,
+        like_count: contentDetail.like_count,
         date: contentDetail.date,
         ["user.grade"]: contentDetail["user.grade"],
-        ["user.nickname"]: contentDetail["user.nickname"],
       };
       dispatch(getData(newData));
     } else {
@@ -126,14 +125,13 @@ export const BoardDetailContainer = () => {
     if (readOnly === false) {
       const newData = {
         id: contentDetail.id,
-        user_id: contentDetail.user_id,
+        nickname: contentDetail.nickname,
         title: contentDetail.title,
         body: e.target.value,
         view_count: contentDetail.view_count,
-        recommend_count: contentDetail.recommend_count,
+        like_count: contentDetail.like_count,
         date: contentDetail.date,
         ["user.grade"]: contentDetail["user.grade"],
-        ["user.nickname"]: contentDetail["user.nickname"],
       };
       dispatch(getData(newData));
     }
@@ -159,7 +157,7 @@ export const BoardDetailContainer = () => {
   const onAddLike = async () => {
     dispatch(addLike()); // 화면 표시
     await axios.patch(API_BASE_URL + "/board/addLike/" + contentId, {
-      recommend_count: contentDetail.recommend_count,
+      like_count: contentDetail.like_count,
     }); // 백엔드 반영
   };
 
@@ -184,7 +182,7 @@ export const BoardCreateContainer = () => {
   const contentDetail = useSelector((state) => state.board.newData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getNewData({ user_id: "", title: "", body: "", date: "" }));
+    dispatch(getNewData({ nickname: "", title: "", body: "", date: "" }));
   }, []);
 
   const timestamp = () => {
@@ -194,7 +192,7 @@ export const BoardCreateContainer = () => {
   };
   const titleEditEvent = (e) => {
     const newData = {
-      user_id: "",
+      nickname: "",
       title: e.target.value,
       body: contentDetail.body,
       date: "",
@@ -203,7 +201,7 @@ export const BoardCreateContainer = () => {
   };
   const bodyEditEvent = (e) => {
     const newData = {
-      user_id: "",
+      nickname: "",
       title: contentDetail.title,
       body: e.target.value,
       date: "",
@@ -213,7 +211,7 @@ export const BoardCreateContainer = () => {
   const contentSave = async () => {
     const nowTime = timestamp();
     const newContent = {
-      user_id: "banana", // 수정해야함!!!
+      nickname: "바나나", // 수정해야함!!!
       title: contentDetail.title,
       body: contentDetail.body,
       date: nowTime,

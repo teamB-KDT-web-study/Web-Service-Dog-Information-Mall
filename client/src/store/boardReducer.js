@@ -30,7 +30,7 @@ export const addLike = () => ({
 const initialState = {
   allData: [],
   data: {},
-  newData: { user_id: "", title: "", body: "", date: "" },
+  newData: { nickname: "", title: "", body: "", date: "" },
   searchWord: "",
   selectOption: "title",
   searchData: [],
@@ -58,14 +58,13 @@ const boardReducer = (state = initialState, action) => {
         ...state,
         data: {
           id: state.data.id,
-          user_id: state.data.user_id,
+          nickname: state.data.nickname,
           title: state.data.title,
           body: state.data.body,
           view_count: state.data.view_count,
-          recommend_count: state.data.recommend_count + 1,
+          like_count: state.data.like_count + 1,
           date: state.data.date,
           ["user.grade"]: state.data["user.grade"],
-          ["user.nickname"]: state.data["user.nickname"],
         },
       };
 
