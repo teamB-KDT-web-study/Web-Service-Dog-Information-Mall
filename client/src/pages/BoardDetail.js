@@ -21,7 +21,7 @@ export function BoardDetail({
               onChange={onTitleEditEvent}
             />
           </h1>
-          <h3>글쓴이: {content["user.nickname"]}</h3>
+          <h3>글쓴이: {content.nickname}</h3>
           <h3>날짜: {content.date}</h3>
         </div>
         <div className="content">
@@ -36,7 +36,7 @@ export function BoardDetail({
           </div>
         </div>
         <div className="view">
-          <h3>추천 : {content.recommend_count}</h3>
+          <h3>추천 : {content.like_count}</h3>
           <h3>조회수 : {content.view_count + 1}</h3>
         </div>
         <div className="likeBtn">

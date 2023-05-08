@@ -5,7 +5,7 @@ exports.getContents = async (req, res) => {
   // 전체 게시판 목록 불러옴
   try {
     const result = await models.Board.findAll({
-      include: [{ model: models.User, attributes: ["nickname", "grade"] }],
+      include: [{ model: models.User, attributes: ["grade"] }],
       order: [["id", "DESC"]],
       raw: true,
     });
@@ -19,7 +19,7 @@ exports.getContentDetail = async (req, res) => {
   // 글의 상세 내용을 보여줌 : 클릭한 contentId와 board 테이블의 id 가 같으면
   try {
     const result = await models.Board.findOne({
-      include: [{ model: models.User, attributes: ["nickname", "grade"] }],
+      include: [{ model: models.User, attributes: ["grade"] }],
       where: { id: { [Op.eq]: req.params.contentId } },
       raw: true,
     });
@@ -58,7 +58,7 @@ exports.addLike = async (req, res) => {
   try {
     const result = await models.Board.update(
       {
-        recommend_count: req.body.recommend_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
+        like_count: req.body.like_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
       },
       {
         where: {
@@ -71,7 +71,6 @@ exports.addLike = async (req, res) => {
     res.send(err);
   }
 };
-
 
 exports.deleteContent = async (req, res) => {
   // 요청한 Id에 해당하는 글 삭제
@@ -113,6 +112,7 @@ exports.searchContent = async (req, res) => {
     const target = req.body.selectOption; // title or body
     if (target == "title") {
       const result = await models.Board.findAll({
+        order: [["id", "DESC"]],
         where: {
           title: { [Op.like]: "%" + searchWord + "%" },
         },
@@ -121,6 +121,7 @@ exports.searchContent = async (req, res) => {
       res.send(result);
     } else if (target == "body") {
       const result = await models.Board.findAll({
+        order: [["id", "DESC"]],
         where: {
           body: { [Op.like]: "%" + searchWord + "%" },
         },

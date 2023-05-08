@@ -6,7 +6,7 @@ function BoardItem({ content }) {
       <ul className="BoardItem">
         <li>글 제목: {content.title}</li>
         <li>
-          추천: {content.recommend_count}, 조회수: {content.view_count}
+          추천: {content.like_count}, 조회수: {content.view_count}
         </li>
       </ul>
     </Link>
