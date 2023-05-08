@@ -181,7 +181,15 @@ exports.editProfile = async (req, res) => {
   //   res.send(err);
   // }
 };
-
+exports.showProfile = async (req, res) => {
+  user_data = await model.User.findOne({ where: { id: req.body.id } });
+  dog_data = await model.Dog.findAll({ where: { pet_owner: req.body.id } });
+  user_data = user_data.dataValues;
+  dog_data = dog_data.map((dog) => {
+    return dog.dataValues;
+  });
+  res.send({ user_data: user_data, dog_data: dog_data });
+};
 exports.signout = async (req, res) => {
   try {
     const result = await model.User.destroy({ where: { id: req.body.id } });
