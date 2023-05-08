@@ -165,9 +165,9 @@ insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 
 -- insert into shopping_cart (user_id, product_id, choice, amount) values ('apple', 42, '{\"size\":\"small\", }', 1);
 
 
-insert into board (nickname, title, body, date) values ('banana', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
-insert into board (nickname, title, body, date) values ('banana', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
-insert into board (nickname, title, body, date) values ('peach', '강아지 정보3', '강아지 정보 3 블라블라', '2023-05-03 08:48:00');
+insert into board (nickname, title, body, date) values ('바나나', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
+insert into board (nickname, title, body, date) values ('바나나', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
+insert into board (nickname, title, body, date) values ('복숭아', '강아지 정보3', '강아지 정보 3 블라블라', '2023-05-03 08:48:00');
 show tables;
 
 desc dog;
