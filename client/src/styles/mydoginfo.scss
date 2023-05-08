@@ -1,18 +1,18 @@
 .dog {
   color: #987654;
   display: flex;
-  background-color: #ecd06f;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 .mdi_btn {
-  background-color: rgb(138, 81, 6);
+  background-color: #ecd06f;
   border-radius: 30px;
   border: none;
   margin: 20px;
-  font-size: 40px;
-  color: white;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
   &:hover,
   &:focus {
     background-color: #987654;
@@ -21,9 +21,47 @@
 }
 
 .mdi_db {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 800px;
+  border: 2px solid #987654;
   display: flex;
   padding: 100px;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin: 20px;
+}
+.result {
+  color: #987654;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.resultimg {
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  border: 2px solid #987654;
+}
+
+.resultbox {
+  display: flex;
+  flex-wrap: wrap;
+}
+.result_btn {
+  background-color: #ecd06f;
+  border-radius: 30px;
+  border: none;
+  margin: 20px;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
 }

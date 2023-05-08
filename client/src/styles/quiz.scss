@@ -11,6 +11,7 @@ $brown-color: #987654;
   padding: 20px;
   background-color: #ecd16f9f;
   border-radius: 10px;
+  border: 2px solid #987654;
 
   .score-section {
     text-align: center;
@@ -21,15 +22,16 @@ $brown-color: #987654;
       margin-bottom: 20px;
     }
 
-    button {
+    .answer-button {
       background-color: $yellow-color;
-      color: white;
+      color: rgb(193, 23, 23);
       font-size: 1.2rem;
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: all 0.3s ease;
+      border: 2px solid #987654;
 
       &:hover {
         background-color: $brown-color;
@@ -68,16 +70,18 @@ $brown-color: #987654;
 
       .answer-button {
         background-color: $yellow-color;
-        color: white;
+        color: #987654;
         font-size: 1.2rem;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: all 0.3s ease;
+        border: 2px solid #987654;
 
         &:hover {
           background-color: $brown-color;
+          color: white;
         }
 
         &.correct {

@@ -9,6 +9,8 @@ $breakpoint-md: 768px;
   flex-direction: row;
   min-height: 100vh;
   background-color: rgb(225, 225, 225);
+  background-image: url("https://img.freepik.com/free-vector/illustration-of-people-with-pets_52683-64064.jpg?w=2000&t=st=1683365756~exp=1683366356~hmac=c1f73fc58b92fcc4893670e5572c400739206c5cc2ba87a4e946f84a1338671c");
+  background-size: 1500px;
 }
 :root {
   // Basic
@@ -54,6 +56,7 @@ body {
   max-width: 100vw;
   margin: 10vh auto;
   transition: all 0.2s linear;
+  opacity: 0.9;
 }
 .cards:hover {
   transform: scale(1.2);
@@ -68,12 +71,13 @@ body {
 .information {
   background-color: var(--c-white);
   padding: 1.5rem;
-  border-color: #4133b7;
+  border: 2px solid #987654;
 
   .tag {
+    border: 2px solid #987654;
     display: inline-block;
-    background-color: #4133b7;
-    color: #f1eeff;
+    background-color: #ecd06f;
+    color: #987654;
     font-weight: 600;
     font-size: 0.875rem;
     padding: 0.5em 0.75em;
@@ -107,8 +111,8 @@ body {
   .button {
     font: inherit;
     line-height: 1;
-    background-color: #4133b7;
-    border: 2px solid #f1eeff;
+    background-color: #ecd06f;
+    border: 2px solid #987654;
     color: #f1eeff;
     padding: 0.5em 1em;
     border-radius: 6px;
@@ -119,9 +123,9 @@ body {
     gap: 0.3rem;
     &:hover,
     &:focus {
-      background-color: #f1eeff;
-      color: #4133b7;
-      border-color: #4133b7;
+      background-color: #987654;
+      color: white;
+      border: 2px solid #987654;
     }
   }
 
