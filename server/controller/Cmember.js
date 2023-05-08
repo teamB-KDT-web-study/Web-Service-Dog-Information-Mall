@@ -140,55 +140,61 @@ exports.signup = async (req, res) => {
 };
 
 exports.editProfile = async (req, res) => {
-  // try {
-  let update_data = {
-    password: req.body.password,
-    nickname: req.body.nickname,
-  };
+  try {
+    let update_data = {
+      password: req.body.password,
+      nickname: req.body.nickname,
+    };
 
-  if (Object.keys(req).includes('file')) {
-    update_data.profile_img = req.file.filename;
-  }
-  let result = {};
-  result.user = model.User.update(update_data, { where: { id: req.body.id } });
-  keys = Object.keys(req.body);
-  dog_inf = {};
-
-  for (let i of keys) {
-    console.log(i);
-    let last = i.slice(-1);
-    console.log(last);
-    if (!isNaN(last)) {
-      if (!(last in dog_inf)) dog_inf[last] = [i];
-      else dog_inf[last].push(i);
+    if (Object.keys(req).includes('file')) {
+      update_data.profile_img = req.file.filename;
     }
-  }
-  console.log(dog_inf);
-  for (let i of Object.keys(dog_inf)) {
-    let update_dog = {};
-    let name_dog;
-    for (let j of dog_inf[i]) {
-      let attr = j.slice(0, -1);
-      if (attr == 'name') name_dog = j;
-      else update_dog[j.slice(0, -1)] = req.body[j];
-    }
-    result[i] = await model.Dog.update(update_dog, {
-      where: { pet_owner: req.body.id, name: req.body[name_dog] },
+    let result = {};
+    result.user = model.User.update(update_data, {
+      where: { id: req.body.id },
     });
+    keys = Object.keys(req.body);
+    dog_inf = {};
+
+    for (let i of keys) {
+      console.log(i);
+      let last = i.slice(-1);
+      console.log(last);
+      if (!isNaN(last)) {
+        if (!(last in dog_inf)) dog_inf[last] = [i];
+        else dog_inf[last].push(i);
+      }
+    }
+    console.log(dog_inf);
+    for (let i of Object.keys(dog_inf)) {
+      let update_dog = {};
+      let name_dog;
+      for (let j of dog_inf[i]) {
+        let attr = j.slice(0, -1);
+        if (attr == 'name') name_dog = j;
+        else update_dog[j.slice(0, -1)] = req.body[j];
+      }
+      result[i] = await model.Dog.update(update_dog, {
+        where: { pet_owner: req.body.id, name: req.body[name_dog] },
+      });
+    }
+    res.send({ isOk: true });
+  } catch (err) {
+    res.send(err);
   }
-  res.send({ isOk: true });
-  // } catch (err) {
-  //   res.send(err);
-  // }
 };
 exports.showProfile = async (req, res) => {
-  user_data = await model.User.findOne({ where: { id: req.body.id } });
-  dog_data = await model.Dog.findAll({ where: { pet_owner: req.body.id } });
-  user_data = user_data.dataValues;
-  dog_data = dog_data.map((dog) => {
-    return dog.dataValues;
-  });
-  res.send({ user_data: user_data, dog_data: dog_data });
+  try {
+    user_data = await model.User.findOne({ where: { id: req.body.id } });
+    dog_data = await model.Dog.findAll({ where: { pet_owner: req.body.id } });
+    user_data = user_data.dataValues;
+    dog_data = dog_data.map((dog) => {
+      return dog.dataValues;
+    });
+    res.send({ user_data: user_data, dog_data: dog_data });
+  } catch (err) {
+    res.send(err);
+  }
 };
 exports.signout = async (req, res) => {
   try {
