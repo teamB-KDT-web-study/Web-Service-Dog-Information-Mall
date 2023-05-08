@@ -91,6 +91,49 @@ exports.isExist = async (req, res) => {
 
 exports.signup = async (req, res) => {
   try {
+    input_data = {
+      id: req.body.id,
+      password: req.body.password,
+      nickname: req.body.nickname,
+    };
+    if (Object.keys(req).includes('file')) {
+      input_data.profile_img = req.file.filename;
+    }
+
+    let result = {};
+    result.user = await model.User.create(input_data);
+
+    count = 1;
+
+    while (true) {
+      if (!Object.keys(req.body).includes(`name${count}`)) break;
+      let dog_data = {
+        name: req.body[`name${count}`],
+        breed: req.body[`breed${count}`],
+        pet_owner: req.body.id,
+      };
+      console.log(dog_data);
+      if (Object.keys(req.body).includes(`gender${count}`)) {
+        dog_data.gender = req.body[`gender${count}`];
+      }
+      console.log(dog_data);
+
+      if (Object.keys(req.body).includes(`age${count}`)) {
+        dog_data.age = req.body[`age${count}`];
+      }
+      console.log(dog_data);
+
+      if (Object.keys(req.body).includes(`weight${count}`)) {
+        dog_data.weight = req.body[`weight${count}`];
+      }
+      console.log(dog_data);
+
+      result[`dog${count}`] = await model.Dog.create(dog_data);
+      console.log(dog_data);
+
+      count += 1;
+    }
+    res.send('ok');
   } catch (err) {
     res.send(err);
   }
