@@ -18,7 +18,7 @@ import Traininginfo from "./pages/Traininginfo";
 import Training from "./pages/Training";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
-
+import Store from "./pages/Store";
 
 function App() {
   return (
@@ -39,6 +39,7 @@ function App() {
           <Route path="/training" element={<Training />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
+          <Route path="/store" element={<Store />} />
         </Routes>
       </BrowserRouter>
     </div>

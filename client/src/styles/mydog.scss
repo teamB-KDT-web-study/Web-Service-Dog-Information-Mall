@@ -5,36 +5,47 @@
   align-items: center;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ecd06f;
+  background-color: #ffffff;
+  background-image: url("https://img.freepik.com/free-vector/cute-pets-illustration_53876-112522.jpg?w=1800&t=st=1683365447~exp=1683366047~hmac=0a8e01310bc1ec2faeba208585540824c12521a977075d7d42012041e9ddc49c");
+  background-size: 1460px;
 
   .dogbox {
-    color: white;
+    color: #987654;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #987654;
+    background-color: #ffffff;
     flex-direction: column;
     width: 500px;
     height: 600px;
     border-radius: 10px;
+    border: 2px solid #987654;
   }
   .dogprofile {
-    width: 150px;
-    height: 150px;
+    border: 2px solid #987654;
+    width: 155px;
+    height: 155px;
     border-radius: 50%;
-    background-color: black;
+    background-color: #ecd06f;
     margin: 50px;
   }
   .dogbtn {
+    color: #987654;
     width: 400px;
     height: 50px;
     margin: 30px;
     border-radius: 30px;
-    background-color: #987654;
+    background-color: #ecd06f;
+    border: 2px solid #987654;
     &:hover,
     &:focus {
-      background-color: #ecd06f;
+      background-color: #987654;
       color: var(--c-white);
     }
+  }
+  .mydogimg {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
   }
 }

@@ -37,7 +37,7 @@ const Main = styled.div`
     text-align: basis;
     // width: 80%;
     background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 8px 32px #6869d0;
+    box-shadow: 0 8px 32px #ecd06f;
     backdrop-filter: blur(2.5px);
     border-radius: 10px;
 

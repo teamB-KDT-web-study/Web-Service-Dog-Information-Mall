@@ -10,18 +10,13 @@ const Header = () => {
           로고
         </a>
 
-
-        <a className="nav-link" href="#">
-          지도API
-        </a>
-        <a className="nav-link" href="#">
-          스토어
-        </a>
-        <a className="nav-link disabled">Disabled</a>
-        <Link to="/Map" className="menu-item">
+        <Link to="/Map" className="nav-link">
           Map
         </Link>
-        <Link to="/quizhome" className="menu-item">
+        <Link to="/mydog" className="nav-link">
+          강아지추천
+        </Link>
+        <Link to="/quizhome" className="nav-link">
           Quiz
         </Link>
         <Link to="/#" className="nav-link">
