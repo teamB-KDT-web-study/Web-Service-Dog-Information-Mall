@@ -1,16 +1,17 @@
-import "bootstrap/dist/css/bootstrap.min.css";
+import Storeheader from "../components/Storeheader";
 import "../styles/store.scss";
+import Storeitem from "../components/Storeitem";
 
-const Store = () => {
+const Store = (props) => {
+  const { Stores } = props;
   return (
     <div className="Store">
-      <div className="sidebar">
-        <div className="sidebarbox">간식</div>
-        <div className="sidebarbox">목줄</div>
-        <div className="sidebarbox">영양제</div>
-        <div className="sidebarbox">아몰랑</div>
+      <Storeheader />
+      <div className="storeitem">
+        {Stores.map((store) => {
+          return <Storeitem key={store.id} store={store} />;
+        })}
       </div>
-      <div className="storebox"></div>
     </div>
   );
 };

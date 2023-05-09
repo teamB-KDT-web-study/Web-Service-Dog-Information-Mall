@@ -1,0 +1,62 @@
+.Storedetail {
+  width: 100%;
+  height: 100vw;
+  margin: 0 auto;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+.detailimg {
+  width: 48vw;
+  height: 48vw;
+}
+.detailbox {
+  padding: 20px;
+  width: 35vw;
+  height: 45vw;
+  font-size: 3vw;
+  background-color: white;
+  border: 2px solid #987654;
+  border-radius: 10px;
+}
+.detailtext {
+  font-size: 2vw;
+}
+.detailh5 {
+  font-size: 1vw;
+}
+
+.detailchoice {
+  font-size: 1vw;
+}
+.choice {
+  width: 32vw;
+  font-size: 2vw;
+  color: #987654;
+}
+.choiceoption {
+  background-color: #f6e6ac;
+  font-size: 2vw;
+}
+.choicenum {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pay {
+  margin: 10px;
+  width: 9vw;
+  font-size: 2vw;
+  border-radius: 10px;
+  border: 2px solid #987654;
+  background-color: #ecd06f;
+  color: #987654;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: white;
+    border: 2px solid #987654;
+  }
+}

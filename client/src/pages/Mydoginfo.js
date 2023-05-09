@@ -157,20 +157,25 @@ const Mydoginfo = () => {
   return (
     <div className="result">
       {recommendation ? (
-        <p>
-          <h1>당신에게 어울리는 강아지는?</h1>
-          <img
-            src={process.env.PUBLIC_URL + `/SlickImages/${recommendation}.jpeg`}
-            className="resultimg"
-          />
-          <h1>{recommendation} 입니다</h1>
-          <div resultbox>
-            <button className="result_btn">나의 정보에 등록할래요!</button>
-            <button className="result_btn" onClick={() => navigate("/mydog")}>
-              아니요!그냥 돌아갈래요!
-            </button>
-          </div>
-        </p>
+        <div className="mydogresultbox">
+          <p>
+            <h1>당신에게 어울리는 강아지는?</h1>
+            <br></br>
+            <img
+              src={
+                process.env.PUBLIC_URL + `/SlickImages/${recommendation}.jpeg`
+              }
+              className="resultimg"
+            />
+            <h1>"{recommendation}" 입니다</h1>
+            <div>
+              <button className="result_btn">나의 정보에 등록할래요!</button>
+              <button className="result_btn" onClick={() => navigate("/mydog")}>
+                아니요!그냥 돌아갈래요!
+              </button>
+            </div>
+          </p>
+        </div>
       ) : (
         <div className="dog">
           {currentQuestion < questions.length ? (
@@ -192,7 +197,8 @@ const Mydoginfo = () => {
             </div>
           ) : null}
           {currentQuestion === questions.length && (
-            <button onClick={handleRecommendation} className="mdi_btn">
+            <button onClick={handleRecommendation} className="mdi_finishbtn">
+              <h1>모든 질문이 끝났습니다!</h1>
               결과 확인하기
             </button>
           )}
