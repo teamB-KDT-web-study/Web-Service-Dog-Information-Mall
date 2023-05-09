@@ -80,12 +80,41 @@ exports.showCategory = async (req, res) => {
 };
 
 exports.moreItems = async (req, res) => {
-  req.body.startNum;
-  req.body.category;
-  const result = await model.Product.findAll({
-    where: { category: req.body.category, id: { [Op.lt]: startNum } },
-    order: [['product_id', 'desc']],
-  });
+  try {
+    let query = {
+      where: {
+        id: { [Op.lt]: req.query.startNum },
+      },
+      order: [['id', 'desc']],
+      attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+      limit: 16,
+    };
+    if (req.query.category != '전체') {
+      query.where.category = `강아지 ${req.query.category}`;
+    }
+    const result = await model.Product.findAll(query);
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
 };
 
+exports.searchProduct = async (req, res) => {
+  try {
+    const keyword = req.query.keyword.replaceAll("'", '').replaceAll('"', '');
+    console.log(keyword);
+    const result = await model.Product.findAll({
+      where: {
+        title: { [Op.like]: `%${keyword}%` },
+      },
+      attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+      order: [['id', 'desc']],
+      limit: 16,
+    });
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+};
 // id: { [Op.eq]: req.session.loginData },
