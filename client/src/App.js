@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import MyPage from "./pages/MyPage";
 import Quiz from "./pages/Quiz";
 import Quizhome from "./pages/Quizhome";
 import {
@@ -19,8 +20,12 @@ import Map from "./pages/Map";
 import Traininginfo from "./pages/Traininginfo";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
+
+import EditMyProfile from "./pages/EditMyProfile";
+
 import Store from "./pages/Store";
 import Storedetail from "./pages/Storedetail";
+
 
 function App() {
   const [Stores, setStores] = useState([
@@ -534,6 +539,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/MyPage" element={<MyPage />} />
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
@@ -548,11 +554,15 @@ function App() {
           <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
+
+          <Route path="/EditMyProfile" element={<EditMyProfile />} />
+
           <Route path="/store" element={<Store Stores={Stores} />} />
           <Route
             path="/store/:storeId"
             element={<Storedetail Stores={Stores} />}
           />
+
         </Routes>
       </BrowserRouter>
     </div>

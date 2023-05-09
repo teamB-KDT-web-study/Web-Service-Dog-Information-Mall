@@ -10,7 +10,10 @@ const Header = () => {
           로고
         </a>
 
+
+
         <Link to="/Map" className="nav-link">
+
           Map
         </Link>
         <Link to="/mydog" className="nav-link">
@@ -30,6 +33,9 @@ const Header = () => {
         </Link>
         <Link to="/Register" className="nav-link">
           Register
+        </Link>
+        <Link to="/MyPage" className="nav-link">
+          MyPage
         </Link>
       </nav>
     </div>
