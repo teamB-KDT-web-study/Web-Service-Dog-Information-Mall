@@ -18,6 +18,7 @@ exports.addCart = async (req, res) => {
 exports.showCart = async (req, res) => {
   try {
     let result = await model.Shopping_cart.findAll({
+      attributes: ['product_id', 'choice', 'amount'],
       where: {
         user_id: req.body.user_id,
       },
@@ -51,3 +52,24 @@ exports.deleteCart = async (req, res) => {
     res.send(err);
   }
 };
+
+exports.showProduct = async (req, res) => {
+  const result = await model.Product.findAll({
+    attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+    order: [['id', 'desc']],
+    limit: 16,
+  });
+  console.log('result >>> ', result);
+  res.send(result);
+};
+
+exports.moreItems = async (req, res) => {
+  req.body.startNum;
+  req.body.category;
+  const result = await model.Product.findAll({
+    where: { category: req.body.category, id: { [Op.lt]: startNum } },
+    order: [['product_id', 'desc']],
+  });
+};
+
+// id: { [Op.eq]: req.session.loginData },
