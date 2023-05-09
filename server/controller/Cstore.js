@@ -39,6 +39,14 @@ exports.showCart = async (req, res) => {
 
 exports.deleteCart = async (req, res) => {
   try {
+    const result = await model.Shopping_cart.destroy({
+      where: {
+        user_id: req.body.user_id,
+        product_id: req.body.product_id,
+        choice: req.body.choice,
+      },
+    });
+    res.send({ isOk: result });
   } catch (err) {
     res.send(err);
   }
