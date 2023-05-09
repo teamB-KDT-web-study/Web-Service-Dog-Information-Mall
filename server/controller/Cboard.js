@@ -43,7 +43,7 @@ exports.addContent = async (req, res) => {
   // 새로운 글을 게시판 목록에 추가
   try {
     const result = await models.Board.create({
-      user_id: req.body.user_id,
+      nickname: req.body.nickname,
       title: req.body.title,
       body: req.body.body,
       date: req.body.date,
