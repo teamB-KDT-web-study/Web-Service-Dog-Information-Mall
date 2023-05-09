@@ -1,18 +1,19 @@
 .dog {
   color: #987654;
   display: flex;
-  background-color: #ecd06f;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-height: 750px;
 }
 .mdi_btn {
-  background-color: rgb(138, 81, 6);
+  background-color: #ecd06f;
   border-radius: 30px;
   border: none;
   margin: 20px;
-  font-size: 40px;
-  color: white;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
   &:hover,
   &:focus {
     background-color: #987654;
@@ -21,9 +22,70 @@
 }
 
 .mdi_db {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 800px;
+  border: 2px solid #987654;
   display: flex;
   padding: 100px;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin: 20px;
+}
+.result {
+  color: #987654;
+  min-height: 750px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #ecd06f;
+  padding: 10px;
+}
+.resultimg {
+  width: 450px;
+  height: 450px;
+  border-radius: 20px;
+  border: 2px solid #987654;
+}
+
+.result_btn {
+  background-color: #ecd06f;
+  border-radius: 30px;
+  border: none;
+  margin: 20px;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
+}
+.mydogresultbox {
+  background-color: white;
+  width: 600px;
+  border-radius: 10px;
+  border: 2px solid #987654;
+  padding: 10px;
+}
+
+.mdi_finishbtn {
+  width: 600px;
+  height: 50px;
+  background-color: #ecd06f;
+  border-radius: 30px;
+  border: none;
+  margin: 20px;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
 }

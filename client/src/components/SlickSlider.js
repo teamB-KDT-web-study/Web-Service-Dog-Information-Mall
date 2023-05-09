@@ -5,6 +5,7 @@ import SlickNextArrow from "./SlickNextArrow";
 import SlickPrevArrow from "./SlickPrevArrow";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../styles/slickslider.scss";
 
 const SlickSlider = () => {
   const settings = {
@@ -227,11 +228,13 @@ const SlickSlider = () => {
         </Slider>
         {dogsInformation.id !== 0 ? (
           <div>
-            <div key={dogsInformation.id}>
-              <img src={dogsInformation.img} />
-              <div>종 이름: {dogsInformation.breed}</div>
-              <div>색상: {dogsInformation.color}</div>
-              <div>정보: {dogsInformation.information}</div>
+            <div key={dogsInformation.id} className="Slick">
+              <img src={dogsInformation.img} className="Slickimg" />
+              <div className="Slickbox">종 이름: {dogsInformation.breed}</div>
+              <div className="Slickbox">색상: {dogsInformation.color}</div>
+              <div className="Slickbox">
+                정보: {dogsInformation.information}
+              </div>
             </div>
           </div>
         ) : (

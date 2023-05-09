@@ -11,10 +11,10 @@ router.post("/addContent", controller.addContent); // 게시판 글 추가
 
 router.patch("/addLike/:contentId", controller.addLike); // 게시판 글 좋아요 +
 
-router.patch("/addView/:contentId", controller.addView); // 게시판 조회 +
-
 router.delete("/deleteContent/:contentId", controller.deleteContent); // 게시판 글 삭제
 
 router.patch("/editContent/:contentId", controller.editContent); // 게시판 글 수정
+
+router.post("/searchContent", controller.searchContent); // 게시판 글 검색
 
 module.exports = router;

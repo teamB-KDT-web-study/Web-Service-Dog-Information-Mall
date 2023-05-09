@@ -6,18 +6,18 @@ const cors = require('cors');
 const app = express();
 const multer = require('multer');
 const path = require('path');
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'profile_img/');
-    },
-    filename(req, file, done) {
-      const ext = path.extname(file.originalname);
-      done(null, req.body.id + Date.now() + ext);
-    },
-  }),
-  limits: { fileSize: 5 * 1024 * 1024 },
-});
+// const upload = multer({
+//   storage: multer.diskStorage({
+//     destination(req, file, done) {
+//       done(null, "profile_img/");
+//     },
+//     filename(req, file, done) {
+//       const ext = path.extname(file.originalname);
+//       done(null, req.body.id + Date.now() + ext);
+//     },
+//   }),
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });
 const port = 8000;
 
 app.use(
@@ -32,7 +32,7 @@ dotenv.config();
 
 app.use(
   session({
-    key: 'loginData',
+    key: "loginData",
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: false,
@@ -49,8 +49,8 @@ app.use('/', mainRouter);
 const memberRounter = require('./routes/member');
 app.use('/member', memberRounter);
 
-const storeRouter = require('./routes/store');
-app.use('/store', storeRouter);
+// const storeRouter = require("./routes/store");
+// app.use("/store", storeRouter);
 
 const infoRouter = require('./routes/board');
 app.use('/board', infoRouter);

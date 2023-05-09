@@ -6,9 +6,10 @@ $breakpoint-md: 768px;
 .Training {
   position: relative;
   align-items: center;
+  justify-content: center;
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  min-height: 150vh;
 
   :root {
     // Basic
@@ -62,10 +63,12 @@ $breakpoint-md: 768px;
   .card {
     border-radius: 16px;
     box-shadow: 0 30px 30px -25px rgba(#ecd06f, 0.25);
-    max-width: 300px;
+    min-width: 300px;
+    min-height: 350px;
   }
 
   .information {
+    position: relative;
     background-color: var(--c-white);
     padding: 1.5rem;
     border-color: #987654;
