@@ -14,9 +14,9 @@ import {
   BoardDetailContainer,
   BoardCreateContainer,
 } from "./containers/boardContainer";
+import { TrainingContainer } from "./containers/mainContainer";
 import Map from "./pages/Map";
 import Traininginfo from "./pages/Traininginfo";
-import Training from "./pages/Training";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
 import Store from "./pages/Store";
@@ -537,12 +537,15 @@ function App() {
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
-          <Route path="/board/searchPage/:pageId" element={<BoardPageContainer />} />
+          <Route
+            path="/board/searchPage/:pageId"
+            element={<BoardPageContainer />}
+          />
           <Route path="/board/:contentId" element={<BoardDetailContainer />} />
           <Route path="/board/create" element={<BoardCreateContainer />} />
           <Route path="/Map" element={<Map />} />
           <Route path="/training/traininginfo" element={<Traininginfo />} />
-          <Route path="/training" element={<Training />} />
+          <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
           <Route path="/store" element={<Store Stores={Stores} />} />

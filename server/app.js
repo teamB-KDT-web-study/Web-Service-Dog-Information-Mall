@@ -30,17 +30,17 @@ app.use(cors());
 
 dotenv.config();
 
-// app.use(
-//   session({
-//     key: "loginData",
-//     secret: process.env.SECRET_KEY,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 60 * 60 * 1000,
-//     },
-//   })
-// );
+app.use(
+  session({
+    key: "loginData",
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 1000,
+    },
+  })
+);
 app.use(cookieParser());
 
 const mainRouter = require('./routes/main');
