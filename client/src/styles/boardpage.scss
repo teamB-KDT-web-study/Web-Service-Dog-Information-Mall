@@ -1,16 +1,16 @@
 .BoardPage {
   background-color: hsl(44deg 35% 94% / 100%);
-  position: relative;
-  bottom: 15px;
   display: flex;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
-  height: 920px;
+  height: 92vh;
   .searchBox {
     display: flex;
+    #search {
+      width: 70px;
+    }
     .searchInputBox {
       display: flex;
       justify-content: center;
@@ -35,6 +35,13 @@
       border-radius: 10px;
       width: 70px;
     }
+    .backBtn {
+      background-color: #ecd16f9f;
+      border-color: #ecd16f9f;
+      border-radius: 10px;
+      width: 70px;
+      margin-left: 10px;
+    }
   }
   .boraditems {
     display: flex;
@@ -46,6 +53,7 @@
     flex-direction: column;
   }
   .createBtn {
+    margin-top: 20px;
     background-color: #ecd16f9f;
     border-color: #ecd16f9f;
     border-radius: 10px;
@@ -62,6 +70,20 @@
     .pageNum {
       display: flex;
       justify-content: center;
+      .pageBtn {
+        margin-inline: 2px;
+        color: rgb(70, 70, 70);
+        &:hover {
+          font-weight: 500;
+
+          color: blue;
+        }
+      }
+      .current {
+        cursor:default;
+        font-weight: 500;
+        color: blue;
+      }
     }
   }
 }

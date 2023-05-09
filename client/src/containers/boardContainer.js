@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BoardCreate } from "../pages/BoardCreate";
 import { BoardDetail } from "../pages/BoardDetail";
 import { BoardPage } from "../pages/BoardPage";
@@ -19,8 +19,9 @@ import {
 
 ////////////////////////////////////////////////////////////////////////////////
 export const BoardPageContainer = () => {
+  const params = useParams();
+  const pageId = params.pageId;
   const navigate = useNavigate();
-
   const contents = useSelector((state) => state.board.allData);
   const selectOption = useSelector((state) => state.board.selectOption);
   const searchWord = useSelector((state) => state.board.searchWord);
@@ -39,6 +40,19 @@ export const BoardPageContainer = () => {
     };
     getContents();
   }, []);
+  const pageNum = [];
+  const totalPageNum = Math.ceil(contents.length / 8);
+  for (let i = 0; i < totalPageNum; i++) {
+    pageNum.push(i + 1);
+  }
+  const pageContents = contents.slice((pageId - 1) * 8, pageId * 8);
+
+  const pageNumSearch = [];
+  const totalPageNumSearch = Math.ceil(searchData.length / 8);
+  for (let i = 0; i < totalPageNumSearch; i++) {
+    pageNumSearch.push(i + 1);
+  }
+  const pageSearchContents = searchData.slice((pageId - 1) * 8, pageId * 8);
 
   const onSelect = (e) => {
     dispatch(getSelectOption(e.target.value));
@@ -59,25 +73,35 @@ export const BoardPageContainer = () => {
     dispatch(getSearchData(res.data));
     dispatch(getSearchMode(true));
     dispatch(getSearchWord(""));
+    navigate("/board/searchPage/" + pageId);
   };
   const onEnter = (e) => {
     if (e.key === "Enter") {
       onCompleteSearch();
     }
   };
+  const onBack = () => {
+    navigate("/board/page/" + pageId);
+    dispatch(getSearchMode(false));
+    dispatch(getSearchData([]));
+  };
 
   return (
     <BoardPage
-      contents={contents}
+      pageNum={pageNum}
+      contents={pageContents}
       navigate={navigate}
       onSelect={onSelect}
       onSearchWord={onSearchWord}
       searchWord={searchWord}
       onCompleteSearch={onCompleteSearch}
       selectOption={selectOption}
-      searchData={searchData}
+      searchData={pageSearchContents}
       searchMode={searchMode}
+      pageNumSearch={pageNumSearch}
       onEnter={onEnter}
+      onBack={onBack}
+      pageId={pageId}
     />
   );
 };
@@ -218,7 +242,14 @@ export const BoardCreateContainer = () => {
     };
     await axios.post(API_BASE_URL + "/board/addContent", newContent);
     alert("작성하신 글이 제출되었습니다!");
-    navigate(-1);
+    navigate('/board/page/1');
+  };
+  const onBack = () => {
+    if (window.confirm("정말로 쓰던 글을 삭제하고 뒤로 가시겠습니까?")) {
+      navigate(-1);
+    } else {
+      return;
+    }
   };
 
   return (
@@ -227,6 +258,7 @@ export const BoardCreateContainer = () => {
       onTitleEditEvent={titleEditEvent}
       onBodyEditEvent={bodyEditEvent}
       content={contentDetail}
+      onBack={onBack}
     />
   );
 };

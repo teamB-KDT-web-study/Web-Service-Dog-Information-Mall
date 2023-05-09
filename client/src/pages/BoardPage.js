@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../styles/boardpage.scss";
 
 export function BoardPage({
+  pageNum,
   contents,
   navigate,
   onSelect,
@@ -12,7 +13,10 @@ export function BoardPage({
   selectOption,
   searchData,
   searchMode,
+  pageNumSearch,
   onEnter,
+  onBack,
+  pageId,
 }) {
   return (
     <main className="BoardPage">
@@ -40,6 +44,11 @@ export function BoardPage({
         <button className="searchBtn" onClick={onCompleteSearch}>
           검색
         </button>
+        {searchMode && (
+          <button className="backBtn" onClick={onBack}>
+            전체글
+          </button>
+        )}
       </div>
 
       <div className="boraditems">
@@ -57,9 +66,41 @@ export function BoardPage({
       </div>
       <div className="boardFooter">
         <div className="pageNum">
-          {[1, 2, 3].map((el) => {
-            return <Link>[{el}]</Link>;
-          })}
+          {!searchMode &&
+            pageNum.map((el) => {
+              if (el == pageId) {
+                return (
+                  <Link className="pageBtn current" to={"/board/page/" + el}>
+                    [{el}]
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link className="pageBtn" to={"/board/page/" + el}>
+                    [{el}]
+                  </Link>
+                );
+              }
+            })}
+          {searchMode &&
+            pageNumSearch.map((el) => {
+              if (el == pageId) {
+                return (
+                  <Link
+                    className="pageBtn current"
+                    to={"/board/searchPage/" + el}
+                  >
+                    [{el}]
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link className="pageBtn" to={"/board/searchPage/" + el}>
+                    [{el}]
+                  </Link>
+                );
+              }
+            })}
         </div>
         <button className="createBtn" onClick={() => navigate("/board/create")}>
           글쓰기

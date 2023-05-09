@@ -33,7 +33,8 @@ function App() {
           <Route path="/Register" element={<Register />} />
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
-          <Route path="/board" element={<BoardPageContainer />} />
+          <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
+          <Route path="/board/searchPage/:pageId" element={<BoardPageContainer />} />
           <Route path="/board/:contentId" element={<BoardDetailContainer />} />
           <Route path="/board/create" element={<BoardCreateContainer />} />
           <Route path="/Map" element={<Map />} />
