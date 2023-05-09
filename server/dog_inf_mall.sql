@@ -151,7 +151,7 @@ insert into user (id, password, nickname) values ('apple', 1234, '사과');
 insert into user (id, password, nickname) values ('peach', 1234, '복숭아');
 
 
-insert into dog (name, pet_owner, gender, age, breed, weight) values ('haapy', 'banana', 'F', 12, '시츄', 5);
+insert into dog (name, pet_owner, gender, age, breed, weight) values ('happy', 'banana', 'F', 12, '시츄', 5);
 insert into dog (name, pet_owner, breed) values ('루키', 'banana', '진돗개');
 insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 'peach', 'F', 3, '닥스훈트', 7);
 

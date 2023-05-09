@@ -1,9 +1,15 @@
-const { Todo } = require("../models"); /// 수정해야함!!!!
-const { Op } = require("sequelize");
+const model = require('../models');
+const { Op } = require('sequelize');
 
 exports.addCart = async (req, res) => {
   try {
-  
+    const result = await model.Shopping_cart.create({
+      user_id: req.body.user_id,
+      product_id: req.body.product_id,
+      choice: req.body.choice,
+      amount: req.body.amount,
+    });
+    res.send({ isOk: result });
   } catch (err) {
     res.send(err);
   }
@@ -11,9 +17,7 @@ exports.addCart = async (req, res) => {
 
 exports.deleteCart = async (req, res) => {
   try {
-  
   } catch (err) {
     res.send(err);
   }
 };
-

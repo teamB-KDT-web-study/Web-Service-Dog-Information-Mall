@@ -36,8 +36,8 @@ db.Dog.belongsTo(db.User, {
 db.User.hasMany(db.Board, {
   foreignKey: 'nickname',
   sourceKey: 'nickname',
-  onUpdate: 'set NULL',
-  onDelete: 'cascade',
+  onUpdate: 'cascade',
+  onDelete: 'set NULL',
 });
 
 db.Board.belongsTo(db.User, {
