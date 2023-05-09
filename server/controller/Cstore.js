@@ -54,9 +54,25 @@ exports.deleteCart = async (req, res) => {
 };
 
 exports.showProduct = async (req, res) => {
+  try {
+    const result = await model.Product.findAll({
+      attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+      order: [['id', 'desc']],
+      limit: 16,
+    });
+    console.log('result >>> ', result);
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+exports.showCategory = async (req, res) => {
+  console.log('req.params >>> ', req.params);
   const result = await model.Product.findAll({
     attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
     order: [['id', 'desc']],
+    where: { category: `강아지 ${req.params.category}` },
     limit: 16,
   });
   console.log('result >>> ', result);
