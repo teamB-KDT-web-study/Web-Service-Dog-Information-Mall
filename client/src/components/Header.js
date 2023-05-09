@@ -10,7 +10,6 @@ const Header = () => {
           로고
         </a>
 
-
         <a className="nav-link" href="#">
           지도API
         </a>
@@ -35,6 +34,9 @@ const Header = () => {
         </Link>
         <Link to="/Register" className="nav-link">
           Register
+        </Link>
+        <Link to="/MyPage" className="nav-link">
+          MyPage
         </Link>
       </nav>
     </div>
