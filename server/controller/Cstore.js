@@ -9,7 +9,29 @@ exports.addCart = async (req, res) => {
       choice: req.body.choice,
       amount: req.body.amount,
     });
-    res.send({ isOk: result });
+    res.send({ isOk: true });
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+exports.showCart = async (req, res) => {
+  try {
+    let result = await model.Shopping_cart.findAll({
+      where: {
+        user_id: req.body.user_id,
+      },
+
+      include: [
+        {
+          model: model.Product,
+          required: false,
+          attributes: ['title', 'image', 'price'],
+        },
+      ],
+    });
+
+    res.send(result);
   } catch (err) {
     res.send(err);
   }

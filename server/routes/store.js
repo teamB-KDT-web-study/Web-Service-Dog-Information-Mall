@@ -4,6 +4,9 @@ const controller = require('../controller/Cstore');
 
 // 스토어 관련
 router.post('/addCart', controller.addCart); // 상품 장바구니에 담기
+router.post('/showCart', controller.showCart); // 장바구니 보여주기
 router.delete('/deleteCart', controller.deleteCart); // 장바구니 상품 삭제
+// router.get('/showProduct', controller.showProuct);  // 상품 보여주기
+// router.get('/searchProduct', controller.searchProuct); // 상품 검색하기 
 // router.patch('/updateAmount', controller.updateAmount);
 module.exports = router;
