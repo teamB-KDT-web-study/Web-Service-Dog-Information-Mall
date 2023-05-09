@@ -4,6 +4,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  min-height: 750px;
 }
 .mdi_btn {
   background-color: #ecd06f;
@@ -34,24 +35,47 @@
 }
 .result {
   color: #987654;
+  min-height: 750px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  background-color: #ecd06f;
+  padding: 10px;
 }
 .resultimg {
-  width: 500px;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   border-radius: 20px;
   border: 2px solid #987654;
 }
 
-.resultbox {
-  display: flex;
-  flex-wrap: wrap;
-}
 .result_btn {
+  background-color: #ecd06f;
+  border-radius: 30px;
+  border: none;
+  margin: 20px;
+  font-size: 20px;
+  color: #987654;
+  border: 2px solid #987654;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
+}
+.mydogresultbox {
+  background-color: white;
+  width: 600px;
+  border-radius: 10px;
+  border: 2px solid #987654;
+  padding: 10px;
+}
+
+.mdi_finishbtn {
+  width: 600px;
+  height: 50px;
   background-color: #ecd06f;
   border-radius: 30px;
   border: none;

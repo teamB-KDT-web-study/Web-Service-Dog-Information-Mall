@@ -1,22 +1,48 @@
 .Store {
   position: relative;
   display: flex;
+  flex-direction: column;
+}
+.searchbar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbatinput {
+  width: 30vw;
+  height: 3vw;
+  border-radius: 10px;
+  border: 2px solid #987654;
+  background-color: #f3df98;
 }
 .sidebar {
-  width: 15%;
-  height: 1000px;
-  background-color: rgb(209, 203, 203);
-  color: azure;
-}
-.sidebarbox {
-  background-color: aqua;
   width: 100%;
   height: 50px;
-  border: 2px solid palevioletred;
+
+  color: azure;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.sidebarbtn {
+  background-color: #ecd06f;
+  width: 20vw;
+  height: 2vw;
+  border: 2px solid #987654;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   text-align: center;
 }
-.storebox {
-  width: 85%;
-  height: 1000px;
-  background-color: gray;
+
+.storeitem {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
 }
