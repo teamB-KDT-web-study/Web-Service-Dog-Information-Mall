@@ -1,7 +1,7 @@
 const fs = require("fs"); // json 불러오기 위함
 var mysql = require("mysql");
 
-const jsonFile = fs.readFileSync("./shopData.json", "utf8");
+const jsonFile = fs.readFileSync("./shopDataNew.json", "utf8");
 const jsonData = JSON.parse(jsonFile);
 
 var con = mysql.createConnection({
