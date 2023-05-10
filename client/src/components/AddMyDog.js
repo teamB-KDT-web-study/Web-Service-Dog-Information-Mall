@@ -8,11 +8,6 @@ const AddMyDog = () => {
   const [DogImgFile, setDogImgFile] = useState("");
   const imgRef = useRef();
 
-  const Btn = () => {
-    setBtn("확인");
-    btn === "수정" ? setBtn("확인") : setBtn("수정");
-  };
-
   // 강아지 이미지 업로드 input의 onChange
   const saveDogImgFile = () => {
     const file = imgRef.current.files[0];
@@ -80,9 +75,6 @@ const AddMyDog = () => {
             <label for="dogWeight">무게: </label>
             <input type="dogWeight" style={{ marginLeft: "10px" }} />
             <br />
-            <button className="SubmitForm" onClick={Btn}>
-              {btn}
-            </button>
           </div>
         )}
       </div>

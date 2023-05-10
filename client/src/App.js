@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import axios from "axios";
+// import { API_BASE_URL } from "./app-config";
 // import css
 import "./styles/_reset.scss";
 // import pages
@@ -25,7 +27,6 @@ import EditMyProfile from "./pages/EditMyProfile";
 
 import Store from "./pages/Store";
 import Storedetail from "./pages/Storedetail";
-
 
 function App() {
   const [Stores, setStores] = useState([
@@ -531,6 +532,14 @@ function App() {
       amount: 50,
     },
   ]);
+  // const [members, setMembers] = useState([]);
+
+  // Register 함수
+  // const AddMember = async (newMember) => {
+  //   const res = await axios.post(API_BASE_URL + "/member/isExist", newMember);
+  //   setMembers([...members, res.data]);
+  // };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -562,7 +571,6 @@ function App() {
             path="/store/:storeId"
             element={<Storedetail Stores={Stores} />}
           />
-
         </Routes>
       </BrowserRouter>
     </div>
