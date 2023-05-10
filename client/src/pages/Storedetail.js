@@ -1,8 +1,9 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import "../styles/storedetail.scss";
 
 const Storedetail = (props) => {
+  const navigate = useNavigate();
   const { Stores } = props;
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
@@ -20,7 +21,7 @@ const Storedetail = (props) => {
     setSelectedOption(targetStore.price * number - targetStore.price);
   };
 
-  const [targetStore] = Stores.filter((p) => p.id === Number(storeId));
+  const [targetStore] = Stores.filter((p) => p.title === storeId);
   //저장된 상품값이 없을 때 표시 되는 메세지 굳이 필요 없을 수도??...
   if (!targetStore) {
     return <main className="Storedetail">존재하지 않는 상품입니다</main>;
@@ -59,16 +60,22 @@ const Storedetail = (props) => {
             <p>
               {selectedOption}
               <div className="choicenum">
-                <button onClick={miner}>-</button>
-                <h1>{number}</h1>
-                <button onClick={plus}>+</button>
+                <button onClick={miner} className="choicenumbtn">
+                  -
+                </button>
+                <h1 className="choicenumh1">{number}</h1>
+                <button onClick={plus} className="choicenumbtn">
+                  +
+                </button>
               </div>
             </p>
           )}
         </div>
         <br></br>
         <div>
-          <button className="pay">장바구니</button>
+          <button className="pay" onClick={() => navigate("/store/cart")}>
+            장바구니
+          </button>
           <button className="pay">결제</button>
           <button className="pay">♡</button>
         </div>

@@ -33,16 +33,29 @@
 }
 .choice {
   width: 32vw;
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: #987654;
 }
 .choiceoption {
   background-color: #f6e6ac;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 .choicenum {
   display: flex;
   flex-wrap: wrap;
+  font-size: 1vw;
+  padding: 10px;
+}
+.choicenumh1 {
+  font-size: 2vw;
+  margin: 0px 5px 0px 5px;
+}
+.choicenumbtn {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 10px;
+  background-color: #987654;
+  border: none;
 }
 
 .pay {
