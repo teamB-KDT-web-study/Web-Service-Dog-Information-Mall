@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/quiz.scss";
-
+//퀴즈 문제 항목 부분
 const questions = [
   {
     question: "강아지의 다리의 갯수는?",
@@ -51,18 +51,18 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [passed, setPassed] = useState(false);
-
+  //퀴즈에 대한 스코어가 쌓이는 코드
   const handleAnswerOptionClick = (isCorrect) => {
     if (isCorrect) {
       setScore(score + 1);
     }
-
+    //퀴즈를 풀었을 때 다음 퀴즈로 넘어가는 코드
     const nextQuestion = currentQuestion + 1;
     if (nextQuestion < questions.length) {
       setCurrentQuestion(nextQuestion);
     } else {
-      setShowScore(true);
-      setPassed(score >= 5);
+      setShowScore(true); //점수가 나오는 코드
+      setPassed(score >= 5); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
     }
   };
 
@@ -70,9 +70,11 @@ const Quiz = () => {
     <div className="quiz-container">
       {showScore ? (
         <div className="score-section">
+          {/* 퀴즈 맞춘 갯수 표시 부분 */}
           <h1>
             {questions.length} 문제 중 {score}문제를 맞추셨습니다!
           </h1>
+          {/* 퀴즈 합 불 표시부분 */}
           <h1>
             {passed
               ? "축하합니다! 합격이에요"
@@ -85,9 +87,11 @@ const Quiz = () => {
         </div>
       ) : (
         <>
+          {/* 퀴즈 화면 부분 */}
           <div className="question-section">
             <div className="question-count">
-              <span>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}</span>/
+              {/* 퀴즈 제목?과 퀴즈넘버 부분 */}
+              <span>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}</span>
               {questions.length}
             </div>
             <br />
@@ -95,6 +99,7 @@ const Quiz = () => {
               {questions[currentQuestion].question}
             </div>
           </div>
+          {/* 퀴즈 정답 버튼 항목 부분 */}
           <div className="answer-section">
             {questions[currentQuestion].options.map((option) => (
               <ul key={option}>

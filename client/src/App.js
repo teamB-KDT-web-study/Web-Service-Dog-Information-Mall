@@ -21,9 +21,8 @@ import Map from "./pages/Map";
 import Traininginfo from "./pages/Traininginfo";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
-
 import EditMyProfile from "./pages/EditMyProfile";
-
+import Footer from "./components/Footer";
 import Store from "./pages/Store";
 import Storefood from "./pages/Storefood";
 import Storesnack from "./pages/Storesnack";
@@ -33,8 +32,7 @@ import Storedetail from "./pages/Storedetail";
 import Storelead from "./pages/Storelead";
 import StoreCart from "./pages/StoreCart";
 //데이터
-import shopData from "./json/shopData.json";
-
+import shopDataNew from "./json/shopDataNew.json";
 
 function App() {
   return (
@@ -56,25 +54,35 @@ function App() {
           <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
-          <Route path="/store" element={<Store Stores={shopData} />} />
-          <Route path="/store/food" element={<Storefood Stores={shopData} />} />
+          <Route path="/store" element={<Store Stores={shopDataNew} />} />
+          <Route
+            path="/store/food"
+            element={<Storefood Stores={shopDataNew} />}
+          />
           <Route
             path="/store/snack"
-            element={<Storesnack Stores={shopData} />}
+            element={<Storesnack Stores={shopDataNew} />}
           />
-          <Route path="/store/t" element={<StoreT Stores={shopData} />} />
-          <Route path="/store/lead" element={<Storelead Stores={shopData} />} />
+          <Route path="/store/t" element={<StoreT Stores={shopDataNew} />} />
+          <Route
+            path="/store/lead"
+            element={<Storelead Stores={shopDataNew} />}
+          />
           <Route
             path="/store/cushion"
-            element={<Storecushion Stores={shopData} />}
+            element={<Storecushion Stores={shopDataNew} />}
           />
           <Route path="/EditMyProfile" element={<EditMyProfile />} />
           <Route
             path="/store/:storeId"
-            element={<Storedetail Stores={shopData} />}
+            element={<Storedetail Stores={shopDataNew} />}
           />
-          <Route path="/store/cart" element={<StoreCart Stores={shopData} />} />
+          <Route
+            path="/store/cart"
+            element={<StoreCart Stores={shopDataNew} />}
+          />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

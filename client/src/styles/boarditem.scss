@@ -5,7 +5,9 @@
   height: 80px;
   margin: 0 auto;
   padding: 20px;
-  border-bottom: 2px solid rgb(199, 199, 199);
+  border-bottom: 2px solid #987654;
+  border-radius: 10px;
+  margin: 5px;
   &:hover {
     background-color: hsl(44deg 35% 94% / 100%);
     border: 1px solid rgb(199, 199, 199);

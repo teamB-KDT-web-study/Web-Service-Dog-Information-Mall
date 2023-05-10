@@ -5,6 +5,7 @@ const Quizhome = () => {
   const navigate = useNavigate();
 
   return (
+    //퀴즈 페이지로 넘어가기 위한 card?부분 step1,2,3,4
     <div className="Quizhome">
       <div className="cards">
         <article className="information [ card ]">
