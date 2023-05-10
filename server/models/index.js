@@ -65,7 +65,7 @@ db.Product.hasMany(db.Shopping_cart, {
 });
 
 db.Shopping_cart.belongsTo(db.Product, {
-  foreignKey: 'user_id',
+  foreignKey: 'product_id',
   targetKey: 'id',
 });
 
