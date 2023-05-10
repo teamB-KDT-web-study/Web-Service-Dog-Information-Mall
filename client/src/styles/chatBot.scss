@@ -1,0 +1,78 @@
+.ChatBot {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  .ToChatBox {
+    background-color: skyblue;
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .chatBox {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 400px;
+    height: 600px;
+    border: 2px solid black;
+    .headerBox {
+      width: 100%;
+      height: 6%;
+      background-color: red;
+      .closeBox {
+        font-size: 20px;
+        cursor: pointer;
+        margin-inline: 10px;
+        width: max-content;
+      }
+    }
+    .mainBox {
+      overflow-y: auto;
+
+      width: 100%;
+      height: 84%;
+      background-color: white;
+      .bot {
+        padding-top: 5px;
+        width: 100%;
+      }
+      .user {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+      }
+      .chat {
+        width: max-content;
+        background-color: skyblue;
+        margin: 5px 10px;
+        padding: 5px;
+        border-radius: 10px;
+        max-width: 70%;
+        .info {
+          padding-inline: 10px;
+          color: blue;
+          cursor: pointer;
+          margin-block: 5px;
+        }
+        .basic {
+          padding-inline: 10px;
+          margin-block: 5px;
+        }
+      }
+    }
+    .inputBox {
+      width: 100%;
+      height: 10%;
+      background-color: red;
+    }
+  }
+}

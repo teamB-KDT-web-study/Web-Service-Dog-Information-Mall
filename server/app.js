@@ -49,8 +49,8 @@ app.use('/', mainRouter);
 const memberRounter = require('./routes/member');
 app.use('/member', memberRounter);
 
-// const storeRouter = require("./routes/store");
-// app.use("/store", storeRouter);
+const storeRouter = require('./routes/store');
+app.use('/store', storeRouter);
 
 const infoRouter = require('./routes/board');
 app.use('/board', infoRouter);

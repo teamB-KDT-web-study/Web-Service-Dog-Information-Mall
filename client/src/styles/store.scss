@@ -16,6 +16,7 @@
   border-radius: 10px;
   border: 2px solid #987654;
   background-color: #f3df98;
+  color: #987654;
 }
 .sidebar {
   width: 100%;
@@ -28,14 +29,20 @@
   justify-content: space-evenly;
 }
 .sidebarbtn {
+  color: #987654;
   background-color: #ecd06f;
-  width: 20vw;
+  width: 15vw;
   height: 2vw;
   border: 2px solid #987654;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   text-align: center;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
 }
 
 .storeitem {
@@ -45,4 +52,114 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+}
+.more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+.morebtn {
+  color: #987654;
+  background-color: #ecd06f;
+  width: 25vw;
+  height: 3vw;
+  border: 2px solid #987654;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
+}
+.Storeitem {
+  width: 250px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #987654;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+}
+.Search {
+  width: 99%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ecd06f;
+  border: 2px solid #987654;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+}
+.closebtn {
+  width: 99%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 3px;
+}
+.CloseButton {
+  border: 2px solid #987654;
+  background-color: #987654;
+  color: white;
+  width: 3vw;
+  height: 3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  border-radius: 50%;
+}
+.Searchbox {
+  width: 99%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+}
+
+.Searchitem {
+  width: 250px;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #987654;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 2px 2px 2px 2px;
+}
+
+.Searchitemimg {
+  width: 240px;
+  height: 250px;
+  border-radius: 10px;
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+.Searchitemh1 {
+  font-size: 15px;
+}
+
+.NoResults {
+  color: #987654;
+  font-size: 2vw;
+  padding: 0px 0px 20px 0px;
 }

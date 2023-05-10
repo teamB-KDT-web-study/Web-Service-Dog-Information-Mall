@@ -8,7 +8,6 @@ router.get('/checkLogin', controller.checkLogin);
 router.post('/login', controller.login); // 로그인 요청
 // router.get('/check', controller.check); // 테스트용 : 세션 확인
 router.delete('/logout', controller.logout);
-
 router.post('/isExist', controller.isExist);
 router.post('/signup', controller.signup); // 회원가입 요청
 router.post('/showProfile', controller.showProfile);

@@ -1,4 +1,6 @@
 const GETALLDATA = "board/GETALLDATA";
+const GETLENGTH = "board/GETLENGTH";
+const GETPAGELIST = "board/GETPAGELIST";
 const GETDATA = "board/GETDATA";
 const GETNEWDATA = "board/GETNEWDATA";
 const GETSEARCHWORD = "board/GETSEARCHWORD";
@@ -8,6 +10,8 @@ const GETSEARCHMODE = "board/GETSEARCHMODE";
 const ADDLIKE = "board/ADDLIKE";
 
 export const getAllData = (data) => ({ type: GETALLDATA, payload: data });
+export const getLength = (data) => ({ type: GETLENGTH, payload: data });
+export const getPageList = (data) => ({ type: GETPAGELIST, payload: data });
 export const getData = (data) => ({ type: GETDATA, payload: data });
 export const getNewData = (data) => ({ type: GETNEWDATA, payload: data });
 export const getSearchWord = (data) => ({ type: GETSEARCHWORD, payload: data });
@@ -29,6 +33,8 @@ export const addLike = () => ({
 
 const initialState = {
   allData: [],
+  length: 0,
+  pageList: [],
   data: {},
   newData: { nickname: "", title: "", body: "", date: "" },
   searchWord: "",
@@ -41,6 +47,10 @@ const boardReducer = (state = initialState, action) => {
   switch (action.type) {
     case GETALLDATA:
       return { ...state, allData: action.payload };
+    case GETLENGTH:
+      return { ...state, length: action.payload };
+    case GETPAGELIST:
+      return { ...state, pageList: action.payload };
     case GETDATA:
       return { ...state, data: action.payload };
     case GETNEWDATA:

@@ -1,0 +1,26 @@
+.Footer {
+  background-color: #ecd06f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #987654;
+  height: 20vw;
+}
+.ourbox {
+  background-color: #ecd06f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: #987654;
+  height: 15vw;
+}
+
+.ourinfo {
+  font-size: 1.5vw;
+  margin: 2vw;
+}
+
+.foot {
+  display: flex;
+  justify-content: center;
+}
