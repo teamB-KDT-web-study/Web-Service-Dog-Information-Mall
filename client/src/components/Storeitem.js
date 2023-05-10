@@ -4,7 +4,7 @@ const Storeitem = (props) => {
   const { store } = props;
   return (
     <div className="Storeitem">
-      <Link to={"/store/" + store.id}>
+      <Link to={"/store/" + store.title}>
         <div>
           <img src={store.image} className="Storeitemimg" />
         </div>

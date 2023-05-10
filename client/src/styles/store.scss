@@ -28,14 +28,20 @@
   justify-content: space-evenly;
 }
 .sidebarbtn {
+  color: #987654;
   background-color: #ecd06f;
-  width: 20vw;
+  width: 15vw;
   height: 2vw;
   border: 2px solid #987654;
   align-items: center;
   justify-content: center;
   border-radius: 10px;
   text-align: center;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
 }
 
 .storeitem {
@@ -45,4 +51,27 @@
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
+}
+.more {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+.morebtn {
+  color: #987654;
+  background-color: #ecd06f;
+  width: 25vw;
+  height: 3vw;
+  border: 2px solid #987654;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  &:hover,
+  &:focus {
+    background-color: #987654;
+    color: var(--c-white);
+  }
 }
