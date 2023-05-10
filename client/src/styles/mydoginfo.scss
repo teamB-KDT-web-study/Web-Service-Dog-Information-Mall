@@ -25,7 +25,7 @@
   background-color: #ffffff;
   border-radius: 10px;
   width: 800px;
-  border: 2px solid #987654;
+  border: 5px solid #987654;
   display: flex;
   padding: 100px;
   flex-direction: column;
@@ -41,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: #ecd06f;
+  background-color: white;
   padding: 10px;
 }
 .resultimg {
@@ -81,11 +81,11 @@
   border: none;
   margin: 20px;
   font-size: 20px;
-  color: #987654;
+  color: white;
   border: 2px solid #987654;
   &:hover,
   &:focus {
-    background-color: #987654;
-    color: var(--c-white);
+    background-color: #ecd06f;
+    color: #987654;
   }
 }

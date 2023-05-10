@@ -5,6 +5,7 @@ import "../styles/mydoginfo.scss";
 const Mydoginfo = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  //강아지 성향에 대해서 정보를 입력받을 부분
   const [answers, setAnswers] = useState({
     size: "",
     shedding: "",
@@ -41,7 +42,7 @@ const Mydoginfo = () => {
       ...prevAnswers,
       [questionId]: answer,
     }));
-    // Proceed to the next question
+    // 다음 선택지로 넘어가는 코드
     setCurrentQuestion((prevQuestion) => prevQuestion + 1);
   };
 
@@ -137,7 +138,7 @@ const Mydoginfo = () => {
       },
     ];
 
-    // Count the number of matching criteria for each dog breed
+    // 강아지가 가지고 있는 정보와 내가 선택한 정보와 일치하는 갯수 확인 하는 코드
     const matchingCounts = dogBreeds.map((dog) => {
       let count = 0;
       for (const key in answers) {
@@ -148,19 +149,21 @@ const Mydoginfo = () => {
       return count;
     });
 
-    // Find the index of the dog breed with the highest matching count
+    // 일치하는 데이터의 갯수가 최대인 강아지정보를 찾는 코드
     const maxCountIndex = matchingCounts.indexOf(Math.max(...matchingCounts));
 
     return dogBreeds[maxCountIndex].breed;
   };
 
   return (
+    //강아지 추천 결과 부분
     <div className="result">
       {recommendation ? (
         <div className="mydogresultbox">
           <p>
             <h1>당신에게 어울리는 강아지는?</h1>
             <br></br>
+            {/* 추천 강아지 이미지 표시되는 부분 */}
             <img
               src={
                 process.env.PUBLIC_URL + `/SlickImages/${recommendation}.jpeg`
@@ -168,6 +171,7 @@ const Mydoginfo = () => {
               className="resultimg"
             />
             <h1>"{recommendation}" 입니다</h1>
+            {/* 정보 등록 및 강아지 추천 메인 페이지로 돌아가는 버튼 부분 */}
             <div>
               <button className="result_btn">나의 정보에 등록할래요!</button>
               <button className="result_btn" onClick={() => navigate("/mydog")}>
@@ -177,12 +181,14 @@ const Mydoginfo = () => {
           </p>
         </div>
       ) : (
+        //강아지 추천을 받기 위해 질문하는 부분
         <div className="dog">
           {currentQuestion < questions.length ? (
             <div key={questions[currentQuestion].id} className="mdi_db">
               <h2>{questions[currentQuestion].text}</h2>
               <div>
                 {options[questions[currentQuestion].id].map((option) => (
+                  //강아지 추천을 받기 위해 정보를 선택하는 버튼 부분
                   <button
                     className="mdi_btn"
                     key={option}
@@ -195,7 +201,8 @@ const Mydoginfo = () => {
                 ))}
               </div>
             </div>
-          ) : null}
+          ) : // 모든 질문이 끝나고 결과 확인하러 가는 부분
+          null}
           {currentQuestion === questions.length && (
             <button onClick={handleRecommendation} className="mdi_finishbtn">
               <h1>모든 질문이 끝났습니다!</h1>
