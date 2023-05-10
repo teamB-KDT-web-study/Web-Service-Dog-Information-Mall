@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 // import css
 import "./styles/_reset.scss";
 // import pages
@@ -34,7 +35,11 @@ import StoreCart from "./pages/StoreCart";
 //데이터
 import shopDataNew from "./json/shopDataNew.json";
 
+
+
+
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter>
