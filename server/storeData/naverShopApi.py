@@ -20,9 +20,12 @@ d4= {"width": ["20cm", "30cm", "50cm"]}
 q5 = "강아지 옷"
 d5 = {"size": ["small", "medium", "large"]}
 
+q = q5
+d = d5
+
 client_id = "jhSC6O5vsApq601bd64E"
 client_secret = "nQ3NbbdS_d"
-encText = urllib.parse.quote(q5)
+encText = urllib.parse.quote(q)
 url = "https://openapi.naver.com/v1/search/shop?display=10&query=" + encText  # JSON 결과
 # url = "https://openapi.naver.com/v1/search/blog.xml?query=" + encText # XML 결과
 request = urllib.request.Request(url)
@@ -35,15 +38,16 @@ if rescode == 200:
     result = []
     json_data = json.loads(response_body.decode("utf-8"))['items']
     for i in range(len(json_data)):
+        title = "".join(json_data[i]["title"].replace('</b>', '<b>').split('<b>'))
         result.append({
-                       "title": json_data[i]["title"],
-                       "category": json_data[i]["category3"],
-                       "choice": d5,
+                       "title": title,
+                       "category": q,
+                       "choice": d,
                        "image": json_data[i]["image"],
                        "price": int(json_data[i]["lprice"]) ,
                        "amount": 50})
 
-    with open("./shop5.json", "w", encoding="UTF-8") as outfile:
+    with open(f"./shop{q}.json", "w", encoding="UTF-8") as outfile:
         json.dump(result, outfile, ensure_ascii=False)
 else:
     print("Error Code:" + rescode)
