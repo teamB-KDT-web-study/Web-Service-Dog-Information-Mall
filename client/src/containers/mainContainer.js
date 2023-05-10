@@ -31,6 +31,5 @@ export const TrainingContainer = () => {
   const onNavigate = (url) => {
     navigate(url);
   };
-  console.log(mostLikeList);
   return <Training mostLikeList={mostLikeList} onNavigate={onNavigate} />;
 };
