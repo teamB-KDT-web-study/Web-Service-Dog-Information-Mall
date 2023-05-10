@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import MyPage from "./pages/MyPage";
 import Quiz from "./pages/Quiz";
 import Quizhome from "./pages/Quizhome";
 import {
@@ -15,11 +16,14 @@ import {
   BoardDetailContainer,
   BoardCreateContainer,
 } from "./containers/boardContainer";
+import { TrainingContainer } from "./containers/mainContainer";
 import Map from "./pages/Map";
 import Traininginfo from "./pages/Traininginfo";
-import Training from "./pages/Training";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
+
+import EditMyProfile from "./pages/EditMyProfile";
+
 import Store from "./pages/Store";
 import Storefood from "./pages/Storefood";
 import Storesnack from "./pages/Storesnack";
@@ -31,6 +35,7 @@ import StoreCart from "./pages/StoreCart";
 //데이터
 import shopData from "./json/shopData.json";
 
+
 function App() {
   return (
     <div className="App">
@@ -40,6 +45,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
+          <Route path="/MyPage" element={<MyPage />} />
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
@@ -51,7 +57,7 @@ function App() {
           <Route path="/board/create" element={<BoardCreateContainer />} />
           <Route path="/Map" element={<Map />} />
           <Route path="/training/traininginfo" element={<Traininginfo />} />
-          <Route path="/training" element={<Training />} />
+          <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
           <Route path="/store" element={<Store Stores={shopData} />} />
@@ -66,6 +72,7 @@ function App() {
             path="/store/cushion"
             element={<Storecushion Stores={shopData} />}
           />
+          <Route path="/EditMyProfile" element={<EditMyProfile />} />
           <Route
             path="/store/:storeId"
             element={<Storedetail Stores={shopData} />}
