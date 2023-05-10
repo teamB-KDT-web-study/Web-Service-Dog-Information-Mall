@@ -1,4 +1,5 @@
 import { TrainingContainer } from "../containers/mainContainer";
+import { ChatBotContainer } from "../containers/chatBotContainer";
 import SlickSlider from "../components/SlickSlider";
 
 const MainPage = () => {
@@ -6,6 +7,7 @@ const MainPage = () => {
     <>
       <SlickSlider />
       <TrainingContainer />
+      <ChatBotContainer />
     </>
   );
 };

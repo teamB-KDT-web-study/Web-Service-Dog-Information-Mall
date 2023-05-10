@@ -49,10 +49,6 @@ function App() {
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
-          <Route
-            path="/board/searchPage/:pageId"
-            element={<BoardPageContainer />}
-          />
           <Route path="/board/:contentId" element={<BoardDetailContainer />} />
           <Route path="/board/create" element={<BoardCreateContainer />} />
           <Route path="/Map" element={<Map />} />

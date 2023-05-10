@@ -5,9 +5,11 @@ import { BoardDetail } from "../pages/BoardDetail";
 import { BoardPage } from "../pages/BoardPage";
 import axios from "axios";
 import { API_BASE_URL } from "./app-config";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import {
   getData,
+  getLength,
+  getPageList,
   getAllData,
   getNewData,
   getSearchWord,
@@ -23,36 +25,43 @@ export const BoardPageContainer = () => {
   const pageId = params.pageId;
   const navigate = useNavigate();
   const contents = useSelector((state) => state.board.allData);
+  const contentsLength = useSelector((state) => state.board.length);
+  // const pageList = useSelector((state) => state.board.pageList);
   const selectOption = useSelector((state) => state.board.selectOption);
   const searchWord = useSelector((state) => state.board.searchWord);
   const searchData = useSelector((state) => state.board.searchData);
   const searchMode = useSelector((state) => state.board.searchMode);
+  let pageNum = [];
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const option = searchParams.get("option");
+  const query = searchParams.get("query");
 
   useEffect(() => {
-    dispatch(getSearchData([]));
-    dispatch(getSearchWord(""));
-    dispatch(getSelectOption("title"));
-    dispatch(getSearchMode(false));
-    const getContents = async () => {
-      const res = await axios.get(API_BASE_URL + "/board");
-      dispatch(getAllData(res.data));
-    };
-    getContents();
-  }, []);
-  const pageNum = [];
-  const totalPageNum = Math.ceil(contents.length / 8);
-  for (let i = 0; i < totalPageNum; i++) {
-    pageNum.push(i + 1);
-  }
-  const pageContents = contents.slice((pageId - 1) * 8, pageId * 8);
+    if (!searchMode) {
+      dispatch(getSearchData([]));
+      dispatch(getSearchWord(""));
+      dispatch(getSelectOption("title"));
+      dispatch(getSearchMode(false));
+      const getContents = async () => {
+        const res = await axios.get(API_BASE_URL + "/board/" + pageId);
+        dispatch(getAllData(res.data.data));
+        dispatch(getLength(res.data.length));
+      };
+      getContents();
+    }
+  }, [pageId, searchMode]);
 
-  const pageNumSearch = [];
-  const totalPageNumSearch = Math.ceil(searchData.length / 8);
-  for (let i = 0; i < totalPageNumSearch; i++) {
-    pageNumSearch.push(i + 1);
-  }
-  const pageSearchContents = searchData.slice((pageId - 1) * 8, pageId * 8);
+  const getPageNum = (conLen) => {
+    pageNum = [];
+    const totalPageNum = Math.ceil(conLen / 8);
+    for (let i = 0; i < totalPageNum; i++) {
+      pageNum.push(i + 1);
+    }
+    return pageNum;
+  };
+
+  pageNum = getPageNum(contentsLength);
 
   const onSelect = (e) => {
     dispatch(getSelectOption(e.target.value));
@@ -66,22 +75,34 @@ export const BoardPageContainer = () => {
       alert("검색 키워드를 입력하세요.");
       return;
     }
-    const res = await axios.post(API_BASE_URL + "/board/searchContent", {
-      selectOption: selectOption,
-      searchWord: trimedWord,
-    });
-    dispatch(getSearchData(res.data));
+    const res = await axios.get(
+      `${API_BASE_URL}/board/searchContent/1?option=${selectOption}&query=${trimedWord}`
+    );
+    dispatch(getSearchData(res.data.data));
     dispatch(getSearchMode(true));
     dispatch(getSearchWord(""));
-    navigate("/board/searchPage/" + pageId);
+    dispatch(getLength(res.data.length));
+    navigate(
+      `/board/page/1?option=${selectOption}&query=${trimedWord}`
+    );
   };
+  const searchMovePage = async (el) => {
+    const trimedWord = query.trim();
+    const res = await axios.get(
+      `${API_BASE_URL}/board/searchContent/${el}?option=${selectOption}&query=${trimedWord}`
+    );
+    navigate(`/board/page/${el}?option=${selectOption}&query=${trimedWord}`);
+    dispatch(getSearchData(res.data.data));
+    dispatch(getLength(res.data.length));
+  };
+
   const onEnter = (e) => {
     if (e.key === "Enter") {
       onCompleteSearch();
     }
   };
   const onBack = () => {
-    navigate("/board/page/" + pageId);
+    navigate("/board/page/1");
     dispatch(getSearchMode(false));
     dispatch(getSearchData([]));
   };
@@ -89,19 +110,19 @@ export const BoardPageContainer = () => {
   return (
     <BoardPage
       pageNum={pageNum}
-      contents={pageContents}
+      contents={contents}
       navigate={navigate}
       onSelect={onSelect}
       onSearchWord={onSearchWord}
       searchWord={searchWord}
       onCompleteSearch={onCompleteSearch}
       selectOption={selectOption}
-      searchData={pageSearchContents}
+      searchData={searchData}
       searchMode={searchMode}
-      pageNumSearch={pageNumSearch}
       onEnter={onEnter}
       onBack={onBack}
       pageId={pageId}
+      searchMovePage={searchMovePage}
     />
   );
 };
@@ -115,7 +136,7 @@ export const BoardDetailContainer = () => {
   const [readOnly, setReadOnly] = useState(true);
   useEffect(() => {
     const getContentDetail = async () => {
-      const res = await axios.get(API_BASE_URL + "/board/" + contentId);
+      const res = await axios.get(API_BASE_URL + "/board/detail/" + contentId);
       dispatch(getData(res.data));
     };
     getContentDetail();
@@ -242,7 +263,7 @@ export const BoardCreateContainer = () => {
     };
     await axios.post(API_BASE_URL + "/board/addContent", newContent);
     alert("작성하신 글이 제출되었습니다!");
-    navigate('/board/page/1');
+    navigate(-1);
   };
   const onBack = () => {
     if (window.confirm("정말로 쓰던 글을 삭제하고 뒤로 가시겠습니까?")) {
@@ -262,3 +283,4 @@ export const BoardCreateContainer = () => {
     />
   );
 };
+////////////////////////////////////////////////////////////////////////////////
