@@ -13,10 +13,10 @@ export function BoardPage({
   selectOption,
   searchData,
   searchMode,
-  pageNumSearch,
   onEnter,
   onBack,
   pageId,
+  searchMovePage
 }) {
   return (
     <main className="BoardPage">
@@ -83,21 +83,18 @@ export function BoardPage({
               }
             })}
           {searchMode &&
-            pageNumSearch.map((el) => {
+            pageNum.map((el) => {
               if (el == pageId) {
                 return (
-                  <Link
-                    className="pageBtn current"
-                    to={"/board/searchPage/" + el}
-                  >
+                  <div className="pageBtn current" onClick={() => searchMovePage(el)}>
                     [{el}]
-                  </Link>
+                  </div>
                 );
               } else {
                 return (
-                  <Link className="pageBtn" to={"/board/searchPage/" + el}>
+                  <div className="pageBtn" onClick={() => searchMovePage(el)}>
                     [{el}]
-                  </Link>
+                  </div>
                 );
               }
             })}
