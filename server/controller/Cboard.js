@@ -1,15 +1,23 @@
-const models = require('../models');
-const { Op } = require('sequelize');
+const models = require("../models");
+const { Op } = require("sequelize");
 
 exports.getContents = async (req, res) => {
   // 전체 게시판 목록 불러옴
   try {
-    const result = await models.Board.findAll({
-      include: [{ model: models.User, attributes: ['grade'] }],
-      order: [['id', 'DESC']],
+    let pageId = req.params.pageId;
+    let offset = (pageId - 1) * 8;
+    const forLength = await models.Board.findAll({
+      include: [{ model: models.User, attributes: ["grade"] }],
       raw: true,
     });
-    res.send(result);
+    const result = await models.Board.findAll({
+      include: [{ model: models.User, attributes: ["grade"] }],
+      order: [["id", "DESC"]],
+      offset: offset,
+      limit: 8,
+      raw: true,
+    });
+    res.send({ data: result, length: forLength.length });
   } catch (err) {
     res.send(err);
   }
@@ -19,7 +27,7 @@ exports.getContentDetail = async (req, res) => {
   // 글의 상세 내용을 보여줌 : 클릭한 contentId와 board 테이블의 id 가 같으면
   try {
     const result = await models.Board.findOne({
-      include: [{ model: models.User, attributes: ['grade'] }],
+      include: [{ model: models.User, attributes: ["grade"] }],
       where: { id: { [Op.eq]: req.params.contentId } },
       raw: true,
     });
@@ -108,26 +116,48 @@ exports.editContent = async (req, res) => {
 
 exports.searchContent = async (req, res) => {
   try {
-    const searchWord = req.body.searchWord;
-    const target = req.body.selectOption; // title or body
-    if (target == 'title') {
-      const result = await models.Board.findAll({
-        order: [['id', 'DESC']],
+    const searchWord = req.query.query;
+    const target = req.query.option; // title or body
+    let pageId = req.params.pageId;
+    let offset = (pageId - 1) * 8;
+    console.log(req.query)
+
+    if (target == "title") {
+      const forLength = await models.Board.findAll({
+        order: [["id", "DESC"]],
         where: {
-          title: { [Op.like]: '%' + searchWord + '%' },
+          title: { [Op.like]: "%" + searchWord + "%" },
         },
         raw: true,
       });
-      res.send(result);
-    } else if (target == 'body') {
       const result = await models.Board.findAll({
-        order: [['id', 'DESC']],
+        order: [["id", "DESC"]],
         where: {
-          body: { [Op.like]: '%' + searchWord + '%' },
+          title: { [Op.like]: "%" + searchWord + "%" },
+        },
+        offset: offset,
+        limit: 8,
+        raw: true,
+      });
+      res.send({ data: result, length: forLength.length });
+    } else {
+      const forLength = await models.Board.findAll({
+        order: [["id", "DESC"]],
+        where: {
+          body: { [Op.like]: "%" + searchWord + "%" },
         },
         raw: true,
       });
-      res.send(result);
+      const result = await models.Board.findAll({
+        order: [["id", "DESC"]],
+        where: {
+          body: { [Op.like]: "%" + searchWord + "%" },
+        },
+        offset: offset,
+        limit: 8,
+        raw: true,
+      });
+      res.send({ data: result, length: forLength.length });
     }
   } catch (err) {
     res.send(err);
