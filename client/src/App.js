@@ -38,18 +38,15 @@ import { API_BASE_URL } from "./containers/app-config";
 
 axios.defaults.withCredentials = true;
 
-
-
-
 function App() {
-  const [userId, setUserId] = useState({isLogin: false});
+  const [userId, setUserId] = useState({ isLogin: false });
   const getSession = async () => {
     const res = await axios.get(API_BASE_URL + "/member/checkLogin");
     setUserId(res.data);
   };
   const destroySession = async () => {
     const res = await axios.delete(API_BASE_URL + "/member/logout");
-    setUserId({isLogin: false});
+    setUserId({ isLogin: false });
   };
   useEffect(() => {
     const checkSession = async () => {
@@ -71,8 +68,14 @@ function App() {
           <Route path="/quizhome/quiz" element={<Quiz />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
-          <Route path="/board/:contentId" element={<BoardDetailContainer />} />
-          <Route path="/board/create" element={<BoardCreateContainer />} />
+          <Route
+            path="/board/:contentId"
+            element={<BoardDetailContainer userId={userId} />}
+          />
+          <Route
+            path="/board/create"
+            element={<BoardCreateContainer userId={userId} />}
+          />
           <Route path="/Map" element={<Map />} />
           <Route path="/training/traininginfo" element={<Traininginfo />} />
           <Route path="/training" element={<TrainingContainer />} />
