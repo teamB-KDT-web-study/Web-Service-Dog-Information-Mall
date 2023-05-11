@@ -1,3 +1,5 @@
+import "../styles/chatbotmessages.scss";
+
 function ChatBotMessages({
   showChat,
   message,
@@ -20,8 +22,15 @@ function ChatBotMessages({
               if (el === "메세지") {
                 return (
                   <div>
-                    <input type="text" value={complainMsg} onChange={onChangeComplainMsg} />
-                    <button onClick={sendComplainMsg}>보내기</button>
+                    <input
+                      type="text"
+                      value={complainMsg}
+                      onChange={onChangeComplainMsg}
+                      className="sendtext"
+                    />
+                    <button onClick={sendComplainMsg} className="sendbtn">
+                      보내기
+                    </button>
                   </div>
                 );
               } else {

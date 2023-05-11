@@ -33,66 +33,77 @@ const SlickSlider = () => {
     },
     {
       id: 2,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Toy Poodle",
       color: "white",
       information: "소형견",
     },
     {
       id: 3,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Yorkshire",
       color: "white",
       information: "소형견",
     },
     {
       id: 4,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Pomeranian",
       color: "white",
       information: "소형견",
     },
     {
       id: 5,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 6,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 7,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 8,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 9,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 10,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 11,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
     },
     {
       id: 12,
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "Maltese",
       color: "white",
       information: "소형견",
@@ -229,11 +240,15 @@ const SlickSlider = () => {
         {dogsInformation.id !== 0 ? (
           <div>
             <div key={dogsInformation.id} className="Slick">
-              <img src={dogsInformation.img} className="Slickimg" />
-              <div className="Slickbox">종 이름: {dogsInformation.breed}</div>
-              <div className="Slickbox">색상: {dogsInformation.color}</div>
-              <div className="Slickbox">
-                정보: {dogsInformation.information}
+              <div className="slickimg">
+                <img src={dogsInformation.img} className="Slickimg" />
+              </div>
+              <div className="slickinfo">
+                <div className="Slickbox">종 이름: {dogsInformation.breed}</div>
+                <div className="Slickbox">색상: {dogsInformation.color}</div>
+                <div className="Slickbox">
+                  정보: {dogsInformation.information}
+                </div>
               </div>
             </div>
           </div>
