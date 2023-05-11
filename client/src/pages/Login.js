@@ -39,6 +39,7 @@ const Login = ({ getSession }) => {
     };
 
 
+
     if (id === "") {
       alert("아이디를 입력해주세요");
       idRef.current.focus();

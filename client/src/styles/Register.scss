@@ -10,7 +10,7 @@
   min-height: 100vh;
   padding: 50px 0;
   background-color: hsl(44deg 35% 94% / 100%);
-  .LoginBox {
+  .RegisterBox {
     position: relative;
     z-index: 1;
     display: flex;
@@ -78,7 +78,7 @@
     input[type="radio"] {
       width: 20px;
       height: 20px;
-      margin: 0;
+      margin: 10px;
       cursor: pointer;
     }
     label {
@@ -91,6 +91,35 @@
       &::placeholder {
         color: #ccc;
       }
+    }
+  }
+  .ImgFormBox {
+    display: flex;
+    flex-direction: column;
+    .MyProfileImg {
+      text-align: center;
+    }
+    .MyProfileImgSelect {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+
+  .onAddDogFormParent {
+    display: flex;
+    .onAddDogForm {
+      width: 30px;
+      background-color: #ecd06f;
+      border: 0;
+      align-items: center;
+
+      color: #333;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
     }
   }
 }
