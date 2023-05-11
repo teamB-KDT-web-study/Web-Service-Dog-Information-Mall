@@ -17,6 +17,7 @@ export function BoardPage({
   onBack,
   pageId,
   searchMovePage,
+  createContent
 }) {
   return (
     <main className="BoardPage">
@@ -103,7 +104,7 @@ export function BoardPage({
               }
             })}
         </div>
-        <button className="createBtn" onClick={() => navigate("/board/create")}>
+        <button className="createBtn" onClick={createContent}>
           글쓰기
         </button>
       </div>

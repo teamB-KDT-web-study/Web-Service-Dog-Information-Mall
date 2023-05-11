@@ -65,9 +65,9 @@ function App() {
           <Route path="/Login" element={<Login getSession={getSession} />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/MyPage" element={<MyPage />} />
-          <Route path="/quizhome/quiz" element={<Quiz />} />
+          <Route path="/quizhome/quiz" element={<Quiz  userId={userId}/>} />
           <Route path="/quizhome" element={<Quizhome />} />
-          <Route path="/board/page/:pageId" element={<BoardPageContainer />} />
+          <Route path="/board/page/:pageId" element={<BoardPageContainer userId={userId}/>} />
           <Route
             path="/board/:contentId"
             element={<BoardDetailContainer userId={userId} />}

@@ -20,7 +20,7 @@ import {
 } from "../store/boardReducer";
 
 ////////////////////////////////////////////////////////////////////////////////
-export const BoardPageContainer = () => {
+export const BoardPageContainer = ({ userId }) => {
   const params = useParams();
   const pageId = params.pageId;
   const navigate = useNavigate();
@@ -104,6 +104,14 @@ export const BoardPageContainer = () => {
     dispatch(getSearchMode(false));
     dispatch(getSearchData([]));
   };
+  const createContent = () => {
+    if (userId.isLogin == false) {
+      alert("글을 쓸 권한이 없습니다.");
+      return;
+    } else {
+      navigate("/board/create");
+    }
+  };
 
   return (
     <BoardPage
@@ -121,6 +129,7 @@ export const BoardPageContainer = () => {
       onBack={onBack}
       pageId={pageId}
       searchMovePage={searchMovePage}
+      createContent={createContent}
     />
   );
 };
