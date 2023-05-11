@@ -1,6 +1,7 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 // import css
 import "./styles/_reset.scss";
 // import pages
@@ -33,15 +34,38 @@ import Storelead from "./pages/Storelead";
 import StoreCart from "./pages/StoreCart";
 //데이터
 import shopDataNew from "./json/shopDataNew.json";
+import { API_BASE_URL } from "./containers/app-config";
+
+axios.defaults.withCredentials = true;
+
+
+
 
 function App() {
+  const [userId, setUserId] = useState({isLogin: false});
+  const getSession = async () => {
+    const res = await axios.get(API_BASE_URL + "/member/checkLogin");
+    setUserId(res.data);
+  };
+  const destroySession = async () => {
+    const res = await axios.delete(API_BASE_URL + "/member/logout");
+    setUserId({isLogin: false});
+  };
+  useEffect(() => {
+    const checkSession = async () => {
+      const res = await axios.get(API_BASE_URL + "/member/checkLogin");
+      setUserId(res.data);
+    };
+    checkSession();
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        <Header userId={userId} destroySession={destroySession} />
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/Login" element={<Login getSession={getSession} />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/MyPage" element={<MyPage />} />
           <Route path="/quizhome/quiz" element={<Quiz />} />
