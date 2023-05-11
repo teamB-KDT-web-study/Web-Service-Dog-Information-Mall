@@ -45,8 +45,11 @@ function App() {
     setUserId(res.data);
   };
   const destroySession = async () => {
-    const res = await axios.delete(API_BASE_URL + "/member/logout");
-    setUserId({ isLogin: false });
+    const check = window.confirm("정말로 로그아웃 하시겠습니까?");
+    if (check) {
+      const res = await axios.delete(API_BASE_URL + "/member/logout");
+      setUserId({ isLogin: false });
+    }
   };
   useEffect(() => {
     const checkSession = async () => {
@@ -65,9 +68,12 @@ function App() {
           <Route path="/Login" element={<Login getSession={getSession} />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/MyPage" element={<MyPage />} />
-          <Route path="/quizhome/quiz" element={<Quiz  userId={userId}/>} />
+          <Route path="/quizhome/quiz" element={<Quiz userId={userId} />} />
           <Route path="/quizhome" element={<Quizhome />} />
-          <Route path="/board/page/:pageId" element={<BoardPageContainer userId={userId}/>} />
+          <Route
+            path="/board/page/:pageId"
+            element={<BoardPageContainer userId={userId} />}
+          />
           <Route
             path="/board/:contentId"
             element={<BoardDetailContainer userId={userId} />}

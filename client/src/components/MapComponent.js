@@ -1,7 +1,7 @@
-import "../styles/Map.css";
+import "../styles/Map.scss";
 import React, { useEffect } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
-
 const { kakao } = window;
 
 const getCurrentCoordinate = async () => {
@@ -26,6 +26,16 @@ const getCurrentCoordinate = async () => {
 };
 
 const Map = () => {
+  const [menuBar, setMenuBar] = useState("block");
+  const [btn, setBtn] = useState("none");
+  const showMenu = () => {
+    setMenuBar("block");
+    setBtn("none");
+  };
+  const hideMenu = () => {
+    setMenuBar("none");
+    setBtn("flex");
+  };
   useEffect(() => {
     // 마커를 담을 배열입니다
     try {
@@ -236,7 +246,7 @@ const Map = () => {
             paginationEl.removeChild(paginationEl.lastChild);
           }
         } else {
-          console.log('map 종료 2')
+          console.log("map 종료 2");
           return;
         }
 
@@ -284,23 +294,23 @@ const Map = () => {
   }, []);
 
   return (
-    <div className="map_wrap">
-      <div
-        id="map"
-        style={{
-          width: "800px",
-          height: "500px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      ></div>
-      <div id="menu_wrap" className="bg_white">
+    <div className="mapContainer">
+      <div className="map_wrap">
+        <div className="title">우리동네 동물병원 찾기</div>
+        <div id="map"></div>
+      </div>
+      <div id="menu_wrap" className="bg_white" style={{ display: menuBar }}>
+        <div className="unseen" onClick={hideMenu}>
+          ㅡ
+        </div>
         <hr />
         <ul id="placesList"></ul>
         <div id="pagination"></div>
+      </div>
+      <div className="show" onClick={showMenu} style={{ display: btn }}>
+        메뉴보기
       </div>
     </div>
   );
 };
 export default Map;
-

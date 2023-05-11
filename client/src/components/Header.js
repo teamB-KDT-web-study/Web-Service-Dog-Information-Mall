@@ -29,7 +29,7 @@ const Header = ({ userId, destroySession }) => {
             로그인
           </Link>
         ) : (
-          <Link to="/" onClick={destroySession} className="nav-link">
+          <Link onClick={destroySession} className="nav-link">
             로그아웃
           </Link>
         )}
@@ -39,6 +39,23 @@ const Header = ({ userId, destroySession }) => {
         <Link to="/MyPage" className="nav-link">
           MyPage
         </Link>
+        {userId.isLogin === false ? (
+          <div></div>
+        ) : (
+          <div className="profileBox">
+            <div className="imgBox">
+              <img
+                src={
+                  process.env.PUBLIC_URL + `/profile_img/${userId.profile_img}`
+                }
+                alt="profile image"
+              />
+            </div>
+            <div className="nav-link msgBox">
+              <div className="welcomeMsg">{userId.nickname}님 환영합니다!</div>
+            </div>
+          </div>
+        )}
       </nav>
     </div>
   );
