@@ -48,11 +48,11 @@ function App() {
     setUserId({isLogin: false});
   };
   useEffect(() => {
-    const getSession = async () => {
+    const checkSession = async () => {
       const res = await axios.get(API_BASE_URL + "/member/checkLogin");
       setUserId(res.data);
     };
-    getSession();
+    checkSession();
   }, []);
 
   return (
