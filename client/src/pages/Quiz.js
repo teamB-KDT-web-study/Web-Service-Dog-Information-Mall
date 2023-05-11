@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/quiz.scss";
+import { API_BASE_URL } from "../containers/app-config";
+import axios from "axios";
+
 //퀴즈 문제 항목 부분
 const questions = [
   {
@@ -45,7 +48,7 @@ const questions = [
   },
 ];
 
-const Quiz = () => {
+const Quiz = ({ userId }) => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
@@ -63,6 +66,25 @@ const Quiz = () => {
     } else {
       setShowScore(true); //점수가 나오는 코드
       setPassed(score >= 5); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
+      if (score >= 5) {
+        const gradeUp = async () => {
+          const res = await axios.patch(API_BASE_URL + "/member/gradeUp", {
+            nickname: userId.nickname,
+            toGrade: "서먹한 친구",
+            nowGrade: "남남",
+          });
+          if (res.data === "grade up") {
+            alert(`축하합니다.\n등급이 "서먹한 친구" 로 올라갔습니다!`);
+          } else {
+            if (res.data === "not login") {
+              alert("축하합니다!\n다만, 로그인을 해야 등급이 올라갑니다.");
+            } else {
+              alert("축하합니다!\n다만, 이미 푸신 문제입니다.")
+            }
+          }
+        };
+        gradeUp();
+      }
     }
   };
 
