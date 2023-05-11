@@ -42,7 +42,7 @@ const Header = ({ userId, destroySession }) => {
         {userId.isLogin === false ? (
           <div></div>
         ) : (
-          <div className="profileBox">
+          <Link to="/MyPage" className="nav-link profileBox">
             <div className="imgBox">
               <img
                 src={
@@ -51,10 +51,10 @@ const Header = ({ userId, destroySession }) => {
                 alt="profile image"
               />
             </div>
-            <div className="nav-link msgBox">
+            <div className="msgBox">
               <div className="welcomeMsg">{userId.nickname}님 환영합니다!</div>
             </div>
-          </div>
+          </Link>
         )}
       </nav>
     </div>

@@ -1,5 +1,5 @@
 .mapContainer {
-  width: 100vw;
+  width: 99vw;
   height: 100vh;
   background-color: hsl(44deg 35% 94% / 100%);
   display: flex;
@@ -40,7 +40,7 @@
 }
 .show {
   position: absolute;
-  left: 20px;
+  left: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +50,10 @@
   cursor: pointer;
   font-size: 20px;
   border-radius: 10px;
-  bottom: 120px;
+  bottom: 150px;
+  &:hover {
+    color: white;
+  }
 }
 
 .map_wrap,

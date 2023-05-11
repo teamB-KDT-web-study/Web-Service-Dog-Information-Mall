@@ -308,7 +308,7 @@ const Map = () => {
         <div id="pagination"></div>
       </div>
       <div className="show" onClick={showMenu} style={{ display: btn }}>
-        메뉴보기
+        목록보기
       </div>
     </div>
   );
