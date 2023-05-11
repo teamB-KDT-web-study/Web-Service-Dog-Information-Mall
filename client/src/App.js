@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 // import css
 import "./styles/_reset.scss";
 // import pages
@@ -36,6 +37,9 @@ import shopDataNew from "./json/shopDataNew.json";
 import { API_BASE_URL } from "./containers/app-config";
 
 axios.defaults.withCredentials = true;
+
+
+
 
 function App() {
   const [userId, setUserId] = useState({isLogin: false});

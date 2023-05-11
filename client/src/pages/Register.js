@@ -1,7 +1,9 @@
 import "../styles/Register.scss";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import RegisterYourDog from "../components/RegisterYourDog";
 import AddMyDog from "../components/AddMyDog";
+import { API_BASE_URL } from "../containers/app-config";
+import axios from "axios";
 
 const Register = () => {
   // 상태 관리 초기값 세팅
@@ -74,6 +76,11 @@ const Register = () => {
     };
   };
 
+  // 회원가입 버튼 클릭시 백으로 전송
+  const SubmitRegister = async () => {
+    const res = await axios.post(API_BASE_URL + "/member/signup");
+  };
+
   return (
     <>
       <div className="RegisterWrap">
@@ -115,6 +122,7 @@ const Register = () => {
                 onChange={onChangeId}
                 required
               />
+              <button>중복검사</button>
               <p className="message">{idMessage}</p>
             </div>
             <div className="formBox">
@@ -158,7 +166,11 @@ const Register = () => {
                 </button>
               </div>
             </div>
-            <button type="submit" className="RegisterSubmit">
+            <button
+              type="submit"
+              className="SubmitRegister"
+              onClick={SubmitRegister}
+            >
               회원가입
             </button>
           </form>
