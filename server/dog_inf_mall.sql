@@ -204,3 +204,6 @@ FLUSH PRIVILEGES;
 -- drop database dog_inf_mall;
 -- 계정 삭제
 -- drop user admin;
+SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product`  WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
+SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product` AS `product` WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
+

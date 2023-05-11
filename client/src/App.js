@@ -1,38 +1,40 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_BASE_URL } from './containers/app-config.js';
+
 // import css
-import "./styles/_reset.scss";
+import './styles/_reset.scss';
 // import pages
-import Header from "./components/Header";
-import MainPage from "./pages/MainPage";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import MyPage from "./pages/MyPage";
-import Quiz from "./pages/Quiz";
-import Quizhome from "./pages/Quizhome";
+import Header from './components/Header';
+import MainPage from './pages/MainPage';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import MyPage from './pages/MyPage';
+import Quiz from './pages/Quiz';
+import Quizhome from './pages/Quizhome';
 import {
   BoardPageContainer,
   BoardDetailContainer,
   BoardCreateContainer,
-} from "./containers/boardContainer";
-import { TrainingContainer } from "./containers/mainContainer";
-import Map from "./pages/Map";
-import Traininginfo from "./pages/Traininginfo";
-import Mydog from "./pages/Mydog";
-import Mydoginfo from "./pages/Mydoginfo";
-import EditMyProfile from "./pages/EditMyProfile";
-import Footer from "./components/Footer";
-import Store from "./pages/Store";
-import Storefood from "./pages/Storefood";
-import Storesnack from "./pages/Storesnack";
-import StoreT from "./pages/StoreT";
-import Storecushion from "./pages/Storecushion";
-import Storedetail from "./pages/Storedetail";
-import Storelead from "./pages/Storelead";
-import StoreCart from "./pages/StoreCart";
+} from './containers/boardContainer';
+import { TrainingContainer } from './containers/mainContainer';
+import Map from './pages/Map';
+import Traininginfo from './pages/Traininginfo';
+import Mydog from './pages/Mydog';
+import Mydoginfo from './pages/Mydoginfo';
+import EditMyProfile from './pages/EditMyProfile';
+import Footer from './components/Footer';
+import Store from './pages/Store';
+import Storefood from './pages/Storefood';
+import Storesnack from './pages/Storesnack';
+import StoreT from './pages/StoreT';
+import Storecushion from './pages/Storecushion';
+import Storedetail from './pages/Storedetail';
+import Storelead from './pages/Storelead';
+import StoreCart from './pages/StoreCart';
 //데이터
-import shopDataNew from "./json/shopDataNew.json";
+// import shopDataNew from "./json/shopDataNew.json";
 
 function App() {
   return (
@@ -54,33 +56,15 @@ function App() {
           <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
-          <Route path="/store" element={<Store Stores={shopDataNew} />} />
-          <Route
-            path="/store/food"
-            element={<Storefood Stores={shopDataNew} />}
-          />
-          <Route
-            path="/store/snack"
-            element={<Storesnack Stores={shopDataNew} />}
-          />
-          <Route path="/store/t" element={<StoreT Stores={shopDataNew} />} />
-          <Route
-            path="/store/lead"
-            element={<Storelead Stores={shopDataNew} />}
-          />
-          <Route
-            path="/store/cushion"
-            element={<Storecushion Stores={shopDataNew} />}
-          />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/food" element={<Storefood />} />
+          <Route path="/store/snack" element={<Storesnack />} />
+          <Route path="/store/t" element={<StoreT />} />
+          <Route path="/store/lead" element={<Storelead />} />
+          <Route path="/store/cushion" element={<Storecushion />} />
           <Route path="/EditMyProfile" element={<EditMyProfile />} />
-          <Route
-            path="/store/:storeId"
-            element={<Storedetail Stores={shopDataNew} />}
-          />
-          <Route
-            path="/store/cart"
-            element={<StoreCart Stores={shopDataNew} />}
-          />
+          <Route path="/store/:storeId" element={<Storedetail />} />
+          <Route path="/store/cart" element={<StoreCart />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -61,6 +61,8 @@ exports.showProduct = async (req, res) => {
       limit: 16,
     });
     console.log('result >>> ', result);
+    console.log('컨트롤러 실행');
+
     res.send(result);
   } catch (err) {
     res.send(err);
@@ -78,9 +80,17 @@ exports.showCategory = async (req, res) => {
   console.log('result >>> ', result);
   res.send(result);
 };
-
+exports.getItem = async (req, res) => {
+  console.log('getItem');
+  const result = await model.Product.findOne({
+    where: { id: req.query.product_id },
+    attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+  });
+  res.send(result);
+};
 exports.moreItems = async (req, res) => {
   try {
+    console.log(req.query);
     let query = {
       where: {
         id: { [Op.lt]: req.query.startNum },
@@ -112,7 +122,7 @@ exports.searchProduct = async (req, res) => {
       limit: 16,
     });
 
-    res.send(result);
+    res.send({ data: result });
   } catch (err) {
     res.send(err);
   }
