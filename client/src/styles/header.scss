@@ -3,8 +3,12 @@
   height: 80px;
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+}
+
+.logoimg {
+  width: 150px;
 }
 
 .nav-link {
@@ -12,4 +16,10 @@
   &:hover {
     color: white;
   }
+}
+
+.linkbox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
