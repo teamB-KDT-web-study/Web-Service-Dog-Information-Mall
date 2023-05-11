@@ -38,18 +38,15 @@ import { API_BASE_URL } from "./containers/app-config";
 
 axios.defaults.withCredentials = true;
 
-
-
-
 function App() {
-  const [userId, setUserId] = useState({isLogin: false});
+  const [userId, setUserId] = useState({ isLogin: false });
   const getSession = async () => {
     const res = await axios.get(API_BASE_URL + "/member/checkLogin");
     setUserId(res.data);
   };
   const destroySession = async () => {
     const res = await axios.delete(API_BASE_URL + "/member/logout");
-    setUserId({isLogin: false});
+    setUserId({ isLogin: false });
   };
   useEffect(() => {
     const checkSession = async () => {

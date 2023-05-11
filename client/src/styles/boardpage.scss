@@ -1,11 +1,12 @@
 .BoardPage {
   background-color: hsl(44deg 35% 94% / 100%);
+  color: #987654;
   display: flex;
   padding: 30px;
   align-items: center;
   border-radius: 10px;
   flex-direction: column;
-  height: 92vh;
+  min-height: 40vw;
   .searchBox {
     display: flex;
     #search {
@@ -85,17 +86,17 @@
       .pageBtn {
         cursor: pointer;
         margin-inline: 2px;
-        color: rgb(70, 70, 70);
+        color: #ecd06f;
         &:hover {
           font-weight: 500;
 
-          color: blue;
+          color: #987654;
         }
       }
       .current {
         cursor: default;
         font-weight: 500;
-        color: blue;
+        color: #987654;
       }
     }
   }

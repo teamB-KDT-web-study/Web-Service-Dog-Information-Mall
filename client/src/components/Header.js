@@ -29,7 +29,9 @@ const Header = ({ userId, destroySession }) => {
             로그인
           </Link>
         ) : (
-          <Link to="/" onClick={destroySession} className="nav-link">로그아웃</Link>
+          <Link to="/" onClick={destroySession} className="nav-link">
+            로그아웃
+          </Link>
         )}
         <Link to="/Register" className="nav-link">
           회원가입

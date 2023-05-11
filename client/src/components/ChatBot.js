@@ -177,7 +177,10 @@ export function ChatBot() {
         </div>
       ) : (
         <div className="ToChatBox" onClick={showChatBox}>
-          chat
+          <img
+            src={process.env.PUBLIC_URL + "/SlickImages/chat2.gif"}
+            className="chatimg"
+          />
         </div>
       )}
     </main>

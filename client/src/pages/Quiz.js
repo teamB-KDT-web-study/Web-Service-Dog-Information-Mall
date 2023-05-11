@@ -67,57 +67,62 @@ const Quiz = () => {
   };
 
   return (
-    <div className="quiz-container">
-      {showScore ? (
-        <div className="score-section">
-          {/* 퀴즈 맞춘 갯수 표시 부분 */}
-          <h1>
-            {questions.length} 문제 중 {score}문제를 맞추셨습니다!
-          </h1>
-          {/* 퀴즈 합 불 표시부분 */}
-          <h1>
-            {passed
-              ? "축하합니다! 합격이에요"
-              : "아쉽지만 불합격이에요. 다시 한번 풀어보세요"}
-          </h1>
+    <div className="Quiz">
+      <div className="quiz-container">
+        {showScore ? (
+          <div className="score-section">
+            {/* 퀴즈 맞춘 갯수 표시 부분 */}
+            <h1>
+              {questions.length} 문제 중 {score}문제를 맞추셨습니다!
+            </h1>
+            {/* 퀴즈 합 불 표시부분 */}
+            <h1>
+              {passed
+                ? "축하합니다! 합격이에요"
+                : "아쉽지만 불합격이에요. 다시 한번 풀어보세요"}
+            </h1>
 
-          <button onClick={() => navigate("/quizhome")} className="result_btn">
-            돌아가기
-          </button>
-        </div>
-      ) : (
-        <>
-          {/* 퀴즈 화면 부분 */}
-          <div className="question-section">
-            <div className="question-count">
-              {/* 퀴즈 제목?과 퀴즈넘버 부분 */}
-              <span>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}</span>
-              {questions.length}
-            </div>
-            <br />
-            <div className="question-text">
-              {questions[currentQuestion].question}
-            </div>
+            <button
+              onClick={() => navigate("/quizhome")}
+              className="result_btn"
+            >
+              돌아가기
+            </button>
           </div>
-          {/* 퀴즈 정답 버튼 항목 부분 */}
-          <div className="answer-section">
-            {questions[currentQuestion].options.map((option) => (
-              <ul key={option}>
-                <button
-                  className="answer-button"
-                  onClick={() =>
-                    handleAnswerOptionClick(
-                      option === questions[currentQuestion].answer
-                    )
-                  }
-                >
-                  {option}
-                </button>
-              </ul>
-            ))}
-          </div>
-        </>
-      )}
+        ) : (
+          <>
+            {/* 퀴즈 화면 부분 */}
+            <div className="question-section">
+              <div className="question-count">
+                {/* 퀴즈 제목?과 퀴즈넘버 부분 */}
+                <span>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}</span>/
+                {questions.length}
+              </div>
+              <br />
+              <div className="question-text">
+                {questions[currentQuestion].question}
+              </div>
+            </div>
+            {/* 퀴즈 정답 버튼 항목 부분 */}
+            <div className="answer-section">
+              {questions[currentQuestion].options.map((option) => (
+                <ul key={option}>
+                  <button
+                    className="answer-button"
+                    onClick={() =>
+                      handleAnswerOptionClick(
+                        option === questions[currentQuestion].answer
+                      )
+                    }
+                  >
+                    {option}
+                  </button>
+                </ul>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
