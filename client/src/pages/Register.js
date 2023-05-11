@@ -1,6 +1,6 @@
 import "../styles/Register.scss";
-import { useState, useRef, useEffect } from "react";
-import RegisterYourDog from "../components/RegisterYourDog";
+import { useState, useRef } from "react";
+// import RegisterYourDog from "../components/RegisterYourDog";
 import AddMyDog from "../components/AddMyDog";
 import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
@@ -61,10 +61,19 @@ const Register = () => {
     }
   };
 
-  const [MyDogForm, setMyDogForm] = useState(false);
+  // const [MyDogForm, setMyDogForm] = useState(false);
   const [imgFile, setImgFile] = useState("");
-
   const imgRef = useRef();
+
+  const [countDogList, setCountDogList] = useState([0]);
+
+  const onAddDogForm = () => {
+    let countArr = [...countDogList];
+    let counter = countArr.slice(-1)[0];
+    counter += 1;
+    countArr.push(counter);
+    setCountDogList(countArr);
+  };
 
   // 프로필 이미지 업로드 input의 onChange
   const saveImgFile = () => {
@@ -78,38 +87,46 @@ const Register = () => {
 
   // 회원가입 버튼 클릭시 백으로 전송
   const SubmitRegister = async () => {
-    const res = await axios.post(API_BASE_URL + "/member/signup");
+    const res = await axios.post(API_BASE_URL + "/member/signup", {
+      id,
+      pw,
+      nickName,
+    });
+    SubmitRegister();
   };
 
   return (
     <>
       <div className="RegisterWrap">
-        <form className="LoginBox">
+        <form className="RegisterBox">
           <h1>회원가입</h1>
           <form>
-            <div className="formBox">
-              <img
-                src={
-                  imgFile
-                    ? imgFile
-                    : process.env.PUBLIC_URL + "ProFileImg/ProfileImg.jpg"
-                }
-                alt="프로필 이미지"
-                style={{
-                  width: "150px",
-                  height: "150px",
-                  borderRadius: "50%",
-                }}
-              />
-
-              <input
-                type="file"
-                accept="image/*"
-                id="profileImg"
-                onChange={saveImgFile}
-                ref={imgRef}
-                style={{ border: "none" }}
-              />
+            <div className="ImgFormBox">
+              <div className="MyProfileImg">
+                <img
+                  src={
+                    imgFile
+                      ? imgFile
+                      : process.env.PUBLIC_URL + "ProFileImg/ProfileImg.jpg"
+                  }
+                  alt="프로필 이미지"
+                  style={{
+                    width: "150px",
+                    height: "150px",
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
+              <div className="MyProfileImgSelect">
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="profileImg"
+                  onChange={saveImgFile}
+                  ref={imgRef}
+                  style={{ border: "none" }}
+                />
+              </div>
             </div>
 
             <div className="formBox">
@@ -151,7 +168,7 @@ const Register = () => {
             </div>
             <h2>강아지 정보</h2>
             <div className="RegisterYourDog"></div>
-            <div className="formBox">
+            {/* <div className="formBox">
               <div>
                 {MyDogForm === true ? <AddMyDog /> : <RegisterYourDog />}
                 <br />
@@ -159,17 +176,26 @@ const Register = () => {
                   className="AddMyDog"
                   onClick={() => {
                     setMyDogForm(!MyDogForm);
-                    // FormCount();
                   }}
                 >
                   ➕
                 </button>
               </div>
+            </div> */}
+            <div className="formBox">
+              <div>
+                <AddMyDog countDogList={countDogList} />
+                <div className="onAddDogFormParent">
+                  <button className="onAddDogForm" onClick={onAddDogForm}>
+                    ➕
+                  </button>
+                </div>
+              </div>
             </div>
             <button
               type="submit"
               className="SubmitRegister"
-              onClick={SubmitRegister}
+              onSubmit={SubmitRegister}
             >
               회원가입
             </button>

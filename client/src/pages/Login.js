@@ -23,15 +23,15 @@ const Login = () => {
 
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    console.log("click login");
-    const getLogin = async () => {
-      const res = await axios.post(API_BASE_URL + "/member/login", {
-        id,
-        password,
-      });
-      console.log(res.data);
-    };
-    getLogin();
+    // console.log("click login");
+    // const getLogin = async () => {
+    //   const res = await axios.post(API_BASE_URL + "/member/login", {
+    //     id,
+    //     password,
+    //   });
+    //   console.log(res.data);
+    // };
+    // getLogin();
   };
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
