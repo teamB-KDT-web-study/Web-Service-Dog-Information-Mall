@@ -1,13 +1,16 @@
 import { TrainingContainer } from "../containers/mainContainer";
-import { ChatBotContainer } from "../containers/chatBotContainer";
+import {ChatBot} from "../components/ChatBot";
 import SlickSlider from "../components/SlickSlider";
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { API_BASE_URL } from "../containers/app-config";
 
-const MainPage = () => {
+const MainPage = ({ getSession }) => {
   return (
     <>
       <SlickSlider />
       <TrainingContainer />
-      <ChatBotContainer />
+      <ChatBot />
     </>
   );
 };
