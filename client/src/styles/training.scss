@@ -9,7 +9,7 @@ $breakpoint-md: 768px;
   justify-content: center;
   display: flex;
   flex-direction: row;
-  min-height: 150vh;
+  min-height: 80vh;
 
   :root {
     // Basic
@@ -40,8 +40,7 @@ $breakpoint-md: 768px;
   body {
     font-family: "Spline Sans", sans-serif;
     line-height: 1.5;
-    min-height: 100vh;
-    background-color: whi;
+    min-height: 30vh;
   }
 
   .cards {
@@ -52,7 +51,7 @@ $breakpoint-md: 768px;
     justify-content: center;
     gap: 2.5rem;
     width: 90%;
-    max-width: 100vw;
+    max-width: 80vw;
     margin: 10vh auto;
     transition: all 0.2s linear;
   }
@@ -64,7 +63,7 @@ $breakpoint-md: 768px;
     border-radius: 16px;
     box-shadow: 0 30px 30px -25px rgba(#ecd06f, 0.25);
     min-width: 300px;
-    min-height: 350px;
+    min-height: 280px;
   }
 
   .information {

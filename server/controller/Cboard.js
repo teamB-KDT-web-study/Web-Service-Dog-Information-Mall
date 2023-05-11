@@ -64,7 +64,7 @@ exports.addContent = async (req, res) => {
 
 exports.addLike = async (req, res) => {
   try {
-    const result = await models.Board.update(
+    await models.Board.update(
       {
         like_count: req.body.like_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
       },
@@ -75,6 +75,31 @@ exports.addLike = async (req, res) => {
       }
     );
     res.end();
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+exports.addLikeList = async (req, res) => {
+  try {
+    const like = await models.Board_like.findOne({
+      where: {
+        board_id: { [Op.eq]: req.params.contentId },
+        nickname: { [Op.eq]: req.body.userNickname },
+      },
+      raw: true,
+    });
+    console.log("like?", like);
+    if (like === null) {
+      console.log(req.params.contentId, req.body.userNickname);
+      await models.Board_like.create({
+        board_id: req.params.contentId,
+        nickname: req.body.userNickname,
+      });
+      res.send(true); // 추천 리스트 추가 완료
+    } else {
+      res.send(false); // 이미 추천한 경우
+    }
   } catch (err) {
     res.send(err);
   }
@@ -120,7 +145,7 @@ exports.searchContent = async (req, res) => {
     const target = req.query.option; // title or body
     let pageId = req.params.pageId;
     let offset = (pageId - 1) * 8;
-    console.log(req.query)
+    console.log(req.query);
 
     if (target == "title") {
       const forLength = await models.Board.findAll({

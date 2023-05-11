@@ -2,6 +2,7 @@ import "../styles/chatBot.scss";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import ChatBotMessages from "./ChatBotMessages";
+import Swal from "sweetalert2";
 
 export function ChatBot() {
   const [showChat, setShowChat] = useState(false);
@@ -115,7 +116,7 @@ export function ChatBot() {
   };
   const sendComplainMsg = () => {
     // 처리 x, 일단 초기화만..
-    alert("내용이 접수되었습니다.\n감사합니다.");
+    Swal.fire("내용이 접수되었습니다.\n감사합니다.");
     console.log("컴플레인 메세지 >>> ", complainMsg);
     setComplainMsg("");
     const msg = {
@@ -144,7 +145,7 @@ export function ChatBot() {
           <main className="mainBox" ref={scrollRef}>
             <div className="bot">
               <div className="chat">
-                <div>무엇을 도와드릴까요?</div>
+                <div className="infom">무엇을 도와드릴까요?</div>
                 <div className="info" onClick={showHelp}>
                   1. 고객센터 정보를 알려주세요.
                 </div>
@@ -176,7 +177,10 @@ export function ChatBot() {
         </div>
       ) : (
         <div className="ToChatBox" onClick={showChatBox}>
-          chat
+          <img
+            src={process.env.PUBLIC_URL + "/SlickImages/chat2.gif"}
+            className="chatimg"
+          />
         </div>
       )}
     </main>

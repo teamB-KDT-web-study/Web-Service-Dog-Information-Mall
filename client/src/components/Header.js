@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/header.scss";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ userId, destroySession }) => {
   return (
     <div className="Header">
       <nav className="nav">
@@ -24,9 +24,15 @@ const Header = () => {
         <Link to="/board/page/1" className="nav-link">
           커뮤니티
         </Link>
-        <Link to="/Login" className="nav-link">
-          로그인
-        </Link>
+        {userId.isLogin === false ? (
+          <Link to="/Login" className="nav-link">
+            로그인
+          </Link>
+        ) : (
+          <Link to="/" onClick={destroySession} className="nav-link">
+            로그아웃
+          </Link>
+        )}
         <Link to="/Register" className="nav-link">
           회원가입
         </Link>
