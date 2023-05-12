@@ -33,8 +33,6 @@ import Storecushion from './pages/Storecushion';
 import Storedetail from './pages/Storedetail';
 import Storelead from './pages/Storelead';
 import StoreCart from './pages/StoreCart';
-//데이터
-// import shopDataNew from "./json/shopDataNew.json";
 
 function App() {
   return (
@@ -57,13 +55,15 @@ function App() {
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/store/food" element={<Storefood />} />
+          <Route path="/store/item/:storeId" element={<Storedetail />} />
+          <Route path="/store/:category" element={<Store />} />
+
+          {/* <Route path="/store/food" element={<Storefood />} />
           <Route path="/store/snack" element={<Storesnack />} />
           <Route path="/store/t" element={<StoreT />} />
           <Route path="/store/lead" element={<Storelead />} />
-          <Route path="/store/cushion" element={<Storecushion />} />
+          <Route path="/store/cushion" element={<Storecushion />} /> */}
           <Route path="/EditMyProfile" element={<EditMyProfile />} />
-          <Route path="/store/:storeId" element={<Storedetail />} />
           <Route path="/store/cart" element={<StoreCart />} />
         </Routes>
         <Footer />

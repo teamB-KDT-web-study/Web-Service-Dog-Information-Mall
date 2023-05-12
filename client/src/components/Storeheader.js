@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import shopDataNew from "../json/shopDataNew.json";
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import shopDataNew from '../json/shopDataNew.json';
 
 const Storeheader = () => {
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState(""); //검색
+  const [searchTerm, setSearchTerm] = useState(''); //검색
   const [searchResults, setSearchResults] = useState([]); //결과창
   const [showResults, setShowResults] = useState(false); //결과창 on off
   //검색하기
@@ -21,7 +21,7 @@ const Storeheader = () => {
   };
   //엔터키로 검색하기
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleSearchButton();
     }
   };
@@ -45,25 +45,22 @@ const Storeheader = () => {
 
       <div className="sidebar">
         {/* 카테고리 부분 */}
-        <button className="sidebarbtn" onClick={() => navigate("/store")}>
+        <button className="sidebarbtn" onClick={() => navigate('/store')}>
           #전체
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/food")}>
+        <button className="sidebarbtn" onClick={() => navigate('/store/사료')}>
           #강아지 사료
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/snack")}>
+        <button className="sidebarbtn" onClick={() => navigate('/store/간식')}>
           #강아지 간식
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/t")}>
+        <button className="sidebarbtn" onClick={() => navigate('/store/옷')}>
           #강아지 옷
         </button>
-        <button
-          className="sidebarbtn"
-          onClick={() => navigate("/store/cushion")}
-        >
+        <button className="sidebarbtn" onClick={() => navigate('/store/쿠션')}>
           #강아지 쿠션
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/lead")}>
+        <button className="sidebarbtn" onClick={() => navigate('/store/목줄')}>
           #강아지 목줄
         </button>
       </div>
@@ -82,7 +79,7 @@ const Storeheader = () => {
               searchResults.map((store) => (
                 <div key={store.id}>
                   <div className="Searchitem">
-                    <Link to={"/store/" + store.title}>
+                    <Link to={'/store/' + store.title}>
                       <div>
                         <img
                           src={store.image}

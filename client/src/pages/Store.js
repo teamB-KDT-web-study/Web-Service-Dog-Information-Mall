@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import Storeheader from '../components/Storeheader';
 import '../styles/store.scss';
 import Storeitem from '../components/Storeitem';
@@ -7,46 +9,52 @@ import { API_BASE_URL } from '../containers/app-config.js';
 
 const Store = () => {
   const [lastNum, setLastNum] = useState(0);
-  const [category, setCategory] = useState('전체');
   const [items, setItems] = useState([{}]);
-
+  const [categoryLastNum, setCategoryLastNum] = useState(0);
+  const { category } = useParams();
+  console.log('category >> ', category);
   useEffect(() => {
     const getData = async () => {
-      console.log('useEffect');
-      const res = await axios.get(`${API_BASE_URL}/store/`);
-      setItems(res.data);
+      let router = `${API_BASE_URL}/store/`;
+      if (category) {
+        router += category;
+      }
+      console.log(router);
+      const res = await axios.get(router);
+      console.log('res.data >> ', res.data.data);
+      setItems(res.data.data);
+      setCategoryLastNum(res.data.lastId);
 
-      setLastNum(items[items.length - 1].id);
+      console.log('******************************');
+      console.log(items);
+      console.log(items[items.length - 1]);
+      console.log(items[items.length - 1].id);
+
+      setLastNum(res.data.data[res.data.data.length - 1].id);
     };
 
     getData();
-  }, []);
+    // console.log('lastNum >> ', lastNum);
+  }, [category]);
+
+  // useEffect(() => {
+  //   getData();
+  //   console.log('lastNum >> ', items[items.length - 1]);
+
+  //   // console.log('lastNum >> ', lastNum);
+  // }, []);
 
   const moreItems = async (lastNum, category) => {
     console.log('moreItems');
-    console.log('last Num >>> ', lastNum);
     const res = await axios.get(
-      `${API_BASE_URL}/store/moreItems?startNum=${lastNum}&category=전체`
+      `${API_BASE_URL}/store/moreItems?startNum=${lastNum}&category=${category}`
     );
-    console.log('res.data >> ', res.data);
     const newItems = [...items, ...res.data];
-    console.log('newItems >>> ', newItems);
 
     setItems(newItems);
-    setLastNum(items[items.length - 1].id);
-
-    console.log('update items >>> ', items);
+    setLastNum(newItems[newItems.length - 1].id);
   };
 
-  console.log('state >>>', items);
-  // const items = res.data;
-  // console.log(items);
-  // const [visibleItems, setVisibleItems] = useState(10); // 초기에 보여지는 아이템 개수
-
-  // const handleLoadMore = () => {
-  //   setVisibleItems((prevCount) => prevCount + 15); // 15개씩 추가로 보여줌
-  // };
-  console.log(lastNum);
   return (
     <div className="Store">
       <Storeheader />
@@ -57,14 +65,16 @@ const Store = () => {
         })}
       </div>
       <div className="more">
-        <button
-          onClick={() => {
-            moreItems(lastNum, category);
-          }}
-          className="morebtn"
-        >
-          더 보기
-        </button>
+        {lastNum === categoryLastNum || (
+          <button
+            onClick={() => {
+              moreItems(lastNum, category);
+            }}
+            className="morebtn"
+          >
+            더 보기
+          </button>
+        )}
       </div>
     </div>
   );

@@ -60,33 +60,51 @@ exports.showProduct = async (req, res) => {
       order: [['id', 'desc']],
       limit: 16,
     });
-    console.log('result >>> ', result);
     console.log('컨트롤러 실행');
+    const lastId = await model.Product.findOne({
+      attributes: ['id'],
+    });
 
-    res.send(result);
+    // console.log('result >>> ', result);
+    // console.log('lastId >>> ', lastId);
+    res.send({ data: result, lastId: lastId.dataValues.id });
   } catch (err) {
     res.send(err);
   }
 };
 
 exports.showCategory = async (req, res) => {
-  console.log('req.params >>> ', req.params);
-  const result = await model.Product.findAll({
-    attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
-    order: [['id', 'desc']],
-    where: { category: `강아지 ${req.params.category}` },
-    limit: 16,
-  });
-  console.log('result >>> ', result);
-  res.send(result);
+  try {
+    console.log('req.params >>> ', req.params);
+    const result = await model.Product.findAll({
+      attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+      order: [['id', 'desc']],
+      where: { category: `강아지 ${req.params.category}` },
+      limit: 16,
+    });
+    const lastId = await model.Product.findOne({
+      attributes: ['id'],
+      where: { category: `강아지 ${req.params.category}` },
+    });
+
+    console.log('lastId >>> ', lastId);
+    res.send({ data: result, lastId: lastId.dataValues.id });
+  } catch (err) {
+    res.send(err);
+  }
 };
 exports.getItem = async (req, res) => {
-  console.log('getItem');
-  const result = await model.Product.findOne({
-    where: { id: req.query.product_id },
-    attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
-  });
-  res.send(result);
+  try {
+    console.log('getItem');
+    const result = await model.Product.findOne({
+      where: { id: req.query.product_id },
+      attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
+    });
+
+    res.send(result);
+  } catch (err) {
+    res.send(err);
+  }
 };
 exports.moreItems = async (req, res) => {
   try {
@@ -99,7 +117,7 @@ exports.moreItems = async (req, res) => {
       attributes: ['id', 'title', 'category', 'choice', 'image', 'price'],
       limit: 16,
     };
-    if (req.query.category != '전체') {
+    if (req.query.category != 'undefined') {
       query.where.category = `강아지 ${req.query.category}`;
     }
     const result = await model.Product.findAll(query);
@@ -127,4 +145,3 @@ exports.searchProduct = async (req, res) => {
     res.send(err);
   }
 };
-// id: { [Op.eq]: req.session.loginData },

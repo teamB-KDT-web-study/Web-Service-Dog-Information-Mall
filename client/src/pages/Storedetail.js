@@ -11,15 +11,18 @@ const Storedetail = () => {
   //select에서 option값을 클릭시 표시 되는 코드
   const [selectedOption, setSelectedOption] = useState('');
   console.log('storeId >> ', storeId);
-  useEffect(async () => {
-    console.log('detail useEffect 실행');
-    const res = await axios.get(
-      `${API_BASE_URL}/store/getItem?product_id=${storeId}`
-    );
+  useEffect(() => {
+    const getItem = async () => {
+      console.log('detail useEffect 실행');
+      const res = await axios.get(
+        `${API_BASE_URL}/store/getItem?product_id=${storeId}`
+      );
 
-    setItem(res.data);
-    console.log('res >>> ', res);
-    console.log('item >> ', item);
+      setItem(res.data);
+      console.log('res >>> ', res);
+      console.log('item >> ', item);
+    };
+    getItem();
   }, []);
 
   const handleOptionChange = (event) => {
