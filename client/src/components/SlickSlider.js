@@ -46,7 +46,6 @@ const SlickSlider = () => {
       img: process.env.PUBLIC_URL + "/SlickImages/slider/요크셔테리어.jpg",
       breed: "요크셔테리어",
 
-
       color: "white",
       information: "소형견",
     },
@@ -97,7 +96,6 @@ const SlickSlider = () => {
 
       breed: "보더콜리",
 
-
       color: "white",
       information: "중형견",
     },
@@ -106,7 +104,6 @@ const SlickSlider = () => {
 
       breed: "웰시코기",
 
-
       color: "white",
       information: "중형견",
     },
@@ -114,7 +111,6 @@ const SlickSlider = () => {
       id: 10,
 
       breed: "골든리트리버",
-
 
       color: "white",
       information: "대형견",

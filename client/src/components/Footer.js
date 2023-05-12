@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="foot">
-        <span>ⓒ2023 CODINGON-PROJECT</span>
+        <span className="foottext">ⓒ2023 CODINGON-PROJECT</span>
       </div>
     </div>
   );
