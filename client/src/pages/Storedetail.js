@@ -28,7 +28,7 @@ const Storedetail = () => {
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  const [number, setNumber] = useState(1);
+  const [number, setNumber] = useState(0);
   //수량 plus
   const plus = () => {
     setNumber(number + 1);
@@ -70,7 +70,7 @@ const Storedetail = () => {
         <h5 className="detailh5">배송 방법 택배</h5>
         <h5 className="detailh5">배송비 무료 (10,000원 이상 무료배송)</h5>
         {/* 옵션부분 */}
-        <div className="detailchoice">
+        {/* <div className="detailchoice">
           옵션선택
           <select className="choice" onChange={handleOptionChange}>
             <option disabled selected>
@@ -80,26 +80,27 @@ const Storedetail = () => {
               return <option value={option}>{option}</option>;
             })}
           </select>
-        </div>
-        <br></br>
+        </div> */}
         {/* 수량 선택 부분 */}
         <div className="choiceoption">
-          {selectedOption && (
-            <p>
-              {selectedOption}
-              <div className="choicenum">
-                <button onClick={miner} className="choicenumbtn">
-                  -
-                </button>
-                <h1 className="choicenumh1">{number}</h1>
-                <button onClick={plus} className="choicenumbtn">
-                  +
-                </button>
-              </div>
-            </p>
-          )}
+          <span className="cho">수량</span>
+          <hr />
+          <p>
+            <div className="choicenum">
+              <button onClick={miner} className="choicenumbtn">
+                -
+              </button>
+              <h1 className="choicenumh1">{number}</h1>
+              <button onClick={plus} className="choicenumbtn">
+                +
+              </button>
+              <span className="selectprice">{selectedOption} 윈</span>
+            </div>
+          </p>
         </div>
-        <br></br>
+        <span className="totalprice">총상품구매({number})개</span>
+        <span className="totalprice2"> {selectedOption}원</span>
+
         {/* 구매 장바구니 찜 버튼 부분 */}
         <div>
           <button className="pay" onClick={() => navigate('/store/cart')}>

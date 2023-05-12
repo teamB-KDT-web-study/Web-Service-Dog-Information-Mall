@@ -3,74 +3,36 @@ $secondary-color: #2c3e50;
 $yellow-color: #ecd06f;
 $brown-color: #987654;
 
-.quiz-container {
+.Quiz {
+  display: flex;
+  margin: 10px 10px 200px 10px;
+  align-items: center;
   width: 100%;
-  max-width: 800px;
-  min-height: 200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #ecd16f9f;
-  border-radius: 10px;
-  border: 2px solid #987654;
+  min-height: 30vw;
 
-  .score-section {
-    text-align: center;
+  .quiz-container {
+    width: 100%;
+    width: 60vw;
+    min-height: 200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #987654;
+    background-color: #ecd16f9f;
+    border-radius: 10px;
+    border: 2px solid #987654;
 
-    h1 {
-      font-size: 2rem;
-      color: $brown-color;
-      margin-bottom: 20px;
-    }
+    .score-section {
+      text-align: center;
 
-    .answer-button {
-      background-color: $yellow-color;
-      color: rgb(193, 23, 23);
-      font-size: 1.2rem;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border: 2px solid #987654;
-
-      &:hover {
-        background-color: $brown-color;
-      }
-    }
-  }
-
-  .question-section {
-    margin-bottom: 20px;
-
-    .question-count {
-      font-size: 1.2rem;
-      color: $brown-color;
-      margin-bottom: 10px;
-    }
-
-    .question-text {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-  }
-
-  .answer-section {
-    display: flex;
-    flex-wrap: wrap;
-
-    ul {
-      flex-basis: 100%;
-      margin-bottom: 10px;
-
-      @media (min-width: 600px) {
-        flex-basis: 50%;
-        padding-right: 10px;
+      h1 {
+        font-size: 2rem;
+        color: $brown-color;
+        margin-bottom: 20px;
       }
 
       .answer-button {
         background-color: $yellow-color;
-        color: #987654;
+        color: rgb(193, 23, 23);
         font-size: 1.2rem;
         padding: 10px 20px;
         border: none;
@@ -81,15 +43,62 @@ $brown-color: #987654;
 
         &:hover {
           background-color: $brown-color;
-          color: white;
+        }
+      }
+    }
+
+    .question-section {
+      margin-bottom: 20px;
+
+      .question-count {
+        font-size: 1.2rem;
+        color: $brown-color;
+        margin-bottom: 10px;
+      }
+
+      .question-text {
+        font-size: 2vw;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+    }
+
+    .answer-section {
+      display: flex;
+      flex-wrap: wrap;
+
+      ul {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+
+        @media (min-width: 600px) {
+          flex-basis: 50%;
+          padding-right: 10px;
         }
 
-        &.correct {
-          background-color: green;
-        }
+        .answer-button {
+          background-color: $yellow-color;
+          color: #987654;
+          font-size: 1.2rem;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          border: 2px solid #987654;
 
-        &.incorrect {
-          background-color: red;
+          &:hover {
+            background-color: $brown-color;
+            color: white;
+          }
+
+          &.correct {
+            background-color: green;
+          }
+
+          &.incorrect {
+            background-color: red;
+          }
         }
       }
     }

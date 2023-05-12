@@ -1,13 +1,21 @@
 import { TrainingContainer } from "../containers/mainContainer";
-import { ChatBotContainer } from "../containers/chatBotContainer";
+import { ChatBot } from "../components/ChatBot";
 import SlickSlider from "../components/SlickSlider";
+import Maindog from "./Maindog";
+import Mainmydog from "./Mainmydog";
 
-const MainPage = () => {
+// import axios from "axios";
+// import { useEffect } from "react";
+// import { API_BASE_URL } from "../containers/app-config";
+
+const MainPage = ({ getSession }) => {
   return (
     <>
-      <SlickSlider />
+      {/* <Maindog /> */}
+      {/* <SlickSlider /> */}
       <TrainingContainer />
-      <ChatBotContainer />
+      <Mainmydog />
+      <ChatBot />
     </>
   );
 };

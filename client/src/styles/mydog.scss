@@ -16,24 +16,24 @@
     justify-content: center;
     background-color: #ffffff;
     flex-direction: column;
-    width: 500px;
-    height: 600px;
+    width: 40vw;
+    height: 45vw;
     border-radius: 10px;
     border: 2px solid #987654;
   }
   .dogprofile {
     border: 2px solid #987654;
-    width: 200px;
-    height: 200px;
+    width: 15vw;
+    height: 15vw;
     border-radius: 50%;
-    background-color: #ecd06f;
+    background-color: #ffffff;
     margin: 50px;
   }
   .dogbtn {
     color: #987654;
-    width: 400px;
-    height: 50px;
-    margin: 30px;
+    width: 30vw;
+    height: 3vw;
+    margin: 3vw;
     border-radius: 30px;
     background-color: #ecd06f;
     border: 2px solid #987654;
@@ -44,8 +44,8 @@
     }
   }
   .mydogimg {
-    width: 195px;
-    height: 195px;
+    width: 14vw;
+    height: 14vw;
     border-radius: 50%;
   }
 }

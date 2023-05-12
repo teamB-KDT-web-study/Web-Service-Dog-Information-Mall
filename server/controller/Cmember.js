@@ -1,16 +1,14 @@
-const model = require('../models'); /// 수정해야함!!!!
-const { Op } = require('sequelize');
+const model = require("../models");
+const { Op } = require("sequelize");
 
 exports.checkLogin = async (req, res) => {
   try {
-    console.log(req.sessionID);
-    if (Object.keys(req.session).includes('loginData')) {
+    if (Object.keys(req.session).includes("loginData")) {
       const userInfo = await model.User.findOne({
         where: {
           id: { [Op.eq]: req.session.loginData },
         },
       });
-
       res.send({
         isLogin: true,
         nickname: userInfo.nickname,
@@ -33,12 +31,10 @@ exports.login = async (req, res) => {
         password: { [Op.eq]: req.body.pw },
       },
     });
-
     if (!userInfo) {
-      res.status(400).send({ loginId: null, isLogin: false });
+      res.send({ loginId: null, isLogin: false });
     } else {
       req.session.loginData = userInfo.id;
-
       res.send({
         success: true,
         loginId: req.session.loginData,
@@ -62,7 +58,6 @@ exports.logout = async (req, res) => {
       if (err) {
         throw err;
       }
-      console.log(req.sessionID);
       res.send({ success: true });
     });
   } catch (err) {
@@ -96,7 +91,7 @@ exports.signup = async (req, res) => {
       password: req.body.password,
       nickname: req.body.nickname,
     };
-    if (Object.keys(req).includes('file')) {
+    if (Object.keys(req).includes("file")) {
       input_data.profile_img = req.file.filename;
     }
 
@@ -146,7 +141,7 @@ exports.editProfile = async (req, res) => {
       nickname: req.body.nickname,
     };
 
-    if (Object.keys(req).includes('file')) {
+    if (Object.keys(req).includes("file")) {
       update_data.profile_img = req.file.filename;
     }
     let result = {};
@@ -171,7 +166,7 @@ exports.editProfile = async (req, res) => {
       let name_dog;
       for (let j of dog_inf[i]) {
         let attr = j.slice(0, -1);
-        if (attr == 'name') name_dog = j;
+        if (attr == "name") name_dog = j;
         else update_dog[j.slice(0, -1)] = req.body[j];
       }
       result[i] = await model.Dog.update(update_dog, {
@@ -200,6 +195,32 @@ exports.signout = async (req, res) => {
   try {
     const result = await model.User.destroy({ where: { id: req.body.id } });
     res.send({ isOk: result });
+  } catch (err) {
+    res.send(err);
+  }
+};
+exports.gradeUp = async (req, res) => {
+  try {
+    const result = await model.User.update(
+      {
+        grade: req.body.toGrade,
+      },
+      {
+        where: {
+          nickname: { [Op.eq]: req.body.nickname },
+          grade: { [Op.eq]: req.body.nowGrade },
+        },
+      }
+    );
+    if (result[0] === 0) {
+      if (req.body.nickname === undefined) {
+        res.send("not login");
+      } else {
+        res.send("aleady solved");
+      }
+    } else {
+      res.send("grade up");
+    }
   } catch (err) {
     res.send(err);
   }

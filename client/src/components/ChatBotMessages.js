@@ -1,3 +1,7 @@
+import "../styles/chatbotmessages.scss";
+import { Link } from "react-router-dom";
+
+
 function ChatBotMessages({
   showChat,
   message,
@@ -9,6 +13,7 @@ function ChatBotMessages({
   sendComplainMsg,
   onChangeComplainMsg,
 }) {
+
   return (
     <main className="ChatBotMessages">
       {message === undefined || message.user === undefined ? (
@@ -20,10 +25,19 @@ function ChatBotMessages({
               if (el === "메세지") {
                 return (
                   <div>
-                    <input type="text" value={complainMsg} onChange={onChangeComplainMsg} />
-                    <button onClick={sendComplainMsg}>보내기</button>
+                    <textarea
+                      type="text"
+                      value={complainMsg}
+                      onChange={onChangeComplainMsg}
+                      className="sendtext"
+                    />
+                    <button onClick={sendComplainMsg} className="sendbtn">
+                      보내기
+                    </button>
                   </div>
                 );
+              } else if (el === "지도") {
+                return <Link to={'/Map/' + message.user.where}>지도로 이동!</Link>;
               } else {
                 return <div className={message.user.mode}>{el}</div>;
               }

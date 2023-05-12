@@ -9,7 +9,7 @@ const Footer = () => {
           <div>백엔드</div>
           <div>#</div>
           <div>
-            <a href="#" target="_blank">
+            <a href="https://github.com/hrlee12" target="_blank">
               git
             </a>
           </div>
@@ -19,7 +19,7 @@ const Footer = () => {
           <div>프론트엔드</div>
           <div>#</div>
           <div>
-            <a href="#" target="_blank">
+            <a href="https://github.com/seheeeJeong" target="_blank">
               git
             </a>
           </div>
@@ -29,7 +29,7 @@ const Footer = () => {
           <div>프론트엔드</div>
           <div>#</div>
           <div>
-            <a href="#" target="_blank">
+            <a href="https://github.com/hanjinsu302" target="_blank">
               git
             </a>
           </div>
@@ -39,14 +39,14 @@ const Footer = () => {
           <div>백엔드</div>
           <div>#</div>
           <div>
-            <a href="#" target="_blank">
+            <a href="https://github.com/junbum766" target="_blank">
               git
             </a>
           </div>
         </div>
       </div>
       <div className="foot">
-        <span>ⓒ2023 CODINGON-PROJECT</span>
+        <span className="foottext">ⓒ2023 CODINGON-PROJECT</span>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ export function BoardDetail({
   readOnly,
   onDeleteContent,
   onAddLike,
+  userId,
 }) {
   return (
     <main className="BoardDetail">
@@ -41,17 +42,22 @@ export function BoardDetail({
             disabled={readOnly}
           />
         </div>
-
-        <div className="editBtn">
-          {!readOnly && (
-            <button onClick={onCompleteEditContent}>수정완료</button>
-          )}
-          <button onClick={onStartEditContent}>글수정</button>
-          {!readOnly && <button onClick={onDeleteContent}>글삭제</button>}
-        </div>
-        <div className="editMsg">
-          {!readOnly && <div>제목과 내용을 자유롭게 수정해보세요.</div>}
-        </div>
+        {content.nickname === userId.nickname ? (
+          <div>
+            <div className="editBtn">
+              {!readOnly && (
+                <button onClick={onCompleteEditContent}>수정완료</button>
+              )}
+              <button onClick={onStartEditContent}>글수정</button>
+              {!readOnly && <button onClick={onDeleteContent}>글삭제</button>}
+            </div>
+            <div className="editMsg">
+              {!readOnly && <div>제목과 내용을 자유롭게 수정해보세요.</div>}
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </main>
   );

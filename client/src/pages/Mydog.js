@@ -10,7 +10,7 @@ const Mydog = () => {
         <h2>나에게 맞는 강아지는 무엇일까?</h2>
         <div className="dogprofile">
           <img
-            src={process.env.PUBLIC_URL + `/SlickImages/mydog.jpeg`}
+            src={process.env.PUBLIC_URL + `/SlickImages/mydog.png`}
             className="mydogimg"
           />
         </div>

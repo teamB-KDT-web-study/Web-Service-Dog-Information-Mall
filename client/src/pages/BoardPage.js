@@ -16,7 +16,8 @@ export function BoardPage({
   onEnter,
   onBack,
   pageId,
-  searchMovePage
+  searchMovePage,
+  createContent
 }) {
   return (
     <main className="BoardPage">
@@ -25,6 +26,7 @@ export function BoardPage({
         <select
           name="search"
           id="search"
+          className="searchselect"
           value={selectOption}
           onChange={onSelect}
         >
@@ -86,7 +88,10 @@ export function BoardPage({
             pageNum.map((el) => {
               if (el == pageId) {
                 return (
-                  <div className="pageBtn current" onClick={() => searchMovePage(el)}>
+                  <div
+                    className="pageBtn current"
+                    onClick={() => searchMovePage(el)}
+                  >
                     [{el}]
                   </div>
                 );
@@ -99,7 +104,7 @@ export function BoardPage({
               }
             })}
         </div>
-        <button className="createBtn" onClick={() => navigate("/board/create")}>
+        <button className="createBtn" onClick={createContent}>
           글쓰기
         </button>
       </div>

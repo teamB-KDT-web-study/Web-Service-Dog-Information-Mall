@@ -4,13 +4,16 @@
   width: 100%;
   position: sticky;
   bottom: 0;
+  color: #987654;
   .ToChatBox {
-    background-color: skyblue;
+    background-color: #ecd06f;
+    color: white;
+    // border: 2px solid #987654;
     position: relative;
     right: 20px;
     bottom: 20px;
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -23,16 +26,32 @@
     bottom: 20px;
     width: 400px;
     height: 600px;
-    border: 2px solid black;
+    border: 2px solid #987654;
+    border-radius: 10px;
+    .infom {
+      color: #7d6145;
+    }
     .headerBox {
+      border: 3px solid;
+      border-top-color: #ecd06f;
+      border-bottom-color: #987654;
+      border-left-color: #ecd06f;
+      border-right-color: #ecd06f;
+      border-radius: 10px 10px 0px 0px;
       width: 100%;
       height: 6%;
-      background-color: red;
+      background-color: #ecd06f;
       .closeBox {
         font-size: 20px;
         cursor: pointer;
         margin-inline: 10px;
+        text-align: center;
         width: max-content;
+        color: #987654;
+        &:hover {
+          color: white;
+          transition-duration: 1s;
+        }
       }
     }
     .mainBox {
@@ -52,16 +71,19 @@
       }
       .chat {
         width: max-content;
-        background-color: skyblue;
+        background-color: #ecd06f;
         margin: 5px 10px;
         padding: 5px;
         border-radius: 10px;
         max-width: 70%;
         .info {
           padding-inline: 10px;
-          color: blue;
+          color: rgb(255, 255, 255);
           cursor: pointer;
           margin-block: 5px;
+          &:hover {
+            color: #987654;
+          }
         }
         .basic {
           padding-inline: 10px;
@@ -70,9 +92,20 @@
       }
     }
     .inputBox {
+      border: 3px solid;
+      border-top-color: #987654;
+      border-bottom-color: #ecd06f;
+      border-left-color: #ecd06f;
+      border-right-color: #ecd06f;
+      border-radius: 0px 0px 10px 10px;
+      border-top-color: #987654;
       width: 100%;
       height: 10%;
-      background-color: red;
+      background-color: #ecd06f;
     }
+  }
+  .chatimg {
+    width: 50%;
+    height: 50%;
   }
 }

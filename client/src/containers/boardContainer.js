@@ -20,7 +20,7 @@ import {
 } from '../store/boardReducer';
 
 ////////////////////////////////////////////////////////////////////////////////
-export const BoardPageContainer = () => {
+export const BoardPageContainer = ({ userId }) => {
   const params = useParams();
   const pageId = params.pageId;
   const navigate = useNavigate();
@@ -104,6 +104,14 @@ export const BoardPageContainer = () => {
     dispatch(getSearchMode(false));
     dispatch(getSearchData([]));
   };
+  const createContent = () => {
+    if (userId.isLogin == false) {
+      alert("글을 쓸 권한이 없습니다.");
+      return;
+    } else {
+      navigate("/board/create");
+    }
+  };
 
   return (
     <BoardPage
@@ -121,12 +129,13 @@ export const BoardPageContainer = () => {
       onBack={onBack}
       pageId={pageId}
       searchMovePage={searchMovePage}
+      createContent={createContent}
     />
   );
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const BoardDetailContainer = () => {
+export const BoardDetailContainer = ({ userId }) => {
   const navigate = useNavigate();
   const contentDetail = useSelector((state) => state.board.data);
   const dispatch = useDispatch();
@@ -198,10 +207,28 @@ export const BoardDetailContainer = () => {
     }
   };
   const onAddLike = async () => {
-    dispatch(addLike()); // 화면 표시
-    await axios.patch(API_BASE_URL + '/board/addLike/' + contentId, {
-      like_count: contentDetail.like_count,
-    }); // 백엔드 반영
+    if (!userId.isLogin) {
+      alert("로그인이 필요합니다!");
+      return;
+    }
+    const check = await axios.post(
+      API_BASE_URL + "/board/addLikeList/" + contentId,
+      {
+        userNickname: userId.nickname,
+        like_count: contentDetail.like_count,
+      }
+    );
+    if (check.data === true) {
+      dispatch(addLike()); // 화면 표시
+      const res = await axios.patch(
+        API_BASE_URL + "/board/addLike/" + contentId,
+        {
+          like_count: contentDetail.like_count,
+        }
+      ); // 백엔드 반영
+    } else {
+      alert("이미 추천하셨습니다.");
+    }
   };
 
   return (
@@ -214,12 +241,13 @@ export const BoardDetailContainer = () => {
       readOnly={readOnly}
       onDeleteContent={onDeleteContent}
       onAddLike={onAddLike}
+      userId={userId}
     />
   );
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-export const BoardCreateContainer = () => {
+export const BoardCreateContainer = ({ userId }) => {
   // TODO : 로그인 유저 정보 불러와서 prop 줘야함!!!
   const navigate = useNavigate();
   const contentDetail = useSelector((state) => state.board.newData);
@@ -254,13 +282,17 @@ export const BoardCreateContainer = () => {
   const contentSave = async () => {
     const nowTime = timestamp();
     const newContent = {
-      nickname: '바나나', // 수정해야함!!!
+      nickname: userId.nickname,
       title: contentDetail.title,
       body: contentDetail.body,
       date: nowTime,
     };
+
     await axios.post(API_BASE_URL + '/board/addContent', newContent);
     alert('작성하신 글이 제출되었습니다!');
+    console.log(newContent);
+    await axios.post(API_BASE_URL + "/board/addContent", newContent);
+    alert("작성하신 글이 제출되었습니다!");
     navigate(-1);
   };
   const onBack = () => {
