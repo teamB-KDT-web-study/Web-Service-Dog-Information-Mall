@@ -10,7 +10,7 @@ const Footer = () => {
           <div>#</div>
           <div>
             <a href="https://github.com/hrlee12" target="_blank">
-              git
+              #git
             </a>
           </div>
         </div>
@@ -20,7 +20,7 @@ const Footer = () => {
           <div>#</div>
           <div>
             <a href="https://github.com/seheeeJeong" target="_blank">
-              git
+              #git
             </a>
           </div>
         </div>
@@ -30,7 +30,7 @@ const Footer = () => {
           <div>#</div>
           <div>
             <a href="https://github.com/hanjinsu302" target="_blank">
-              git
+              #git
             </a>
           </div>
         </div>
@@ -40,7 +40,7 @@ const Footer = () => {
           <div>#</div>
           <div>
             <a href="https://github.com/junbum766" target="_blank">
-              git
+              #git
             </a>
           </div>
         </div>

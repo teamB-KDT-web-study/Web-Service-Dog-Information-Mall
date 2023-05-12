@@ -9,25 +9,22 @@ const Header = ({ userId, destroySession }) => {
   return (
     <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="/">로고</Navbar.Brand>
+        <Navbar.Brand href="/">DOGDAZE</Navbar.Brand>
         {userId.isLogin === false ? (
           <div></div>
         ) : (
-          <Nav.Link href='/MyPage' className="profileBox">
-              <div className="imgBox">
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    `/profile_img/${userId.profile_img}`
-                  }
-                  alt="profile image"
-                />
-              </div>
-              <div className="msgBox">
-                <div className="welcomeMsg">
-                  {userId.nickname}님 환영합니다!
-                </div>
-              </div>
+          <Nav.Link href="/MyPage" className="profileBox">
+            <div className="imgBox">
+              <img
+                src={
+                  process.env.PUBLIC_URL + `/profile_img/${userId.profile_img}`
+                }
+                alt="profile image"
+              />
+            </div>
+            <div className="msgBox">
+              <div className="welcomeMsg">{userId.nickname}님 환영합니다!</div>
+            </div>
           </Nav.Link>
         )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

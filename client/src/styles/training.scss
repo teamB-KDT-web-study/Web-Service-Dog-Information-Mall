@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
 @import "~include-media/dist/include-media";
 
-$breakpoint-md: 768px;
+$breakpoint-md: 953px;
 .Trainingheader {
   font-size: 2vw;
   padding: 1vw 0px 0px 3vw;
@@ -47,7 +47,9 @@ body {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(#ecd06f, 0.25);
   min-width: 300px;
+  max-width: 300px;
   min-height: 380px;
+  max-height: 380px;
 }
 
 .information {
