@@ -1,46 +1,68 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/header.scss";
-import { Link } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const Header = ({ userId, destroySession }) => {
   return (
-    <div className="Header">
-      <nav className="nav">
-        <a className="nav-link active" aria-current="page" href="/">
-          로고
-        </a>
-        <Link to="/Map" className="nav-link">
-          우리동네 동물병원
-        </Link>
-        <Link to="/mydog" className="nav-link">
-          강아지추천
-        </Link>
-        <Link to="/quizhome" className="nav-link">
-          Quiz
-        </Link>
-        <Link to="/store" className="nav-link">
-          애견샵
-        </Link>
-        <Link to="/board/page/1" className="nav-link">
-          커뮤니티
-        </Link>
+    <Navbar expand="lg">
+      <Container>
+        <Navbar.Brand href="/">로고</Navbar.Brand>
         {userId.isLogin === false ? (
-          <Link to="/Login" className="nav-link">
-            로그인
-          </Link>
+          <div></div>
         ) : (
-          <Link to="/" onClick={destroySession} className="nav-link">
-            로그아웃
-          </Link>
+          <Nav.Link href='/MyPage' className="profileBox">
+              <div className="imgBox">
+                <img
+                  src={
+                    process.env.PUBLIC_URL +
+                    `/profile_img/${userId.profile_img}`
+                  }
+                  alt="profile image"
+                />
+              </div>
+              <div className="msgBox">
+                <div className="welcomeMsg">
+                  {userId.nickname}님 환영합니다!
+                </div>
+              </div>
+          </Nav.Link>
         )}
-        <Link to="/Register" className="nav-link">
-          회원가입
-        </Link>
-        <Link to="/MyPage" className="nav-link">
-          MyPage
-        </Link>
-      </nav>
-    </div>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/Map/동물병원">우리동네 동물병원</Nav.Link>
+            <Nav.Link href="/mydog">강아지추천</Nav.Link>
+            <Nav.Link href="/quizhome">Quiz</Nav.Link>
+            <Nav.Link href="/store">애견샵</Nav.Link>
+            <Nav.Link href="/board/page/1">커뮤니티</Nav.Link>
+            {userId.isLogin === false ? (
+              <Nav.Link href="/Login" className="nav-link">
+                로그인
+              </Nav.Link>
+            ) : (
+              <Nav.Link onClick={destroySession}>로그아웃</Nav.Link>
+            )}
+            <Nav.Link href="/Register">회원가입</Nav.Link>
+            <Nav.Link href="/MyPage">MyPage</Nav.Link>
+
+            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
