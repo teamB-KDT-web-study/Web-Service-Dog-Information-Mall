@@ -59,10 +59,10 @@ body {
   opacity: 0.9;
 }
 .cards:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.card {
+.card1 {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(#4133b7, 0.25);
   max-width: 300px;
@@ -108,7 +108,7 @@ body {
     }
   }
 
-  .button {
+  .button1 {
     font: inherit;
     line-height: 1;
     background-color: #ecd06f;

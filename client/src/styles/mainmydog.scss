@@ -1,0 +1,115 @@
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+.Mainmydog {
+  position: relative;
+  display: flex;
+  min-height: 40vh;
+  flex-direction: column;
+
+  .Trainingheader {
+    font-size: 2vw;
+    padding: 1vw 0px 0px 3vw;
+    margin: 30px 0px 0px 0px;
+  }
+  .Trainingheader2 {
+    font-size: 2vw;
+    padding: 00px 0px 0px 3vw;
+  }
+}
+.mainmydogbox {
+  margin-top: 30px;
+  height: 30vw;
+  display: flex;
+  flex-wrap: wrap;
+  .mainmydogimgbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 100%;
+
+    .mainmydogimg {
+      width: 90%;
+    }
+  }
+
+  .mainmydoginfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .mainmydoginfobtn {
+    width: 40vw;
+    height: 5vw;
+    font-size: 2vw;
+    border-radius: 10px;
+    background-color: #ecd06f;
+    border: 2px solid #987654;
+    color: #987654;
+    &:hover,
+    &:focus {
+      background-color: #987654;
+      color: var(--c-white);
+    }
+  }
+  .mainmydoginfotext1 {
+    font-size: 3vw;
+    color: #987654;
+    position: relative;
+    overflow: hidden;
+    animation: fadein 5s ease-in-out;
+  }
+
+  .mainmydoginfotext2 {
+    font-size: 2vw;
+    color: #987654;
+    position: relative;
+    overflow: hidden;
+    animation: fadein1 7s ease-in-out;
+  }
+
+  .mainmydoginfotext3 {
+    font-size: 4vw;
+    color: #987654;
+    position: relative;
+    overflow: hidden;
+    animation: fadein2 9s ease-in-out;
+  }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fadein1 {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fadein2 {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @include media("<#{$breakpoint-md}") {
+    .mainmydogbox {
+      flex-wrap: nowrap;
+    }
+  }
+}

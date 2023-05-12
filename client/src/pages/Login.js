@@ -20,9 +20,6 @@ const Login = ({ getSession }) => {
 
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
-
-   
-
     const getLogin = async () => {
       const res = await axios.post(API_BASE_URL + "/member/login", {
         id: id,
@@ -37,8 +34,6 @@ const Login = ({ getSession }) => {
         return;
       }
     };
-
-
 
     if (id === "") {
       alert("아이디를 입력해주세요");

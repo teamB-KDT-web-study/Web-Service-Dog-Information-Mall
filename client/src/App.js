@@ -90,6 +90,7 @@ function App() {
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
           <Route path="/store" element={<Store Stores={shopDataNew} />} />
+
           <Route
             path="/store/food"
             element={<Storefood Stores={shopDataNew} />}
