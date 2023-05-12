@@ -4,61 +4,14 @@
   background-color: hsl(44deg 35% 94% / 100%);
   display: flex;
   flex-direction: column;
+
 }
 
-.map_wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
-  #map {
-    width: 80%;
-    height: 80%;
-    position: relative;
-    top: 20px;
-    overflow: hidden;
-    z-index: 0;
-    border-radius: 15px;
-  }
-  #menu_wrap {
-  }
-}
-.unseen {
-  position: relative;
-  z-index: 1;
-  left: 10px;
-  font-size: 20px;
-  font-weight: 700;
-  color: #987654;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  &:hover {
-    color: #ecd06f;
-  }
-}
-.show {
-  position: absolute;
-  left: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ecd06f;
-  width: 100px;
-  height: 50px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 10px;
-  bottom: 150px;
-  &:hover {
-    color: white;
-  }
-}
 
 .map_wrap,
 .map_wrap * {
-  margin: 0;
+  margin-top: 0;
   padding: 0;
   left: 0;
   font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
@@ -78,9 +31,8 @@
 #menu_wrap {
   position: absolute;
   overflow-x: hidden;
-  left: 20px;
   width: 250px;
-  height: 70%;
+  height: 90%;
   margin: 10px 560px 30px 10px;
   padding: 5px;
   overflow-y: auto;
@@ -88,8 +40,7 @@
   z-index: 1;
   font-size: 12px;
   border-radius: 10px;
-  bottom: 100px;
-
+  top: 70px;
 }
 .bg_white {
   background: #fff;
@@ -221,4 +172,57 @@
   z-index: 1;
   width: 100%;
   text-align: center;
+}
+.map_wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  #map {
+    width: 70%;
+    height: 90%;
+    position: relative;
+    top: 20px;
+    overflow: hidden;
+    z-index: 0;
+    border-radius: 20px;
+  }
+  #menu_wrap {
+  }
+}
+.unseen {
+  position: relative;
+  z-index: 1;
+  left: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #987654;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    color: #ecd06f;
+  }
+}
+.showBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.show {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ecd06f;
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 10px;
+  top: 30px;
+  &:hover {
+    color: white;
+  }
 }

@@ -9,7 +9,7 @@ const Header = ({ userId, destroySession }) => {
         <a className="nav-link active" aria-current="page" href="/">
           로고
         </a>
-        <Link to="/Map" className="nav-link">
+        <Link to="/Map/동물병원" className="nav-link">
           우리동네 동물병원
         </Link>
         <Link to="/mydog" className="nav-link">

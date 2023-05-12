@@ -19,6 +19,7 @@ import {
 } from "./containers/boardContainer";
 import { TrainingContainer } from "./containers/mainContainer";
 import Map from "./pages/Map";
+import MapComponent from "./components/MapComponent";
 import Traininginfo from "./pages/Traininginfo";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
@@ -83,6 +84,7 @@ function App() {
             element={<BoardCreateContainer userId={userId} />}
           />
           <Route path="/Map" element={<Map />} />
+          <Route path="/Map/:query" element={<MapComponent />} />
           <Route path="/training/traininginfo" element={<Traininginfo />} />
           <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
