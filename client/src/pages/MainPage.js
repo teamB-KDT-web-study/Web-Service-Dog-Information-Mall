@@ -12,7 +12,7 @@ const MainPage = ({ getSession }) => {
   return (
     <>
       {/* <Maindog /> */}
-      {/* <SlickSlider /> */}
+      <SlickSlider />
       <TrainingContainer />
       <Mainmydog />
       <ChatBot />

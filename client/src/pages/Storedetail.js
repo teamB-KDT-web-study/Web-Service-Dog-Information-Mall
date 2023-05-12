@@ -110,6 +110,35 @@ const Storedetail = () => {
           <button className="pay">♡</button>
         </div>
       </div>
+
+      <div className="otherchoiceoption">
+        <span className="othercho">수량</span>
+        <hr />
+        <div className="otherdetailtext"> {targetStore.title}</div>
+        <p>
+          <div className="choicenum">
+            <button onClick={miner} className="otherchoicenumbtn">
+              -
+            </button>
+            <h1 className="otherchoicenumh1">{number}</h1>
+            <button onClick={plus} className="otherchoicenumbtn">
+              +
+            </button>
+            <span className="otherselectprice">{selectedOption} 윈</span>
+          </div>
+        </p>
+        <div>
+          <span className="othertotalprice">총상품구매({number})개</span>
+          <span className="othertotalprice2"> {selectedOption}원</span>
+        </div>
+        <div className="otherchoiceoptionbtn">
+          <button className="otherpay" onClick={() => navigate("/store/cart")}>
+            장바구니
+          </button>
+          <button className="otherpay">결제</button>
+          <button className="otherpay">♡</button>
+        </div>
+      </div>
     </div>
   );
 };

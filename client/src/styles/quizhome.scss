@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
 @import "~include-media/dist/include-media";
 
-$breakpoint-md: 768px;
+$breakpoint-md: 953px;
 .Quizhome {
   position: relative;
   align-items: center;
@@ -92,7 +92,7 @@ body {
     }
   }
 
-  .title {
+  .title1 {
     font-size: 1.5rem;
     color: var(--c-void);
     line-height: 1.25;

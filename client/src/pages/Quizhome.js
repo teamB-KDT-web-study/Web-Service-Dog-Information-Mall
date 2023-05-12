@@ -11,8 +11,8 @@ const Quizhome = () => {
         <article className="information [ card1 ]">
           <span className="tag">STEP.1</span>
           <h2 className="title1">
-            강아지가 반려인 또는 다른 반려동물과 함께 생활하기 위해 꼭 필요한
-            교육입니다.
+            강아지와 반려인 또는 다른 반려동물과 함께 생활을 마스터 하기위한
+            초급 퀴즈입니다.
           </h2>
 
           <button
@@ -40,8 +40,8 @@ const Quizhome = () => {
         <article className="information [ card1 ]">
           <span className="tag">STEP.2</span>
           <h2 className="title1">
-            강아지 훈련 종류 중 고급 훈련에 속하는 개인기 훈련을 위해 필요한
-            교육입니다.
+            강아지와 반려인 또는 다른 반려동물과 함께 생활을 마스터 하기위한
+            중급 퀴즈입니다.
           </h2>
 
           <button className="button1">
@@ -66,8 +66,8 @@ const Quizhome = () => {
         <article className="information [ card1 ]">
           <span className="tag">STEP.3</span>
           <h2 className="title1">
-            강아지 훈련 종류 중 고급 훈련에 속하는 개인기 훈련을 위해 필요한
-            교육입니다.
+            강아지와 반려인 또는 다른 반려동물과 함께 생활을 마스터 하기위한
+            상급 퀴즈입니다.
           </h2>
 
           <button className="button1">
@@ -92,8 +92,8 @@ const Quizhome = () => {
         <article className="information [ card1 ]">
           <span className="tag">STEP.4</span>
           <h2 className="title1">
-            강아지 훈련 종류 중 고급 훈련에 속하는 개인기 훈련을 위해 필요한
-            교육입니다.
+            강아지와 반려인 또는 다른 반려동물과 함께 생활을 마스터 하기위한
+            마지막 퀴즈입니다.
           </h2>
 
           <button className="button1">
