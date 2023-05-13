@@ -187,8 +187,8 @@ const Mydoginfo = () => {
         <div className="dog">
           {currentQuestion < questions.length ? (
             <div key={questions[currentQuestion].id} className="mdi_db">
-              <h2>{questions[currentQuestion].text}</h2>
-              <div>
+              <h2 className="mydoginfoh2">{questions[currentQuestion].text}</h2>
+              <div className="mydoginfobtn">
                 {options[questions[currentQuestion].id].map((option) => (
                   //강아지 추천을 받기 위해 정보를 선택하는 버튼 부분
                   <button

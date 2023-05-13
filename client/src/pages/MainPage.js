@@ -13,13 +13,14 @@ import Mainslide from "./Mainslide";
 const MainPage = ({ getSession }) => {
   return (
     <>
-      <Mainslide />
-      {/* <Maindog /> */}
-      {/* <SlickSlider /> */}
+      {/* <Mainslide /> */}
+      <Maindog />
+
       <Mainmydog />
       <Mainmap />
 
       <TrainingContainer />
+      <SlickSlider />
       <ChatBot />
     </>
   );

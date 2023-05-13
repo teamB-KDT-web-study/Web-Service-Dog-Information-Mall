@@ -12,8 +12,8 @@ const SlickSlider = () => {
     className: "center",
     dots: true, // 지정 콘텐츠로 바로 이동할 수 있는 버튼(점)
     infinite: true, // 콘텐츠 끝까지 갔을 때 다음 콘텐츠를 처음 콘텐츠로 가져와 반복
-    speed: 500, // 0.5초
-    slidesToShow: 3, // 한 화면에 보이는 콘텐츠 개수
+    speed: 5000, // 0.5초
+    slidesToShow: 5, // 한 화면에 보이는 콘텐츠 개수
     slidesToScroll: 1, // 한번에 넘어가는 콘텐츠 수
     // autoplay: true,
     swipeToSlide: true, // 마우스로 끌기 가능
@@ -78,16 +78,16 @@ const SlickSlider = () => {
       color: "white",
       information: "소형견",
     },
+    // {
+    //   id: 7,
+    //   img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
+    //   breed: "스피츠",
+    //   mind: "예민해요",
+    //   color: "white",
+    //   information: "중형견",
+    // },
     {
       id: 7,
-      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
-      breed: "스피츠",
-      mind: "예민해요",
-      color: "white",
-      information: "중형견",
-    },
-    {
-      id: 8,
       img: process.env.PUBLIC_URL + "/SlickImages/보더콜리.jpeg",
       breed: "보더콜리",
 
@@ -99,7 +99,7 @@ const SlickSlider = () => {
       information: "중형견",
     },
     {
-      id: 9,
+      id: 8,
       img: process.env.PUBLIC_URL + "/SlickImages/웰시코기.jpeg",
       breed: "웰시코기",
 
@@ -110,7 +110,7 @@ const SlickSlider = () => {
       information: "중형견",
     },
     {
-      id: 10,
+      id: 9,
       img: process.env.PUBLIC_URL + "/SlickImages/골든리트리버.jpeg",
       breed: "골든리트리버",
 
@@ -122,7 +122,7 @@ const SlickSlider = () => {
       information: "대형견",
     },
     {
-      id: 11,
+      id: 10,
       img: process.env.PUBLIC_URL + "/SlickImages/사모예드.jpeg",
       breed: "사모예드",
       mind: "친화력이 좋아요",
@@ -130,8 +130,8 @@ const SlickSlider = () => {
       information: "대형견",
     },
     {
-      id: 12,
-      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
+      id: 11,
+      img: process.env.PUBLIC_URL + "/SlickImages/도베르만.jpeg",
       breed: "도베르만",
       mind: "활동적이에요",
       color: "black",
@@ -151,7 +151,7 @@ const SlickSlider = () => {
       className="App"
       style={{
         backgroundColor: "#ffffff",
-        height: "100vh",
+        height: "max-content",
       }}
     >
       <div>
@@ -159,8 +159,8 @@ const SlickSlider = () => {
           <div>
             <img
               style={{
-                width: "30vw",
-                height: "30vw",
+                width: "15vw",
+                height: "15vw",
                 objectFit: "contain",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/말티즈.jpg"}
@@ -171,7 +171,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
+              style={{ width: "15vw", height: "15vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/토이푸들.jpg"}
               alt="2"
               id="2"
@@ -180,7 +180,11 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider/요크셔테리어.jpg"
               }
@@ -191,7 +195,11 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider/포메라니안.jpg"
               }
@@ -202,7 +210,11 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/치와와.jpg"}
               alt="5"
               id="5"
@@ -211,17 +223,38 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/시츄.jpg"}
               alt="6"
               id="6"
               onClick={() => clickDogs(6)}
             />
           </div>
+          {/* <div>
+            <img
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={process.env.PUBLIC_URL + "/SlickImages/slider/스피츠.jpg"}
+              alt="7"
+              id="7"
+              onClick={() => clickDogs(7)}
+            />
+          </div> */}
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={process.env.PUBLIC_URL + "/SlickImages/slider/스피츠.jpg"}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={process.env.PUBLIC_URL + "/SlickImages/slider/보더콜리.jpg"}
               alt="7"
               id="7"
               onClick={() => clickDogs(7)}
@@ -229,8 +262,12 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={process.env.PUBLIC_URL + "/SlickImages/slider/보더콜리.jpg"}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={process.env.PUBLIC_URL + "/SlickImages/slider/웰시코기.jpg"}
               alt="8"
               id="8"
               onClick={() => clickDogs(8)}
@@ -238,8 +275,14 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={process.env.PUBLIC_URL + "/SlickImages/slider/웰시코기.jpg"}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={
+                process.env.PUBLIC_URL + "/SlickImages/slider/골든리트리버.jpg"
+              }
               alt="9"
               id="9"
               onClick={() => clickDogs(9)}
@@ -247,10 +290,12 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={
-                process.env.PUBLIC_URL + "/SlickImages/slider/골든리트리버.jpg"
-              }
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={process.env.PUBLIC_URL + "/SlickImages/slider/사모예드.jpg"}
               alt="10"
               id="10"
               onClick={() => clickDogs(10)}
@@ -258,20 +303,15 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={process.env.PUBLIC_URL + "/SlickImages/slider/사모예드.jpg"}
+              style={{
+                width: "15vw",
+                height: "15vw",
+                objectFit: "contain",
+              }}
+              src={process.env.PUBLIC_URL + "/SlickImages/slider/도베르만.png"}
               alt="11"
               id="11"
               onClick={() => clickDogs(11)}
-            />
-          </div>
-          <div>
-            <img
-              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
-              src={process.env.PUBLIC_URL + "/SlickImages/slider/도베르만.png"}
-              alt="12"
-              id="12"
-              onClick={() => clickDogs(12)}
             />
           </div>
         </Slider>
