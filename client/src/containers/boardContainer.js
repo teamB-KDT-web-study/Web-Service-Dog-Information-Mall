@@ -17,6 +17,7 @@ import {
   getSearchData,
   getSearchMode,
   addLike,
+  deleteLike,
 } from '../store/boardReducer';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -106,10 +107,10 @@ export const BoardPageContainer = ({ userId }) => {
   };
   const createContent = () => {
     if (userId.isLogin == false) {
-      alert("글을 쓸 권한이 없습니다.");
+      alert('글을 쓸 권한이 없습니다.');
       return;
     } else {
-      navigate("/board/create");
+      navigate('/board/create');
     }
   };
 
@@ -206,13 +207,13 @@ export const BoardDetailContainer = ({ userId }) => {
       alert('글 삭제를 취소합니다!');
     }
   };
-  const onAddLike = async () => {
+  const onUpdateLike = async () => {
     if (!userId.isLogin) {
-      alert("로그인이 필요합니다!");
+      alert('로그인이 필요합니다!');
       return;
     }
     const check = await axios.post(
-      API_BASE_URL + "/board/addLikeList/" + contentId,
+      API_BASE_URL + '/board/updateLike/' + contentId,
       {
         userNickname: userId.nickname,
         like_count: contentDetail.like_count,
@@ -220,15 +221,22 @@ export const BoardDetailContainer = ({ userId }) => {
     );
     if (check.data === true) {
       dispatch(addLike()); // 화면 표시
-      const res = await axios.patch(
-        API_BASE_URL + "/board/addLike/" + contentId,
-        {
-          like_count: contentDetail.like_count,
-        }
-      ); // 백엔드 반영
-      alert("이 글을 추천하셨습니다!")
+      // const res = await axios.patch(
+      //   API_BASE_URL + '/board/addLike/' + contentId,
+      //   {
+      //     like_count: contentDetail.like_count,
+      //   }
+      // ); //백엔드 반영
+      // alert('이 글을 추천하셨습니다!');
     } else {
-      alert("이미 추천하셨습니다.");
+      dispatch(deleteLike());
+      // const res = await axios.patch(
+      //   API_BASE_URL + '/board/deleteLike/' + contentId,
+      //   {
+      //     like_count: contentDetail.like_count,
+      //   }
+      // ); //백엔드 반영
+      // alert('이미 추천하셨습니다.');
     }
   };
 
@@ -241,7 +249,7 @@ export const BoardDetailContainer = ({ userId }) => {
       onBodyEditEvent={onBodyEditEvent}
       readOnly={readOnly}
       onDeleteContent={onDeleteContent}
-      onAddLike={onAddLike}
+      onUpdateLike={onUpdateLike}
       userId={userId}
     />
   );
@@ -289,8 +297,11 @@ export const BoardCreateContainer = ({ userId }) => {
       // date: nowTime,
     };
 
-    const res = await axios.post(API_BASE_URL + '/board/addContent', newContent);
-    console.log(res)
+    const res = await axios.post(
+      API_BASE_URL + '/board/addContent',
+      newContent
+    );
+    console.log(res);
     alert('작성하신 글이 제출되었습니다!');
     navigate(-1);
   };
