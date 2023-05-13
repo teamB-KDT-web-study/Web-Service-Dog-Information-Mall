@@ -1,0 +1,19 @@
+.TestLogin {
+  width: 100px;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  position: sticky;
+  .testLoginBtn {
+    position: absolute;
+    border: 2px solid #ecd06f;
+    background-color: #ecd06f;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    &:hover {
+      color: black;
+    }
+  }
+}

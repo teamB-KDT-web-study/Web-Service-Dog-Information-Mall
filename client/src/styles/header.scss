@@ -1,6 +1,6 @@
 .navbar {
   background-color: #ecd06f;
-
+  
   .container {
     height: 100%;
     width: 100%;
@@ -32,7 +32,6 @@
       align-items: center;
       width: max-content;
       cursor: pointer;
-
       .imgBox {
         display: flex;
         align-items: center;
@@ -69,7 +68,6 @@
       .profileBox {
         position: absolute;
         right: 50px;
-        margin-left: 10px;
       }
     }
   }

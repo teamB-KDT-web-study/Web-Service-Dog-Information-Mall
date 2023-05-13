@@ -62,11 +62,15 @@ function App() {
     checkSession();
   }, []);
 
+
   return (
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
-        <Header userId={userId} destroySession={destroySession} />
+        <Header
+          userId={userId}
+          destroySession={destroySession}
+        />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login getSession={getSession} />} />
