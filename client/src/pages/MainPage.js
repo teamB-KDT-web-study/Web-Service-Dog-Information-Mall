@@ -9,7 +9,6 @@ import TestLogin from "../components/TestLogin";
 
 // import axios from "axios";
 // import { useEffect } from "react";
-// import { API_BASE_URL } from "../containers/app-config";
 
 const MainPage = ({ getSession }) => {
   return (

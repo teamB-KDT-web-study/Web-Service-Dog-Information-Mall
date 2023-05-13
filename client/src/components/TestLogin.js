@@ -1,15 +1,17 @@
-import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
 import "../styles/testLogin.scss";
 
 function TestLogin() {
   const testLoginBtn = async () => {
-    const res = await axios.post(API_BASE_URL + "/member/login", {
-      id: "apple",
-      pw: "1234",
-    });
+    const res = await axios.post(
+      process.env.REACT_APP_DB_HOST + "/member/login",
+      {
+        id: "apple",
+        pw: "1234",
+      }
+    );
     alert("테스트용 아이디 입니다.");
-    window.location.replace("/")
+    window.location.replace("/");
   };
 
   return (

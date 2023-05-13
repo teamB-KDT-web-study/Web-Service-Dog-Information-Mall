@@ -149,7 +149,7 @@ insert into board_like (board_id, nickname) values (2, '사과');
 
 
 insert into user (id, password, nickname) values ('banana', 1234, '바나나');
-insert into user (id, password, nickname) values ('apple', 1234, '사과');
+insert into user (id, password, nickname, grade) values ('apple', 1234, '사과', '베스트 프렌드');
 insert into user (id, password, nickname) values ('peach', 1234, '복숭아');
 
 
