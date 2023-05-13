@@ -40,9 +40,6 @@ const MyPage = () => {
           <Link to="/editMyPage">
             <button className="EditMyPage">회원정보 수정</button>
           </Link>
-          <Link to="/store/cart">
-            <button className="EditMyPage">장바구니</button>
-          </Link>
 
           <Routes>
             <Route path="/editMyPage" element={<EditMyPage />}></Route>
