@@ -5,26 +5,31 @@ import axios from "axios";
 import { API_BASE_URL } from "../containers/app-config.js";
 
 const Storedetail = () => {
+  const gradeInfo = {
+    남남: 0,
+    "서먹한 친구": 3,
+    친구: 5,
+    "친한 친구": 7,
+    "베스트 프렌드": 10,
+  };
+  const [userId, setuserId] = useState("");
+
   const navigate = useNavigate();
   const [item, setItem] = useState("");
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
   const [selectedOption, setSelectedOption] = useState("");
-
-  console.log("storeId >> ", storeId);
-
   const [onePrice, setOnePrice] = useState(0);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => {
     const getItem = async () => {
-      console.log("detail useEffect 실행");
       const res = await axios.get(
         `${API_BASE_URL}/store/getItem?product_id=${storeId}`
       );
+      const user = await axios.get(API_BASE_URL + "/member/checkLogin");
       setItem(res.data);
-
-      console.log("res >>> ", res);
-      console.log("item >> ", item);
+      setuserId(user.data);
     };
     getItem();
   }, []);
@@ -32,16 +37,40 @@ const Storedetail = () => {
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  const [number, setNumber] = useState(0);
   //수량 plus
   const plus = () => {
     setNumber(number + 1);
-    setOnePrice(item.price + item.price * number);
+    countPrice();
   };
   //수량 minus
   const miner = () => {
+    if (number === 0) {
+      return;
+    }
     setNumber(number - 1);
-    setOnePrice(item.price * number - item.price);
+    countPrice();
+  };
+
+  useEffect(() => {
+    console.log(number);
+    countPrice();
+  }, [number]);
+
+  const countPrice = () => {
+    if (!userId.isLogin || userId.grade === "남남") {
+      if (number === 0) {
+        setOnePrice(0);
+      } else {
+        setOnePrice(item.price * number);
+      }
+    } else {
+      if (number === 0) {
+        setOnePrice(0);
+      } else {
+        const p = (item.price * (100 - gradeInfo[userId.grade])) / 100;
+        setOnePrice(p * number);
+      }
+    }
   };
   //해당 상품 title값으로 주소 보내는 코드
   // const [item] = items.filter((p) => p.title === storeId);
@@ -87,10 +116,25 @@ const Storedetail = () => {
           {/* 해당 상품 정보 부분 */} #{item.category}
         </div>
         <div className="detailtext"> {item.title}</div>
-        <div className="detailtext"> {item.price}원</div>
+        {!userId.isLogin || userId.grade === "남남" ? (
+          <div className="detailtext"> {item.price}원</div>
+        ) : (
+          <div className="price">
+            <div className="detailtext fake"> {item.price}원</div>
+            <div className="detailtext real">
+              {" "}
+              {(item.price * (100 - gradeInfo[userId.grade])) / 100}원
+            </div>
+            <div className="detailtext itemOff">
+              {" "}
+              {gradeInfo[userId.grade]}% off!
+            </div>
+          </div>
+        )}
+
         <hr></hr>
         {/* 배송관련정보부분 */}
-        <h5 className="detailh5">구매혜택 2,000 포인트 적립예정 적립예정</h5>
+        {/* <h5 className="detailh5">구매혜택 2,000 포인트 적립예정 적립예정</h5> */}
         <h5 className="detailh5">배송 방법 택배</h5>
         <h5 className="detailh5">배송비 무료 (10,000원 이상 무료배송)</h5>
         {/* 옵션부분 */}

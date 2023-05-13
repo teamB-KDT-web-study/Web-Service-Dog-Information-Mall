@@ -17,7 +17,7 @@ $breakpoint-md: 953px;
 .detailbox {
   padding: 1vw;
   width: 35vw;
-  height: 45vw;
+  height: 48vw;
   font-size: 3vw;
   background-color: white;
   border: 2px solid #987654;
@@ -25,6 +25,15 @@ $breakpoint-md: 953px;
 }
 .detailtext {
   font-size: 2vw;
+}
+.fake {
+  font-size: 1.5vw;
+  text-decoration: line-through;
+  color: rgb(168, 168, 168);
+}
+.itemOff {
+  font-size: 1.2vw;
+  color: #987654;
 }
 .detailh5 {
   font-size: 1vw;
