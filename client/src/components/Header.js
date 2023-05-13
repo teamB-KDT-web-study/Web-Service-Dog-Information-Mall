@@ -44,6 +44,7 @@ const Header = ({ userId, destroySession }) => {
             )}
             <Nav.Link href="/Register">회원가입</Nav.Link>
             <Nav.Link href="/MyPage">MyPage</Nav.Link>
+            <Nav.Link href="/store/cart">임시쇼핑카트</Nav.Link> 
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
