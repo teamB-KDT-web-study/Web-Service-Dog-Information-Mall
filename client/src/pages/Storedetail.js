@@ -10,17 +10,22 @@ const Storedetail = () => {
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
   const [selectedOption, setSelectedOption] = useState("");
+
   console.log("storeId >> ", storeId);
+
+  const [onePrice, setOnePrice] = useState(0);
+
   useEffect(() => {
     const getItem = async () => {
       console.log("detail useEffect 실행");
       const res = await axios.get(
         `${API_BASE_URL}/store/getItem?product_id=${storeId}`
       );
-
       setItem(res.data);
+
       console.log("res >>> ", res);
       console.log("item >> ", item);
+main
     };
     getItem();
   }, []);
@@ -32,12 +37,12 @@ const Storedetail = () => {
   //수량 plus
   const plus = () => {
     setNumber(number + 1);
-    setSelectedOption(item.price + item.price * number);
+    setOnePrice(item.price + item.price * number);
   };
   //수량 minus
   const miner = () => {
     setNumber(number - 1);
-    setSelectedOption(item.price * number - item.price);
+    setOnePrice(item.price * number - item.price);
   };
   //해당 상품 title값으로 주소 보내는 코드
   // const [item] = items.filter((p) => p.title === storeId);
@@ -46,7 +51,27 @@ const Storedetail = () => {
     return <main className="Storedetail">존재하지 않는 상품입니다</main>;
   }
   const choice = JSON.parse(item.choice);
-  console.log(choice);
+
+  const addCart = async () => {
+    const session = await axios.get(API_BASE_URL + "/member/checkLogin");
+
+    if (session.data.isLogin && selectedOption !== "" && number !== 0) {
+      await axios.post(API_BASE_URL + "/store/addCart", {
+        user_id: session.data.id,
+        product_id: storeId,
+        choice: selectedOption,
+        amount: number,
+      });
+      alert("장바구니에 상품이 저장되었습니다!");
+      navigate('/store/cart')
+    } else {
+      if (!session.data.isLogin) {
+        alert("로그인이 필요합니다.");
+      } else {
+        alert("수량, 옵션이 선택되었는지 확인해주세요.");
+      }
+    }
+  };
 
   return (
     <div className="Storedetail">
@@ -70,17 +95,25 @@ const Storedetail = () => {
         <h5 className="detailh5">배송 방법 택배</h5>
         <h5 className="detailh5">배송비 무료 (10,000원 이상 무료배송)</h5>
         {/* 옵션부분 */}
-        {/* <div className="detailchoice">
+        <div className="detailchoice">
           옵션선택
           <select className="choice" onChange={handleOptionChange}>
             <option disabled selected>
               {Object.keys(choice)[0]}
             </option>
-            {choice[Object.keys(choice)[0]].map((option) => {
-              return <option value={option}>{option}</option>;
+            {choice[Object.keys(choice)[0]].map((option, key) => {
+              if (key !== 0) {
+                return (
+                  <option value={option} disabled>
+                    {option}
+                  </option>
+                );
+              } else {
+                return <option value={option}>{option}</option>;
+              }
             })}
           </select>
-        </div> */}
+        </div>
         {/* 수량 선택 부분 */}
         <div className="choiceoption">
           <span className="cho">수량</span>
@@ -94,16 +127,19 @@ const Storedetail = () => {
               <button onClick={plus} className="choicenumbtn">
                 +
               </button>
-              <span className="selectprice">{selectedOption} 윈</span>
+              <span className="selectprice">{onePrice} 윈</span>
             </div>
           </p>
         </div>
         <span className="totalprice">총상품구매({number})개</span>
-        <span className="totalprice2"> {selectedOption}원</span>
+        <span className="totalprice2"> {onePrice}원</span>
 
         {/* 구매 장바구니 찜 버튼 부분 */}
         <div>
-          <button className="pay" onClick={() => navigate("/store/cart")}>
+
+
+          <button className="pay" onClick={addCart}>
+
             장바구니
           </button>
           <button className="pay">결제</button>

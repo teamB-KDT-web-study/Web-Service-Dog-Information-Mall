@@ -1,40 +1,39 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import Storeheader from '../components/Storeheader';
-import '../styles/store.scss';
-import Storeitem from '../components/Storeitem';
-import axios from 'axios';
-import { API_BASE_URL } from '../containers/app-config.js';
+import Storeheader from "../components/Storeheader";
+import "../styles/store.scss";
+import Storeitem from "../components/Storeitem";
+import axios from "axios";
+import { API_BASE_URL } from "../containers/app-config.js";
 
 const Store = () => {
   const [lastNum, setLastNum] = useState(0);
   const [items, setItems] = useState([{}]);
   const [categoryLastNum, setCategoryLastNum] = useState(0);
   const { category } = useParams();
-  console.log('category >> ', category);
+  const [userInfo, setUserInfo] = useState({});
+  const getUserInfo = async () => {
+    const res = await axios.get(API_BASE_URL + "/member/checkLogin");
+    setUserInfo(res.data);
+  };
+  getUserInfo();
+  useEffect(() => {
+    getUserInfo();
+  }, [userInfo]);
   useEffect(() => {
     const getData = async () => {
       let router = `${API_BASE_URL}/store/`;
       if (category) {
         router += category;
       }
-      console.log(router);
       const res = await axios.get(router);
-      console.log('res.data >> ', res.data.data);
       setItems(res.data.data);
       setCategoryLastNum(res.data.lastId);
 
-      console.log('******************************');
-      console.log(items);
-      console.log(items[items.length - 1]);
-      console.log(items[items.length - 1].id);
-
       setLastNum(res.data.data[res.data.data.length - 1].id);
     };
-
     getData();
-    // console.log('lastNum >> ', lastNum);
   }, [category]);
 
   // useEffect(() => {
@@ -45,7 +44,7 @@ const Store = () => {
   // }, []);
 
   const moreItems = async (lastNum, category) => {
-    console.log('moreItems');
+    console.log("moreItems");
     const res = await axios.get(
       `${API_BASE_URL}/store/moreItems?startNum=${lastNum}&category=${category}`
     );
@@ -61,7 +60,7 @@ const Store = () => {
       <div className="storeitem">
         {items.map((item) => {
           // 현재까지 visibleItems 개수만큼의 아이템만 렌더링
-          return <Storeitem key={item.id} store={item} />;
+          return <Storeitem key={item.id} store={item} userInfo={userInfo} />;
         })}
       </div>
       <div className="more">

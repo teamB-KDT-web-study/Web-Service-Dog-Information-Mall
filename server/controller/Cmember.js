@@ -11,6 +11,7 @@ exports.checkLogin = async (req, res) => {
       });
       res.send({
         isLogin: true,
+        id: req.session.loginData,
         nickname: userInfo.nickname,
         profile_img: userInfo.profile_img,
         grade: userInfo.grade,
