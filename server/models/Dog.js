@@ -1,6 +1,6 @@
 const Dog = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    "dog",
+    'dog',
     {
       name: {
         type: DataTypes.STRING(15),
@@ -28,9 +28,14 @@ const Dog = function (Sequelize, DataTypes) {
         type: DataTypes.INTEGER.UNSIGNED,
         allowNull: true,
       },
+
+      img: {
+        type: DataTypes.STRING(100),
+        allowNull: true,
+      },
     },
     {
-      tableName: "dog",
+      tableName: 'dog',
       freezeTableName: true,
       timestamps: false,
     }
