@@ -1,6 +1,6 @@
 const Board = function (Sequelize, DataTypes) {
   const model = Sequelize.define(
-    'board',
+    "board",
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -33,10 +33,11 @@ const Board = function (Sequelize, DataTypes) {
       date: {
         type: DataTypes.DATE,
         allowNull: false,
+        defaultValue: Date.now(),
       },
     },
     {
-      tableName: 'board',
+      tableName: "board",
       freezeTableName: true,
       timestamps: false,
     }

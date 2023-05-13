@@ -226,6 +226,7 @@ export const BoardDetailContainer = ({ userId }) => {
           like_count: contentDetail.like_count,
         }
       ); // 백엔드 반영
+      alert("이 글을 추천하셨습니다!")
     } else {
       alert("이미 추천하셨습니다.");
     }
@@ -280,19 +281,17 @@ export const BoardCreateContainer = ({ userId }) => {
     dispatch(getNewData(newData));
   };
   const contentSave = async () => {
-    const nowTime = timestamp();
+    // const nowTime = timestamp();
     const newContent = {
       nickname: userId.nickname,
       title: contentDetail.title,
       body: contentDetail.body,
-      date: nowTime,
+      // date: nowTime,
     };
 
-    await axios.post(API_BASE_URL + '/board/addContent', newContent);
+    const res = await axios.post(API_BASE_URL + '/board/addContent', newContent);
+    console.log(res)
     alert('작성하신 글이 제출되었습니다!');
-    console.log(newContent);
-    await axios.post(API_BASE_URL + "/board/addContent", newContent);
-    alert("작성하신 글이 제출되었습니다!");
     navigate(-1);
   };
   const onBack = () => {
