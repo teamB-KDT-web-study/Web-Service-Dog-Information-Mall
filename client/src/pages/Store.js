@@ -17,9 +17,9 @@ const Store = () => {
     const res = await axios.get(API_BASE_URL + "/member/checkLogin");
     setUserInfo(res.data);
   };
-  useEffect(() => {
-    getUserInfo();
-  }, [userInfo]);
+  // useEffect(() => {
+  //   getUserInfo();
+  // }, [userInfo]);
   useEffect(() => {
     const getData = async () => {
       let router = `${API_BASE_URL}/store/`;
@@ -33,7 +33,8 @@ const Store = () => {
       setLastNum(res.data.data[res.data.data.length - 1].id);
     };
     getData();
-  }, [category]);
+    getUserInfo();
+  }, []);
 
   // useEffect(() => {
   //   getData();
