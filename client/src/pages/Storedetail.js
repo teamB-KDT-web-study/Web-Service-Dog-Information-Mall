@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "../styles/storedetail.scss";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config.js";
 
 const Storedetail = () => {
   const gradeInfo = {
@@ -25,9 +24,9 @@ const Storedetail = () => {
   useEffect(() => {
     const getItem = async () => {
       const res = await axios.get(
-        `${API_BASE_URL}/store/getItem?product_id=${storeId}`
+        `${process.env.REACT_APP_DB_HOST}/store/getItem?product_id=${storeId}`
       );
-      const user = await axios.get(API_BASE_URL + "/member/checkLogin");
+      const user = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
       setItem(res.data);
       setuserId(user.data);
     };
@@ -81,10 +80,10 @@ const Storedetail = () => {
   const choice = JSON.parse(item.choice);
 
   const addCart = async () => {
-    const session = await axios.get(API_BASE_URL + "/member/checkLogin");
+    const session = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
 
     if (session.data.isLogin && selectedOption !== "" && number !== 0) {
-      await axios.post(API_BASE_URL + "/store/addCart", {
+      await axios.post(process.env.REACT_APP_DB_HOST + "/store/addCart", {
         user_id: session.data.id,
         product_id: storeId,
         choice: selectedOption,

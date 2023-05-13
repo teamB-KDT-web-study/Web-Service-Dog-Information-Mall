@@ -2,7 +2,6 @@ import "../styles/Login.scss";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../containers/app-config";
 
 const Login = ({ getSession }) => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Login = ({ getSession }) => {
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
     const getLogin = async () => {
-      const res = await axios.post(API_BASE_URL + "/member/login", {
+      const res = await axios.post(process.env.REACT_APP_DB_HOST + "/member/login", {
         id: id,
         pw: pw,
       });
@@ -88,7 +87,7 @@ const Login = ({ getSession }) => {
               Login
             </button>
           </form>
-          <button>Resister</button>
+          <button onClick={() => navigate('/Register')}>Resister</button>
         </div>
       </div>
     </>
