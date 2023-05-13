@@ -34,8 +34,8 @@
     position: absolute;
     right: 20px;
     bottom: 20px;
-    width: 400px;
-    height: 600px;
+    width: 30vw;
+    height: 80vh;
     border: 2px solid #987654;
     border-radius: 10px;
     .infom {
@@ -127,7 +127,6 @@
     transform: scale(1);
   }
 }
-
 
 @media (max-width: 992px) {
   .chatBox {

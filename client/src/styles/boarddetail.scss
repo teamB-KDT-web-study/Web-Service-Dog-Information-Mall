@@ -42,12 +42,16 @@
           position: relative;
           right: 20px;
           top: 7px;
-          background-color: #ecd06f;
-          border: 2px solid #987654;
-          color: #987654;
-          border-radius: 10px;
-          width: 50px;
+          background-color: #ffffff;
+          border: 2px solid #adadad;
+          color: #7f7f7f;
+          border-radius: 7px;
+          width: 60px;
           height: 30px;
+
+          &:active {
+            background-color: #d3d3d3;
+          }
         }
       }
     }
