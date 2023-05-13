@@ -3,7 +3,6 @@ import "../styles/Login.scss";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
 import { API_BASE_URL } from "../containers/app-config";
 
 const Login = ({ getSession }) => {

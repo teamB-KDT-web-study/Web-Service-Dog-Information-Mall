@@ -46,7 +46,11 @@ const SlickSlider = () => {
 
       img: process.env.PUBLIC_URL + "/SlickImages/화이트테리어.jpeg",
       breed: "요크셔테리어",
+
+
+
       mind: "예민해요",
+
       color: "white",
       information: "소형견",
     },
@@ -86,7 +90,11 @@ const SlickSlider = () => {
       id: 8,
       img: process.env.PUBLIC_URL + "/SlickImages/보더콜리.jpeg",
       breed: "보더콜리",
+
+
+
       mind: "활동적이에요",
+
       color: "white",
       information: "중형견",
     },
@@ -94,7 +102,10 @@ const SlickSlider = () => {
       id: 9,
       img: process.env.PUBLIC_URL + "/SlickImages/웰시코기.jpeg",
       breed: "웰시코기",
+
+
       mind: "친화력이 좋아요",
+
       color: "white",
       information: "중형견",
     },
@@ -102,7 +113,11 @@ const SlickSlider = () => {
       id: 10,
       img: process.env.PUBLIC_URL + "/SlickImages/골든리트리버.jpeg",
       breed: "골든리트리버",
+
+
+
       mind: "친화력이 좋아요",
+
       color: "white",
       information: "대형견",
     },
@@ -260,6 +275,7 @@ const SlickSlider = () => {
             />
           </div>
         </Slider>
+
         <div className="Slickback">
           {dogsInformation.id !== 0 ? (
             <div>
@@ -283,6 +299,7 @@ const SlickSlider = () => {
             <h2> 궁금한 강아지를 선택해주세요! </h2>
           )}
         </div>
+
       </div>
     </div>
   );
