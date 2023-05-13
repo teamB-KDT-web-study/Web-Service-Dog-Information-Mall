@@ -1,3 +1,6 @@
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 .dog {
   color: #987654;
   display: flex;
@@ -92,5 +95,43 @@
   }
   .mdi_finishbtnh1 {
     font-size: 2vw;
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .mdi_db {
+    min-width: 450px;
+    height: 200px;
+    padding: 1px;
+    .mydoginfoh2 {
+      width: 100%;
+      font-size: 5vw;
+    }
+    .mydoginfobtn {
+      font-size: vw;
+    }
+    .mdi_btn {
+      font-size: 3vw;
+    }
+  }
+  .mdi_finishbtn {
+    width: 60vw;
+    height: 12vw;
+    .mdi_finishbtnh1 {
+      font-size: 5vw;
+    }
+  }
+  .mydogresultbox {
+    background-color: white;
+    width: 80vw;
+    height: 100vw;
+    .resultimg {
+      width: 43vw;
+      height: 43vw;
+    }
+    .result_btn {
+      width: 30vw;
+      height: 10vw;
+      font-size: 3vw;
+    }
   }
 }

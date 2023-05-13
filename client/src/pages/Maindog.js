@@ -18,12 +18,8 @@ const Maindog = () => {
           className="maindog"
         />
       </div>
-      <div class="box text1">
-        <h1>DOGDAZE를</h1>
-      </div>
-      <div class="box text2">
-        <h1>소개합니다.</h1>
-      </div>
+      <div class="box text1"></div>
+      <div class="box text2"></div>
       <div class="box heart">
         <img
           src={process.env.PUBLIC_URL + `/SlickImages/maindog7.png`}
