@@ -3,20 +3,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // import css
-import './styles/_reset.scss';
+import "./styles/_reset.scss";
 // import pages
-import Header from './components/Header';
-import MainPage from './pages/MainPage';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import MyPage from './pages/MyPage';
-import Quiz from './pages/Quiz';
-import Quizhome from './pages/Quizhome';
+import Header from "./components/Header";
+import MainPage from "./pages/MainPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import MyPage from "./pages/MyPage";
+import Quiz from "./pages/Quiz";
+import Quizhome from "./pages/Quizhome";
 import {
   BoardPageContainer,
   BoardDetailContainer,
   BoardCreateContainer,
-
 } from "./containers/boardContainer";
 import { TrainingContainer } from "./containers/mainContainer";
 import Map from "./pages/Map";
@@ -37,9 +36,10 @@ import StoreCart from "./pages/StoreCart";
 //데이터
 import shopDataNew from "./json/shopDataNew.json";
 import { API_BASE_URL } from "./containers/app-config";
+import SlickSlider from "./components/SlickSlider";
+import ScrollToTop from "./components/ScrollToTop";
 
 axios.defaults.withCredentials = true;
-
 
 function App() {
   const [userId, setUserId] = useState({ isLogin: false });
@@ -65,6 +65,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Header userId={userId} destroySession={destroySession} />
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -86,6 +87,7 @@ function App() {
             element={<BoardCreateContainer userId={userId} />}
           />
           <Route path="/Map" element={<Map />} />
+          <Route path="/slick" element={<SlickSlider />} />
           <Route path="/Map/:query" element={<MapComponent />} />
           <Route path="/training/traininginfo" element={<Traininginfo />} />
           <Route path="/training" element={<TrainingContainer />} />

@@ -10,7 +10,11 @@ const Storedetail = () => {
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
   const [selectedOption, setSelectedOption] = useState("");
+
+  console.log("storeId >> ", storeId);
+
   const [onePrice, setOnePrice] = useState(0);
+
   useEffect(() => {
     const getItem = async () => {
       console.log("detail useEffect 실행");
@@ -18,6 +22,10 @@ const Storedetail = () => {
         `${API_BASE_URL}/store/getItem?product_id=${storeId}`
       );
       setItem(res.data);
+
+      console.log("res >>> ", res);
+      console.log("item >> ", item);
+main
     };
     getItem();
   }, []);
@@ -128,7 +136,10 @@ const Storedetail = () => {
 
         {/* 구매 장바구니 찜 버튼 부분 */}
         <div>
+
+
           <button className="pay" onClick={addCart}>
+
             장바구니
           </button>
           <button className="pay">결제</button>
@@ -139,7 +150,7 @@ const Storedetail = () => {
       <div className="otherchoiceoption">
         <span className="othercho">수량</span>
         <hr />
-        <div className="otherdetailtext"> {targetStore.title}</div>
+        <div className="otherdetailtext"> </div>
         <p>
           <div className="choicenum">
             <button onClick={miner} className="otherchoicenumbtn">

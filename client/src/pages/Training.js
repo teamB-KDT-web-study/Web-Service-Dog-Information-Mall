@@ -4,9 +4,9 @@ export function Training({ mostLikeList, onNavigate }) {
   return (
     <div className="Trainingbody">
       <div className="Trainingheader" style={{ color: "#987654" }}>
-        지식공유
+        정보 공유
       </div>
-      <div className="Trainingheader2">#가장 인기 있는 글이에요</div>
+      <div className="Trainingheader2">#가장 많은 추천을 받은 글이에요!</div>
       <div className="Training">
         <div className="cards">
           <article className="information [ card ]">

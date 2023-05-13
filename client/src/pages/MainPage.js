@@ -3,6 +3,8 @@ import { ChatBot } from "../components/ChatBot";
 import SlickSlider from "../components/SlickSlider";
 import Maindog from "./Maindog";
 import Mainmydog from "./Mainmydog";
+import Mainmap from "./Mainmap";
+import Mainslide from "./Mainslide";
 
 // import axios from "axios";
 // import { useEffect } from "react";
@@ -11,10 +13,12 @@ import Mainmydog from "./Mainmydog";
 const MainPage = ({ getSession }) => {
   return (
     <>
+      <Mainslide />
       {/* <Maindog /> */}
-      <SlickSlider />
-      <TrainingContainer />
+      {/* <SlickSlider /> */}
       <Mainmydog />
+      <Mainmap />
+      <TrainingContainer />
       <ChatBot />
     </>
   );
