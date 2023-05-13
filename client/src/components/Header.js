@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const Header = ({ userId, destroySession }) => {
+const Header = ({ userId, destroySession}) => {
   return (
     <Navbar expand="lg">
       <Container>
@@ -43,9 +43,6 @@ const Header = ({ userId, destroySession }) => {
             ) : (
               <Nav.Link onClick={destroySession}>로그아웃</Nav.Link>
             )}
-            <Nav.Link href="/Register">회원가입</Nav.Link>
-            <Nav.Link href="/MyPage">MyPage</Nav.Link>
-            <Nav.Link href="/store/cart">임시쇼핑카트</Nav.Link> 
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
