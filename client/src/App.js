@@ -94,10 +94,6 @@ function App() {
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
 
-      
-
-         
-        
           <Route path="/store" element={<Store />} />
           <Route path="/store/item/:storeId" element={<Storedetail />} />
           <Route path="/store/:category" element={<Store />} />
@@ -108,9 +104,8 @@ function App() {
           <Route path="/store/lead" element={<Storelead />} />
           <Route path="/store/cushion" element={<Storecushion />} /> */}
 
-          <Route path="/EditMyProfile" element={<EditMyProfile />} />
+          {/* <Route path="/EditMyProfile" element={<EditMyProfile />} /> */}
           <Route path="/store/cart" element={<StoreCart />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>

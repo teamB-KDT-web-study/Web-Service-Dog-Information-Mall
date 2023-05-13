@@ -1,4 +1,3 @@
-
 import "../styles/Login.scss";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
@@ -54,7 +53,7 @@ const Login = ({ getSession }) => {
     <>
       <div className="LoginWrap">
         <div className="LoginBox">
-          <h1>로고</h1>
+          <h1>로그인</h1>
           <form>
             <div className="formBox">
               <label htmlFor="loginId">ID</label>

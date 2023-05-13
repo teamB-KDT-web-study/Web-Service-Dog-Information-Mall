@@ -282,6 +282,7 @@ const Register = () => {
                   onChange={saveImgFile}
                   ref={imgRef}
                   style={{ border: "none" }}
+                  className="MyProfileImgSelectinput"
                 />
               </div>
             </div>
@@ -289,6 +290,7 @@ const Register = () => {
               <label htmlFor="loginId">ID</label>
 
               <input
+                className="formBoxlogin"
                 type="text"
                 name="UserId"
                 id="loginId"

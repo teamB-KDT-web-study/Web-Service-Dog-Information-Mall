@@ -1,3 +1,6 @@
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 .StoreCart {
   min-height: 95vh;
   width: 99vw;
@@ -13,10 +16,12 @@
       margin: 20px;
     }
     .itemContainer {
+      color: #987654;
+      border: 2px solid #987654;
       width: 70vw;
       height: 10vh;
       tr {
-        border: 1px solid rgb(180, 179, 179);
+        border-radius: 10px;
 
         td {
           padding: 10px;
@@ -24,12 +29,15 @@
           .orderBtn,
           .deleteBtn {
             border-radius: 10px;
-            border: 1px solid black;
+            border: 2px solid #987654;
+            background-color: #ecd06f;
+            color: #987654;
             text-align: center;
             cursor: pointer;
             padding: 4px;
             &:hover {
-              background-color: white;
+              background-color: #987654;
+              color: white;
             }
           }
         }
@@ -66,5 +74,5 @@
   }
 }
 
-@media (max-width: 992px) {
+@include media("<#{$breakpoint-sm}") {
 }
