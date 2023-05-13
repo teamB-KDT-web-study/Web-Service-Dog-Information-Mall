@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/quiz.scss";
-import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
 
 //퀴즈 문제 항목 부분
@@ -83,7 +82,7 @@ const Quiz = ({ userId }) => {
       setPassed(score >= 5); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
       if (score >= 5) {
         const gradeUp = async () => {
-          const res = await axios.patch(API_BASE_URL + "/member/gradeUp", {
+          const res = await axios.patch(process.env.REACT_APP_DB_HOST + "/member/gradeUp", {
             nickname: userId.nickname,
             toGrade: "서먹한 친구",
             nowGrade: "남남",

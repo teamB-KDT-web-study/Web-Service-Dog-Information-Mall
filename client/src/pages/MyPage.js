@@ -3,14 +3,13 @@ import "../styles/MyPage.scss";
 import EditMyPage from "../pages/EditMyPage";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config";
 
 const MyPage = () => {
   const [myProfile, setMyProfile] = useState([]);
 
   // useEffect(() => {
   //   const getMyProfile = async () => {
-  //     const req = await axios.post((API_BASE_URL = "/member/showProfile"));
+  //     const req = await axios.post((process.env.REACT_APP_DB_HOST = "/member/showProfile"));
   //     setMyProfile(req.data);
   //   };
   // });
