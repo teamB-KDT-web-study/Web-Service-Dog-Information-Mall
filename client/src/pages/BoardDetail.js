@@ -24,7 +24,9 @@ export function BoardDetail({
         </div>
         <div className="secondLine">
           <div className="timeViewLike">
-            <div className="time">{content.date}</div>
+            <div className="time">
+              {new Intl.DateTimeFormat("ko-KR").format(new Date(content.date))}
+            </div>
             <div className="like">추천 : {content.like_count}</div>
             <div className="view">조회수 : {content.view_count + 1}</div>
           </div>

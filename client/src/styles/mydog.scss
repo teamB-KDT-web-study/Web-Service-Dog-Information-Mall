@@ -1,10 +1,16 @@
+@import "~include-media/dist/include-media";
+
+$breakpoint-md: 400px;
+$breakpoint-mz: 570px;
+// $breakpoint-md: 768px;태블릿
+// $breakpoint-sm: 532px;모바일
 .Mydog {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #ffffff;
   background-image: url("https://img.freepik.com/free-vector/cute-pets-illustration_53876-112522.jpg?w=1800&t=st=1683365447~exp=1683366047~hmac=0a8e01310bc1ec2faeba208585540824c12521a977075d7d42012041e9ddc49c");
   background-size: 1460px;
@@ -16,24 +22,27 @@
     justify-content: center;
     background-color: #ffffff;
     flex-direction: column;
-    width: 500px;
-    height: 600px;
+    width: 40vw;
+    height: 45vw;
     border-radius: 10px;
     border: 2px solid #987654;
   }
   .dogprofile {
     border: 2px solid #987654;
-    width: 200px;
-    height: 200px;
+    width: 15vw;
+    height: 15vw;
     border-radius: 50%;
     background-color: #ffffff;
     margin: 50px;
   }
+  .dogprofileh1 {
+    font-size: 2vw;
+  }
   .dogbtn {
     color: #987654;
-    width: 400px;
-    height: 50px;
-    margin: 30px;
+    width: 30vw;
+    height: 3vw;
+    margin: 3vw;
     border-radius: 30px;
     background-color: #ecd06f;
     border: 2px solid #987654;
@@ -43,9 +52,84 @@
       color: var(--c-white);
     }
   }
+  .dogboxh2 {
+    font-size: 2vw;
+  }
   .mydogimg {
-    width: 195px;
-    height: 195px;
+    width: 14vw;
+    height: 14vw;
     border-radius: 50%;
+  }
+  @include media("<#{$breakpoint-md}") {
+    .dogbox {
+      width: 90vw;
+      height: 320px;
+      .dogbtn {
+        color: #987654;
+        width: 50vw;
+        height: 7vw;
+        margin: 3vw;
+        border-radius: 30px;
+        background-color: #ecd06f;
+        border: 2px solid #987654;
+        &:hover,
+        &:focus {
+          background-color: #987654;
+          color: var(--c-white);
+        }
+      }
+      .dogprofileh1 {
+        font-size: 6vw;
+      }
+      .dogprofile {
+        border: 2px solid #987654;
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin: 50px;
+      }
+      .mydogimg {
+        width: 29vw;
+        height: 29vw;
+        border-radius: 50%;
+      }
+    }
+  }
+  @include media("<#{$breakpoint-mz}") {
+    .dogbox {
+      width: 90vw;
+      height: 420px;
+      .dogbtn {
+        color: #987654;
+        width: 50vw;
+        height: 7vw;
+        margin: 3vw;
+        border-radius: 30px;
+        background-color: #ecd06f;
+        border: 2px solid #987654;
+        &:hover,
+        &:focus {
+          background-color: #987654;
+          color: var(--c-white);
+        }
+      }
+      .dogprofileh1 {
+        font-size: 6vw;
+      }
+      .dogprofile {
+        border: 2px solid #987654;
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin: 50px;
+      }
+      .mydogimg {
+        width: 29vw;
+        height: 29vw;
+        border-radius: 50%;
+      }
+    }
   }
 }

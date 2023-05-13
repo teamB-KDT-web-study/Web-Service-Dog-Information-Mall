@@ -1,7 +1,7 @@
-import "../styles/Map.css";
-import React, { useEffect } from "react";
+import "../styles/Map.scss";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-
 const { kakao } = window;
 
 const getCurrentCoordinate = async () => {
@@ -26,6 +26,17 @@ const getCurrentCoordinate = async () => {
 };
 
 const Map = () => {
+  const query = useParams().query;
+  const [menuBar, setMenuBar] = useState("block");
+  const [btn, setBtn] = useState("none");
+  const showMenu = () => {
+    setMenuBar("block");
+    setBtn("none");
+  };
+  const hideMenu = () => {
+    setMenuBar("none");
+    setBtn("flex");
+  };
   useEffect(() => {
     // 마커를 담을 배열입니다
     try {
@@ -66,7 +77,8 @@ const Map = () => {
       // 키워드 검색을 요청하는 함수입니다
       async function searchPlaces() {
         console.log("searchPlaces 실행!!!");
-        var keyword = "동물 병원";
+        console.log("query = ", query);
+        var keyword = query;
         const currentCoordinate = await getCurrentCoordinate();
         console.log(currentCoordinate);
         var options = {
@@ -84,8 +96,9 @@ const Map = () => {
         if (status === kakao.maps.services.Status.OK) {
           // 정상적으로 검색이 완료됐으면
           // 검색 목록과 마커를 표출합니다
-          console.log(data);
           displayPlaces(data);
+          console.log(data);
+
           // 페이지 번호를 표출합니다
           displayPagination(pagination);
         } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -115,7 +128,9 @@ const Map = () => {
 
         // 지도에 표시되고 있는 마커를 제거합니다
         removeMarker();
-
+        if (query === "코딩온") {
+          places = [places[0]];
+        }
         for (var i = 0; i < places.length; i++) {
           // 마커를 생성하고 지도에 표시합니다
           var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
@@ -236,7 +251,7 @@ const Map = () => {
             paginationEl.removeChild(paginationEl.lastChild);
           }
         } else {
-          console.log('map 종료 2')
+          console.log("map 종료 2");
           return;
         }
 
@@ -284,23 +299,25 @@ const Map = () => {
   }, []);
 
   return (
-    <div className="map_wrap">
-      <div
-        id="map"
-        style={{
-          width: "800px",
-          height: "500px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      ></div>
-      <div id="menu_wrap" className="bg_white">
-        <hr />
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
+    <div className="mapContainer">
+      <div className="map_wrap">
+        <div className="title">{query} 찾기</div>
+        <div id="map"></div>
+        <div id="menu_wrap" className="bg_white" style={{ display: menuBar }}>
+          <div className="unseen" onClick={hideMenu}>
+            ㅡ
+          </div>
+          <hr />
+          <ul id="placesList"></ul>
+          <div id="pagination"></div>
+        </div>
+      </div>
+      <div className="showBox">
+        <div className="show" onClick={showMenu} style={{ display: btn }}>
+          목록보기
+        </div>
       </div>
     </div>
   );
 };
 export default Map;
-

@@ -1,25 +1,76 @@
-.Header {
+.navbar {
   background-color: #ecd06f;
-  height: 80px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.logoimg {
-  width: 150px;
-}
+  .container {
+    height: 100%;
+    width: 100%;
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+    }
+    .logoimg {
+      width: 150px;
+    }
 
-.nav-link {
-  color: #987654;
-  &:hover {
-    color: white;
+    .nav-link {
+      color: #987654;
+      height: fit-content;
+      &:hover {
+        color: white;
+      }
+    }
+
+    .linkbox {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .profileBox {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      width: max-content;
+      cursor: pointer;
+
+      .imgBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .msgBox {
+        margin-left: 5px;
+        .userGrade {
+          color: rgb(69, 69, 252);
+          font-size: 10px;
+        }
+        .welcomeMsg {
+          font-size: 13px;
+        }
+      }
+    }
   }
 }
 
-.linkbox {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+@media (min-width: 992px) {
+  .navbar-expand-lg {
+    .container {
+      width: fit-content;
+      margin-block: 5px;
+
+      .profileBox {
+        position: absolute;
+        right: 50px;
+        margin-left: 10px;
+      }
+    }
+  }
 }

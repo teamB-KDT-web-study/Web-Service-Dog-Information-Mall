@@ -11,6 +11,7 @@ exports.checkLogin = async (req, res) => {
       });
       res.send({
         isLogin: true,
+        id: req.session.loginData,
         nickname: userInfo.nickname,
         profile_img: userInfo.profile_img,
         grade: userInfo.grade,
@@ -195,6 +196,32 @@ exports.signout = async (req, res) => {
   try {
     const result = await model.User.destroy({ where: { id: req.body.id } });
     res.send({ isOk: result });
+  } catch (err) {
+    res.send(err);
+  }
+};
+exports.gradeUp = async (req, res) => {
+  try {
+    const result = await model.User.update(
+      {
+        grade: req.body.toGrade,
+      },
+      {
+        where: {
+          nickname: { [Op.eq]: req.body.nickname },
+          grade: { [Op.eq]: req.body.nowGrade },
+        },
+      }
+    );
+    if (result[0] === 0) {
+      if (req.body.nickname === undefined) {
+        res.send("not login");
+      } else {
+        res.send("aleady solved");
+      }
+    } else {
+      res.send("grade up");
+    }
   } catch (err) {
     res.send(err);
   }

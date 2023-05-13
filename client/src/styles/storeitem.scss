@@ -1,27 +1,43 @@
 .Storeitem {
   width: 250px;
-  height: 340px;
+  height: 380px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border: 2px solid #987654;
   margin: 10px;
   border-radius: 10px;
   padding: 2px 2px 2px 2px;
-}
 
-.Storeitemimg {
-  width: 240px;
-  height: 250px;
-  border-radius: 10px;
-  &:hover,
-  &:focus {
-    opacity: 0.5;
+  .Storeitemimg {
+    width: 240px;
+    height: 250px;
+    border-radius: 10px;
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+    }
   }
-}
+  .storeInfo {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 
-.Storeitemh1 {
-  font-size: 15px;
+  .Storeitemh1 {
+    font-size: 14px;
+  }
+  .price {
+    text-align: center;
+  }
+  .fake {
+    text-decoration: line-through;
+    color: rgb(168, 168, 168);
+  }
+  .real {
+    font-weight: 500;
+  }
 }

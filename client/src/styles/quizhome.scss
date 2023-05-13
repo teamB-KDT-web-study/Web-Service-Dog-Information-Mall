@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
 @import "~include-media/dist/include-media";
 
-$breakpoint-md: 768px;
+$breakpoint-md: 953px;
 .Quizhome {
   position: relative;
   align-items: center;
@@ -59,10 +59,10 @@ body {
   opacity: 0.9;
 }
 .cards:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.card {
+.card1 {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(#4133b7, 0.25);
   max-width: 300px;
@@ -92,7 +92,7 @@ body {
     }
   }
 
-  .title {
+  .title1 {
     font-size: 1.5rem;
     color: var(--c-void);
     line-height: 1.25;
@@ -108,7 +108,7 @@ body {
     }
   }
 
-  .button {
+  .button1 {
     font: inherit;
     line-height: 1;
     background-color: #ecd06f;

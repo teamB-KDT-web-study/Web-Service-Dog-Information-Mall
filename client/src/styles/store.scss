@@ -9,15 +9,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  .searchBox {
+    width: 35vw;
+    min-width: 300px;
+    min-height: 40px;
+    font-size: 2vw;
+    border-radius: 10px;
+    border: 2px solid #987654;
+    background-color: #f3df98;
+    color: #987654;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .searchbatinput {
+      width: 30vw;
+      min-width: 250px;
+      min-height: 35px;
+
+      font-size: 20px;
+      border-radius: 10px;
+      border: 2px solid #987654;
+      background-color: #f3df98;
+      color: #987654;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    .searchBtn {
+      font-size: 30px;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        transition-duration: 0.5s;
+      }
+    }
+  }
 }
-.searchbatinput {
-  width: 30vw;
-  height: 3vw;
-  border-radius: 10px;
-  border: 2px solid #987654;
-  background-color: #f3df98;
-  color: #987654;
-}
+
 .sidebar {
   width: 100%;
   height: 50px;
@@ -32,7 +61,8 @@
   color: #987654;
   background-color: #ecd06f;
   width: 15vw;
-  height: 2vw;
+  height: 3vw;
+  font-size: 1vw;
   border: 2px solid #987654;
   align-items: center;
   justify-content: center;
@@ -62,6 +92,7 @@
 }
 .morebtn {
   color: #987654;
+  font-size: 2vw;
   background-color: #ecd06f;
   width: 25vw;
   height: 3vw;
@@ -81,7 +112,6 @@
   height: 340px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
   border: 2px solid #987654;
@@ -115,9 +145,10 @@
   color: white;
   width: 3vw;
   height: 3vw;
+  font-size: 1vw;
   font-size: 1.5vw;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 50vw;
 }
 .Searchbox {
   width: 99%;

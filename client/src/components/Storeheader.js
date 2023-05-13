@@ -1,6 +1,8 @@
 import { useState } from "react";
+import axios from "axios";
+import { API_BASE_URL } from "../containers/app-config.js";
 import { useNavigate, Link } from "react-router-dom";
-import shopDataNew from "../json/shopDataNew.json";
+// import shopDataNew from '../json/shopDataNew.json';
 
 const Storeheader = () => {
   const navigate = useNavigate();
@@ -13,11 +15,24 @@ const Storeheader = () => {
   };
   //검색하기 버튼 일단은 버튼 지움
   const handleSearchButton = () => {
-    const filteredStores = shopDataNew.filter((store) =>
-      store.title.includes(searchTerm)
-    );
-    setSearchResults(filteredStores);
-    setShowResults(true);
+    if (searchTerm !== "") {
+      const searchItem = async () => {
+        const res = await axios.get(
+          `${API_BASE_URL}/store/searchProduct?keyword=${searchTerm}`
+        );
+        setSearchResults(res.data.data);
+      };
+      searchItem();
+      setShowResults(true);
+      setSearchTerm("");
+    } else {
+      alert("검색어를 입력해주세요.")
+    }
+    // const filteredStores = shopDataNew.filter((store) =>
+    //   store.title.includes(searchTerm)
+    // );
+    // setSearchResults(filteredStores);
+    // setShowResults(true);
   };
   //엔터키로 검색하기
   const handleKeyPress = (event) => {
@@ -34,13 +49,18 @@ const Storeheader = () => {
     <div className="Storeheader">
       {/* 검색부분 */}
       <div className="searchbar">
-        <input
-          className="searchbatinput"
-          placeholder="🔍 상품명을 검색하세요"
-          value={searchTerm}
-          onChange={handleSearch}
-          onKeyPress={handleKeyPress}
-        />
+        <div className="searchBox">
+          <input
+            className="searchbatinput"
+            placeholder="상품명을 검색하세요"
+            value={searchTerm}
+            onChange={handleSearch}
+            onKeyPress={handleKeyPress}
+          />
+          <div className="searchBtn" onClick={handleSearchButton}>
+            🔍{" "}
+          </div>
+        </div>
       </div>
 
       <div className="sidebar">
@@ -48,22 +68,19 @@ const Storeheader = () => {
         <button className="sidebarbtn" onClick={() => navigate("/store")}>
           #전체
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/food")}>
+        <button className="sidebarbtn" onClick={() => navigate("/store/사료")}>
           #강아지 사료
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/snack")}>
+        <button className="sidebarbtn" onClick={() => navigate("/store/간식")}>
           #강아지 간식
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/t")}>
+        <button className="sidebarbtn" onClick={() => navigate("/store/옷")}>
           #강아지 옷
         </button>
-        <button
-          className="sidebarbtn"
-          onClick={() => navigate("/store/cushion")}
-        >
+        <button className="sidebarbtn" onClick={() => navigate("/store/쿠션")}>
           #강아지 쿠션
         </button>
-        <button className="sidebarbtn" onClick={() => navigate("/store/lead")}>
+        <button className="sidebarbtn" onClick={() => navigate("/store/목줄")}>
           #강아지 목줄
         </button>
       </div>

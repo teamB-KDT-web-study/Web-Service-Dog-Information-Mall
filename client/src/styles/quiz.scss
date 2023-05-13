@@ -1,20 +1,21 @@
+@import "~include-media/dist/include-media";
 $primary-color: #3498db;
 $secondary-color: #2c3e50;
 $yellow-color: #ecd06f;
 $brown-color: #987654;
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 
 .Quiz {
+  position: relative;
   display: flex;
   margin: 10px 10px 200px 10px;
-
   align-items: center;
   width: 100%;
-  min-height: 30vw;
 
   .quiz-container {
-    width: 100%;
-    max-width: 800px;
-    min-height: 200px;
+    width: 55vw;
+    min-height: 20vw;
     margin: 0 auto;
     padding: 20px;
     color: #987654;
@@ -58,7 +59,7 @@ $brown-color: #987654;
       }
 
       .question-text {
-        font-size: 1.5rem;
+        font-size: 2vw;
         font-weight: bold;
         margin-bottom: 20px;
       }
@@ -102,6 +103,15 @@ $brown-color: #987654;
           }
         }
       }
+    }
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .Quiz .quiz-container {
+    width: 80vw;
+    min-height: 20vw;
+    .question-section .question-text {
+      font-size: 4vw;
     }
   }
 }

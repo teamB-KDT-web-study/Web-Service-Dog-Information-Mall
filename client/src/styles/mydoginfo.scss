@@ -11,7 +11,7 @@
   border-radius: 30px;
   border: none;
   margin: 20px;
-  font-size: 20px;
+  font-size: 1.5vw;
   color: #987654;
   border: 2px solid #987654;
   &:hover,
@@ -24,7 +24,7 @@
 .mdi_db {
   background-color: #ffffff;
   border-radius: 10px;
-  width: 800px;
+  width: 70vw;
   border: 5px solid #987654;
   display: flex;
   padding: 100px;
@@ -42,11 +42,12 @@
   align-items: center;
   text-align: center;
   background-color: white;
+  font-size: 2vw;
   padding: 10px;
 }
 .resultimg {
-  width: 450px;
-  height: 450px;
+  width: 35vw;
+  height: 35vw;
   border-radius: 20px;
   border: 2px solid #987654;
 }
@@ -56,7 +57,7 @@
   border-radius: 30px;
   border: none;
   margin: 20px;
-  font-size: 20px;
+  font-size: 2vw;
   color: #987654;
   border: 2px solid #987654;
   &:hover,
@@ -67,25 +68,29 @@
 }
 .mydogresultbox {
   background-color: white;
-  width: 600px;
+  width: 50vw;
   border-radius: 10px;
   border: 2px solid #987654;
   padding: 10px;
+  font-size: 2vw;
 }
 
 .mdi_finishbtn {
-  width: 600px;
-  height: 50px;
+  width: 60vw;
+  height: 4vw;
   background-color: #ecd06f;
   border-radius: 30px;
   border: none;
   margin: 20px;
-  font-size: 20px;
+  font-size: 2vw;
   color: white;
   border: 2px solid #987654;
   &:hover,
   &:focus {
     background-color: #ecd06f;
     color: #987654;
+  }
+  .mdi_finishbtnh1 {
+    font-size: 2vw;
   }
 }

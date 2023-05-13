@@ -1,0 +1,70 @@
+.StoreCart {
+  min-height: 95vh;
+  width: 99vw;
+  display: flex;
+  justify-content: center;
+  margin-block: 150px;
+  .cartContainer {
+    width: 80%;
+    height: 80%;
+    .header {
+      font-weight: 500;
+      font-size: 30px;
+      margin: 20px;
+    }
+    .itemContainer {
+      width: 70vw;
+      height: 10vh;
+      tr {
+        border: 1px solid rgb(180, 179, 179);
+
+        td {
+          padding: 10px;
+          vertical-align: middle;
+          .orderBtn,
+          .deleteBtn {
+            border-radius: 10px;
+            border: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+            padding: 4px;
+            &:hover {
+              background-color: white;
+            }
+          }
+        }
+        .price {
+          .fake {
+            text-decoration: line-through;
+            color: rgb(168, 168, 168);
+          }
+          .real {
+          }
+        }
+
+        tr {
+        }
+        .firstTd {
+          color: rgb(167, 166, 166);
+        }
+        .secondTd,
+        .thirdTd {
+          cursor: pointer;
+        }
+      }
+      .tableHead {
+        cursor: default;
+      }
+      img {
+        width: 70px;
+        height: 70px;
+      }
+      .notFoundMsg {
+        width: max-content;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+}

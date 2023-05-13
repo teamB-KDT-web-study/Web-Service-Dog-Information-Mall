@@ -18,7 +18,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    .chatimg {
+      cursor: pointer;
+
+      width: 50px;
+      height: 50px;
+      &:hover {
+        animation-iteration-count: infinite;
+        animation-name: chatBeat;
+        animation-duration: 1s;
+      }
+    }
   }
   .chatBox {
     position: absolute;
@@ -45,8 +55,13 @@
         font-size: 20px;
         cursor: pointer;
         margin-inline: 10px;
+        text-align: center;
         width: max-content;
         color: #987654;
+        &:hover {
+          color: white;
+          transition-duration: 1s;
+        }
       }
     }
     .mainBox {
@@ -99,9 +114,16 @@
       background-color: #ecd06f;
     }
   }
-  .chatimg {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
+}
+
+@keyframes chatBeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

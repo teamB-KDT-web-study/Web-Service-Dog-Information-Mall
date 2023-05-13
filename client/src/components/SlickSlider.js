@@ -26,109 +26,115 @@ const SlickSlider = () => {
   const dogsList = [
     {
       id: 1,
-      img: process.env.PUBLIC_URL + "/SlickImages/slider/말티즈.jpg",
+      img: process.env.PUBLIC_URL + "/SlickImages/말티즈.jpeg",
       breed: "말티즈",
+      mind: "예민해요",
       color: "white",
       information: "소형견",
     },
     {
       id: 2,
 
-      img: process.env.PUBLIC_URL + "/SlickImages/slider/토이푸들.jpg",
+      img: process.env.PUBLIC_URL + "/SlickImages/푸들.jpeg",
       breed: "토이 푸들",
-
+      mind: "친화력이 좋아요",
       color: "white",
       information: "소형견",
     },
     {
       id: 3,
 
-      img: process.env.PUBLIC_URL + "/SlickImages/slider/요크셔테리어.jpg",
+      img: process.env.PUBLIC_URL + "/SlickImages/화이트테리어.jpeg",
       breed: "요크셔테리어",
+
+
+
+      mind: "예민해요",
 
       color: "white",
       information: "소형견",
     },
     {
       id: 4,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/포메라니안.jpeg",
       breed: "포메라니안",
-
+      mind: "예민해요",
       color: "white",
       information: "소형견",
     },
     {
       id: 5,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/치와와.jpeg",
       breed: "치와와",
-      height: "약 13~20cm",
-      weight: "약 3kg 미만",
-      information:
-        "세계에서 가장 체구가 작은 견종으로 멕시코의 가장 넓은 주 치와와주에서 이름을 따온 강아지! \n 앞서 말했듯이 다른 견종에 비해 크기가 매우 작고 애교도 많은 애교덩어리 견종으로 사랑받고 있어요. \n 성격은 쾌활하고 애교가 많지만 생긴 모습과 반대로 자립심도 강하고 용기도 대단한 견종이예요. \n 재빠르기도 꽤나 재빠른 편이라 산책도 자주 시켜주는게 좋지만 체구가 작기 때문에 큰 실내에서도 운동이 되는 편이예요. \n 치와와는 장모종, 단모종으로 두 종류 모두 털빠짐이 있는 편이고 장모종은 빗질을 자주 해줘야 해요. \n 또한, 강아지가 체구가 워낙 작다보니 그만큼 슬개골이 약한 편이라 슬개골 탈구에 특히나 신경을 써줘야 해요.",
-    },
-    {
-      id: 6,
-      breed: "시츄",
-
-      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
-      breed: "Maltese",
+      mind: "예민해요",
       color: "white",
       information: "소형견",
     },
     {
       id: 6,
-      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
-      breed: "Maltese",
-
+      breed: "시츄",
+      img: process.env.PUBLIC_URL + "/SlickImages/시츄.jpeg",
+      mind: "친화력이 좋아요",
       color: "white",
       information: "소형견",
     },
     {
       id: 7,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "스피츠",
-
+      mind: "예민해요",
       color: "white",
       information: "중형견",
     },
     {
       id: 8,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/보더콜리.jpeg",
       breed: "보더콜리",
+
+
+
+      mind: "활동적이에요",
 
       color: "white",
       information: "중형견",
     },
     {
       id: 9,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/웰시코기.jpeg",
       breed: "웰시코기",
+
+
+      mind: "친화력이 좋아요",
 
       color: "white",
       information: "중형견",
     },
     {
       id: 10,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/골든리트리버.jpeg",
       breed: "골든리트리버",
+
+
+
+      mind: "친화력이 좋아요",
 
       color: "white",
       information: "대형견",
     },
     {
       id: 11,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/사모예드.jpeg",
       breed: "사모예드",
-
+      mind: "친화력이 좋아요",
       color: "white",
       information: "대형견",
     },
     {
       id: 12,
-
+      img: process.env.PUBLIC_URL + "/SlickImages/dog1.png",
       breed: "도베르만",
-
-      color: "white",
+      mind: "활동적이에요",
+      color: "black",
       information: "대형견",
     },
   ]; // 강아지 목록 배열
@@ -152,7 +158,11 @@ const SlickSlider = () => {
         <Slider {...settings}>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{
+                width: "30vw",
+                height: "30vw",
+                objectFit: "contain",
+              }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/말티즈.jpg"}
               alt="1"
               id="1"
@@ -161,7 +171,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/토이푸들.jpg"}
               alt="2"
               id="2"
@@ -170,7 +180,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider/요크셔테리어.jpg"
               }
@@ -181,7 +191,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider/포메라니안.jpg"
               }
@@ -192,7 +202,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/치와와.jpg"}
               alt="5"
               id="5"
@@ -201,7 +211,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/시츄.jpg"}
               alt="6"
               id="6"
@@ -210,7 +220,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/스피츠.jpg"}
               alt="7"
               id="7"
@@ -219,7 +229,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/보더콜리.jpg"}
               alt="8"
               id="8"
@@ -228,7 +238,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/웰시코기.jpg"}
               alt="9"
               id="9"
@@ -237,7 +247,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider/골든리트리버.jpg"
               }
@@ -248,7 +258,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/사모예드.jpg"}
               alt="11"
               id="11"
@@ -257,7 +267,7 @@ const SlickSlider = () => {
           </div>
           <div>
             <img
-              style={{ width: "500px", height: "500px", objectFit: "contain" }}
+              style={{ width: "30vw", height: "30vw", objectFit: "contain" }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider/도베르만.png"}
               alt="12"
               id="12"
@@ -265,24 +275,31 @@ const SlickSlider = () => {
             />
           </div>
         </Slider>
-        {dogsInformation.id !== 0 ? (
-          <div>
-            <div key={dogsInformation.id} className="Slick">
-              <div className="slickimg">
-                <img src={dogsInformation.img} className="Slickimg" />
-              </div>
-              <div className="slickinfo">
-                <div className="Slickbox">이름: {dogsInformation.breed}</div>
-                <div className="Slickbox">색상: {dogsInformation.color}</div>
-                <div className="Slickbox">
-                  정보: {dogsInformation.information}
+
+        <div className="Slickback">
+          {dogsInformation.id !== 0 ? (
+            <div>
+              <div key={dogsInformation.id} className="Slick">
+                <div className="slickimg">
+                  <img src={dogsInformation.img} className="Slickimg" />
+                </div>
+                <div className="slickinfo">
+                  <div className="Slickbox">
+                    종 이름: {dogsInformation.breed}
+                  </div>
+                  <div className="Slickbox">색상: {dogsInformation.color}</div>
+                  <div className="Slickbox">성격: {dogsInformation.mind}</div>
+                  <div className="Slickbox">
+                    크기: {dogsInformation.information}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <h2> 궁금한 강아지를 클릭해주세요! </h2>
-        )}
+          ) : (
+            <h2> 궁금한 강아지를 선택해주세요! </h2>
+          )}
+        </div>
+
       </div>
     </div>
   );

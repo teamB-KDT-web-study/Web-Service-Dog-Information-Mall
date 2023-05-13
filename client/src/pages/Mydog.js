@@ -7,10 +7,10 @@ const Mydog = () => {
     //강아지 추천 메인 화면
     <div className="Mydog">
       <div className="dogbox">
-        <h2>나에게 맞는 강아지는 무엇일까?</h2>
+        <div className="dogprofileh1">나에게 맞는 강아지는 무엇일까?</div>
         <div className="dogprofile">
           <img
-            src={process.env.PUBLIC_URL + `/SlickImages/mydog5.gif`}
+            src={process.env.PUBLIC_URL + `/SlickImages/mydog.png`}
             className="mydogimg"
           />
         </div>

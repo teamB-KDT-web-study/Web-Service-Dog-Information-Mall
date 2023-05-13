@@ -28,7 +28,7 @@ CREATE TABLE user
     `id`             VARCHAR(15)   NOT NULL, 
     `password`       VARCHAR(25)     NOT NULL, 
     `nickname`       VARCHAR(15)     NOT NULL UNIQUE, 
-    `grade`          VARCHAR(10)     NULL        DEFAULT '초심자', 
+    `grade`          ENUM('남남', '서먹한 친구', '그냥 친구', '친한 친구', '베스트 프렌드')     NULL        DEFAULT '남남', 
     `profile_img`  VARCHAR(100)    NULL        DEFAULT 'default.jpg', 
      PRIMARY KEY (id)
 );
@@ -113,7 +113,7 @@ CREATE TABLE board
     `body`             text            NOT NULL, 
     `view_count`       INT UNSIGNED    NULL        DEFAULT 0, 
     `like_count`  INT UNSIGNED    NULL        DEFAULT 0, 
-    `date`             DATETIME        NOT NULL, 
+    `date`             DATETIME        NOT  NULL DEFAULT current_timestamp, 
      PRIMARY KEY (id)
 );
 
@@ -168,6 +168,8 @@ insert into dog (name, pet_owner, gender, age, breed, weight) values ('삐삐', 
 insert into board (nickname, title, body, date) values ('바나나', '강아지 정보1', '강아지 정보 1 블라블라', '2023-05-01 20:48:00');
 insert into board (nickname, title, body, date) values ('바나나', '강아지 정보2', '강아지 정보 2 블라블라', '2023-05-02 20:40:00');
 insert into board (nickname, title, body, date) values ('복숭아', '강아지 정보3', '강아지 정보 3 블라블라', '2023-05-03 08:48:00');
+insert into board (nickname, title, body, date) values ('사과', '강아지 정보4', '강아지 정보 4 블라블라', '2023-05-03 10:48:00');
+
 show tables;
 
 desc dog;
@@ -204,3 +206,10 @@ FLUSH PRIVILEGES;
 -- drop database dog_inf_mall;
 -- 계정 삭제
 -- drop user admin;
+-- SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product`  WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
+-- SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product` AS `product` WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
+
+-- delete from product;
+
+select * from product where category='강아지 쿠션';
+

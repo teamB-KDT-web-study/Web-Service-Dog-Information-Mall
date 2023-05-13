@@ -173,9 +173,11 @@ const Mydoginfo = () => {
             <h1>"{recommendation}" 입니다</h1>
             {/* 정보 등록 및 강아지 추천 메인 페이지로 돌아가는 버튼 부분 */}
             <div>
-              <button className="result_btn">나의 정보에 등록할래요!</button>
+              <button className="result_btn" onClick={() => navigate("/slick")}>
+                다른 강아지도 볼래요!
+              </button>
               <button className="result_btn" onClick={() => navigate("/mydog")}>
-                아니요!그냥 돌아갈래요!
+                아니요~돌아갈래요!
               </button>
             </div>
           </p>
@@ -205,8 +207,7 @@ const Mydoginfo = () => {
           null}
           {currentQuestion === questions.length && (
             <button onClick={handleRecommendation} className="mdi_finishbtn">
-              <h1>모든 질문이 끝났습니다!</h1>
-              결과 확인하기
+              <h1 className="mdi_finishbtnh1">결과확인하기!</h1>
             </button>
           )}
         </div>

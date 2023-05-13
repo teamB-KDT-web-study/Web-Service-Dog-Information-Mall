@@ -1,19 +1,21 @@
+@import "~include-media/dist/include-media";
+$breakpoint-md: 953px;
 .Storedetail {
   width: 100%;
   height: 100vw;
   margin: 0 auto;
-  padding: 10px;
+  padding: 1vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 20px;
+  // margin: 20px;
 }
 .detailimg {
   width: 48vw;
   height: 48vw;
 }
 .detailbox {
-  padding: 20px;
+  padding: 1vw;
   width: 35vw;
   height: 45vw;
   font-size: 3vw;
@@ -39,6 +41,8 @@
 .choiceoption {
   background-color: #f6e6ac;
   font-size: 1.5vw;
+  border-radius: 10px;
+  margin: 30px 0px 0px 0px;
 }
 .choicenum {
   display: flex;
@@ -49,6 +53,7 @@
 .choicenumh1 {
   font-size: 2vw;
   margin: 0px 5px 0px 5px;
+  color: #987654;
 }
 .choicenumbtn {
   width: 2vw;
@@ -56,6 +61,7 @@
   border-radius: 10px;
   background-color: #987654;
   border: none;
+  color: white;
 }
 
 .pay {
@@ -71,5 +77,114 @@
     background-color: #987654;
     color: white;
     border: 2px solid #987654;
+  }
+}
+.cho {
+  margin: 0px 0px 0px 10px;
+}
+.selectprice {
+  font-size: 1vw;
+  margin: 0px 0px 0px 270px;
+}
+.totalprice {
+  font-size: 1.5vw;
+  margin: 0px 80px 0px 0px;
+}
+.totalprice2 {
+  font-size: 2vw;
+  margin: 0px 0px 0px 90px;
+}
+.otherchoiceoption {
+  background-color: white;
+  border: 2px solid #987654;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  color: #987654;
+  font-size: 3vw;
+  .otherchoicenumh1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5vw;
+    margin: 0px 5px 0px 5px;
+    color: #987654;
+  }
+  .otherchoicenumbtn {
+    width: 4vw;
+    height: 4vw;
+    margin: 2vw;
+    border-radius: 10px;
+    font-size: 2vw;
+    background-color: #987654;
+    border: none;
+    color: white;
+  }
+  .otherselectprice {
+    width: 71vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 3vw;
+  }
+  .othercho {
+    font-size: 2vw;
+    margin: 2vw 0vw 0vw 2vw;
+  }
+  .otherdetailtext {
+    margin: 2vw;
+  }
+  .othertotalprice {
+    font-size: 3vw;
+    margin: 0px 25vw 0px 2.5vw;
+  }
+  .othertotalprice2 {
+    font-size: 4vw;
+    margin: 0px 0px 0px 25vw;
+  }
+}
+.otherchoiceoptionbtn {
+  background-color: white;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  color: #987654;
+  .otherpay {
+    margin: 10px;
+    width: 25vw;
+    font-size: 4vw;
+    border-radius: 10px;
+    border: 2px solid #987654;
+    background-color: #ecd06f;
+    color: #987654;
+    &:hover,
+    &:focus {
+      background-color: #987654;
+      color: white;
+      border: 2px solid #987654;
+    }
+  }
+}
+@include media("<#{$breakpoint-md}") {
+  .detailbox {
+    visibility: hidden;
+    display: none;
+  }
+  .detailimg {
+    width: 90vw;
+    height: 90vw;
+  }
+  .otherchoiceoption {
+    display: flex;
+  }
+  .otherchoiceoptionbtn {
+    display: flex;
   }
 }

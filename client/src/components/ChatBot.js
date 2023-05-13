@@ -34,10 +34,20 @@ export function ChatBot() {
       bot: {
         class: "bot",
         message: [
-          "서먹서먹 등급: 처음 등록시 부여되는 등급으로, 따로 부여되는 혜택이 없습니다.",
-          "드문드문 등급: 퀴즈 Step1을 이수시 부여되는 등급으로, 스토어 이용시 3%의 할인 적용이 가능합니다.",
-          "친구 등급: ~~",
-          "베스트프렌드 등급: ~~~",
+          "남남 등급:",
+          "처음 등록시 부여되는 등급으로, 따로 부여되는 혜택이 없습니다. 반려견에 대해 알아가고, 친해지시길 바랍니다!",
+          "----------------------------------",
+          "서먹한 친구 등급:",
+          "퀴즈 Step1을 이수시 부여되는 등급으로, 스토어 이용시 3%의 할인 적용이 가능합니다. 반려견과 더욱더 친밀감을 쌓길 바랍니다!",
+          "----------------------------------",
+          "친구 등급:",
+          "퀴즈 Step2를 이수시 부여되는 등급으로, 스토어 이용시 5%의 할인 혜택이 적용됩니다. 본 등급부터는 반려견을 충분히 이해하고 배려할 줄 알는 반려인이 된 것으로 판단됩니다.",
+          "----------------------------------",
+          "친한 친구 등급:",
+          "퀴즈 Step3를 이수시 부여되는 등급으로, 스토어 이용시 7%의 할인 혜택이 적용됩니다. 본 등급부터 강아지 정보 게시판에 글을 쓸 권한이 생기며, 본 등급을 도달한 반려인은 반려견과 매우 친밀한 관계를 유지하는 반려인으로 판단됩니다.",
+          "----------------------------------",
+          "베스트프렌드 등급:",
+          "퀴즈 Step4를 이수시 부여되는 등급으로, 스토어 이용시 10%의 할인 혜택이 적용됩니다. 본 등급에 도달했다면, 반려견의 눈만 봐도 마음을 아는 베스트 프렌드로 인정!",
         ],
         mode: "basic",
       },
@@ -46,7 +56,24 @@ export function ChatBot() {
     setMessages([...messages, msg]);
   };
   const showMap = () => {
-    navigate("/Map");
+    const msg = {
+      user: {
+        class: "user",
+        message: ["동물병원 약도를 보여주세요!"],
+        mode: "basic",
+      },
+      bot: {
+        class: "bot",
+        message: ["동물병원 약도를 보여드리겠습니다."],
+        mode: "basic",
+      },
+    };
+    const input = {
+      user: { class: "user", message: ["지도"], where: "동물 병원" },
+      mode: "basic",
+      system: {},
+    };
+    setMessages([...messages, msg, input]);
   };
   const showHelp = () => {
     const msg = {
@@ -106,12 +133,20 @@ export function ChatBot() {
         },
         bot: {
           class: "bot",
-          message: ["싫습니다"],
+          message: ["고객센터 약도를 보여드리겠습니다."],
           mode: "basic",
         },
+      };
+      const input = {
+        user: {
+          class: "user",
+          message: ["지도"],
+          where: "코딩온",
+        },
+        mode: "basic",
         system: {},
       };
-      setMessages([...messages, msg]);
+      setMessages([...messages, msg, input]);
     }
   };
   const sendComplainMsg = () => {
@@ -176,10 +211,11 @@ export function ChatBot() {
           <footer className="inputBox"></footer>
         </div>
       ) : (
-        <div className="ToChatBox" onClick={showChatBox}>
+        <div className="ToChatBox">
           <img
-            src={process.env.PUBLIC_URL + "/SlickImages/chat2.gif"}
+            src={process.env.PUBLIC_URL + "/SlickImages/chat.png"}
             className="chatimg"
+            onClick={showChatBox}
           />
         </div>
       )}

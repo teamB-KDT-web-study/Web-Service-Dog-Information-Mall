@@ -35,7 +35,7 @@ const initialState = {
   allData: [],
   length: 0,
   pageList: [],
-  data: {},
+  data: { date: "2023-05-01 20:48:00" },
   newData: { nickname: "", title: "", body: "", date: "" },
   searchWord: "",
   selectOption: "title",
