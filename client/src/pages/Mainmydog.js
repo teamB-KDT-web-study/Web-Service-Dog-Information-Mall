@@ -35,6 +35,35 @@ const Mainmydog = () => {
           </button>
         </div>
       </div>
+      <div className="othermainmydogbox">
+        <div className="othermainmydogimgbox">
+          <img
+            src={process.env.PUBLIC_URL + `/SlickImages/mainmydog.jpg`}
+            className="othermainmydogimg"
+          />
+        </div>
+        <div className="othermainmydoginfo">
+          <div className="othermainmydoginfotext1">
+            {" "}
+            세상에 수많은 강아지들...
+          </div>
+          <br />
+          <div className="othermainmydoginfotext2">
+            어떤 강아지가 나와 맞을지 궁금하신가요?
+          </div>
+          <br />
+          <div className="othermainmydoginfotext3"> 저희가 찾아드릴게요!</div>
+          <br />
+          <br />
+          <br />
+          <button
+            className="othermainmydoginfobtn"
+            onClick={() => navigate("/mydog")}
+          >
+            찾으러 가기!
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

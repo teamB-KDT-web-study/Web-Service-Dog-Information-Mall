@@ -10,7 +10,11 @@ const Storedetail = () => {
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
   const [selectedOption, setSelectedOption] = useState("");
+
+  console.log("storeId >> ", storeId);
+
   const [onePrice, setOnePrice] = useState(0);
+
   useEffect(() => {
     const getItem = async () => {
       console.log("detail useEffect 실행");
@@ -18,6 +22,9 @@ const Storedetail = () => {
         `${API_BASE_URL}/store/getItem?product_id=${storeId}`
       );
       setItem(res.data);
+
+      console.log("res >>> ", res);
+      console.log("item >> ", item);
     };
     getItem();
   }, []);
@@ -55,7 +62,7 @@ const Storedetail = () => {
         amount: number,
       });
       alert("장바구니에 상품이 저장되었습니다!");
-      navigate('/store/cart')
+      navigate("/store/cart");
     } else {
       if (!session.data.isLogin) {
         alert("로그인이 필요합니다.");

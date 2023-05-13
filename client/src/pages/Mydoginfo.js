@@ -173,8 +173,11 @@ const Mydoginfo = () => {
             <h1>"{recommendation}" 입니다</h1>
             {/* 정보 등록 및 강아지 추천 메인 페이지로 돌아가는 버튼 부분 */}
             <div>
+              <button className="result_btn" onClick={() => navigate("/slick")}>
+                다른 강아지도 볼래요!
+              </button>
               <button className="result_btn" onClick={() => navigate("/mydog")}>
-                돌아갈래요!
+                아니요~돌아갈래요!
               </button>
             </div>
           </p>
