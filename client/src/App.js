@@ -23,7 +23,7 @@ import MapComponent from "./components/MapComponent";
 import Traininginfo from "./pages/Traininginfo";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
-import EditMyProfile from "./pages/EditMyProfile";
+import EditMyPage from "./pages/EditMyPage";
 import Footer from "./components/Footer";
 import Store from "./pages/Store";
 import Storefood from "./pages/Storefood";
@@ -93,6 +93,11 @@ function App() {
           <Route path="/training" element={<TrainingContainer />} />
           <Route path="/mydog" element={<Mydog />} />
           <Route path="/mydog/mydoginfo" element={<Mydoginfo />} />
+
+      
+
+         
+        
           <Route path="/store" element={<Store />} />
           <Route path="/store/item/:storeId" element={<Storedetail />} />
           <Route path="/store/:category" element={<Store />} />
@@ -105,6 +110,7 @@ function App() {
 
           <Route path="/EditMyProfile" element={<EditMyProfile />} />
           <Route path="/store/cart" element={<StoreCart />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
