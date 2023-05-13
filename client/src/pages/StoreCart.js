@@ -46,6 +46,9 @@ const StoreCart = () => {
       return;
     }
   };
+  const orderItem = () => {
+    alert("주문 기능은 아직 없습니다...^^");
+  };
   return (
     <div className="StoreCart">
       <div className="cartContainer">
@@ -61,7 +64,7 @@ const StoreCart = () => {
             <td>주문</td>
             <td>삭제</td>
           </tr>
-          {cartInfo.length > 1 ? (
+          {cartInfo.length >= 1 ? (
             cartInfo.map((el, id) => {
               return (
                 <tr>
@@ -80,15 +83,24 @@ const StoreCart = () => {
                     <div className="cartChoice">{el.choice}</div>
                   </td>
                   <td>{el.amount}</td>
-                  <td className="price">
-                    <div className="fake">{el.product.price}</div>
-                    <div className="real">
-                      {(el.product.price * (100 - gradeInfo[grade])) / 100}
-                    </div>
-                  </td>
-                  <td>{gradeInfo[grade]}% off</td>
+                  {grade !== "남남" ? (
+                    <td className="price">
+                      <div className="fake">{el.product.price}</div>
+                      <div className="real">
+                        {(el.product.price * (100 - gradeInfo[grade])) / 100}
+                      </div>
+                    </td>
+                  ) : (
+                    <td>
+                      <div className="fake">{el.product.price}</div>
+                    </td>
+                  )}
+                  {grade !== '남남'? <td>{gradeInfo[grade]}% off</td>: <td>.</td>}
+                  
                   <td>
-                    <div className="orderBtn">주문</div>
+                    <div className="orderBtn" onClick={orderItem}>
+                      주문
+                    </div>
                   </td>
                   <td>
                     <div
@@ -102,7 +114,9 @@ const StoreCart = () => {
               );
             })
           ) : (
-            <div>장바구니에 상품이 존재하지 않습니다.</div>
+            <div className="notFoundMsg">
+              장바구니에 상품이 존재하지 않습니다.
+            </div>
           )}
         </table>
       </div>

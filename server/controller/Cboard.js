@@ -41,6 +41,7 @@ exports.getContentDetail = async (req, res) => {
         },
       }
     );
+    console.log(result)
     res.send(result);
   } catch (err) {
     res.send(err);
@@ -54,7 +55,7 @@ exports.addContent = async (req, res) => {
       nickname: req.body.nickname,
       title: req.body.title,
       body: req.body.body,
-      date: req.body.date,
+      // date: req.body.date,
     });
     res.send(result);
   } catch (err) {

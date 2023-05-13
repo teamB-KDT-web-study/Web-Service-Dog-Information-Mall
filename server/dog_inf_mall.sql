@@ -113,7 +113,7 @@ CREATE TABLE board
     `body`             text            NOT NULL, 
     `view_count`       INT UNSIGNED    NULL        DEFAULT 0, 
     `like_count`  INT UNSIGNED    NULL        DEFAULT 0, 
-    `date`             DATETIME        NOT NULL, 
+    `date`             DATETIME        NOT  NULL DEFAULT current_timestamp, 
      PRIMARY KEY (id)
 );
 

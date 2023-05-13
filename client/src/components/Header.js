@@ -24,6 +24,7 @@ const Header = ({ userId, destroySession }) => {
             </div>
             <div className="msgBox">
               <div className="welcomeMsg">{userId.nickname}님 환영합니다!</div>
+              <div className="userGrade">{userId.grade} 등급</div>
             </div>
           </Nav.Link>
         )}

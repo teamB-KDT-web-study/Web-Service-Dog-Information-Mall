@@ -16,7 +16,9 @@ const Storeitem = (props) => {
       </Link>
       <div className="storeInfo">
         <div className="Storeitemh1"> {store.title}</div>
-        {userInfo.isLogin ? (
+        {!userInfo.isLogin || userInfo.grade === "남남" ? (
+          <div className="Storeitemh1">{store.price}원</div>
+        ) : (
           <div className="price">
             <div className="Storeitemh1 fake">{store.price}원</div>
             <div className="Storeitemh1 real">
@@ -24,8 +26,6 @@ const Storeitem = (props) => {
               {gradeInfo[userInfo.grade]}%off)
             </div>
           </div>
-        ) : (
-          <div className="Storeitemh1">{store.price}원</div>
         )}
       </div>
     </div>

@@ -211,10 +211,11 @@ export function ChatBot() {
           <footer className="inputBox"></footer>
         </div>
       ) : (
-        <div className="ToChatBox" onClick={showChatBox}>
+        <div className="ToChatBox">
           <img
             src={process.env.PUBLIC_URL + "/SlickImages/chat.png"}
             className="chatimg"
+            onClick={showChatBox}
           />
         </div>
       )}
