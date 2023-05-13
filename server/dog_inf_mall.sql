@@ -60,6 +60,8 @@ CREATE TABLE dog
     `age`        INT UNSIGNED      NULL, 
     `breed`      VARCHAR(20)       NOT NULL, 
     `weight`     INT UNSIGNED      NULL, 
+    `img`         VARCHAR(100)    NULL       DEFAULT 'myDogImg.png', 
+
      PRIMARY KEY (name, pet_owner)
 );
 
@@ -206,10 +208,9 @@ FLUSH PRIVILEGES;
 -- drop database dog_inf_mall;
 -- 계정 삭제
 -- drop user admin;
--- SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product`  WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
--- SELECT `id`, `title`, `category`, `choice`, `image`, `price` FROM `product` AS `product` WHERE `product`.`title` LIKE '%관절%' ORDER BY `product`.`id` DESC LIMIT 16;
 
--- delete from product;
 
-select * from product where category='강아지 쿠션';
 
+SELECT `id`, `password`, `nickname`, `grade`, `profile_img` FROM `user` AS `user` WHERE `user`.`id` = '6';
+select * from user where id=6;
+select * from user;
