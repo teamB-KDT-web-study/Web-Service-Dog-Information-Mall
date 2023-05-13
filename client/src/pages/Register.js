@@ -156,19 +156,62 @@ const Register = () => {
   const onRegister = async () => {
     console.log("------------");
     console.log(imgFile);
-    const res = await axios.post(
-      API_BASE_URL + "/member/signup",
-      {
+    let formData = {}; // back 보낼 데이터 (req.body)
+
+    // countDogList: [ {}, {}, {}, {}, {} ]
+    const [dog1, dog2, dog3, dog4, dog5] = countDogList;
+    const beforeData = [dog1, dog2, dog3, dog4, dog5]; // array
+    // console.log("********************");
+    // console.log(beforeData);
+    // console.log("********************");
+    const afterData = {}; // object
+
+    beforeData.forEach((item, idx) => {
+      console.log("item >>>", item);
+      console.log("item >>>", typeof item);
+
+      if (item !== "undefined") {
+        for (let key in item) {
+          // console.log("key >>>", key);
+          const value = item[key];
+          // console.log(
+          //   "afterData[key + (idx + 1)] >>",
+          //   afterData[key + (idx + 1)]
+          // );
+          // console.log("value >>", value);
+          afterData[key + (idx + 1)] = value;
+        }
+      }
+    });
+
+    if (dog1) {
+      // 강아지 폼 입력하는 경우
+      formData = {
         // 사람
         id: id,
         password: pw,
         nickname: nickName,
         file: imgFile,
-      },
-      {
-        "Content-Type": "multipart/form-data",
-      }
-    );
+        // 강아지
+        afterData,
+      };
+    } else {
+      // 강아지 폼 입력하지 않는 경우
+      formData = {
+        // 사람
+        id: id,
+        password: pw,
+        nickname: nickName,
+        file: imgFile,
+      };
+    }
+
+    console.log("**************");
+    console.log(afterData);
+
+    const res = await axios.post(API_BASE_URL + "/member/signup", formData, {
+      "Content-Type": "multipart/form-data",
+    });
     console.log(res.data);
 
     // TODO: file 관련 state 만들어서 db에 저장할 수 있도록
@@ -184,9 +227,30 @@ const Register = () => {
     //     "content-length": `${imgFile.size}`,
     //   },
     // }).then((res) => res.json());
-    onRegister();
-    navigate("/Login"); // 로그인 페이지로 이동
+    // onRegister();
+    // navigate("/Login"); // 로그인 페이지로 이동
   };
+
+  const handleDogForm = (dogInfo, formId) => {
+    console.log("dogInfo", dogInfo);
+    console.log("formId", formId);
+
+    const newCountDogList = [...countDogList];
+
+    newCountDogList[formId].name = dogInfo.name;
+    newCountDogList[formId].breed = dogInfo.breed;
+    newCountDogList[formId].gender = dogInfo.gender;
+    newCountDogList[formId].age = dogInfo.age;
+    newCountDogList[formId].weight = dogInfo.weight;
+
+    // console.log(newCountDogList);
+
+    setCountDogList(newCountDogList);
+  };
+
+  useEffect(() => {
+    console.log(">>>>>>>>>>", countDogList);
+  }, [countDogList]);
 
   return (
     <>
@@ -286,6 +350,8 @@ const Register = () => {
                     key={dog.id}
                     dog={dog}
                     deleteCountDogList={deleteCountDogList}
+                    handleDogForm={handleDogForm}
+                    formId={dog.id}
                   />
                 ))}
                 <div className="onAddDogFormParent">

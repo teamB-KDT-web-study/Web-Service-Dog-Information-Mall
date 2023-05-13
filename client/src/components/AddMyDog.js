@@ -6,9 +6,10 @@ import { useAsyncError } from "react-router-dom";
 const AddMyDog = (props) => {
   useEffect(() => {
     console.log("add my dog render");
+    console.log("dog >>>>", dog);
   });
 
-  const { dog, deleteCountDogList } = props;
+  const { dog, deleteCountDogList, handleDogForm, formId } = props;
   const [DogImgFile, setDogImgFile] = useState("");
   const imgRef = useRef();
 
@@ -21,12 +22,14 @@ const AddMyDog = (props) => {
       weight: "",
     },
   ]);
-  const handleChange = (e) => {
+  const handleChange = (e, formId) => {
     setDogInf({ ...dogInf, [e.target.id]: e.target.value });
-    console.log({
-      [e.target.id]: e.target.value,
-    });
-    console.log(dogInf);
+    handleDogForm(dogInf, formId);
+
+    // console.log({
+    //   [e.target.id]: e.target.value,
+    // });
+    // console.log(dog);
   };
 
   // 강아지 이미지 업로드 input의 onChange
@@ -90,7 +93,7 @@ const AddMyDog = (props) => {
               id="dogList"
               style={{ marginLeft: "10px", border: "none" }}
               value={dog.list}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formId)}
             />
             <br />
             <label for="dogName">이름: </label>
@@ -98,7 +101,7 @@ const AddMyDog = (props) => {
               id="name"
               type="text"
               style={{ marginLeft: "10px" }}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formId)}
             />
             <br />
             <label for="dogBreed">견종: </label>
@@ -106,7 +109,7 @@ const AddMyDog = (props) => {
               type="text"
               id="breed"
               style={{ marginLeft: "10px" }}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formId)}
             />
             <br />
             <div className="dogGender">
@@ -116,7 +119,7 @@ const AddMyDog = (props) => {
                 id="gender"
                 name="gender"
                 value="M"
-                onChange={handleChange}
+                onChange={(e) => handleChange(e, formId)}
               />
               <label>수컷</label>
               <input
@@ -124,7 +127,7 @@ const AddMyDog = (props) => {
                 id="gender"
                 name="gender"
                 value="F"
-                onChange={handleChange}
+                onChange={(e) => handleChange(e, formId)}
               />
               <label>암컷</label>
             </div>
@@ -134,7 +137,7 @@ const AddMyDog = (props) => {
               type="text"
               id="age"
               style={{ marginLeft: "10px" }}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formId)}
             />
             <br />
             <label for="dogWeight">무게: </label>
@@ -142,7 +145,7 @@ const AddMyDog = (props) => {
               type="text"
               id="weight"
               style={{ marginLeft: "10px" }}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e, formId)}
             />
             <br />
           </div>
