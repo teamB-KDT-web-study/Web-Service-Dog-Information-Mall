@@ -1,11 +1,12 @@
 import "../styles/Register.scss";
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import RegisterYourDog from "../components/RegisterYourDog";
 import AddMyDog from "../components/AddMyDog";
 import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const EditMyPage = () => {
   const navigate = useNavigate();
 
   // 상태 관리 초기값 세팅
@@ -13,62 +14,44 @@ const Register = () => {
   const [pw, setPw] = useState("");
   const [nickName, setNickName] = useState("");
 
-  const [imgFile, setImgFile] = useState("");
-  const imgRef = useRef();
-
   // 오류 메세지 전달을 위한 상태값 세팅
   const [idMessage, setIdMessage] = useState("");
   const [pwMessage, setPwMessage] = useState("");
   const [nickNameMessage, setNickNameMessage] = useState("");
 
   // 유효성 검사하기 위한 세팅
-  const [isId, setIsId] = useState(false); // 아이디 중복 검사 포함
+  const [isId, setIsId] = useState(false);
   const [isPw, setIsPw] = useState(false);
-  const [isNickName, setIsNickName] = useState(false); // 닉네임 중복 검사 포함
+  const [isNickName, setIsNickName] = useState(false);
 
   // 조건에 따라 message 값 변경
-  const onChangeId = async (e) => {
-    // 유효성 검사
+  const onChangeId = (e) => {
     const currentId = e.target.value;
     setId(currentId);
     const idRegExp = /^[a-zA-z0-9]{4,12}$/;
-    if (!idRegExp.test(id)) {
+
+    if (!idRegExp.test(currentId)) {
       setIdMessage("4-12사이 대소문자 또는 숫자만 입력해 주세요.");
       setIsId(false);
     } else {
-      // 아이디 중복 검사
-      const CheckId = await axios.post(API_BASE_URL + "/member/isExist", {
-        type: "id",
-        inputData: id,
-      });
-      console.log(CheckId.data);
-
-      if (!CheckId.data.isOk) {
-        setIdMessage("중복된 아이디입니다.");
-        setIsId(false);
-        return false;
-      } else {
-        setIdMessage("");
-        setIsId(true);
-      }
+      setIdMessage("사용 가능한 아이디 입니다.");
+      setIsId(true);
     }
   };
-
   const onChangePw = (e) => {
     const currentPw = e.target.value;
-    setPw(currentPw);
+    setId(currentPw);
     const pwRegExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 
     if (!pwRegExp.test(currentPw)) {
       setPwMessage("영문자+숫자+특수문자 조합으로 8자리 이상 입력해주세요.");
       setIsPw(false);
     } else {
-      setPwMessage("");
+      setPwMessage("안전한 비밀번호 입니다.");
       setIsPw(true);
     }
   };
-  const onChangeNickName = async (e) => {
-    // 닉네임 유효성 검사
+  const onChangeNickName = (e) => {
     const currentNickName = e.target.value;
     setNickName(currentNickName);
 
@@ -76,23 +59,16 @@ const Register = () => {
       setNickNameMessage("닉네임은 2글자 이상으로 입력해주세요.");
       setIsNickName(false);
     } else {
-      // 닉네임 중복 검사
-      const CheckNickName = await axios.post(API_BASE_URL + "/member/isExist", {
-        type: "nickname",
-        inputData: nickName,
-      });
-      console.log(CheckNickName.data);
-
-      if (!CheckNickName.data.isOk) {
-        setNickNameMessage("중복된 닉네임입니다.");
-        setIsNickName(false);
-      } else {
-        setNickNameMessage("");
-        setIsNickName(true);
-      }
+      setNickNameMessage("사용가능한 닉네임 입니다.");
+      setIsNickName(true);
     }
   };
 
+  // const [MyDogForm, setMyDogForm] = useState(false);
+  const [imgFile, setImgFile] = useState("");
+  const imgRef = useRef();
+
+  // const [countDogList, setCountDogList] = useState([0]);
   const [countDogList, setCountDogList] = useState([
     {
       id: 0,
@@ -108,17 +84,21 @@ const Register = () => {
     console.log(countDogList);
   });
 
-  // AddMyDog에 전달하는 함수
-  // const [myDogForm, setMyDogForm] = useState();
-  // const getMyDogInf = (data) => {
-  //   setMyDogForm(data);
-  // };
-
   // 강아지 폼 추가
   const onAddDogForm = () => {
+    // let countArr = [...countDogList];
+    // console.log("countArr 1", countArr);
+    // console.log("countArr 1", countArr.slice(-1));
+    // console.log("countArr 1", countArr.slice(-1)[0]);
+
+    // let counter = countArr.slice(-1)[0];
+    // // counter += 1;
+    // console.log("counter", counter);
+    // // counter.id = counter.length - 1;
+    // countArr.push(counter);
+    // console.log("countArr 2", countArr);
     const newData = {
       id: countDogList.length,
-      // list: `나의 ${counts.length + 1}번째 강아지`,
       list: "",
       name: "",
       breed: "",
@@ -130,20 +110,15 @@ const Register = () => {
   };
 
   // 프로필 이미지 업로드 input의 onChange
-  const saveImgFile = (e) => {
+  const saveImgFile = () => {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImgFile(reader.result);
     };
-    // console.log(e.target.files[0]);
-    if (e.target.files) {
-      setImgFile(e.target.files[0]);
-    }
   };
 
-  // 강아지 폼 삭제 버튼 클릭
   const deleteCountDogList = (targetFormId) => {
     const newCountDogList = countDogList.filter((item) => {
       return item.id !== targetFormId;
@@ -152,47 +127,42 @@ const Register = () => {
     setCountDogList(newCountDogList);
   };
 
-  // register 버튼 클릭 이벤트 (백 전송)
-  const onRegister = async () => {
-    console.log("------------");
-    console.log(imgFile);
-    const res = await axios.post(
-      API_BASE_URL + "/member/signup",
-      {
-        // 사람
-        id: id,
-        password: pw,
-        nickname: nickName,
-        file: imgFile,
-      },
-      {
-        "Content-Type": "multipart/form-data",
-      }
-    );
-    console.log(res.data);
+  // 회원 수정 버튼 클릭시 백으로 전송
+  const onEditMyPage = async () => {
+    const res = await axios.patch(API_BASE_URL + "/member/profileEdit", {
+      id: id,
+      pw: pw,
+      nickName: nickName,
+    });
+    onEditMyPage();
+    navigate("/MyPage");
+  };
 
-    // TODO: file 관련 state 만들어서 db에 저장할 수 있도록
-    // 파일이 있으면 그 파일 이름을 보내고, 파일이 없으면 디폴트 이미지 보내고
-    // if (!imgFile) {
-    //   return;
-    // }
-    // fetch(API_BASE_URL + "/member/signup", {
-    //   method: "POST",
-    //   body: imgFile,
-    //   headers: {
-    //     "content-type": imgFile.type,
-    //     "content-length": `${imgFile.size}`,
-    //   },
-    // }).then((res) => res.json());
-    onRegister();
-    navigate("/Login"); // 로그인 페이지로 이동
+  // 회원 탈퇴 버튼 클릭시 백으로 전송
+  const onDeleteMyProfile = async (targetProfile) => {
+    // e.preventDefault();
+    // const res = await axios.delete(API_BASE_URL + "/member/signout", {
+    //   id: id,
+    // });
+
+    if (window.confirm("정말 탈퇴를 하시겠습니까?")) {
+      await axios
+        .delete(API_BASE_URL + "/member/signout", { id: "id" })
+        .then(() => {
+          alert("그동안 이용해주셔서 감사합니다.");
+          navigate("/");
+        });
+      console.log(onDeleteMyProfile.data);
+    } else {
+      return;
+    }
   };
 
   return (
     <>
       <div className="RegisterWrap">
         <form className="RegisterBox">
-          <h1>회원가입</h1>
+          <h1>회원정보 수정</h1>
           <form>
             <div className="ImgFormBox">
               <div className="MyProfileImg">
@@ -200,7 +170,7 @@ const Register = () => {
                   src={
                     imgFile
                       ? imgFile
-                      : process.env.PUBLIC_URL + "profile_img/default.jpg"
+                      : process.env.PUBLIC_URL + "ProFileImg/ProfileImg.jpg"
                   }
                   alt="프로필 이미지"
                   style={{
@@ -228,18 +198,13 @@ const Register = () => {
                 type="text"
                 name="UserId"
                 id="loginId"
-                value={id}
-                placeholder="ID를 입력해주세요"
-                onChange={(e) => {
-                  setId(e.target.value);
-                }}
-                onBlur={onChangeId}
-                required
+                onChange={onChangeId}
+                placeholder=""
+                style={{ border: "none", backgroundColor: "white" }}
+                disabled
               />
 
-              <p className="message" style={{ color: "red" }}>
-                {idMessage}
-              </p>
+              <p className="message">{idMessage}</p>
             </div>
             <div className="formBox">
               <label htmlFor="loginPw">PASSWORD</label>
@@ -252,9 +217,7 @@ const Register = () => {
                 onChange={onChangePw}
                 required
               />
-              <p className="message" style={{ color: "red" }}>
-                {pwMessage}
-              </p>
+              <p className="message">{pwMessage}</p>
             </div>
             <div className="formBox">
               <label htmlFor="loginPw">NiCKNAME</label>
@@ -264,21 +227,27 @@ const Register = () => {
                 name="UserNickName"
                 id="nickname"
                 placeholder="nickname을 입력해주세요"
-                onChange={(e) => {
-                  setNickName(e.target.value);
-                }}
-                onBlur={onChangeNickName}
+                onChange={onChangeNickName}
                 required
               />
-
-              <p className="message" style={{ color: "red" }}>
-                {nickNameMessage}
-              </p>
+              <p className="message">{nickNameMessage}</p>
             </div>
             <h2>강아지 정보</h2>
-            <p>최대 5마리까지 등록 가능합니다!</p>
             <div className="RegisterYourDog"></div>
-
+            {/* <div className="formBox">
+              <div>
+                {MyDogForm === true ? <AddMyDog /> : <RegisterYourDog />}
+                <br />
+                <button
+                  className="AddMyDog"
+                  onClick={() => {
+                    setMyDogForm(!MyDogForm);
+                  }}
+                >
+                  ➕
+                </button>
+              </div>
+            </div> */}
             <div className="formBox">
               <div>
                 {countDogList?.map((dog) => (
@@ -292,21 +261,19 @@ const Register = () => {
                   <button
                     className="onAddDogForm"
                     onClick={onAddDogForm}
-                    disabled={countDogList.length > 4} // 강아지 등록 폼 최대 5개까지만
                     type="button"
+                    disabled={countDogList.length > 4} // 강아지 등록 폼 최대 5개까지만
                   >
                     ➕
                   </button>
                 </div>
               </div>
             </div>
-            <button
-              type="button"
-              className="SubmitRegister"
-              disabled={!(isId && isPw && isNickName)}
-              onClick={onRegister}
-            >
-              회원가입
+            <button type="button" className="EditMyPage" onClick={onEditMyPage}>
+              수정 완료
+            </button>
+            <button className="DeleteMyProfile" onClick={onDeleteMyProfile}>
+              회원 탈퇴
             </button>
           </form>
         </form>
@@ -315,4 +282,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default EditMyPage;

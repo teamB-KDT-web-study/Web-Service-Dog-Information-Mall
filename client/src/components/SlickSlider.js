@@ -46,7 +46,6 @@ const SlickSlider = () => {
       img: process.env.PUBLIC_URL + "/SlickImages/slider/요크셔테리어.jpg",
       breed: "요크셔테리어",
 
-
       color: "white",
       information: "소형견",
     },
@@ -97,7 +96,6 @@ const SlickSlider = () => {
 
       breed: "보더콜리",
 
-
       color: "white",
       information: "중형견",
     },
@@ -106,7 +104,6 @@ const SlickSlider = () => {
 
       breed: "웰시코기",
 
-
       color: "white",
       information: "중형견",
     },
@@ -114,7 +111,6 @@ const SlickSlider = () => {
       id: 10,
 
       breed: "골든리트리버",
-
 
       color: "white",
       information: "대형견",
@@ -153,7 +149,6 @@ const SlickSlider = () => {
       }}
     >
       <div>
-        <h2>Dog breeds</h2>
         <Slider {...settings}>
           <div>
             <img
@@ -277,7 +272,7 @@ const SlickSlider = () => {
                 <img src={dogsInformation.img} className="Slickimg" />
               </div>
               <div className="slickinfo">
-                <div className="Slickbox">종 이름: {dogsInformation.breed}</div>
+                <div className="Slickbox">이름: {dogsInformation.breed}</div>
                 <div className="Slickbox">색상: {dogsInformation.color}</div>
                 <div className="Slickbox">
                   정보: {dogsInformation.information}
@@ -286,7 +281,7 @@ const SlickSlider = () => {
             </div>
           </div>
         ) : (
-          <h2> 궁금한 강아지를 선택해주세요! </h2>
+          <h2> 궁금한 강아지를 클릭해주세요! </h2>
         )}
       </div>
     </div>

@@ -2,7 +2,6 @@ import "../styles/Login.scss";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2";
 import { API_BASE_URL } from "../containers/app-config";
 
 const Login = ({ getSession }) => {
@@ -20,9 +19,6 @@ const Login = ({ getSession }) => {
 
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
-
-   
-
     const getLogin = async () => {
       const res = await axios.post(API_BASE_URL + "/member/login", {
         id: id,
@@ -37,8 +33,6 @@ const Login = ({ getSession }) => {
         return;
       }
     };
-
-
 
     if (id === "") {
       alert("아이디를 입력해주세요");

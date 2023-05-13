@@ -22,7 +22,7 @@ import Map from "./pages/Map";
 import Traininginfo from "./pages/Traininginfo";
 import Mydog from "./pages/Mydog";
 import Mydoginfo from "./pages/Mydoginfo";
-import EditMyProfile from "./pages/EditMyProfile";
+import EditMyPage from "./pages/EditMyPage";
 import Footer from "./components/Footer";
 import Store from "./pages/Store";
 import Storefood from "./pages/Storefood";
@@ -99,7 +99,7 @@ function App() {
             path="/store/cushion"
             element={<Storecushion Stores={shopDataNew} />}
           />
-          <Route path="/EditMyProfile" element={<EditMyProfile />} />
+          <Route path="/EditMyPage" element={<EditMyPage />} />
           <Route
             path="/store/:storeId"
             element={<Storedetail Stores={shopDataNew} />}

@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/MyPage.scss";
-import AddMyDog from "../components/AddMyDog";
-import EditMyPage from "../pages/EditMyProfile";
-import RegisterYourDog from "../components/RegisterYourDog";
+import EditMyPage from "../pages/EditMyPage";
 import { Link, Routes, Route } from "react-router-dom";
-import EditMyProfile from "../pages/EditMyProfile";
+import axios from "axios";
+import { API_BASE_URL } from "../containers/app-config";
 
 const MyPage = () => {
-  const [MyDogForm, setMyDogForm] = useState(false);
-  // const [FormCount, setFormCount] = useState([0]);
+  const [myProfile, setMyProfile] = useState([]);
 
-  // const newForm = {}; // FormCount state 배열에 새로 추가할 요소
-
-  //  setFormCount([...FormCount, newForm]);
+  // useEffect(() => {
+  //   const getMyProfile = async () => {
+  //     const req = await axios.post((API_BASE_URL = "/member/showProfile"));
+  //     setMyProfile(req.data);
+  //   };
+  // });
 
   return (
     <>
@@ -20,43 +21,76 @@ const MyPage = () => {
         <div className="MyPageBox">
           <img
             className="ProfileImg"
-            src={process.env.PUBLIC_URL + "ProFileImg/ProfileImg.jpg"}
+            src={process.env.PUBLIC_URL + "profile_img/default.jpg"}
             alt="ProfileImg"
           />
+          <div className="Id" style={{ marginTop: "20px", fontWeight: "bold" }}>
+            ID:
+            {myProfile.map((id) => {
+              return (id = { id });
+            })}
+          </div>
           <div
             className="NickName"
             style={{ marginTop: "20px", fontWeight: "bold" }}
           >
-            닉네임
+            닉네임:
           </div>
-          <Link to="/editMyProfile">
-            <button className="EditMyPage">회원수정</button>
+
+          <Link to="/editMyPage">
+            <button className="EditMyPage">회원정보 수정</button>
           </Link>
+
           <Routes>
-            <Route path="/editMyPage" element={<EditMyProfile />}></Route>
+            <Route path="/editMyPage" element={<EditMyPage />}></Route>
           </Routes>
         </div>
+
         <div className="MyDogsPageBox">
           <div className="MyDogFormBox">
-            <div>{MyDogForm === true ? <AddMyDog /> : <RegisterYourDog />}</div>
-            {/* <div>
-               {FormCount.map((value) => {
-                return <AddMyDog key={value} />;
-              })}
-            </div> */}
+            <img
+              className="ProfileImg"
+              src={process.env.PUBLIC_URL + "profile_img/MyDogImg.png"}
+              alt="ProfileImg"
+            />
+            <div
+              className="DogList"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              DogList
+            </div>
+            <div
+              className="DogName"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              이름:
+            </div>
+            <div
+              className="DogBreed"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              견종:
+            </div>
+            <div
+              className="DogGender"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              성별:
+            </div>
+            <div
+              className="DogAge"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              나이:
+            </div>
+            <div
+              className="DogWeight"
+              style={{ marginTop: "20px", fontWeight: "bold" }}
+            >
+              무게:
+            </div>
           </div>
         </div>
-        <br />
-
-        <button
-          className="AddMyDog"
-          onClick={() => {
-            setMyDogForm(!MyDogForm);
-            // FormCount();
-          }}
-        >
-          ➕
-        </button>
       </div>
     </>
   );

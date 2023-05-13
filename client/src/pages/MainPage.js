@@ -1,5 +1,5 @@
 import { TrainingContainer } from "../containers/mainContainer";
-import {ChatBot} from "../components/ChatBot";
+import { ChatBot } from "../components/ChatBot";
 import SlickSlider from "../components/SlickSlider";
 // import axios from "axios";
 // import { useEffect } from "react";
@@ -9,6 +9,7 @@ const MainPage = ({ getSession }) => {
   return (
     <>
       <SlickSlider />
+
       <TrainingContainer />
       <ChatBot />
     </>
