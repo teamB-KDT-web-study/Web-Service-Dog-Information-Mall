@@ -127,3 +127,11 @@
     transform: scale(1);
   }
 }
+
+
+@media (max-width: 992px) {
+  .chatBox {
+    width: 300px !important;
+    height: 500px !important;
+  }
+}

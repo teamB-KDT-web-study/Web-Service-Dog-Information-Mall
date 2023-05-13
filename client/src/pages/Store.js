@@ -17,7 +17,6 @@ const Store = () => {
     const res = await axios.get(API_BASE_URL + "/member/checkLogin");
     setUserInfo(res.data);
   };
-  getUserInfo();
   useEffect(() => {
     getUserInfo();
   }, [userInfo]);
