@@ -9,7 +9,7 @@ const Mainslide = () => {
       <Carousel fade>
         <Carousel.Item>
           <img
-            style={{ height: "50vw" }}
+            style={{ height: "55vw" }}
             className="d-block w-100"
             src={process.env.PUBLIC_URL + "/SlickImages/mainslide1.jpg"}
             alt="First slide"

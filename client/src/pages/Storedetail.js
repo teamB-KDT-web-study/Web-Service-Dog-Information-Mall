@@ -25,7 +25,6 @@ const Storedetail = () => {
 
       console.log("res >>> ", res);
       console.log("item >> ", item);
-main
     };
     getItem();
   }, []);
@@ -63,7 +62,7 @@ main
         amount: number,
       });
       alert("장바구니에 상품이 저장되었습니다!");
-      navigate('/store/cart')
+      navigate("/store/cart");
     } else {
       if (!session.data.isLogin) {
         alert("로그인이 필요합니다.");
@@ -136,10 +135,7 @@ main
 
         {/* 구매 장바구니 찜 버튼 부분 */}
         <div>
-
-
           <button className="pay" onClick={addCart}>
-
             장바구니
           </button>
           <button className="pay">결제</button>
