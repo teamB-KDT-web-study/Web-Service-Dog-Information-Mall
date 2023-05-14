@@ -5,15 +5,15 @@ import axios from "axios";
 
 //퀴즈 문제 항목 부분
 const questions = [
+  // {
+  //   question: "강아지의 다리의 갯수는?",
+  //   options: ["10개", "4개", "6개", "8개"],
+  //   answer: "4개",
+  // },
   {
-    question: "강아지의 다리의 갯수는?",
-    options: ["10개", "4개", "6개", "8개"],
-    answer: "4개",
-  },
-  {
-    question: "강아지가 좋아하는 것은?",
-    options: ["개껌", "치킨", "피자", "라면"],
-    answer: "개껌",
+    question: "강아지가 먹어도 되는 음식은?",
+    options: ["양배추", "치킨", "초콜릿", "라면"],
+    answer: "양배추",
   },
   {
     question: "강아지의 올바른 훈육방법 중 적합하지 않는 방법은?",
@@ -25,20 +25,20 @@ const questions = [
     ],
     answer: "항상칭찬하는훈육",
   },
-  {
-    question: "강아지의 훈련순서 중 가장 먼제 해야 하는 훈련은?",
-    options: ["배변훈련", "분리훈련", "복종훈련", "입질 훈련"],
-    answer: "배변훈련",
-  },
+  // {
+  //   question: "강아지의 훈련순서 중 가장 먼제 해야 하는 훈련은?",
+  //   options: ["배변훈련", "분리훈련", "복종훈련", "입질 훈련"],
+  //   answer: "배변훈련",
+  // },
   {
     question: "다음 중 반려견의 가장 이상적인 적정 산책량은?",
     options: [
       "안해도 상관없다",
       "일주일에 2~3회",
-      "매일 최대 1회씩",
+      "매일 최소 1회씩",
       "매일 5회 이상",
     ],
-    answer: "매일 최대 1회씩",
+    answer: "매일 최소 1회씩",
   },
   {
     question: "강아지가 사람을 물었을 때 올바르지 않은 나의 대처법은?",
@@ -51,7 +51,7 @@ const questions = [
     answer: "도망가기",
   },
   {
-    question: "반려견의 목줄 유무를 법으로 강제하고 있지는 않다.",
+    question: "반려견의 목줄 유무를 법으로 강제하고있다.",
     options: ["o", "x"],
     answer: "o",
   },
@@ -79,16 +79,20 @@ const Quiz = ({ userId }) => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true); //점수가 나오는 코드
-      setPassed(score >= 5); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
-      if (score >= 5) {
+      setPassed(score >= 4); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
+      if (score >= 4) {
         const gradeUp = async () => {
-          const res = await axios.patch(process.env.REACT_APP_DB_HOST + "/member/gradeUp", {
-            nickname: userId.nickname,
-            toGrade: "서먹한 친구",
-            nowGrade: "남남",
-          });
+          const res = await axios.patch(
+            process.env.REACT_APP_DB_HOST + "/member/gradeUp",
+            {
+              nickname: userId.nickname,
+              toGrade: "서먹한 친구",
+              nowGrade: "남남",
+            }
+          );
           if (res.data === "grade up") {
             alert(`축하합니다.\n등급이 "서먹한 친구" 로 올라갔습니다!`);
+            window.location.replace("/");
           } else {
             if (res.data === "not login") {
               alert("축하합니다!\n다만, 로그인을 해야 등급이 올라갑니다.");
@@ -131,8 +135,8 @@ const Quiz = ({ userId }) => {
             <div className="question-section">
               <div className="question-count">
                 {/* 퀴즈 제목?과 퀴즈넘버 부분 */}
-                <span>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}</span>/
-                {questions.length}
+                <div>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}/{questions.length}</div>
+                <div className="cutLine">6문제중 5문제를 맞추면 합격입니다!</div>
               </div>
               <br />
               <div className="question-text">

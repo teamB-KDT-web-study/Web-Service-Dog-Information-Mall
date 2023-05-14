@@ -2,7 +2,7 @@
 
 $breakpoint-md: 400px;
 $breakpoint-mz: 570px;
-// $breakpoint-md: 768px;태블릿
+$breakpoint-mt: 991px;
 // $breakpoint-sm: 532px;모바일
 .Mydog {
   position: relative;
@@ -33,7 +33,7 @@ $breakpoint-mz: 570px;
     height: 15vw;
     border-radius: 50%;
     background-color: #ffffff;
-    margin: 50px;
+    margin: 60px;
   }
   .dogprofileh1 {
     font-size: 2vw;
@@ -60,10 +60,47 @@ $breakpoint-mz: 570px;
     height: 14vw;
     border-radius: 50%;
   }
-  @include media("<#{$breakpoint-md}") {
+  @include media("<#{$breakpoint-mt}") {
+    .dogbox {
+      width: 50vw;
+      height: 520px;
+      .dogbtn {
+        color: #987654;
+        width: 30vw;
+        height: 4vh;
+        margin: 3vw;
+        border-radius: 30px;
+        background-color: #ecd06f;
+        border: 2px solid #987654;
+        &:hover,
+        &:focus {
+          background-color: #987654;
+          color: var(--c-white);
+        }
+      }
+      .dogprofileh1 {
+        font-size: 3vw;
+      }
+      .dogprofile {
+        border: 2px solid #987654;
+        width: 30vw;
+        height: 30vw;
+        border-radius: 50%;
+        background-color: #ffffff;
+        margin: 50px;
+      }
+      .mydogimg {
+        width: 29vw;
+        height: 29vw;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  @include media("<#{$breakpoint-mz}") {
     .dogbox {
       width: 90vw;
-      height: 320px;
+      height: 420px;
       .dogbtn {
         color: #987654;
         width: 50vw;
@@ -96,10 +133,10 @@ $breakpoint-mz: 570px;
       }
     }
   }
-  @include media("<#{$breakpoint-mz}") {
+  @include media("<#{$breakpoint-md}") {
     .dogbox {
       width: 90vw;
-      height: 420px;
+      height: 320px;
       .dogbtn {
         color: #987654;
         width: 50vw;
