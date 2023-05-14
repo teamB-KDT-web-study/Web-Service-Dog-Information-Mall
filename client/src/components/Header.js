@@ -33,9 +33,10 @@ const Header = ({ userId, destroySession }) => {
           <Nav className="me-auto">
             <Nav.Link href="/Map/동물병원">우리동네 동물병원</Nav.Link>
             <Nav.Link href="/mydog">강아지추천</Nav.Link>
-            <Nav.Link href="/quizhome">Quiz</Nav.Link>
+            <Nav.Link href="/quizhome">퀴즈</Nav.Link>
             <Nav.Link href="/store">애견샵</Nav.Link>
             <Nav.Link href="/board/page/1">커뮤니티</Nav.Link>
+
             {userId.isLogin === false ? (
               <Nav.Link href="/Login" className="nav-link">
                 로그인
@@ -43,9 +44,11 @@ const Header = ({ userId, destroySession }) => {
             ) : (
               <Nav.Link onClick={destroySession}>로그아웃</Nav.Link>
             )}
-            <Nav.Link href="/Register">회원가입</Nav.Link>
-            <Nav.Link href="/MyPage">MyPage</Nav.Link>
-            <Nav.Link href="/store/cart">임시쇼핑카트</Nav.Link> 
+            {userId.isLogin === false ? (
+              <></>
+            ) : (
+              <Nav.Link href="/store/cart">장바구니</Nav.Link>
+            )}
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

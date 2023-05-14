@@ -1,7 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config.js";
 import "../styles/storeCart.scss";
 
 const StoreCart = () => {
@@ -17,11 +16,11 @@ const StoreCart = () => {
   const [cartInfo, setCartInfo] = useState([]);
   const navigate = useNavigate();
   const getCartItems = async () => {
-    const userId = await axios.get(API_BASE_URL + "/member/checkLogin");
+    const userId = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
     if (!userId.data.isLogin) {
       return;
     }
-    const res = await axios.post(API_BASE_URL + "/store/showCart", {
+    const res = await axios.post(process.env.REACT_APP_DB_HOST + "/store/showCart", {
       user_id: userId.data.id,
     });
     setCartInfo(res.data);
@@ -34,7 +33,7 @@ const StoreCart = () => {
 
   const deleteItem = async (productId, choice) => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
-      const res = await axios.delete(API_BASE_URL + "/store/deleteCart", {
+      const res = await axios.delete(process.env.REACT_APP_DB_HOST + "/store/deleteCart", {
         data: {
           user_id: userId,
           product_id: productId,
@@ -53,68 +52,59 @@ const StoreCart = () => {
     <div className="StoreCart">
       <div className="cartContainer">
         <div className="header">장바구니</div>
-        <table border="1" className="itemContainer">
-          <tr className="tableHead">
-            <td>전체</td>
-            <td>이미지</td>
-            <td>상품</td>
-            <td>수량</td>
-            <td>가격</td>
-            <td>할인</td>
-            <td>주문</td>
-            <td>삭제</td>
-          </tr>
+        <div className="itemContainer">
           {cartInfo.length >= 1 ? (
             cartInfo.map((el, id) => {
               return (
-                <tr>
-                  <td className="firstTd">{id + 1}</td>
-                  <td
-                    className="secondTd"
+                <div className="itemRow" key={id}>
+                  <div className="itemColumn firstColumn">{id + 1}</div>
+                  <div
+                    className="itemColumn secondColumn"
                     onClick={() => navigate("/store/item/" + el.product_id)}
                   >
                     <img src={el.product.image} alt={id + 1} />
-                  </td>
-                  <td
+                  </div>
+                  <div
                     onClick={() => navigate("/store/item/" + el.product_id)}
-                    className="thirdTd"
+                    className="itemColumn thirdColumn"
                   >
                     <div>{el.product.title}</div>
                     <div className="cartChoice">{el.choice}</div>
-                  </td>
-                  <td>{el.amount}</td>
+                  </div>
+                  <div className="itemColumn">수량:{el.amount}</div>
                   {grade !== "남남" ? (
-                    <td className="price">
-                      <div className="fake">{el.product.price}</div>
+                    <div className="itemColumn price">
+                      <div className="fake">가격:{el.product.price}</div>
                       <div className="real">
                         {(el.product.price * (100 - gradeInfo[grade])) / 100}
                       </div>
-                    </td>
+                    </div>
                   ) : (
-                    <td>
-                      <div className="fake">{el.product.price}</div>
-                    </td>
+                    <div className="itemColumn">
+                      <div className="fake">{el.product.price}원</div>
+                    </div>
                   )}
                   {grade !== "남남" ? (
-                    <td>{gradeInfo[grade]}% off</td>
+                    <div className="itemColumn">{gradeInfo[grade]}% off</div>
                   ) : (
-                    <td>.</td>
+                    <div className="itemColumn">.</div>
                   )}
 
-                  <td>
+                  <div className="itemColumn">
+
                     <div className="orderBtn" onClick={orderItem}>
                       주문
                     </div>
-                  </td>
-                  <td>
+                  </div>
+                  <div className="itemColumn">
                     <div
                       className="deleteBtn"
                       onClick={() => deleteItem(el.product_id, el.choice)}
                     >
                       삭제
                     </div>
-                  </td>
-                </tr>
+                  </div>
+                </div>
               );
             })
           ) : (
@@ -122,7 +112,7 @@ const StoreCart = () => {
               장바구니에 상품이 존재하지 않습니다.
             </div>
           )}
-        </table>
+        </div>
       </div>
     </div>
   );

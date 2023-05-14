@@ -35,6 +35,7 @@ const Mainmydog = () => {
           </button>
         </div>
       </div>
+
       <div className="othermainmydogbox">
         <div className="othermainmydogimgbox">
           <img
@@ -44,7 +45,6 @@ const Mainmydog = () => {
         </div>
         <div className="othermainmydoginfo">
           <div className="othermainmydoginfotext1">
-            {" "}
             세상에 수많은 강아지들...
           </div>
           <br />

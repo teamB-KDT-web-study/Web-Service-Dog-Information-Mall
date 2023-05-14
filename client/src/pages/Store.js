@@ -5,7 +5,6 @@ import Storeheader from "../components/Storeheader";
 import "../styles/store.scss";
 import Storeitem from "../components/Storeitem";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config.js";
 
 const Store = () => {
   const [lastNum, setLastNum] = useState(0);
@@ -14,15 +13,15 @@ const Store = () => {
   const { category } = useParams();
   const [userInfo, setUserInfo] = useState({});
   const getUserInfo = async () => {
-    const res = await axios.get(API_BASE_URL + "/member/checkLogin");
+    const res = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
     setUserInfo(res.data);
   };
-  useEffect(() => {
-    getUserInfo();
-  }, [userInfo]);
+  // useEffect(() => {
+  //   getUserInfo();
+  // }, [userInfo]);
   useEffect(() => {
     const getData = async () => {
-      let router = `${API_BASE_URL}/store/`;
+      let router = `${process.env.REACT_APP_DB_HOST}/store/`;
       if (category) {
         router += category;
       }
@@ -33,7 +32,8 @@ const Store = () => {
       setLastNum(res.data.data[res.data.data.length - 1].id);
     };
     getData();
-  }, [category]);
+    getUserInfo();
+  }, []);
 
   // useEffect(() => {
   //   getData();
@@ -45,7 +45,7 @@ const Store = () => {
   const moreItems = async (lastNum, category) => {
     console.log("moreItems");
     const res = await axios.get(
-      `${API_BASE_URL}/store/moreItems?startNum=${lastNum}&category=${category}`
+      `${process.env.REACT_APP_DB_HOST}/store/moreItems?startNum=${lastNum}&category=${category}`
     );
     const newItems = [...items, ...res.data];
 

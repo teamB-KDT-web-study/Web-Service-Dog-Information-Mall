@@ -1,4 +1,7 @@
 @import "./utils.scss";
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 
 .LoginWrap {
   display: flex;
@@ -16,7 +19,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50vw;
+    width: 30%;
     padding: 5vw 4vw;
     background-color: hsl(44deg 35% 94% / 100%);
     border-radius: 20px;
@@ -26,6 +29,7 @@
     h1 {
       font-weight: bold;
       font-size: 30px;
+      color: #987654;
     }
     h2 {
       font-weight: bold;
@@ -93,5 +97,15 @@
     &::placeholder {
       color: #ccc;
     }
+  }
+}
+@include media("<#{$breakpoint-md}") {
+  .LoginWrap .LoginBox {
+    width: 90%;
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .LoginWrap .LoginBox {
+    width: 90%;
   }
 }

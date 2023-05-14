@@ -10,10 +10,12 @@ $breakpoint-md: 950px;
     font-size: 2vw;
     padding: 1vw 0px 0px 3vw;
     margin: 30px 0px 0px 0px;
+    height: max-content;
   }
   .Trainingheader2 {
     font-size: 2vw;
     padding: 00px 0px 0px 3vw;
+    height: max-content;
   }
 
   .mainmydogbox {
@@ -111,20 +113,21 @@ $breakpoint-md: 950px;
       }
     }
   }
+
   .othermainmydogbox {
     margin-top: 30px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 70vw;
+    height: max-content;
     display: none;
 
     .othermainmydogimgbox {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 70vw;
+      width: 100%;
       height: 100%;
 
       .othermainmydogimg {
@@ -133,27 +136,12 @@ $breakpoint-md: 950px;
     }
 
     .othermainmydoginfo {
-      width: 70vw;
-      max-height: 50vw;
+      width: 100%;
+      height: max-content;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-
-      .othermainmydoginfobtn {
-        width: 40vw;
-        height: 5vw;
-        font-size: 2vw;
-        border-radius: 10px;
-        background-color: #ecd06f;
-        border: 2px solid #987654;
-        color: #987654;
-        &:hover,
-        &:focus {
-          background-color: #987654;
-          color: var(--c-white);
-        }
-      }
       .othermainmydoginfotext1 {
         font-size: 3vw;
         color: #987654;
@@ -176,6 +164,20 @@ $breakpoint-md: 950px;
         position: relative;
         overflow: hidden;
         animation: fadein2 9s ease-in-out;
+      }
+      .othermainmydoginfobtn {
+        width: 40vw;
+        height: 5vw;
+        font-size: 2vw;
+        border-radius: 10px;
+        background-color: #ecd06f;
+        border: 2px solid #987654;
+        color: #987654;
+        &:hover,
+        &:focus {
+          background-color: #987654;
+          color: var(--c-white);
+        }
       }
     }
     @keyframes fadein {
@@ -214,6 +216,7 @@ $breakpoint-md: 950px;
       visibility: hidden;
       display: none;
     }
+
     .othermainmydogbox {
       display: flex;
     }

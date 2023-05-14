@@ -4,7 +4,6 @@ import { BoardCreate } from '../pages/BoardCreate';
 import { BoardDetail } from '../pages/BoardDetail';
 import { BoardPage } from '../pages/BoardPage';
 import axios from 'axios';
-import { API_BASE_URL } from './app-config';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import {
   getData,
@@ -17,6 +16,7 @@ import {
   getSearchData,
   getSearchMode,
   addLike,
+  deleteLike,
 } from '../store/boardReducer';
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -44,7 +44,7 @@ export const BoardPageContainer = ({ userId }) => {
       dispatch(getSelectOption('title'));
       dispatch(getSearchMode(false));
       const getContents = async () => {
-        const res = await axios.get(API_BASE_URL + '/board/' + pageId);
+        const res = await axios.get(process.env.REACT_APP_DB_HOST + '/board/' + pageId);
         dispatch(getAllData(res.data.data));
         dispatch(getLength(res.data.length));
       };
@@ -76,7 +76,7 @@ export const BoardPageContainer = ({ userId }) => {
       return;
     }
     const res = await axios.get(
-      `${API_BASE_URL}/board/searchContent/1?option=${selectOption}&query=${trimedWord}`
+      `${process.env.REACT_APP_DB_HOST}/board/searchContent/1?option=${selectOption}&query=${trimedWord}`
     );
     dispatch(getSearchData(res.data.data));
     dispatch(getSearchMode(true));
@@ -87,7 +87,7 @@ export const BoardPageContainer = ({ userId }) => {
   const searchMovePage = async (el) => {
     const trimedWord = query.trim();
     const res = await axios.get(
-      `${API_BASE_URL}/board/searchContent/${el}?option=${selectOption}&query=${trimedWord}`
+      `${process.env.REACT_APP_DB_HOST}/board/searchContent/${el}?option=${selectOption}&query=${trimedWord}`
     );
     navigate(`/board/page/${el}?option=${selectOption}&query=${trimedWord}`);
     dispatch(getSearchData(res.data.data));
@@ -106,10 +106,10 @@ export const BoardPageContainer = ({ userId }) => {
   };
   const createContent = () => {
     if (userId.isLogin == false) {
-      alert("글을 쓸 권한이 없습니다.");
+      alert('글을 쓸 권한이 없습니다.');
       return;
     } else {
-      navigate("/board/create");
+      navigate('/board/create');
     }
   };
 
@@ -143,7 +143,7 @@ export const BoardDetailContainer = ({ userId }) => {
   const [readOnly, setReadOnly] = useState(true);
   useEffect(() => {
     const getContentDetail = async () => {
-      const res = await axios.get(API_BASE_URL + '/board/detail/' + contentId);
+      const res = await axios.get(process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId);
       dispatch(getData(res.data));
     };
     getContentDetail();
@@ -190,12 +190,12 @@ export const BoardDetailContainer = ({ userId }) => {
   };
   const editContent = async (newContent) => {
     await axios.patch(
-      API_BASE_URL + '/board/editContent/' + contentId,
+      process.env.REACT_APP_DB_HOST + '/board/editContent/' + contentId,
       newContent
     );
   };
   const deleteContent = async () => {
-    await axios.delete(API_BASE_URL + '/board/deleteContent/' + contentId);
+    await axios.delete(process.env.REACT_APP_DB_HOST + '/board/deleteContent/' + contentId);
   };
   const onDeleteContent = () => {
     if (window.confirm('이 글을 삭제하시겠습니까?')) {
@@ -206,13 +206,15 @@ export const BoardDetailContainer = ({ userId }) => {
       alert('글 삭제를 취소합니다!');
     }
   };
-  const onAddLike = async () => {
+  const onUpdateLike = async () => {
     if (!userId.isLogin) {
-      alert("로그인이 필요합니다!");
+      alert('로그인이 필요합니다!');
       return;
     }
     const check = await axios.post(
-      API_BASE_URL + "/board/addLikeList/" + contentId,
+
+      process.env.REACT_APP_DB_HOST + "/board/addLikeList/" + contentId,
+
       {
         userNickname: userId.nickname,
         like_count: contentDetail.like_count,
@@ -220,15 +222,24 @@ export const BoardDetailContainer = ({ userId }) => {
     );
     if (check.data === true) {
       dispatch(addLike()); // 화면 표시
-      const res = await axios.patch(
-        API_BASE_URL + "/board/addLike/" + contentId,
-        {
-          like_count: contentDetail.like_count,
-        }
-      ); // 백엔드 반영
-      alert("이 글을 추천하셨습니다!")
+
+      // const res = await axios.patch(
+      //   API_BASE_URL + '/board/addLike/' + contentId,
+      //   {
+      //     like_count: contentDetail.like_count,
+      //   }
+      // ); //백엔드 반영
+      // alert('이 글을 추천하셨습니다!');
+
     } else {
-      alert("이미 추천하셨습니다.");
+      dispatch(deleteLike());
+      // const res = await axios.patch(
+      //   API_BASE_URL + '/board/deleteLike/' + contentId,
+      //   {
+      //     like_count: contentDetail.like_count,
+      //   }
+      // ); //백엔드 반영
+      // alert('이미 추천하셨습니다.');
     }
   };
 
@@ -241,7 +252,7 @@ export const BoardDetailContainer = ({ userId }) => {
       onBodyEditEvent={onBodyEditEvent}
       readOnly={readOnly}
       onDeleteContent={onDeleteContent}
-      onAddLike={onAddLike}
+      onUpdateLike={onUpdateLike}
       userId={userId}
     />
   );
@@ -289,8 +300,9 @@ export const BoardCreateContainer = ({ userId }) => {
       // date: nowTime,
     };
 
-    const res = await axios.post(API_BASE_URL + '/board/addContent', newContent);
+    const res = await axios.post(process.env.REACT_APP_DB_HOST + '/board/addContent', newContent);
     console.log(res)
+
     alert('작성하신 글이 제출되었습니다!');
     navigate(-1);
   };

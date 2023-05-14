@@ -2,7 +2,6 @@ import "../styles/Register.scss";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddMyDog from "../components/AddMyDog";
-import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
 
 const Register = () => {
@@ -37,10 +36,13 @@ const Register = () => {
       setIsId(false);
     } else {
       // 아이디 중복 검사
-      const CheckId = await axios.post(API_BASE_URL + "/member/isExist", {
-        type: "id",
-        inputData: id,
-      });
+      const CheckId = await axios.post(
+        process.env.REACT_APP_DB_HOST + "/member/isExist",
+        {
+          type: "id",
+          inputData: id,
+        }
+      );
       console.log(CheckId.data);
 
       if (!CheckId.data.isOk) {
@@ -77,10 +79,13 @@ const Register = () => {
       setIsNickName(false);
     } else {
       // 닉네임 중복 검사
-      const CheckNickName = await axios.post(API_BASE_URL + "/member/isExist", {
-        type: "nickname",
-        inputData: nickName,
-      });
+      const CheckNickName = await axios.post(
+        process.env.REACT_APP_DB_HOST + "/member/isExist",
+        {
+          type: "nickname",
+          inputData: nickName,
+        }
+      );
       console.log(CheckNickName.data);
 
       if (!CheckNickName.data.isOk) {
@@ -209,9 +214,13 @@ const Register = () => {
     console.log("**************");
     console.log(afterData);
 
-    const res = await axios.post(API_BASE_URL + "/member/signup", formData, {
-      "Content-Type": "multipart/form-data",
-    });
+    const res = await axios.post(
+      process.env.REACT_APP_DB_HOST + "/member/signup",
+      formData,
+      {
+        "Content-Type": "multipart/form-data",
+      }
+    );
     console.log(res.data);
 
     // TODO: file 관련 state 만들어서 db에 저장할 수 있도록
@@ -219,7 +228,7 @@ const Register = () => {
     // if (!imgFile) {
     //   return;
     // }
-    // fetch(API_BASE_URL + "/member/signup", {
+    // fetch(process.env.REACT_APP_DB_HOST + "/member/signup", {
     //   method: "POST",
     //   body: imgFile,
     //   headers: {
@@ -282,6 +291,7 @@ const Register = () => {
                   onChange={saveImgFile}
                   ref={imgRef}
                   style={{ border: "none" }}
+                  className="MyProfileImgSelectinput"
                 />
               </div>
             </div>
@@ -289,6 +299,7 @@ const Register = () => {
               <label htmlFor="loginId">ID</label>
 
               <input
+                className="formBoxlogin"
                 type="text"
                 name="UserId"
                 id="loginId"

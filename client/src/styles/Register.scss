@@ -1,4 +1,7 @@
 @import "./utils.scss";
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 
 .RegisterWrap {
   display: flex;
@@ -16,20 +19,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 500px;
+    width: 50%;
     padding: 50px 40px;
     background-color: hsl(44deg 35% 94% / 100%);
     border-radius: 20px;
     background-color: #fff;
+    border: 2px solid #987654;
 
     h1 {
       font-weight: bold;
       font-size: 30px;
+      color: #987654;
     }
     h2 {
       font-weight: bold;
       font-size: 16px;
       margin-top: 20px;
+      color: #987654;
       & + .formBox {
         margin-top: 5px;
       }
@@ -49,6 +55,13 @@
       border-radius: 5px;
       font-weight: bold;
       font-size: 16px;
+      color: #987654;
+      border: 2px solid #987654;
+      &:hover,
+      &:focus {
+        background-color: #987654;
+        color: var(--c-white);
+      }
     }
     .link {
       display: inline-flex;
@@ -103,7 +116,15 @@
       justify-content: center;
       text-align: center;
       margin-top: 20px;
+
+      .MyProfileImgSelectinput {
+        font-size: 1vw;
+        color: #987654;
+      }
     }
+  }
+  .formBoxlogin {
+    border: 2px solid #987654;
   }
 
   .onAddDogFormParent {
@@ -120,5 +141,15 @@
       font-weight: bold;
       font-size: 16px;
     }
+  }
+}
+@include media("<#{$breakpoint-md}") {
+  .RegisterWrap .RegisterBox {
+    width: 90%;
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .RegisterWrap .RegisterBox {
+    width: 90%;
   }
 }

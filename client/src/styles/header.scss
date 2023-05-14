@@ -32,18 +32,17 @@
       align-items: center;
       width: max-content;
       cursor: pointer;
-
       .imgBox {
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         overflow: hidden;
         img {
-          width: 50px;
-          height: 50px;
+          width: 40px;
+          height: 40px;
         }
       }
       .msgBox {
@@ -69,7 +68,6 @@
       .profileBox {
         position: absolute;
         right: 50px;
-        margin-left: 10px;
       }
     }
   }

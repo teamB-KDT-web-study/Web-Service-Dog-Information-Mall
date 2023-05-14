@@ -3,9 +3,9 @@ import "../styles/MyPage.scss";
 import EditMyPage from "../pages/EditMyPage";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config";
 
 const MyPage = () => {
+
   const [myProfile, setMyProfile] = useState("");
   const [dogInfo, setDogInfo] = useState([]);
   const getMyProfile = async () => {
@@ -22,6 +22,7 @@ const MyPage = () => {
   useEffect(() => {
     getMyProfile();
   }, []);
+
 
   return (
     <>
