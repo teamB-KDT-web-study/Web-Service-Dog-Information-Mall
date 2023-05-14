@@ -1,5 +1,5 @@
 @import "~include-media/dist/include-media";
-$breakpoint-md: 768px;
+$breakpoint-md: 950px;
 .Mainmap {
   position: relative;
   display: flex;
@@ -34,16 +34,25 @@ $breakpoint-md: 768px;
       }
     }
 
-    .mainmydoginfo {
+    .mainmapinfo {
       width: 50vw;
       max-height: 50vw;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      .mainmapimg2 {
+        width: 30%;
+        margin-top: 30px;
+        margin-bottom: 60px;
 
-      .mainmydoginfobtn {
-        width: 40vw;
+        position: relative;
+        overflow: hidden;
+        animation: fadein3 13s ease-in-out;
+      }
+
+      .mainmapinfobtn {
+        width: 30vw;
         height: 5vw;
         font-size: 2vw;
         border-radius: 10px;
@@ -56,64 +65,106 @@ $breakpoint-md: 768px;
           color: var(--c-white);
         }
       }
-      .mainmydoginfotext1 {
+      .mainmapinfotext1 {
         font-size: 3vw;
         color: #987654;
         position: relative;
         overflow: hidden;
-        animation: fadein 5s ease-in-out;
+        animation: fadein 11s ease-in-out;
+      }
+    }
+  }
+  .othermainmapbox {
+    margin-top: 30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    display: none;
+    flex-direction: column;
+
+    .othermainmapimgbox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      .othermainmapimg {
+        width: 90%;
+      }
+    }
+
+    .othermainmapinfo {
+      width: 100%;
+      max-height: 80vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .othermainmapimg2 {
+        width: 30%;
+        margin-top: 30px;
+        margin-bottom: 60px;
+
+        position: relative;
+        overflow: hidden;
+        animation: fadein3 13s ease-in-out;
       }
 
-      .mainmydoginfotext2 {
+      .othermainmapinfobtn {
+        width: 30vw;
+        height: 5vw;
         font-size: 2vw;
+        border-radius: 10px;
+        background-color: #ecd06f;
+        border: 2px solid #987654;
+        color: #987654;
+        &:hover,
+        &:focus {
+          background-color: #987654;
+          color: var(--c-white);
+        }
+      }
+      .othermainmapinfotext1 {
+        font-size: 3vw;
         color: #987654;
         position: relative;
         overflow: hidden;
-        animation: fadein1 7s ease-in-out;
+        animation: fadein 11s ease-in-out;
       }
+    }
+  }
 
-      .mainmydoginfotext3 {
-        font-size: 4vw;
-        color: #987654;
-        position: relative;
-        overflow: hidden;
-        animation: fadein2 9s ease-in-out;
-      }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    @keyframes fadein {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: none;
-      }
+    100% {
+      opacity: 1;
+      transform: none;
     }
-    @keyframes fadein1 {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: none;
-      }
+  }
+
+  @keyframes fadein3 {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    @keyframes fadein2 {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: none;
-      }
+    100% {
+      opacity: 1;
+      transform: none;
     }
-    @include media("<#{$breakpoint-md}") {
-      .mainmydogbox {
-        flex-direction: column;
-      }
+  }
+
+  @include media("<#{$breakpoint-md}") {
+    .mainmapbox {
+      visibility: hidden;
+      display: none;
+    }
+    .othermainmapbox {
+      display: flex;
     }
   }
 }

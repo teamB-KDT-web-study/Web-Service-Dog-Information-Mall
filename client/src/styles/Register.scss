@@ -1,4 +1,7 @@
 @import "./utils.scss";
+@import "~include-media/dist/include-media";
+$breakpoint-md: 768px;
+$breakpoint-sm: 532px;
 
 .RegisterWrap {
   display: flex;
@@ -138,5 +141,15 @@
       font-weight: bold;
       font-size: 16px;
     }
+  }
+}
+@include media("<#{$breakpoint-md}") {
+  .RegisterWrap .RegisterBox {
+    width: 90%;
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .RegisterWrap .RegisterBox {
+    width: 90%;
   }
 }

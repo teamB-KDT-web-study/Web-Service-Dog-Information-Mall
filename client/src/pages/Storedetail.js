@@ -207,7 +207,7 @@ const Storedetail = () => {
           <span className="othertotalprice2"> {onePrice}원</span>
         </div>
         <div className="otherchoiceoptionbtn">
-          <button className="otherpay" onClick={() => navigate('/store/cart')}>
+          <button className="otherpay" onClick={() => navigate("/store/cart")}>
             장바구니
           </button>
           <button className="otherpay">결제</button>
