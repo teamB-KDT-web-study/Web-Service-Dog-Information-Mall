@@ -89,7 +89,9 @@ const StoreCart = () => {
                   ) : (
                     <div className="itemColumn">.</div>
                   )}
+
                   <div className="itemColumn">
+
                     <div className="orderBtn" onClick={orderItem}>
                       주문
                     </div>
