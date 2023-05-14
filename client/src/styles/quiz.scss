@@ -1,4 +1,6 @@
 @import "~include-media/dist/include-media";
+
+
 $primary-color: #3498db;
 $secondary-color: #2c3e50;
 $yellow-color: #ecd06f;
@@ -12,9 +14,9 @@ $breakpoint-sm: 532px;
   margin: 10px 10px 200px 10px;
   align-items: center;
   width: 100%;
+  height: 80vh;
 
   .quiz-container {
-    width: 55vw;
     min-height: 20vw;
     margin: 0 auto;
     padding: 20px;
@@ -24,12 +26,16 @@ $breakpoint-sm: 532px;
     border: 2px solid #987654;
 
     .score-section {
-      text-align: center;
+      min-height: 20vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
 
       h1 {
         font-size: 2rem;
         color: $brown-color;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
       }
 
       .answer-button {
@@ -42,9 +48,22 @@ $breakpoint-sm: 532px;
         cursor: pointer;
         transition: all 0.3s ease;
         border: 2px solid #987654;
+        width: max-content;
 
         &:hover {
           background-color: $brown-color;
+        }
+      }
+      .result_btn {
+        margin-top: 10px;
+        background-color: #ecd16f9f;
+        color: #987654;
+        border: 2px solid #987654;
+        border-radius: 5px;
+        font-size: 1.5rem;
+        &:hover {
+          background-color: $brown-color;
+          color: white;
         }
       }
     }
@@ -56,10 +75,13 @@ $breakpoint-sm: 532px;
         font-size: 1.2rem;
         color: $brown-color;
         margin-bottom: 10px;
+        .cutLine {
+          font-size: 1rem;
+        }
       }
 
       .question-text {
-        font-size: 2vw;
+        font-size: 1.5rem;
         font-weight: bold;
         margin-bottom: 20px;
       }
@@ -113,5 +135,12 @@ $breakpoint-sm: 532px;
     .question-section .question-text {
       font-size: 4vw;
     }
+  }
+}
+
+@include media("<#{$breakpoint-md}") {
+  .Quiz .quiz-container {
+    width: 80vw;
+  
   }
 }

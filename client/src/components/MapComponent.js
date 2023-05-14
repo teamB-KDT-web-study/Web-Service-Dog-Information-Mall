@@ -4,25 +4,48 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 const { kakao } = window;
 
+const getIp = async () =>
+  await fetch("https://geolocation-db.com/json/")
+    .then((res) => res.json())
+    .then((res) => res["IPv4"]);
+
 const getCurrentCoordinate = async () => {
   console.log("getCurrentCoordinate 함수 실행!!!");
-  console.log("navigator.geolocation", navigator.geolocation);
-  return new Promise((res, rej) => {
-    // HTML5의 geolocaiton으로 사용할 수 있는지 확인합니다.
-    if (navigator.geolocation) {
-      // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
-      navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position);
-        const lat = position.coords.latitude; // 위도
-        const lon = position.coords.longitude; // 경도
+  // console.log("navigator.geolocation", navigator.geolocation);
+  // return new Promise((res, rej) => {
+  // HTML5의 geolocaiton으로 사용할 수 있는지 확인합니다.
+  // if (navigator.geolocation) {
+  //   // GeoLocation을 이용해서 접속 위치를 얻어옵니다.
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     console.log(position);
+  //     const lat = position.coords.latitude; // 위도
+  //     const lon = position.coords.longitude; // 경도
 
-        const coordinate = new kakao.maps.LatLng(lat, lon);
-        res(coordinate);
+  //     const coordinate = new kakao.maps.LatLng(lat, lon);
+  //     res(coordinate);
+  //   });
+  // } else {
+  //   rej(new Error("현재 위치를 불러올 수 없습니다."));
+  // }
+  const getLocation = async () => {
+    const nowIp = await getIp();
+    const geoData = await fetch(`http://ip-api.com/json/${nowIp}`)
+      .then((res) => res.json())
+      .then((res) => {
+        return res;
       });
-    } else {
-      rej(new Error("현재 위치를 불러올 수 없습니다."));
-    }
-  });
+    const latitude = geoData.lat;
+    const longitude = geoData.lon;
+    const adress = { lat: latitude, lon: longitude };
+    console.log('nowIP', adress);
+
+    return adress;
+  };
+  const geo = getLocation();
+  console.log(geo);
+  const coordinate = new kakao.maps.LatLng(geo.lat, geo.lon);
+  return coordinate;
+  // });
 };
 
 const Map = () => {

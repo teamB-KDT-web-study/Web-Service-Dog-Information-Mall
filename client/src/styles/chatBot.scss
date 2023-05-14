@@ -1,3 +1,8 @@
+@import "~include-media/dist/include-media";
+
+$breakpoint-md: 953px;
+$breakpoint-ms: 590px;
+
 .ChatBot {
   display: flex;
   flex-direction: row-reverse;
@@ -35,7 +40,7 @@
     right: 20px;
     bottom: 20px;
     width: 30vw;
-    height: 80vh;
+    height: 60vh;
     border: 2px solid #987654;
     border-radius: 10px;
     .infom {
@@ -127,10 +132,38 @@
     transform: scale(1);
   }
 }
-
-@media (max-width: 992px) {
+@include media("<#{$breakpoint-md}") {
   .chatBox {
-    width: 300px !important;
-    height: 500px !important;
+    width: 35vw !important;
+    height: 50vh !important;
+    .headerBox {
+      height: 8% !important;
+    }
+    .inputBox {
+      height: 8% !important;
+    }
+    .chat {
+      font-size: 13px !important;
+    }
+  }
+  .ToChatBox {
+    width: 60px !important;
+    height: 60px !important;
+    .chatimg {
+      width: 40px !important;
+      height: 40px !important;
+    }
+  }
+}
+@include media("<#{$breakpoint-ms}") {
+  .chatBox {
+    width: 50vw !important;
+    height: 45vh !important;
+    .closeBox {
+      font-size: 15px !important;
+    }
+    .chat {
+      font-size: 11px !important;
+    }
   }
 }

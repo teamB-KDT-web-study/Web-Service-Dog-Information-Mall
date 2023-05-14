@@ -1,42 +1,9 @@
 @import "~include-media/dist/include-media";
 $breakpoint-md: 768px;
 $breakpoint-sm: 532px;
-.dog {
-  color: #987654;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  min-height: 750px;
-}
-.mdi_btn {
-  background-color: #ecd06f;
-  border-radius: 30px;
-  border: none;
-  margin: 20px;
-  font-size: 1.5vw;
-  color: #987654;
-  border: 2px solid #987654;
-  &:hover,
-  &:focus {
-    background-color: #987654;
-    color: var(--c-white);
-  }
-}
 
-.mdi_db {
-  background-color: #ffffff;
-  border-radius: 10px;
-  width: 70vw;
-  border: 5px solid #987654;
-  display: flex;
-  padding: 100px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  margin: 20px;
-}
 .result {
+  height: 98vh;
   color: #987654;
   min-height: 750px;
   display: flex;
@@ -47,91 +14,180 @@ $breakpoint-sm: 532px;
   background-color: white;
   font-size: 2vw;
   padding: 10px;
-}
-.resultimg {
-  width: 35vw;
-  height: 35vw;
-  border-radius: 20px;
-  border: 2px solid #987654;
-}
-
-.result_btn {
-  background-color: #ecd06f;
-  border-radius: 30px;
-  border: none;
-  margin: 20px;
-  font-size: 2vw;
-  color: #987654;
-  border: 2px solid #987654;
-  &:hover,
-  &:focus {
-    background-color: #987654;
-    color: var(--c-white);
-  }
-}
-.mydogresultbox {
-  background-color: white;
-  width: 50vw;
-  border-radius: 10px;
-  border: 2px solid #987654;
-  padding: 10px;
-  font-size: 2vw;
-}
-
-.mdi_finishbtn {
-  width: 60vw;
-  height: 4vw;
-  background-color: #ecd06f;
-  border-radius: 30px;
-  border: none;
-  margin: 20px;
-  font-size: 2vw;
-  color: white;
-  border: 2px solid #987654;
-  &:hover,
-  &:focus {
-    background-color: #ecd06f;
+  .dog {
     color: #987654;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 750px;
   }
-  .mdi_finishbtnh1 {
-    font-size: 2vw;
+  .mdi_btn {
+    background-color: #ecd06f;
+    border-radius: 25px;
+    border: none;
+    margin: 20px;
+    font-size: 1.5vw;
+    color: #987654;
+    border: 2px solid #987654;
+    padding: 10px;
+    width: max-content;
+    &:hover,
+    &:focus {
+      background-color: #987654;
+      color: var(--c-white);
+    }
   }
-}
-@include media("<#{$breakpoint-sm}") {
+
   .mdi_db {
-    min-width: 450px;
-    height: 200px;
-    padding: 1px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 70vw;
+    border: 5px solid #987654;
+    display: flex;
+    padding: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
     .mydoginfoh2 {
-      width: 100%;
-      font-size: 5vw;
+      width: 50vw;
     }
     .mydoginfobtn {
-      font-size: vw;
-    }
-    .mdi_btn {
-      font-size: 3vw;
+      width: 60vw;
+      display: flex;
+      justify-content: center;
     }
   }
-  .mdi_finishbtn {
-    width: 60vw;
-    height: 12vw;
-    .mdi_finishbtnh1 {
-      font-size: 5vw;
+  .resultimg {
+    width: 35vw;
+    height: 35vw;
+    border-radius: 20px;
+    border: 2px solid #987654;
+  }
+
+  .result_btn {
+    background-color: #ecd06f;
+    border-radius: 30px;
+    border: none;
+    margin: 20px;
+    font-size: 2vw;
+    color: #987654;
+    border: 2px solid #987654;
+    &:hover,
+    &:focus {
+      background-color: #987654;
+      color: var(--c-white);
     }
   }
   .mydogresultbox {
     background-color: white;
-    width: 80vw;
-    height: 100vw;
-    .resultimg {
-      width: 43vw;
-      height: 43vw;
+    width: 50vw;
+    border-radius: 10px;
+    border: 2px solid #987654;
+    padding: 10px;
+    font-size: 2vw;
+  }
+
+  .mdi_finishbtn {
+    width: 60vw;
+    height: 5vw;
+    background-color: #ecd06f;
+    border-radius: 30px;
+    border: none;
+    margin: 20px;
+    font-size: 2vw;
+    color: white;
+    border: 2px solid #987654;
+    &:hover,
+    &:focus {
+      background-color: #ecd06f;
+      color: #987654;
     }
-    .result_btn {
-      width: 30vw;
-      height: 10vw;
+    .mdi_finishbtnh1 {
       font-size: 3vw;
     }
   }
 }
+@include media("<#{$breakpoint-md}") {
+  .result {
+    height: 90vh !important;
+    .resultimg {
+      width: 50vw;
+      height: 50vw;
+    }
+    .result_btn {
+      font-size: 3vw;
+    }
+    .mydogresultbox {
+      width: 70vw !important;
+    }
+    .mdi_btn {
+      font-size: 2.5vw !important;
+    }
+    .mydoginfobtn {
+      width: 20vw !important;
+      flex-direction: column;
+      align-items: center;
+    }
+    .mdi_finishbtn {
+      height: 8vw !important;
+      .mdi_finishbtnh1 {
+        font-size: 5vw !important;
+      }
+    }
+  }
+}
+@include media("<#{$breakpoint-sm}") {
+  .mdi_btn {
+    font-size: 3.5vw !important;
+  }
+  .result_btn {
+    font-size: 4vw !important;
+  }
+  .mdi_finishbtn {
+    height: 11vw !important;
+    .mdi_finishbtnh1 {
+      font-size: 7vw !important;
+    }
+  }
+}
+
+// @include media("<#{$breakpoint-sm}") {
+//   .mdi_db {
+//     min-width: 450px;
+//     height: 200px;
+//     padding: 1px;
+//     .mydoginfoh2 {
+//       width: 100%;
+//       font-size: 5vw;
+//     }
+//     .mydoginfobtn {
+//       font-size: vw;
+//     }
+//     .mdi_btn {
+//       font-size: 3vw;
+//     }
+//   }
+//   .mdi_finishbtn {
+//     width: 60vw;
+//     height: 12vw;
+//     .mdi_finishbtnh1 {
+//       font-size: 5vw;
+//     }
+//   }
+//   .mydogresultbox {
+//     background-color: white;
+//     width: 80vw;
+//     height: 100vw;
+//     .resultimg {
+//       width: 43vw;
+//       height: 43vw;
+//     }
+//     .result_btn {
+//       width: 30vw;
+//       height: 10vw;
+//       font-size: 10vw;
+//     }
+//   }
+// }

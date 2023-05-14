@@ -14,6 +14,7 @@ const MainPage = ({ getSession }) => {
   return (
     <>
       {/* <Mainslide /> */}
+
       <Maindog />
 
       <Mainmydog />
@@ -23,6 +24,7 @@ const MainPage = ({ getSession }) => {
       <SlickSlider />
       <ChatBot />
       <TestLogin />
+
     </>
   );
 };
