@@ -85,10 +85,12 @@ const Login = ({ getSession }) => {
               />
             </div>
             <button type="button" className="button" onClick={onClickLogin}>
-              Login
+              로그인하기
             </button>
           </form>
-          <button>Resister</button>
+          <button onClick={() => navigate("/Register")}>
+            회원가입하러가기
+          </button>
         </div>
       </div>
     </>

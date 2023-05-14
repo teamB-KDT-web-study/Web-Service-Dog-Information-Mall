@@ -1,78 +1,157 @@
-@import "~include-media/dist/include-media";
-$breakpoint-md: 768px;
-$breakpoint-sm: 532px;
 .StoreCart {
-  min-height: 95vh;
-  width: 99vw;
-  display: flex;
-  justify-content: center;
-  margin-block: 150px;
-  .cartContainer {
-    width: 80%;
-    height: 80%;
-    .header {
-      font-weight: 500;
-      font-size: 30px;
-      margin: 20px;
-    }
-    .itemContainer {
-      color: #987654;
-      border: 2px solid #987654;
-      width: 70vw;
-      height: 10vh;
-      tr {
-        border-radius: 10px;
+  background-color: #f5f5f5;
+  padding: 20px;
+  min-height: 70vh;
 
-        td {
-          padding: 10px;
-          vertical-align: middle;
+  .cartContainer {
+    background-color: #fff;
+    border: 2px solid #987654;
+    border-radius: 10px;
+    padding: 20px;
+
+    .header {
+      font-size: 24px;
+      font-weight: bold;
+      color: #987654;
+      margin-bottom: 20px;
+    }
+
+    .itemContainer {
+      .itemRow {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .firstColumn {
+          color: #987654;
+          flex: 0 0 40px;
+          text-align: center;
+        }
+
+        .secondColumn {
+          flex: 0 0 80px;
+          text-align: center;
+          cursor: pointer;
+
+          img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+          }
+        }
+
+        .thirdColumn {
+          color: #987654;
+          flex-grow: 1;
+          margin-left: 0px;
+
+          div:first-child {
+            width: 200px;
+            font-weight: bold;
+            font-size: 16px;
+          }
+
+          .cartChoice {
+            font-size: 14px;
+            color: #888;
+          }
+        }
+
+        .itemColumn {
+          flex: 0 0 80px;
+          text-align: center;
+
+          .price {
+            .fake {
+              text-decoration: line-through;
+              color: #888;
+            }
+
+            .real {
+              color: #e74c3c;
+              font-weight: bold;
+            }
+          }
+
           .orderBtn,
           .deleteBtn {
-            border-radius: 10px;
-            border: 2px solid #987654;
-            background-color: #ecd06f;
-            color: #987654;
-            text-align: center;
             cursor: pointer;
-            padding: 4px;
+            background-color: #ecd06f;
+            border: 2px solid #987654;
+            color: #987654;
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 14px;
             &:hover {
               background-color: #987654;
               color: white;
             }
           }
-        }
-        .price {
-          .fake {
-            text-decoration: line-through;
-            color: rgb(168, 168, 168);
-          }
-          .real {
+
+          .orderBtn {
+            margin-right: 5px;
           }
         }
 
-        tr {
-        }
-        .firstTd {
-          color: rgb(167, 166, 166);
-        }
-        .secondTd,
-        .thirdTd {
-          cursor: pointer;
+        @media (max-width: 767px) {
+          display: grid;
+          padding: 5px;
+          justify-content: center;
+          align-items: center;
+
+          .firstColumn {
+            text-align: center;
+            // margin-bottom: 2px;
+            visibility: hidden;
+            display: none;
+          }
+
+          .secondColumn {
+            text-align: center;
+            // margin-bottom: 2px;
+
+            img {
+              width: 30vw;
+              height: 30vw;
+              object-fit: cover;
+              border-radius: 4px;
+            }
+          }
+
+          .thirdColumn {
+            text-align: left;
+            // margin-bottom: 2px;
+          }
+
+          .itemColumn {
+            text-align: left;
+
+            .price {
+              text-align: right;
+            }
+          }
+
+          .orderBtn,
+          .deleteBtn {
+            text-align: center;
+            width: 100%;
+            margin-top: 10px;
+          }
         }
       }
-      .tableHead {
-        cursor: default;
-      }
-      img {
-        width: 70px;
-        height: 70px;
-      }
+
       .notFoundMsg {
-        width: max-content;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 20px;
       }
     }
   }
-}
-
-@include media("<#{$breakpoint-sm}") {
 }
