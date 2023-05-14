@@ -11,7 +11,7 @@ exports.getContents = async (req, res) => {
       raw: true,
     });
     const result = await models.Board.findAll({
-      include: [{ model: models.User, attributes: ['grade'] }],
+      include: [{ model: models.User, attributes: ['grade', 'profile_img'] }],
       order: [['id', 'DESC']],
       offset: offset,
       limit: 8,
@@ -25,27 +25,36 @@ exports.getContents = async (req, res) => {
 
 exports.getContentDetail = async (req, res) => {
   // 글의 상세 내용을 보여줌 : 클릭한 contentId와 board 테이블의 id 가 같으면
-  try {
-    const result = await models.Board.findOne({
-      include: [{ model: models.User, attributes: ['grade'] }],
-      where: { id: { [Op.eq]: req.params.contentId } },
-      raw: true,
-    });
-    const view = await models.Board.update(
-      {
-        view_count: result.view_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
+  // try {
+  const result = await models.Board.findOne({
+    include: [{ model: models.User, attributes: ['grade', 'profile_img'] }],
+    where: { id: { [Op.eq]: req.params.contentId } },
+    raw: true,
+  });
+  const like_list = await models.Board_like.findAll({
+    where: { board_id: req.params.contentId },
+    attributes: ['nickname'],
+  });
+  like_nick = like_list.map((data) => {
+    return data.dataValues.nickname;
+  });
+  result.like_nicknames = like_nick;
+  console.log(result);
+  const view = await models.Board.update(
+    {
+      view_count: result.view_count + 1, // 기존 값 그대로 넘겨주면 +1 더해서 DB에 저장
+    },
+    {
+      where: {
+        id: { [Op.eq]: req.params.contentId },
       },
-      {
-        where: {
-          id: { [Op.eq]: req.params.contentId },
-        },
-      }
-    );
-    console.log(result);
-    res.send(result);
-  } catch (err) {
-    res.send(err);
-  }
+    }
+  );
+  console.log(result);
+  res.send(result);
+  // } catch (err) {
+  //   res.send(err);
+  // }
 };
 
 exports.addContent = async (req, res) => {
