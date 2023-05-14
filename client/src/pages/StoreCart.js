@@ -95,8 +95,12 @@ const StoreCart = () => {
                       <div className="fake">{el.product.price}</div>
                     </td>
                   )}
-                  {grade !== '남남'? <td>{gradeInfo[grade]}% off</td>: <td>.</td>}
-                  
+                  {grade !== "남남" ? (
+                    <td>{gradeInfo[grade]}% off</td>
+                  ) : (
+                    <td>.</td>
+                  )}
+
                   <td>
                     <div className="orderBtn" onClick={orderItem}>
                       주문
