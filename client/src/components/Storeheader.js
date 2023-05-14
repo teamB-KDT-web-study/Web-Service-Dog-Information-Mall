@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config.js";
 import { useNavigate, Link } from "react-router-dom";
 // import shopDataNew from '../json/shopDataNew.json';
 
@@ -18,7 +17,7 @@ const Storeheader = () => {
     if (searchTerm !== "") {
       const searchItem = async () => {
         const res = await axios.get(
-          `${API_BASE_URL}/store/searchProduct?keyword=${searchTerm}`
+          `${process.env.REACT_APP_DB_HOST}/store/searchProduct?keyword=${searchTerm}`
         );
         setSearchResults(res.data.data);
       };

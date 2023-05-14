@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-const Header = ({ userId, destroySession}) => {
+const Header = ({ userId, destroySession }) => {
   return (
     <Navbar expand="lg">
       <Container>
@@ -33,15 +33,21 @@ const Header = ({ userId, destroySession}) => {
           <Nav className="me-auto">
             <Nav.Link href="/Map/동물병원">우리동네 동물병원</Nav.Link>
             <Nav.Link href="/mydog">강아지추천</Nav.Link>
-            <Nav.Link href="/quizhome">Quiz</Nav.Link>
+            <Nav.Link href="/quizhome">퀴즈</Nav.Link>
             <Nav.Link href="/store">애견샵</Nav.Link>
             <Nav.Link href="/board/page/1">커뮤니티</Nav.Link>
+
             {userId.isLogin === false ? (
               <Nav.Link href="/Login" className="nav-link">
                 로그인
               </Nav.Link>
             ) : (
               <Nav.Link onClick={destroySession}>로그아웃</Nav.Link>
+            )}
+            {userId.isLogin === false ? (
+              <></>
+            ) : (
+              <Nav.Link href="/store/cart">장바구니</Nav.Link>
             )}
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

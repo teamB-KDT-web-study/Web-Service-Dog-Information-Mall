@@ -1,7 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { API_BASE_URL } from "../containers/app-config.js";
 import "../styles/storeCart.scss";
 
 const StoreCart = () => {
@@ -17,11 +16,11 @@ const StoreCart = () => {
   const [cartInfo, setCartInfo] = useState([]);
   const navigate = useNavigate();
   const getCartItems = async () => {
-    const userId = await axios.get(API_BASE_URL + "/member/checkLogin");
+    const userId = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
     if (!userId.data.isLogin) {
       return;
     }
-    const res = await axios.post(API_BASE_URL + "/store/showCart", {
+    const res = await axios.post(process.env.REACT_APP_DB_HOST + "/store/showCart", {
       user_id: userId.data.id,
     });
     setCartInfo(res.data);
@@ -34,7 +33,7 @@ const StoreCart = () => {
 
   const deleteItem = async (productId, choice) => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
-      const res = await axios.delete(API_BASE_URL + "/store/deleteCart", {
+      const res = await axios.delete(process.env.REACT_APP_DB_HOST + "/store/deleteCart", {
         data: {
           user_id: userId,
           product_id: productId,

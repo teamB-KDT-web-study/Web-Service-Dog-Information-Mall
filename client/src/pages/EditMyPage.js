@@ -2,7 +2,6 @@ import "../styles/Register.scss";
 import { useState, useRef, useEffect } from "react";
 // import RegisterYourDog from "../components/RegisterYourDog";
 import AddMyDog from "../components/AddMyDog";
-import { API_BASE_URL } from "../containers/app-config";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -129,7 +128,7 @@ const EditMyPage = () => {
 
   // 회원 수정 버튼 클릭시 백으로 전송
   const onEditMyPage = async () => {
-    const res = await axios.patch(API_BASE_URL + "/member/profileEdit", {
+    const res = await axios.patch(process.env.REACT_APP_DB_HOST + "/member/profileEdit", {
       id: id,
       pw: pw,
       nickName: nickName,
@@ -141,13 +140,13 @@ const EditMyPage = () => {
   // 회원 탈퇴 버튼 클릭시 백으로 전송
   const onDeleteMyProfile = async (targetProfile) => {
     // e.preventDefault();
-    // const res = await axios.delete(API_BASE_URL + "/member/signout", {
+    // const res = await axios.delete(process.env.REACT_APP_DB_HOST + "/member/signout", {
     //   id: id,
     // });
 
     if (window.confirm("정말 탈퇴를 하시겠습니까?")) {
       await axios
-        .delete(API_BASE_URL + "/member/signout", { id: "id" })
+        .delete(process.env.REACT_APP_DB_HOST + "/member/signout", { id: "id" })
         .then(() => {
           alert("그동안 이용해주셔서 감사합니다.");
           navigate("/");

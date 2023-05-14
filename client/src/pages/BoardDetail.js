@@ -1,4 +1,4 @@
-import "../styles/boarddetail.scss";
+import '../styles/boarddetail.scss';
 
 export function BoardDetail({
   content,
@@ -8,7 +8,7 @@ export function BoardDetail({
   onBodyEditEvent,
   readOnly,
   onDeleteContent,
-  onAddLike,
+  onUpdateLike,
   userId,
 }) {
   return (
@@ -25,13 +25,13 @@ export function BoardDetail({
         <div className="secondLine">
           <div className="timeViewLike">
             <div className="time">
-              {new Intl.DateTimeFormat("ko-KR").format(new Date(content.date))}
+              {new Intl.DateTimeFormat('ko-KR').format(new Date(content.date))}
             </div>
-            <div className="like">추천 : {content.like_count}</div>
+            {/* <div className="like">추천 : {content.like_count}</div> */}
             <div className="view">조회수 : {content.view_count + 1}</div>
           </div>
           <div className="likeBtn">
-            <button onClick={onAddLike}>추천!</button>
+            <button onClick={onUpdateLike}>💖 {content.like_count}</button>
           </div>
         </div>
         <div className="authur">
