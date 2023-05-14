@@ -43,33 +43,36 @@ axios.defaults.withCredentials = true;
 function App() {
   const [userId, setUserId] = useState({ isLogin: false });
   const getSession = async () => {
-    const res = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
+    const res = await axios.get(
+      process.env.REACT_APP_DB_HOST + "/member/checkLogin"
+    );
     setUserId(res.data);
   };
   const destroySession = async () => {
     const check = window.confirm("정말로 로그아웃 하시겠습니까?");
     if (check) {
-      const res = await axios.delete(process.env.REACT_APP_DB_HOST + "/member/logout");
+      const res = await axios.delete(
+        process.env.REACT_APP_DB_HOST + "/member/logout"
+      );
       setUserId({ isLogin: false });
+      window.location.replace("/");
     }
   };
   useEffect(() => {
     const checkSession = async () => {
-      const res = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
+      const res = await axios.get(
+        process.env.REACT_APP_DB_HOST + "/member/checkLogin"
+      );
       setUserId(res.data);
     };
     checkSession();
   }, []);
 
-
   return (
     <div className="App">
       <BrowserRouter>
         <ScrollToTop />
-        <Header
-          userId={userId}
-          destroySession={destroySession}
-        />
+        <Header userId={userId} destroySession={destroySession} />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login getSession={getSession} />} />

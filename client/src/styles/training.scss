@@ -19,11 +19,13 @@ $breakpoint-ms: 590px;
   align-items: center;
   justify-content: center;
   display: flex;
-  min-height: 60vh;
+  min-height: 40vh;
   .trainingContainer {
     display: flex;
-    justify-content : center;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    height: 40vh;
   }
 }
 
@@ -44,7 +46,6 @@ body {
   max-width: 80vw;
   margin: 10vh auto;
   transition: all 0.2s linear;
-
 }
 .cards:hover {
   transform: scale(1.1);
@@ -102,7 +103,7 @@ body {
     height: 80px;
 
     & + * {
-      margin-top: 1.25rem;
+      margin-top: 0;
     }
   }
 
@@ -194,7 +195,7 @@ body {
     font-weight: 600;
     font-size: 1.25rem;
     color: var(--c-coffee);
-    
+
     & + * {
       margin-top: 0.75rem;
     }
@@ -257,18 +258,49 @@ body {
 @include media("<#{$breakpoint-md}") {
   .Training {
     flex-direction: column;
- 
+    .trainingContainer {
+      height: 35vh;
+    }
     .cards {
-      margin : 5vh;
+      margin: 1vh;
     }
   }
-  
 }
 @include media("<#{$breakpoint-ms}") {
-  .trainingContainer {
-    flex-direction: column;
-  }
-  .cards {
-    margin : 3vh auto;
+  .Training {
+    font-size: 2vw;
+    .trainingContainer {
+      height: 30vh;
+    }
+    .cards {
+      margin: 1vh auto;
+      .card {
+        max-width: 170px;
+        min-width: 170px;
+        height: 200px;
+        .tag {
+          font-size: 2vw;
+        }
+        .title {
+          font-size: 4vw;
+        }
+        .title + * {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        button {
+          padding: 0 1em;
+        }
+        .info {
+          & + * {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .information {
+      padding: 1rem;
+    }
   }
 }

@@ -3,7 +3,11 @@ function SlickPrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{
+        position: "absolute",
+        left: "5vw",
+        zIndex: "2"
+      }}
       onClick={onClick}
     />
   );
