@@ -3,10 +3,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 function BoardItem({ content }) {
-  useEffect(() => {
-    console.log(Object.keys(content));
-    console.log(content['user.profile_img']);
-  });
+
   return (
     <Link to={'/board/' + content.id}>
       <div className="BoardItem">
