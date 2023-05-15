@@ -24,7 +24,7 @@
   padding: 50px 0;
   margin: 0 auto;
   text-align: center;
-  background-color: hsl(44deg 35% 94% / 100%);
+  background-color: hsl(0, 0%, 100%);
 
   .MyDogsPageBox {
     // position: relative;
@@ -34,7 +34,7 @@
     // align-items: center;
     width: 300px;
     padding: 30px;
-    background-color: hsl(44deg 35% 94% / 100%);
+    background-color: hsl(0, 0%, 100%);
     border-radius: 20px;
     background-color: #ecd06f;
     border: 2px solid #987654;
@@ -48,7 +48,7 @@
     // align-items: center;
     width: 300px;
     // padding: 50px 40px;
-    background-color: hsl(44deg 35% 94% / 100%);
+    background-color: hsl(0, 0%, 100%);
     border-radius: 20px;
     // background-color: #fff;
 
@@ -87,6 +87,7 @@
       border: 0;
       height: 50px;
       margin-top: 30px;
+      margin-bottom: 20px;
       color: #987654;
       cursor: pointer;
       border-radius: 5px;

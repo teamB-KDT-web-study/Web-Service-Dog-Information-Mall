@@ -1,20 +1,41 @@
+@font-face {
+  font-family: "CWDangamAsac-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .navbar {
   background-color: #ecd06f;
 
   .container {
+    // display: flex;
     height: 100%;
     width: 100%;
+    .navbar-brand {
+      font-size: 2vw;
+      font-family: "CWDangamAsac-Bold";
+      color: #987654;
+      background: linear-gradient(to left, #a15c17 55%, #634a30 25%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .navbar-nav {
       display: flex;
       align-items: center;
+      justify-content: center;
     }
+
     .logoimg {
       width: 150px;
     }
 
     .nav-link {
       color: #987654;
+      padding: 10px;
       height: fit-content;
+      // margin-right: 50px;
       &:hover {
         color: white;
       }
@@ -24,6 +45,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: space-between;
     }
 
     .profileBox {
@@ -61,6 +83,14 @@
 
 @media (min-width: 992px) {
   .navbar-expand-lg {
+    .headerlogo1 {
+      display: none;
+      visibility: hidden;
+    }
+    .navbar-brand {
+      display: flex;
+      visibility: visible;
+    }
     .container {
       width: fit-content;
       margin-block: 5px;

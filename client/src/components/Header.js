@@ -9,7 +9,9 @@ const Header = ({ userId, destroySession }) => {
   return (
     <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="/">DOGDAZE</Navbar.Brand>
+        <Navbar.Brand href="/" className="headerlogo2">
+          DOGDAZE
+        </Navbar.Brand>
         {userId.isLogin === false ? (
           <div></div>
         ) : (
@@ -30,7 +32,14 @@ const Header = ({ userId, destroySession }) => {
         )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav
+            className="me-auto"
+            style={{
+              width: "80vw",
+              paddingRight: "12vw",
+              fontSize: "1.2vw",
+            }}
+          >
             <Nav.Link href="/Map/동물병원">우리동네 동물병원</Nav.Link>
             <Nav.Link href="/mydog">강아지추천</Nav.Link>
             <Nav.Link href="/quizhome">퀴즈</Nav.Link>

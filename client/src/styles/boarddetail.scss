@@ -8,7 +8,7 @@ $breakpoint-xs: 376px;
   height: 100vh;
   min-height: max-content;
   padding: 20px;
-  background-color: hsl(44deg 35% 94% / 100%);
+  background-color: hsl(0, 0%, 100%);
   display: flex;
   justify-content: center;
   .container {
@@ -119,11 +119,9 @@ $breakpoint-xs: 376px;
   }
 }
 @include media("<#{$breakpoint-ms}") {
-
-    .editBtn {
-      font-size: 14px;
-    }
-  
+  .editBtn {
+    font-size: 14px;
+  }
 }
 @include media("<#{$breakpoint-xs}") {
   .BoardDetail {

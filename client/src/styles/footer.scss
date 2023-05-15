@@ -5,7 +5,7 @@
   justify-content: space-evenly;
   color: #987654;
   width: 100vw;
-  height: 20vw;
+  height: max-content;
 }
 .ourbox {
   background-color: #ecd06f;
@@ -13,7 +13,7 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   color: #987654;
-  height: 13vw;
+  height: max-content;
 }
 
 .ourinfo {
@@ -24,6 +24,7 @@
 .foot {
   display: flex;
   justify-content: center;
+  height: max-content;
 }
 .foottext {
   font-size: 1.5vw;

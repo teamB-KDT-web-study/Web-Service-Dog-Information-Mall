@@ -24,7 +24,6 @@ const MainPage = ({ getSession }) => {
       <SlickSlider />
       <ChatBot />
       <TestLogin />
-
     </>
   );
 };
