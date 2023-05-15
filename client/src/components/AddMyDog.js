@@ -96,7 +96,7 @@ const AddMyDog = (props) => {
               onChange={(e) => handleChange(e, formId)}
             />
             <br />
-            <label for="dogName">이름: </label>
+            <label for="dogName">이름 </label>
             <input
               id="name"
               type="text"
@@ -104,7 +104,7 @@ const AddMyDog = (props) => {
               onChange={(e) => handleChange(e, formId)}
             />
             <br />
-            <label for="dogBreed">견종: </label>
+            <label for="dogBreed">견종 </label>
             <input
               type="text"
               id="breed"
@@ -132,7 +132,7 @@ const AddMyDog = (props) => {
               <label>암컷</label>
             </div>
 
-            <label for="dogAge">나이: </label>
+            <label for="dogAge">나이 </label>
             <input
               type="text"
               id="age"
@@ -140,7 +140,7 @@ const AddMyDog = (props) => {
               onChange={(e) => handleChange(e, formId)}
             />
             <br />
-            <label for="dogWeight">무게: </label>
+            <label for="dogWeight">무게 </label>
             <input
               type="text"
               id="weight"

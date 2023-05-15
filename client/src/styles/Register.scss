@@ -63,6 +63,25 @@ $breakpoint-sm: 532px;
         color: var(--c-white);
       }
     }
+    .DeleteMyProfile {
+      width: 100%;
+      // background-color: #ecd06f;
+      border: 0;
+      height: 50px;
+      margin-top: 30px;
+      color: #333;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #987654;
+      border: 2px solid #987654;
+      &:hover,
+      &:focus {
+        background-color: #987654;
+        color: var(--c-white);
+      }
+    }
     .link {
       display: inline-flex;
       width: auto;
@@ -134,6 +153,7 @@ $breakpoint-sm: 532px;
       background-color: #987654;
       border: 0;
       align-items: center;
+      margin-top: 20px;
 
       color: #333;
       cursor: pointer;

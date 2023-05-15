@@ -47,6 +47,7 @@ function App() {
       process.env.REACT_APP_DB_HOST + "/member/checkLogin"
     );
     setUserId(res.data);
+    console.log(userId);
   };
   const destroySession = async () => {
     const check = window.confirm("정말로 로그아웃 하시겠습니까?");
@@ -77,7 +78,8 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/Login" element={<Login getSession={getSession} />} />
           <Route path="/Register" element={<Register />} />
-          <Route path="/MyPage" element={<MyPage />} />
+          <Route path="/MyPage" element={<MyPage getSession={getSession} />} />
+          <Route path="/EditMyPage" element={<EditMyPage />} />
           <Route path="/quizhome/quiz" element={<Quiz userId={userId} />} />
           <Route path="/quizhome" element={<Quizhome />} />
           <Route
