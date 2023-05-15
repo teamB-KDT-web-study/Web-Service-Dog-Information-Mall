@@ -6,7 +6,7 @@ function TestLogin() {
     const res = await axios.post(
       process.env.REACT_APP_DB_HOST + "/member/login",
       {
-        id: "apple",
+        id: "banana",
         pw: "1234",
       }
     );

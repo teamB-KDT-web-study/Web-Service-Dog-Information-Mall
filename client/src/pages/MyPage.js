@@ -3,47 +3,55 @@ import "../styles/MyPage.scss";
 import EditMyPage from "../pages/EditMyPage";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import TestLogin from "../components/TestLogin";
 
 const MyPage = () => {
+  const [myProfile, setMyProfile] = useState([]);
+  const [myDog, setMyDog] = useState([]);
 
-  const [myProfile, setMyProfile] = useState("");
-  const [dogInfo, setDogInfo] = useState([]);
   const getMyProfile = async () => {
-    const myProfile = await axios.get(API_BASE_URL + "/member/checkLogin");
-    if (!myProfile.data.isLogin) {
+    const Profile = await axios.get(
+      process.env.REACT_APP_DB_HOST + "/member/checkLogin"
+    );
+    console.log("1", Profile);
+    if (!Profile.data.isLogin) {
       return;
     }
-    const res = await axios.post(API_BASE_URL + "/member/showProfile", {
-      id: myProfile.data.id,
-      nickname: myProfile.data.nickname,
-    });
-    setDogInfo(res.data);
+    const res = await axios.post(
+      process.env.REACT_APP_DB_HOST + "/member/showProfile",
+      {
+        id: Profile.data.id,
+      }
+    );
+    setMyProfile(res.data.user_data); // 사람데이터를 가져올때 user_data: user_data
+    setMyDog(res.data.dog_data);
+    console.log("2", res.data);
+    // setDogInfo(res.data);
   };
   useEffect(() => {
     getMyProfile();
   }, []);
 
-
   return (
     <>
+      <TestLogin />
       <div className="MyPageWrap">
         <div className="MyPageBox">
           <img
             className="ProfileImg"
-            src={process.env.PUBLIC_URL + "profile_img/default.jpg"}
+            src={
+              process.env.PUBLIC_URL + `/profile_img/${myProfile.profile_img}`
+            }
             alt="ProfileImg"
           />
           <div className="Id" style={{ marginTop: "20px", fontWeight: "bold" }}>
-            ID:
-            {/* {myProfile.map((id) => {
-              return (id = { id });
-            })} */}
+            ID: {myProfile.id}
           </div>
           <div
             className="NickName"
             style={{ marginTop: "20px", fontWeight: "bold" }}
           >
-            닉네임:
+            닉네임: {myProfile.nickname}
           </div>
 
           <Link to="/editMyPage">
@@ -53,9 +61,9 @@ const MyPage = () => {
             <Route path="/editMyPage" element={<EditMyPage />}></Route>
           </Routes>
         </div>
-        {dogInfo.map((inf) => {
+        {/* {dogInfo.map((inf, id) => {
           return (
-            <div className="MyDogsPageBox">
+            <div className="MyDogsPageBox" key={id}>
               <div className="MyDogFormBox">
                 <img
                   className="ProfileImg"
@@ -70,36 +78,36 @@ const MyPage = () => {
                   className="DogName"
                   style={{ marginTop: "20px", fontWeight: "bold" }}
                 >
-                  이름:
+                  이름:{inf.name}
                 </div>
                 <div
                   className="DogBreed"
                   style={{ marginTop: "20px", fontWeight: "bold" }}
                 >
-                  견종:
+                  견종:{inf.breed}
                 </div>
                 <div
                   className="DogGender"
                   style={{ marginTop: "20px", fontWeight: "bold" }}
                 >
-                  성별:
+                  성별:{inf.gender}
                 </div>
                 <div
                   className="DogAge"
                   style={{ marginTop: "20px", fontWeight: "bold" }}
                 >
-                  나이:
+                  나이:{inf.age}
                 </div>
                 <div
                   className="DogWeight"
                   style={{ marginTop: "20px", fontWeight: "bold" }}
                 >
-                  무게:
+                  무게:{inf.weight}
                 </div>
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
     </>
   );

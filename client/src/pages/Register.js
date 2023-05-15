@@ -222,6 +222,7 @@ const Register = () => {
       }
     );
     console.log(res.data);
+    navigate("/Login"); // 로그인 페이지로 이동
 
     // TODO: file 관련 state 만들어서 db에 저장할 수 있도록
     // 파일이 있으면 그 파일 이름을 보내고, 파일이 없으면 디폴트 이미지 보내고
@@ -237,7 +238,6 @@ const Register = () => {
     //   },
     // }).then((res) => res.json());
     // onRegister();
-    // navigate("/Login"); // 로그인 페이지로 이동
   };
 
   const handleDogForm = (dogInfo, formId) => {
