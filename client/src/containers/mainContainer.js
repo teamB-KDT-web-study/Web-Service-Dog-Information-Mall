@@ -17,8 +17,8 @@ export const TrainingContainer = () => {
         return {
           id: el.id,
           nickname: el.nickname,
-          title: el.title,
-          body: el.body.slice(0, 80),
+          title: el.title.slice(0, 13),
+          body: el.body.slice(0, 50),
           like_count: el.like_count,
           view_count: el.view_count,
         };

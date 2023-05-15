@@ -1,25 +1,43 @@
 .BoardItem {
-  background-color: #ecd06f;
-  width: 60vw;
-  height: 80px;
+  // background-color: #ecd06f;
+  width: 70vw;
+  height: 180px;
   padding: 20px;
-  border: 2px solid #987654;
-  border-radius: 10px;
-  margin: 5px;
+  // border: 2px solid #987654;
+  border-bottom: 2px solid rgb(206, 206, 206);
+  // border-radius: 10px;
+  // padding: 5px;
+  // margin: 5px;
   color: #987654;
-  &:hover {
-    background-color: #987654;
-    color: white;
-  }
   .title {
-    font-size: 20px;
+    font-size: 25px;
+    // font-weight: bold;
+    text-align: left;
+  }
+  .author {
+    padding-top: 5px;
+    font-size: 14px;
+    img {
+      width: 20px;
+      height: 20px;
+      border-radius: 30px;
+      margin-right: 4px;
+      border: solid 0.5px rgb(230, 230, 230);
+    }
+  }
+  .body {
+    color: black;
+    padding: 15px 0px;
+    font-size: 16px;
+    height: 60px;
   }
   .viewLike {
-    font-size: 12px;
+    font-size: 14px;
     display: flex;
-    color: white;
+    flex-direction: row-reverse;
+    color: grey;
   }
   .like {
-    margin-left: 10px;
+    margin-left: 14px;
   }
 }

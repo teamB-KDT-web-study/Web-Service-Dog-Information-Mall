@@ -78,6 +78,7 @@ const boardReducer = (state = initialState, action) => {
           view_count: state.data.view_count,
           like_count: state.data.like_count + 1,
           date: state.data.date,
+          // profile_img: state.data.profile_img,
           ['user.grade']: state.data['user.grade'],
         },
       };
@@ -92,6 +93,7 @@ const boardReducer = (state = initialState, action) => {
           view_count: state.data.view_count,
           like_count: state.data.like_count - 1,
           date: state.data.date,
+          // profile_img: state.data.profile_img,
           ['user.grade']: state.data['user.grade'],
         },
       };

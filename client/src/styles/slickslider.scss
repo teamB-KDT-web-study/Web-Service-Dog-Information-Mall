@@ -1,4 +1,10 @@
+@import "~include-media/dist/include-media";
+
+$breakpoint-ms: 590px;
+
 .Slickback {
+  margin-top: 30px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,28 +16,59 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin: 50px;
-    padding: 20px;
+    margin: 3vw;
+    padding: 1vw;
     background-color: rgb(251, 251, 251);
     border-radius: 10px;
     border: 2px solid #987654;
     color: #987654;
     background-color: #f6eabfd6;
     height: max-content;
+    width: 48vw;
 
     .Slickbox {
       border: 2px solid #987654;
       color: #987654;
       border-radius: 10px;
       background-color: #ecd06f;
-      margin: 5px;
-      width: 300px;
+      margin: 1vw;
+      width: 20vw;
+      font-size: 1.5vw;
+      padding: 0.5vw;
     }
     .Slickimg {
       border-radius: 10px;
       border: 2px solid #987654;
-      width: 25vw;
-      height: 25vw;
+      width: 20vw;
+      height: 20vw;
     }
+  }
+  .selectMsg {
+    font-size: 3vw;
+    color: #987654;
+  }
+}
+.slick-prev:before,
+.slick-next:before {
+  color: #987654;
+  font-size: 30px;
+}
+
+@include media("<#{$breakpoint-ms}") {
+  .Slick {
+    width: 35vw !important;
+    .Slickimg {
+      width: 30vw !important;
+      height: 25vw !important;
+    }
+    .Slickbox {
+      width: 30vw !important;
+      margin: 5px !important;
+    }
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: #987654;
+    font-size: 20px;
   }
 }

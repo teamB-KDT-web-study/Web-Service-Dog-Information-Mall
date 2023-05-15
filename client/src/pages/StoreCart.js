@@ -76,12 +76,12 @@ const StoreCart = () => {
                     <div className="itemColumn price">
                       <div className="fake">가격:{el.product.price}</div>
                       <div className="real">
-                        {(el.product.price * (100 - gradeInfo[grade])) / 100}
+                        {(el.product.price * (100 - gradeInfo[grade])) / 100}원
                       </div>
                     </div>
                   ) : (
                     <div className="itemColumn">
-                      <div className="fake">{el.product.price}원</div>
+                      <div className="real">{el.product.price}원</div>
                     </div>
                   )}
                   {grade !== "남남" ? (
@@ -89,7 +89,9 @@ const StoreCart = () => {
                   ) : (
                     <div className="itemColumn">.</div>
                   )}
+
                   <div className="itemColumn">
+
                     <div className="orderBtn" onClick={orderItem}>
                       주문
                     </div>
