@@ -1,4 +1,4 @@
-@import '~include-media/dist/include-media';
+@import "~include-media/dist/include-media";
 
 $breakpoint-ms: 590px;
 $breakpoint-xs: 376px;
@@ -32,7 +32,7 @@ $breakpoint-xs: 376px;
           }
           &:disabled {
             background-color: white;
-            color: black;
+            color: #987654;
           }
         }
       }
@@ -122,25 +122,28 @@ $breakpoint-xs: 376px;
       // position: relative;
       button {
         margin-inline: 10px;
-        background-color: #987654;
-        border: 2px solid #987654;
-        color: white;
-        border-radius: 15px;
+        border-radius: 10px;
         width: max-content;
         height: max-content;
         padding: 5px;
-        &:hover {
+        background-color: #ecd06f;
+        color: #987654;
+        border: 2px solid #987654;
+        &:hover,
+        &:focus {
           background-color: #987654;
-          color: white;
+          color: var(--c-white);
         }
       }
       .toContentBtn {
-        background-color: #987654;
-        border-radius: 15px;
-        &:hover {
-          color: white;
+        border-radius: 10px;
+        background-color: #ecd06f;
+        color: #987654;
+        border: 2px solid #987654;
+        &:hover,
+        &:focus {
           background-color: #987654;
-          border: 2px solid #987654;
+          color: var(--c-white);
         }
       }
     }
@@ -152,15 +155,14 @@ $breakpoint-xs: 376px;
   }
 }
 
-@include media('<#{$breakpoint-ms}') {
-
+@include media("<#{$breakpoint-ms}") {
   .editBtn {
     font-size: 14px;
   }
 }
-@include media('<#{$breakpoint-xs}') {
+@include media("<#{$breakpoint-xs}") {
   .BoardDetail {
-    height: 115vh;
+    height: max-content;
     .editBtn {
       font-size: 10px;
     }
@@ -181,6 +183,7 @@ $breakpoint-xs: 376px;
         .title {
           input {
             font-size: 25px;
+            color: #987654;
           }
         }
       }

@@ -79,7 +79,7 @@ const Quiz = ({ userId }) => {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true); //점수가 나오는 코드
-      setPassed(score >= 4); //점수에 대한 커트 라인 부분 현재 5개이하로 설정
+      setPassed(score >= 4); //점수에 대한 커트 라인 부분 현재 4개이하로 설정
       if (score >= 4) {
         const gradeUp = async () => {
           const res = await axios.patch(
@@ -135,8 +135,13 @@ const Quiz = ({ userId }) => {
             <div className="question-section">
               <div className="question-count">
                 {/* 퀴즈 제목?과 퀴즈넘버 부분 */}
-                <div>강아지 훈련 기초편 QUIZ! {currentQuestion + 1}/{questions.length}</div>
-                <div className="cutLine">6문제중 5문제를 맞추면 합격입니다!</div>
+                <div>
+                  강아지 훈련 기초편 QUIZ! {currentQuestion + 1}/
+                  {questions.length}
+                </div>
+                <div className="cutLine">
+                  6문제중 5문제를 맞추면 합격입니다!
+                </div>
               </div>
               <br />
               <div className="question-text">
