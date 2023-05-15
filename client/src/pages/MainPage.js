@@ -16,12 +16,9 @@ const MainPage = ({ getSession }) => {
       {/* <Mainslide /> */}
       <Maindog />
       <SlickSlider />
-
       <TrainingContainer />
-
       <Mainmydog />
       <Mainmap />
-
       <ChatBot />
       <TestLogin />
     </>
