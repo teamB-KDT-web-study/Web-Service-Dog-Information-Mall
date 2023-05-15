@@ -237,7 +237,7 @@ const Register = () => {
     //     "content-length": `${imgFile.size}`,
     //   },
     // }).then((res) => res.json());
-    // onRegister();
+    // // onRegister();
   };
 
   const handleDogForm = (dogInfo, formId) => {
