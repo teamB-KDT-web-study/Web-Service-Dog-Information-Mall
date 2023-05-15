@@ -1,6 +1,8 @@
 import '../styles/boarddetail.scss';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 export function BoardDetail({
   content,
   onStartEditContent,
@@ -12,16 +14,27 @@ export function BoardDetail({
   onUpdateLike,
   userId,
 }) {
+  const { contentId } = useParams();
   const [like, setLike] = useState(false);
   useEffect(() => {
-    console.log('userId.nickname >> ', userId.nickname);
-    console.log('content.like_nicknames >> ', content.like_nicknames);
-    if (content.like_nicknames) {
-      for (let i of content.like_nicknames) {
-        console.log('i >> ', i);
-        if (i == userId.nickname) setLike(true);
+    const getContentDetail = async () => {
+      const res = await axios.get(
+        process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId
+      );
+      const user = await axios.get(
+        process.env.REACT_APP_DB_HOST + "/member/checkLogin"
+      );
+      if (res.data.like_nicknames) {
+        for (let i of res.data.like_nicknames) {
+          console.log('i >> ', i);
+          if (i == user.data.nickname) setLike(true);
+        }
       }
-    }
+   
+    };
+    getContentDetail();
+
+    
   }, []);
   console.log(content['user.profile_img']);
   const navigate = useNavigate();

@@ -139,9 +139,9 @@ CREATE TABLE board_like (
 
 
 
-insert into board_like (board_id, nickname) values (1, '바나나');
-insert into board_like (board_id, nickname) values (2, '바나나');
-insert into board_like (board_id, nickname) values (2, '사과');
+-- insert into board_like (board_id, nickname) values (1, '바나나');
+-- insert into board_like (board_id, nickname) values (2, '바나나');
+-- insert into board_like (board_id, nickname) values (2, '사과');
 
 
 
