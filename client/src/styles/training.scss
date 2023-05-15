@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
-@import "~include-media/dist/include-media";
+@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap');
+@import '~include-media/dist/include-media';
 
 $breakpoint-md: 953px;
 $breakpoint-ms: 590px;
@@ -15,22 +15,24 @@ $breakpoint-ms: 590px;
 }
 
 .Training {
-  position: relative;
+  // position: relative;
   align-items: center;
   justify-content: center;
   display: flex;
   min-height: 40vh;
+  width: 100%;
   .trainingContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 40vh;
+    height: 30vh;
+    margin-top: 35px;
   }
 }
 
 body {
-  font-family: "Spline Sans", sans-serif;
+  font-family: 'Spline Sans', sans-serif;
   line-height: 1.5;
   min-height: 30vh;
 }
@@ -42,20 +44,21 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2.5rem;
-  width: 90%;
-  max-width: 80vw;
+  width: 70%;
+  max-width: 70vw;
   margin: 10vh auto;
   transition: all 0.2s linear;
 }
 .cards:hover {
   transform: scale(1.1);
+  z-index: 30;
 }
 
 .card {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(#ecd06f, 0.25);
-  min-width: 300px;
-  max-width: 300px;
+  min-width: 25vw;
+  max-width: 25vw;
   min-height: max-content;
 }
 
@@ -255,18 +258,62 @@ body {
     }
   }
 }
-@include media("<#{$breakpoint-md}") {
+// @include media('<#{$breakpoint-md}') {
+//   .Training {
+//     flex-direction: column;
+//     .trainingContainer {
+//       height: 35vh;
+//     }
+//     .cards {
+//       margin: 1vh;
+//     }
+//   }
+// }
+@include media('<#{$breakpoint-md}') {
   .Training {
     flex-direction: column;
+
+    font-size: 2vw;
     .trainingContainer {
-      height: 35vh;
+      height: 30vh;
+      width: 100%;
     }
     .cards {
-      margin: 1vh;
+      margin: 1vh auto;
+      width: 100%;
+      .card {
+        // max-width: 250px;
+        // min-width: 250px;
+        width: 100%;
+        max-width: 250px;
+        height: 200px;
+        .tag {
+          font-size: 2vw;
+        }
+        .title {
+          font-size: 2vw;
+        }
+        .title + * {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        button {
+          padding: 0 1em;
+        }
+        .info {
+          & + * {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    .information {
+      padding: 1rem;
     }
   }
 }
-@include media("<#{$breakpoint-ms}") {
+@include media('<#{$breakpoint-ms}') {
   .Training {
     font-size: 2vw;
     .trainingContainer {
@@ -282,7 +329,7 @@ body {
           font-size: 2vw;
         }
         .title {
-          font-size: 4vw;
+          font-size: 2vw;
         }
         .title + * {
           margin-top: 0;

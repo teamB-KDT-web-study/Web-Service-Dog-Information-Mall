@@ -1,20 +1,20 @@
-@import "~include-media/dist/include-media";
+@import '~include-media/dist/include-media';
 $breakpoint-md: 950px;
 .Mainmydog {
-  position: relative;
+  // position: relative;
   display: flex;
   min-height: 40vh;
   flex-direction: column;
 
   .Trainingheader {
     font-size: 2vw;
-    padding: 1vw 0px 0px 3vw;
+    // padding: 1vw 0px 0px 3vw;
     margin: 30px 0px 0px 0px;
     height: max-content;
   }
   .Trainingheader2 {
     font-size: 2vw;
-    padding: 00px 0px 0px 3vw;
+    // padding: 0px 0px 0px 3vw;
     height: max-content;
   }
 
@@ -211,7 +211,7 @@ $breakpoint-md: 950px;
       }
     }
   }
-  @include media("<#{$breakpoint-md}") {
+  @include media('<#{$breakpoint-md}') {
     .mainmydogbox {
       visibility: hidden;
       display: none;

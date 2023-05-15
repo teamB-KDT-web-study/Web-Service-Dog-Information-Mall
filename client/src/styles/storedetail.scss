@@ -1,4 +1,4 @@
-@import "~include-media/dist/include-media";
+@import '~include-media/dist/include-media';
 $breakpoint-md: 953px;
 .Storedetail {
   width: 100%;
@@ -11,13 +11,13 @@ $breakpoint-md: 953px;
   // margin: 20px;
 }
 .detailimg {
-  width: 48vw;
-  height: 48vw;
+  width: 50vw;
+  height: 50vw;
 }
 .detailbox {
   padding: 1vw;
   width: 35vw;
-  height: 48vw;
+  height: 50vw;
   font-size: 3vw;
   background-color: white;
   border: 2px solid #987654;
@@ -51,13 +51,16 @@ $breakpoint-md: 953px;
   background-color: #f6e6ac;
   font-size: 1.5vw;
   border-radius: 10px;
-  margin: 30px 0px 0px 0px;
+  margin: 20px 0px 0px 0px;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 .choicenum {
   display: flex;
   flex-wrap: wrap;
   font-size: 1vw;
-  padding: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
 }
 .choicenumh1 {
   font-size: 2vw;
@@ -75,8 +78,8 @@ $breakpoint-md: 953px;
 
 .pay {
   margin: 10px;
-  width: 9vw;
-  font-size: 2vw;
+  width: 8vw;
+  font-size: 1.5vw;
   border-radius: 10px;
   border: 2px solid #987654;
   background-color: #ecd06f;
@@ -181,7 +184,7 @@ $breakpoint-md: 953px;
     }
   }
 }
-@include media("<#{$breakpoint-md}") {
+@include media('<#{$breakpoint-md}') {
   .detailbox {
     visibility: hidden;
     display: none;

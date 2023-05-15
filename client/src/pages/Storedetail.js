@@ -1,23 +1,26 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import "../styles/storedetail.scss";
-import axios from "axios";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import '../styles/storedetail.scss';
+import axios from 'axios';
 
 const Storedetail = () => {
-  const gradeInfo = {
-    남남: 0,
-    "서먹한 친구": 3,
-    친구: 5,
-    "친한 친구": 7,
-    "베스트 프렌드": 10,
+  const gradeInfo_1 = '남남';
+  const gradeInfo_2 = '친구';
+  let gradeInfo = {
+    '서먹한 친구': 3,
+    '친한 친구': 7,
+    '베스트 프렌드': 10,
   };
-  const [userId, setuserId] = useState("");
+  gradeInfo['남남'] = 0;
+  gradeInfo['친구'] = 5;
+  console.log(gradeInfo);
+  const [userId, setuserId] = useState('');
 
   const navigate = useNavigate();
-  const [item, setItem] = useState("");
+  const [item, setItem] = useState('');
   const { storeId } = useParams();
   //select에서 option값을 클릭시 표시 되는 코드
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState('');
   const [onePrice, setOnePrice] = useState(0);
   const [number, setNumber] = useState(0);
 
@@ -26,16 +29,42 @@ const Storedetail = () => {
       const res = await axios.get(
         `${process.env.REACT_APP_DB_HOST}/store/getItem?product_id=${storeId}`
       );
-      const user = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
+      const user = await axios.get(
+        process.env.REACT_APP_DB_HOST + '/member/checkLogin'
+      );
       setItem(res.data);
       setuserId(user.data);
     };
     getItem();
   }, []);
 
+  function countPrice() {
+    if (!userId.isLogin || userId.grade === '남남') {
+      if (number === 0) {
+        setOnePrice(0);
+      } else {
+        setOnePrice(item.price * number);
+      }
+    } else {
+      if (number === 0) {
+        setOnePrice(0);
+      } else {
+        const p = (item.price * (100 - gradeInfo[userId.grade])) / 100;
+        setOnePrice(p * number);
+      }
+    }
+  }
+
+  useEffect(() => {
+    countPrice();
+  }, [number]);
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
+  console.log(item.price);
+  console.log(userId);
+
   //수량 plus
   const plus = () => {
     setNumber(number + 1);
@@ -50,27 +79,11 @@ const Storedetail = () => {
     countPrice();
   };
 
-  useEffect(() => {
-    console.log(number);
-    countPrice();
-  }, [number]);
+  // useEffect(() => {
+  //   countPrice();
+  // }, [number]);
 
-  const countPrice = () => {
-    if (!userId.isLogin || userId.grade === "남남") {
-      if (number === 0) {
-        setOnePrice(0);
-      } else {
-        setOnePrice(item.price * number);
-      }
-    } else {
-      if (number === 0) {
-        setOnePrice(0);
-      } else {
-        const p = (item.price * (100 - gradeInfo[userId.grade])) / 100;
-        setOnePrice(p * number);
-      }
-    }
-  };
+  console.log('onePrice >>> ', onePrice);
   //해당 상품 title값으로 주소 보내는 코드
   // const [item] = items.filter((p) => p.title === storeId);
   // 저장된 상품값이 없을 때 표시 되는 메세지 굳이 필요 없을 수도??...
@@ -80,22 +93,24 @@ const Storedetail = () => {
   const choice = JSON.parse(item.choice);
 
   const addCart = async () => {
-    const session = await axios.get(process.env.REACT_APP_DB_HOST + "/member/checkLogin");
+    const session = await axios.get(
+      process.env.REACT_APP_DB_HOST + '/member/checkLogin'
+    );
 
-    if (session.data.isLogin && selectedOption !== "" && number !== 0) {
-      await axios.post(process.env.REACT_APP_DB_HOST + "/store/addCart", {
+    if (session.data.isLogin && selectedOption !== '' && number !== 0) {
+      await axios.post(process.env.REACT_APP_DB_HOST + '/store/addCart', {
         user_id: session.data.id,
         product_id: storeId,
         choice: selectedOption,
         amount: number,
       });
-      alert("장바구니에 상품이 저장되었습니다!");
-      navigate("/store/cart");
+      alert('장바구니에 상품이 저장되었습니다!');
+      navigate('/store/cart');
     } else {
       if (!session.data.isLogin) {
-        alert("로그인이 필요합니다.");
+        alert('로그인이 필요합니다.');
       } else {
-        alert("수량, 옵션이 선택되었는지 확인해주세요.");
+        alert('수량, 옵션이 선택되었는지 확인해주세요.');
       }
     }
   };
@@ -108,24 +123,24 @@ const Storedetail = () => {
       </div>
       <div className="detailbox">
         {/* 상품정보 및 수량 선택부분 */}
-        <div
+        {/* <div
           className="detailtext"
           style={{ color: "purple", fontSize: "bold" }}
         >
-          {/* 해당 상품 정보 부분 */} #{item.category}
-        </div>
+          해당 상품 정보 부분 #{item.category}
+        </div> */}
         <div className="detailtext"> {item.title}</div>
-        {!userId.isLogin || userId.grade === "남남" ? (
+        {!userId.isLogin || userId.grade === '남남' ? (
           <div className="detailtext"> {item.price}원</div>
         ) : (
           <div className="price">
             <div className="detailtext fake"> {item.price}원</div>
             <div className="detailtext real">
-              {" "}
+              {' '}
               {(item.price * (100 - gradeInfo[userId.grade])) / 100}원
             </div>
             <div className="detailtext itemOff">
-              {" "}
+              {' '}
               {gradeInfo[userId.grade]}% off!
             </div>
           </div>
@@ -169,7 +184,7 @@ const Storedetail = () => {
               <button onClick={plus} className="choicenumbtn">
                 +
               </button>
-              <span className="selectprice">{onePrice} 윈</span>
+              {/* <span className="selectprice">{onePrice} 윈</span> */}
             </div>
           </p>
         </div>
@@ -207,7 +222,7 @@ const Storedetail = () => {
           <span className="othertotalprice2"> {onePrice}원</span>
         </div>
         <div className="otherchoiceoptionbtn">
-          <button className="otherpay" onClick={() => navigate("/store/cart")}>
+          <button className="otherpay" onClick={addCart}>
             장바구니
           </button>
           <button className="otherpay">결제</button>
