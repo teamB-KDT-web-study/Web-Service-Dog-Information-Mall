@@ -1,74 +1,73 @@
-@import "~include-media/dist/include-media";
+@import '~include-media/dist/include-media';
 
 $breakpoint-ms: 590px;
 $breakpoint-xs: 376px;
 
 .BoardDetail {
   width: 100%;
-  height: 100vh;
   min-height: max-content;
   padding: 20px;
   background-color: hsl(44deg 35% 94% / 100%);
   display: flex;
   justify-content: center;
   .container {
-    padding: 30px;
+    margin: 10px 0;
+    padding: 60px 7vw;
     background-color: white;
-    width: 90vw;
+    width: 75vw;
+    // height: 120vh;
     border-radius: 10px;
-    .title {
-      input {
-        border: none;
-        font-size: 35px;
-        width: 100%;
-        &:focus {
-          outline: none;
-        }
-        &:disabled {
-          background-color: white;
-          color: black;
-        }
-      }
-    }
-    .secondLine {
-      font-size: 14px;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      .timeViewLike {
-        display: flex;
-        color: rgb(140, 140, 140);
-        .like {
-          margin-inline: 15px;
-        }
-      }
-      .likeBtn {
-        position: relative;
-        button {
-          position: relative;
-          right: 20px;
-          top: 7px;
-          background-color: #ffffff;
-          border: 2px solid #adadad;
-          color: #7f7f7f;
-          border-radius: 7px;
-          width: 60px;
-          height: 30px;
-
-          &:active {
-            background-color: #d3d3d3;
+    .top {
+      padding-bottom: 5px;
+      border-bottom: 2px solid rgb(230, 230, 230);
+      .title {
+        input {
+          padding-bottom: 25px;
+          text-align: center;
+          border: none;
+          font-size: 30px;
+          width: 100%;
+          &:focus {
+            outline: none;
+          }
+          &:disabled {
+            background-color: white;
+            color: black;
           }
         }
       }
+      .secondLine {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        .authur {
+          margin-left: 2vw;
+          font-size: 17px;
+          color: rgb(140, 140, 140);
+          margin-bottom: 10px;
+
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 30px;
+            margin-right: 6px;
+            border: solid 0.5px rgb(230, 230, 230);
+          }
+        }
+        .time {
+          margin-right: 2vw;
+          line-height: 28px;
+          font-size: 17px;
+          color: rgb(140, 140, 140);
+        }
+      }
     }
-    .authur {
-      font-size: 14px;
-      color: rgb(140, 140, 140);
-      margin-bottom: 10px;
-    }
+
     .content {
+      padding: 50px 20px 100px 20px;
       width: 100%;
-      height: 75%;
       textarea {
         width: 100%;
         height: 100%;
@@ -82,18 +81,50 @@ $breakpoint-xs: 376px;
         }
       }
     }
+    .ViewLike {
+      display: flex;
+      color: rgb(140, 140, 140);
+
+      .likeButton {
+        margin-left: 20px;
+        margin-right: 5px;
+        line-height: 0px;
+
+        // margin-inline: 15px;
+        // position: absolute;
+        padding: 0px;
+        background-color: #ffffff;
+        // border: 2px solid #adadad;
+
+        border: none;
+        // color: #7f7f7f;
+        // border-radius: 7px;
+        width: 25px;
+        height: 25px;
+        img {
+          // position: absolute;
+          // padding-bottom: 5px;
+          width: 25px;
+          height: 25px;
+        }
+        // &:active {
+        //   background-color: #d3d3d3;
+        // }
+      }
+    }
+
     .editBtn {
       width: 100%;
       margin-block: 10px;
       display: flex;
       justify-content: center;
-      position: relative;
+      // position: relative;
       button {
         margin-inline: 10px;
-        background-color: #ecd06f;
+        background-color: #987654;
         border: 2px solid #987654;
-        color: #987654;
-        border-radius: 10px;
+        color: white;
+        border-radius: 15px;
         width: max-content;
         height: max-content;
         padding: 5px;
@@ -103,11 +134,12 @@ $breakpoint-xs: 376px;
         }
       }
       .toContentBtn {
-        background-color: white;
+        background-color: #987654;
+        border-radius: 15px;
         &:hover {
-          color: #987654;
-          background-color: #ecd06f;
-          border: 2px solid #ecd06f;
+          color: white;
+          background-color: #987654;
+          border: 2px solid #987654;
         }
       }
     }
@@ -118,14 +150,12 @@ $breakpoint-xs: 376px;
     }
   }
 }
-@include media("<#{$breakpoint-ms}") {
-
-    .editBtn {
-      font-size: 14px;
-    }
-  
+@include media('<#{$breakpoint-ms}') {
+  .editBtn {
+    font-size: 14px;
+  }
 }
-@include media("<#{$breakpoint-xs}") {
+@include media('<#{$breakpoint-xs}') {
   .BoardDetail {
     height: 115vh;
     .editBtn {
@@ -133,3 +163,189 @@ $breakpoint-xs: 376px;
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .BoardDetail {
+    .container {
+      width: 85vw;
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  .BoardDetail {
+    .container {
+      .top {
+        .title {
+          input {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 700px) {
+  .BoardDetail {
+    .container {
+      .top {
+        .title {
+          input {
+            font-size: 25px;
+          }
+        }
+        .secondLine {
+          .authur {
+            font-size: 13px;
+            img {
+              width: 25px;
+              height: 25px;
+            }
+          }
+          .time {
+            font-size: 13px;
+          }
+        }
+      }
+      .content {
+        padding: 30px 10px 100px 10px;
+        font-size: 13px;
+      }
+      .ViewLike {
+        line-height: 24px;
+        font-size: 13px;
+        .likeButton {
+          font-size: 13px;
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// .secondLine {
+//   font-size: 14px;
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+
+//   .authur {
+//     margin-left: 2vw;
+//     font-size: 17px;
+//     color: rgb(140, 140, 140);
+//     margin-bottom: 10px;
+
+//     img {
+//       width: 30px;
+//       height: 30px;
+//       border-radius: 30px;
+//       margin-right: 6px;
+//       border: solid 0.5px rgb(230, 230, 230);
+//     }
+//   }
+//   .time {
+//     margin-right: 2vw;
+//     line-height: 28px;
+//     font-size: 17px;
+//     color: rgb(140, 140, 140);
+//   }
+// }
+// }
+
+// .content {
+// padding: 50px 20px 100px 20px;
+// width: 100%;
+// textarea {
+//   width: 100%;
+//   height: 100%;
+//   border: none;
+//   &:focus {
+//     outline: none;
+//   }
+//   &:disabled {
+//     background-color: white;
+//     color: black;
+//   }
+// }
+// }
+// .ViewLike {
+// display: flex;
+// color: rgb(140, 140, 140);
+
+// .likeButton {
+//   margin-left: 20px;
+//   margin-right: 5px;
+//   line-height: 0px;
+
+//   // margin-inline: 15px;
+//   // position: absolute;
+//   padding: 0px;
+//   background-color: #ffffff;
+//   // border: 2px solid #adadad;
+
+//   border: none;
+//   // color: #7f7f7f;
+//   // border-radius: 7px;
+//   width: 25px;
+//   height: 25px;
+//   img {
+//     // position: absolute;
+//     // padding-bottom: 5px;
+//     width: 25px;
+//     height: 25px;
+//   }
+//   // &:active {
+//   //   background-color: #d3d3d3;
+//   // }
+// }
+
+// .BoardItem {
+//   // background-color: #ecd06f;
+//   width: 70vw;
+//   height: 180px;
+//   padding: 20px;
+//   padding-top: 20px;
+//   // border: 2px solid #987654;
+//   border-bottom: 2px solid rgb(206, 206, 206);
+//   // border-radius: 10px;
+//   // padding: 5px;
+//   // margin: 5px;
+//   color: #987654;
+//   &:hover {
+//     background-color: #e1d6ca;
+//     color: white;
+//   }
+//   .title {
+//     font-size: 25px;
+//     // font-weight: bold;
+//     text-align: left;
+//   }
+//   .author {
+//     padding-top: 5px;
+//     font-size: 14px;
+//     img {
+//       width: 20px;
+//       height: 20px;
+//       border-radius: 30px;
+//       margin-right: 4px;
+//       border: solid 0.5px rgb(230, 230, 230);
+//     }
+//   }
+//   .body {
+//     color: black;
+//     padding: 15px 0px;
+//     font-size: 16px;
+//     height: 70px;
+//   }
+//   .viewLike {
+//     font-size: 12px;
+//     display: flex;
+//     flex-direction: row-reverse;
+//     color: grey;
+//   }
+//   .like {
+//     margin-left: 10px;
+//   }
+// }
