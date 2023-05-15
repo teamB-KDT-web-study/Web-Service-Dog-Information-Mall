@@ -14,17 +14,16 @@ const MainPage = ({ getSession }) => {
   return (
     <>
       {/* <Mainslide /> */}
-
       <Maindog />
+      <SlickSlider />
+
+      <TrainingContainer />
 
       <Mainmydog />
       <Mainmap />
 
-      <TrainingContainer />
-      <SlickSlider />
       <ChatBot />
       <TestLogin />
-
     </>
   );
 };

@@ -3,7 +3,12 @@ function SlickNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "red" }}
+      style={{
+        position: "absolute",
+        right: "5vw",
+        zIndex: "2"
+
+      }}
       onClick={onClick}
     />
   );

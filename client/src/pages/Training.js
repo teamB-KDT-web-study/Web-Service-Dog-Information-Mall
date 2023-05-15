@@ -18,7 +18,7 @@ export function Training({ mostLikeList, onNavigate }) {
                 </span>
               </span>
               <h2 className="title">{mostLikeList[0].title}</h2>
-              <p className="info">{mostLikeList[0].body}...</p>
+              <p className="info">{mostLikeList[0].body}</p>
               <button
                 className="button"
                 onClick={() => onNavigate("/board/" + mostLikeList[0].id)}
@@ -49,7 +49,7 @@ export function Training({ mostLikeList, onNavigate }) {
                 </span>
               </span>
               <h2 className="title">{mostLikeList[1].title}</h2>
-              <p className="info">{mostLikeList[1].body}...</p>
+              <p className="info">{mostLikeList[1].body}</p>
               <button
                 className="button"
                 onClick={() => onNavigate("/board/" + mostLikeList[1].id)}
@@ -82,7 +82,7 @@ export function Training({ mostLikeList, onNavigate }) {
                 </span>
               </span>
               <h2 className="title">{mostLikeList[2].title}</h2>
-              <p className="info">{mostLikeList[2].body}...</p>
+              <p className="info">{mostLikeList[2].body}</p>
               <button
                 className="button"
                 onClick={() => onNavigate("/board/" + mostLikeList[2].id)}
@@ -113,7 +113,7 @@ export function Training({ mostLikeList, onNavigate }) {
                 </span>
               </span>
               <h2 className="title">{mostLikeList[3].title}</h2>
-              <p className="info">{mostLikeList[3].body}...</p>
+              <p className="info">{mostLikeList[3].body}</p>
               <button
                 className="button"
                 onClick={() => onNavigate("/board/" + mostLikeList[3].id)}
