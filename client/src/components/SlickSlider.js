@@ -1,16 +1,16 @@
-import React from "react";
-import { useState } from "react";
-import Slider from "react-slick";
-import SlickNextArrow from "./SlickNextArrow";
-import SlickPrevArrow from "./SlickPrevArrow";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../styles/slickslider.scss";
+import React from 'react';
+import { useState } from 'react';
+import Slider from 'react-slick';
+import SlickNextArrow from './SlickNextArrow';
+import SlickPrevArrow from './SlickPrevArrow';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import '../styles/slickslider.scss';
 
 
 const SlickSlider = () => {
   const settings = {
-    className: "center",
+    className: 'center',
     dots: true, // 지정 콘텐츠로 바로 이동할 수 있는 버튼(점)
     infinite: true, // 콘텐츠 끝까지 갔을 때 다음 콘텐츠를 처음 콘텐츠로 가져와 반복
     speed: 5000, // 0.5초
@@ -27,24 +27,23 @@ const SlickSlider = () => {
   const dogsList = [
     {
       id: 1,
-      img: process.env.PUBLIC_URL + "/SlickImages/말티즈.jpeg",
-      breed: "말티즈",
-      mind: "예민해요",
-      color: "white",
-      information: "소형견",
+      img: process.env.PUBLIC_URL + '/SlickImages/말티즈.jpeg',
+      breed: '말티즈',
+      mind: '예민해요',
+      color: 'white',
+      information: '소형견',
     },
     {
       id: 2,
-
       img: process.env.PUBLIC_URL + "/SlickImages/푸들.jpeg",
       breed: "토이 푸들",
       mind: "친화력이 좋아요",
       color: "white, black, brown",
       information: "소형견",
+
     },
     {
       id: 3,
-
       img: process.env.PUBLIC_URL + "/SlickImages/화이트테리어.jpeg",
       breed: "요크셔테리어",
       mind: "예민해요",
@@ -74,6 +73,7 @@ const SlickSlider = () => {
       mind: "친화력이 좋아요",
       color: "brown&white, black&white",
       information: "소형견",
+
     },
     {
       id: 7,
@@ -122,6 +122,7 @@ const SlickSlider = () => {
       mind: "활동적이에요",
       color: "black",
       information: "대형견",
+
     },
   ]; // 강아지 목록 배열
   const [dogsInformation, setDogsInformation] = useState({ id: 0 }); // 클릭 결과 배열 state
@@ -131,6 +132,7 @@ const SlickSlider = () => {
     } else {
       setDogsInformation(dogsList[id - 1]); // 0부터 시작하기 때문
     }
+
   };
 
   return (
@@ -189,6 +191,7 @@ const SlickSlider = () => {
               }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider2/요크셔테리어.png"
+
               }
               alt="3"
               id="3"
@@ -207,6 +210,7 @@ const SlickSlider = () => {
               }}
               src={
                 process.env.PUBLIC_URL + "/SlickImages/slider2/포메라니안.png"
+
               }
               alt="4"
               id="4"
@@ -224,6 +228,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/치와와.png"}
+
               alt="5"
               id="5"
               onClick={() => clickDogs(5)}
@@ -240,6 +245,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/시츄.png"}
+
               alt="6"
               id="6"
               onClick={() => clickDogs(6)}
@@ -272,6 +278,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/보더콜리.png"}
+
               alt="7"
               id="7"
               onClick={() => clickDogs(8)}
@@ -288,6 +295,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/웰시코기.png"}
+
               alt="8"
               id="8"
               onClick={() => clickDogs(9)}
@@ -322,6 +330,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/사모예드.png"}
+
               alt="10"
               id="10"
               onClick={() => clickDogs(11)}
@@ -330,6 +339,7 @@ const SlickSlider = () => {
           <div>
             <img
               style={{
+
                 zIndex: "1",
                 width: "30vw",
                 height: "30vw",
@@ -338,6 +348,7 @@ const SlickSlider = () => {
                 bottom: "10px",
               }}
               src={process.env.PUBLIC_URL + "/SlickImages/slider2/도베르만.png"}
+
               alt="11"
               id="11"
               onClick={() => clickDogs(12)}

@@ -44,7 +44,9 @@ export const BoardPageContainer = ({ userId }) => {
       dispatch(getSelectOption('title'));
       dispatch(getSearchMode(false));
       const getContents = async () => {
-        const res = await axios.get(process.env.REACT_APP_DB_HOST + '/board/' + pageId);
+        const res = await axios.get(
+          process.env.REACT_APP_DB_HOST + '/board/' + pageId
+        );
         dispatch(getAllData(res.data.data));
         dispatch(getLength(res.data.length));
       };
@@ -143,7 +145,9 @@ export const BoardDetailContainer = ({ userId }) => {
   const [readOnly, setReadOnly] = useState(true);
   useEffect(() => {
     const getContentDetail = async () => {
-      const res = await axios.get(process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId);
+      const res = await axios.get(
+        process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId
+      );
       dispatch(getData(res.data));
     };
     getContentDetail();
@@ -195,7 +199,9 @@ export const BoardDetailContainer = ({ userId }) => {
     );
   };
   const deleteContent = async () => {
-    await axios.delete(process.env.REACT_APP_DB_HOST + '/board/deleteContent/' + contentId);
+    await axios.delete(
+      process.env.REACT_APP_DB_HOST + '/board/deleteContent/' + contentId
+    );
   };
   const onDeleteContent = () => {
     if (window.confirm('이 글을 삭제하시겠습니까?')) {
@@ -212,8 +218,7 @@ export const BoardDetailContainer = ({ userId }) => {
       return;
     }
     const check = await axios.post(
-
-      process.env.REACT_APP_DB_HOST + "/board/addLikeList/" + contentId,
+      process.env.REACT_APP_DB_HOST + '/board/updateLike/' + contentId,
 
       {
         userNickname: userId.nickname,
@@ -230,7 +235,6 @@ export const BoardDetailContainer = ({ userId }) => {
       //   }
       // ); //백엔드 반영
       // alert('이 글을 추천하셨습니다!');
-
     } else {
       dispatch(deleteLike());
       // const res = await axios.patch(
@@ -300,8 +304,11 @@ export const BoardCreateContainer = ({ userId }) => {
       // date: nowTime,
     };
 
-    const res = await axios.post(process.env.REACT_APP_DB_HOST + '/board/addContent', newContent);
-    console.log(res)
+    const res = await axios.post(
+      process.env.REACT_APP_DB_HOST + '/board/addContent',
+      newContent
+    );
+    console.log(res);
 
     alert('작성하신 글이 제출되었습니다!');
     navigate(-1);
