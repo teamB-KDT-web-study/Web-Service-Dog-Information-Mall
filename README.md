@@ -50,16 +50,18 @@
 
 
 ## 3. 실행 방법
-
+- 배포 주소 : <http://3.37.27.147/>
 - 백엔드
 ```
 cd server
 npm i
 
-mysql 파일 실행 - 수정 필요
+// dog_inf_mall.sql 파일 전체 실행 (ctrl + enter)
+
 cd storeData
 node shopDataToDB.js (open API 정보 DB에 저장하기
 
+cd ../
 node app.js
 ```
 - 프론트엔드
