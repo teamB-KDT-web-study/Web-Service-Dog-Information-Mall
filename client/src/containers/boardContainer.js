@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
-import { BoardCreate } from '../pages/BoardCreate';
-import { BoardDetail } from '../pages/BoardDetail';
-import { BoardPage } from '../pages/BoardPage';
-import axios from 'axios';
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect, useRef } from "react";
+import { BoardCreate } from "../pages/BoardCreate";
+import { BoardDetail } from "../pages/BoardDetail";
+import { BoardPage } from "../pages/BoardPage";
+import axios from "axios";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import {
   getData,
   getLength,
@@ -17,7 +17,8 @@ import {
   getSearchMode,
   addLike,
   deleteLike,
-} from '../store/boardReducer';
+  isLike,
+} from "../store/boardReducer";
 
 ////////////////////////////////////////////////////////////////////////////////
 export const BoardPageContainer = ({ userId }) => {
@@ -34,18 +35,18 @@ export const BoardPageContainer = ({ userId }) => {
   let pageNum = [];
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  const option = searchParams.get('option');
-  const query = searchParams.get('query');
+  const option = searchParams.get("option");
+  const query = searchParams.get("query");
 
   useEffect(() => {
     if (!searchMode) {
       dispatch(getSearchData([]));
-      dispatch(getSearchWord(''));
-      dispatch(getSelectOption('title'));
+      dispatch(getSearchWord(""));
+      dispatch(getSelectOption("title"));
       dispatch(getSearchMode(false));
       const getContents = async () => {
         const res = await axios.get(
-          process.env.REACT_APP_DB_HOST + '/board/' + pageId
+          process.env.REACT_APP_DB_HOST + "/board/" + pageId
         );
         dispatch(getAllData(res.data.data));
         dispatch(getLength(res.data.length));
@@ -73,8 +74,8 @@ export const BoardPageContainer = ({ userId }) => {
   };
   const onCompleteSearch = async () => {
     const trimedWord = searchWord.trim();
-    if (trimedWord === '') {
-      alert('검색 키워드를 입력하세요.');
+    if (trimedWord === "") {
+      alert("검색 키워드를 입력하세요.");
       return;
     }
     const res = await axios.get(
@@ -82,7 +83,7 @@ export const BoardPageContainer = ({ userId }) => {
     );
     dispatch(getSearchData(res.data.data));
     dispatch(getSearchMode(true));
-    dispatch(getSearchWord(''));
+    dispatch(getSearchWord(""));
     dispatch(getLength(res.data.length));
     navigate(`/board/page/1?option=${selectOption}&query=${trimedWord}`);
   };
@@ -97,21 +98,21 @@ export const BoardPageContainer = ({ userId }) => {
   };
 
   const onEnter = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       onCompleteSearch();
     }
   };
   const onBack = () => {
-    navigate('/board/page/1');
+    navigate("/board/page/1");
     dispatch(getSearchMode(false));
     dispatch(getSearchData([]));
   };
   const createContent = () => {
     if (userId.isLogin == false) {
-      alert('글을 쓸 권한이 없습니다.');
+      alert("글을 쓸 권한이 없습니다.");
       return;
     } else {
-      navigate('/board/create');
+      navigate("/board/create");
     }
   };
 
@@ -140,24 +141,38 @@ export const BoardPageContainer = ({ userId }) => {
 export const BoardDetailContainer = ({ userId }) => {
   const navigate = useNavigate();
   const contentDetail = useSelector((state) => state.board.data);
+  const like = useSelector((state) => state.board.islike);
   const dispatch = useDispatch();
   const { contentId } = useParams();
   const [readOnly, setReadOnly] = useState(true);
   useEffect(() => {
+    dispatch(isLike(false));
     const getContentDetail = async () => {
       const res = await axios.get(
-        process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId
+        process.env.REACT_APP_DB_HOST + "/board/detail/" + contentId
+      );
+      const user = await axios.get(
+        process.env.REACT_APP_DB_HOST + "/member/checkLogin"
       );
       dispatch(getData(res.data));
+      if (res.data.like_nicknames) {
+        for (let i of res.data.like_nicknames) {
+          console.log("i >> ", i);
+          if (i == user.data.nickname) dispatch(isLike(true));
+        }
+      }
     };
     getContentDetail();
   }, []);
+  const likeChange = () => {
+    dispatch(isLike(!like));
+  };
   const onStartEditContent = () => {
     setReadOnly(!readOnly);
   };
   const onCompleteEditContent = () => {
     editContent(contentDetail);
-    alert('글 수정이 완료되었습니다.');
+    alert("글 수정이 완료되었습니다.");
     setReadOnly(!readOnly);
   };
   const onTitleEditEvent = (e) => {
@@ -170,7 +185,7 @@ export const BoardDetailContainer = ({ userId }) => {
         view_count: contentDetail.view_count,
         like_count: contentDetail.like_count,
         date: contentDetail.date,
-        ['user.grade']: contentDetail['user.grade'],
+        ["user.grade"]: contentDetail["user.grade"],
       };
       dispatch(getData(newData));
     } else {
@@ -187,38 +202,38 @@ export const BoardDetailContainer = ({ userId }) => {
         view_count: contentDetail.view_count,
         like_count: contentDetail.like_count,
         date: contentDetail.date,
-        ['user.grade']: contentDetail['user.grade'],
+        ["user.grade"]: contentDetail["user.grade"],
       };
       dispatch(getData(newData));
     }
   };
   const editContent = async (newContent) => {
     await axios.patch(
-      process.env.REACT_APP_DB_HOST + '/board/editContent/' + contentId,
+      process.env.REACT_APP_DB_HOST + "/board/editContent/" + contentId,
       newContent
     );
   };
   const deleteContent = async () => {
     await axios.delete(
-      process.env.REACT_APP_DB_HOST + '/board/deleteContent/' + contentId
+      process.env.REACT_APP_DB_HOST + "/board/deleteContent/" + contentId
     );
   };
   const onDeleteContent = () => {
-    if (window.confirm('이 글을 삭제하시겠습니까?')) {
+    if (window.confirm("이 글을 삭제하시겠습니까?")) {
       deleteContent();
-      alert('글이 삭제되었습니다!');
+      alert("글이 삭제되었습니다!");
       navigate(-1);
     } else {
-      alert('글 삭제를 취소합니다!');
+      alert("글 삭제를 취소합니다!");
     }
   };
   const onUpdateLike = async () => {
     if (!userId.isLogin) {
-      alert('로그인이 필요합니다!');
+      alert("로그인이 필요합니다!");
       return;
     }
     const check = await axios.post(
-      process.env.REACT_APP_DB_HOST + '/board/updateLike/' + contentId,
+      process.env.REACT_APP_DB_HOST + "/board/updateLike/" + contentId,
 
       {
         userNickname: userId.nickname,
@@ -227,7 +242,6 @@ export const BoardDetailContainer = ({ userId }) => {
     );
     if (check.data === true) {
       dispatch(addLike()); // 화면 표시
-
       // const res = await axios.patch(
       //   API_BASE_URL + '/board/addLike/' + contentId,
       //   {
@@ -258,6 +272,8 @@ export const BoardDetailContainer = ({ userId }) => {
       onDeleteContent={onDeleteContent}
       onUpdateLike={onUpdateLike}
       userId={userId}
+      like={like}
+      likeChange={likeChange}
     />
   );
 };
@@ -269,29 +285,29 @@ export const BoardCreateContainer = ({ userId }) => {
   const contentDetail = useSelector((state) => state.board.newData);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getNewData({ nickname: '', title: '', body: '', date: '' }));
+    dispatch(getNewData({ nickname: "", title: "", body: "", date: "" }));
   }, []);
 
   const timestamp = () => {
     var today = new Date();
     today.setHours(today.getHours() + 9);
-    return today.toISOString().replace('T', ' ').substring(0, 19);
+    return today.toISOString().replace("T", " ").substring(0, 19);
   };
   const titleEditEvent = (e) => {
     const newData = {
-      nickname: '',
+      nickname: "",
       title: e.target.value,
       body: contentDetail.body,
-      date: '',
+      date: "",
     };
     dispatch(getNewData(newData));
   };
   const bodyEditEvent = (e) => {
     const newData = {
-      nickname: '',
+      nickname: "",
       title: contentDetail.title,
       body: e.target.value,
-      date: '',
+      date: "",
     };
     dispatch(getNewData(newData));
   };
@@ -305,16 +321,16 @@ export const BoardCreateContainer = ({ userId }) => {
     };
 
     const res = await axios.post(
-      process.env.REACT_APP_DB_HOST + '/board/addContent',
+      process.env.REACT_APP_DB_HOST + "/board/addContent",
       newContent
     );
     console.log(res);
 
-    alert('작성하신 글이 제출되었습니다!');
+    alert("작성하신 글이 제출되었습니다!");
     navigate(-1);
   };
   const onBack = () => {
-    if (window.confirm('정말로 쓰던 글을 삭제하고 뒤로 가시겠습니까?')) {
+    if (window.confirm("정말로 쓰던 글을 삭제하고 뒤로 가시겠습니까?")) {
       navigate(-1);
     } else {
       return;

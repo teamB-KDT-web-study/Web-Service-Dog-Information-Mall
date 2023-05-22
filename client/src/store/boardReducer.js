@@ -9,6 +9,7 @@ const GETSEARCHDATA = 'board/GETSEARCHDATA';
 const GETSEARCHMODE = 'board/GETSEARCHMODE';
 const ADDLIKE = 'board/ADDLIKE';
 const DELETELIKE = 'board/DELETELIKE';
+const ISLIKE = 'board/ISLIKE';
 
 export const getAllData = (data) => ({ type: GETALLDATA, payload: data });
 export const getLength = (data) => ({ type: GETLENGTH, payload: data });
@@ -16,6 +17,7 @@ export const getPageList = (data) => ({ type: GETPAGELIST, payload: data });
 export const getData = (data) => ({ type: GETDATA, payload: data });
 export const getNewData = (data) => ({ type: GETNEWDATA, payload: data });
 export const getSearchWord = (data) => ({ type: GETSEARCHWORD, payload: data });
+export const isLike = (data) => ({ type: ISLIKE, payload: data });
 export const getSelectOption = (data) => ({
   type: GETSELECTOPTION,
   payload: data,
@@ -45,6 +47,7 @@ const initialState = {
   selectOption: 'title',
   searchData: [],
   searchMode: false,
+  islike: false,
 };
 
 const boardReducer = (state = initialState, action) => {
@@ -67,6 +70,8 @@ const boardReducer = (state = initialState, action) => {
       return { ...state, searchData: action.payload };
     case GETSEARCHMODE:
       return { ...state, searchMode: action.payload };
+    case ISLIKE:
+      return { ...state, islike: action.payload };
     case ADDLIKE:
       return {
         ...state,
