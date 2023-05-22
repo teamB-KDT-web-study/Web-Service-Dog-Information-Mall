@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap');
-@import '~include-media/dist/include-media';
+@import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
+@import "~include-media/dist/include-media";
 
 $breakpoint-md: 953px;
 $breakpoint-ms: 590px;
@@ -32,7 +32,7 @@ $breakpoint-ms: 590px;
 }
 
 body {
-  font-family: 'Spline Sans', sans-serif;
+  font-family: "Spline Sans", sans-serif;
   line-height: 1.5;
   min-height: 30vh;
 }
@@ -57,8 +57,8 @@ body {
 .card {
   border-radius: 16px;
   box-shadow: 0 30px 30px -25px rgba(#ecd06f, 0.25);
-  min-width: 25vw;
-  max-width: 25vw;
+  min-width: 23vw;
+  max-width: 23vw;
   min-height: max-content;
 }
 
@@ -269,7 +269,7 @@ body {
 //     }
 //   }
 // }
-@include media('<#{$breakpoint-md}') {
+@include media("<#{$breakpoint-md}") {
   .Training {
     flex-direction: column;
 
@@ -313,7 +313,7 @@ body {
     }
   }
 }
-@include media('<#{$breakpoint-ms}') {
+@include media("<#{$breakpoint-ms}") {
   .Training {
     font-size: 2vw;
     .trainingContainer {
