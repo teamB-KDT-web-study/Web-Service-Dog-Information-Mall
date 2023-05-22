@@ -1,7 +1,7 @@
-import '../styles/boarddetail.scss';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import "../styles/boarddetail.scss";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export function BoardDetail({
   content,
@@ -13,30 +13,31 @@ export function BoardDetail({
   onDeleteContent,
   onUpdateLike,
   userId,
+  like,
+  likeChange,
 }) {
-  const { contentId } = useParams();
-  const [like, setLike] = useState(false);
-  useEffect(() => {
-    const getContentDetail = async () => {
-      const res = await axios.get(
-        process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId
-      );
-      const user = await axios.get(
-        process.env.REACT_APP_DB_HOST + "/member/checkLogin"
-      );
-      if (res.data.like_nicknames) {
-        for (let i of res.data.like_nicknames) {
-          console.log('i >> ', i);
-          if (i == user.data.nickname) setLike(true);
-        }
-      }
-   
-    };
-    getContentDetail();
+  // const { contentId } = useParams();
+  // const [like, setLike] = useState(false);
+  // useEffect(() => {
+  //   const getContentDetail = async () => {
+  //     const res = await axios.get(
+  //       process.env.REACT_APP_DB_HOST + '/board/detail/' + contentId
+  //     );
+  //     const user = await axios.get(
+  //       process.env.REACT_APP_DB_HOST + "/member/checkLogin"
+  //     );
+  //     if (res.data.like_nicknames) {
+  //       for (let i of res.data.like_nicknames) {
+  //         console.log('i >> ', i);
+  //         if (i == user.data.nickname) setLike(true);
+  //       }
+  //     }
 
-    
-  }, []);
-  console.log(content['user.profile_img']);
+  //   };
+  //   getContentDetail();
+
+  // }, []);
+  console.log(like);
   const navigate = useNavigate();
   return (
     <main className="BoardDetail">
@@ -53,12 +54,12 @@ export function BoardDetail({
           <div className="secondLine">
             <div className="authur">
               <img
-                src={`${process.env.PUBLIC_URL}/profile_img/${content['user.profile_img']}`}
+                src={`${process.env.PUBLIC_URL}/profile_img/${content["user.profile_img"]}`}
               ></img>
               {content.nickname}
             </div>
             <div className="time">
-              {new Intl.DateTimeFormat('ko-KR').format(new Date(content.date))}
+              {new Intl.DateTimeFormat("ko-KR").format(new Date(content.date))}
             </div>
           </div>
         </div>
@@ -76,7 +77,8 @@ export function BoardDetail({
             className="likeButton"
             onClick={() => {
               onUpdateLike();
-              if (userId.isLogin) setLike(!like);
+              if (userId.isLogin) likeChange();
+              // if (userId.isLogin) setLike(!like);
             }}
           >
             <img
@@ -86,7 +88,7 @@ export function BoardDetail({
                   : `${process.env.PUBLIC_URL}/SlickImages/emptyHeart.JPG`
               }
               // style={{ width: '20px', height: '20px' }}
-            />{' '}
+            />{" "}
             {/* 💖 {content.like_count} */}
           </button>
           {content.like_count}

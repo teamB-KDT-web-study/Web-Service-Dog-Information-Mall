@@ -140,7 +140,6 @@ const SlickSlider = () => {
       className="App"
       style={{
         zIndex: "1",
-        backgroundColor: "hsl(44deg 35% 94% / 100%)",
         height: "content-max",
         marginTop: "20px",
       }}
